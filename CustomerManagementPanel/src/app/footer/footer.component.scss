@@ -1,5 +1,74 @@
-section {
-    background-color: #4FB2FF;
-    position: relative;
+// .cointeiner{
+
+//     color: white;
+//     top: 0;
+//     height: 150px;
+//     background: rgb(51,174,233);
+//     background: linear-gradient(0deg, rgba(51,174,233,1) 100%, rgba(255,247,229,1) 100%);
+//     font-size: 18px;
+// }
+// .header-by{
+//     align-self: center;
+//     top: 10%;
+// }
+
+// .header-by-row {
+// align-items: center;
+// align-content: center;
+// margin-left: auto;
+// width: 50%;
+// margin: auto;
+// }
+// .media{
+//     position: relative;
+//     left: 200px;
+//     top: -50px;
+// }
+// .logo{
+//     position: relative;
+//     left: 350%;
+//     font-size: 30px;
+//     padding-right: 10%;
+// }
+.cointeiner{
+    color: white;
+    background: rgb(51,174,233);
+    background: linear-gradient(0deg, rgba(51,174,233,1) 100%, rgba(255,247,229,1) 100%);  
+    font-size: 24px;
+    height: 25vh;
 }
 
+.header-by{
+    position: absolute;
+    top: 10%;
+    left: 0;
+    right: 0;
+    text-align: center;
+}
+
+.col-md-6{
+    bottom: -80px;
+}
+
+.col-md-3{
+    float: left;
+    
+}
+
+.logo{
+    position: relative;
+    right: -60%;
+    font-size: 50px;
+    padding: 10px;
+
+}
+
+a{
+    font-size: 18px;
+    text-decoration: none;
+    color: white;
+}
+
+a:hover{
+    color: #000;
+}
