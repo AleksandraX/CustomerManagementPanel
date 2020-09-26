@@ -18,7 +18,10 @@ export class ClientListComponent implements OnInit {
     console.log(this.customerList);
   }
 
-  removeCustomer(customerToDelete:string){
-    let index = this.customerList.indexOf(customerToDelete);//po tym idexie usunąć pozycję z listy
+  deleteCustomer(customerToDelete:string){
+    let index = this.customerList.indexOf(customerToDelete);    //po tym idexie usunąć pozycję z listy
+    this.customerList.splice(this.customerToDelete,1);
   }
+
+  customerToDelete:number;
 }
