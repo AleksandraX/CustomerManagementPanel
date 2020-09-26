@@ -35,11 +35,12 @@
     background: rgb(51,174,233);
     background: linear-gradient(0deg, rgba(51,174,233,1) 100%, rgba(255,247,229,1) 100%);  
     font-size: 24px;
-    height: 25vh;
+    height: 21vh;
 }
 
 .header-by{
     position: absolute;
+    font-size: 35px;
     top: 10%;
     left: 0;
     right: 0;
@@ -50,17 +51,17 @@
     bottom: -80px;
 }
 
-.col-md-3{
-    float: left;
-    
+.media{
+    position: absolute;
+    left: 22%;
+    top: 50%;
 }
 
 .logo{
     position: relative;
-    right: -60%;
-    font-size: 50px;
+    font-size: 60px;
     padding: 10px;
-
+    left: 66%;
 }
 
 a{
@@ -71,4 +72,11 @@ a{
 
 a:hover{
     color: #000;
+    transition: color .5s;
+}
+
+.contact{
+    position: relative;
+    left: 5%;
+    top: 40%;
 }
