@@ -20,7 +20,7 @@ export class ClientListComponent implements OnInit {
 
   deleteCustomer(customerToDelete:string){
     let index = this.customerList.indexOf(customerToDelete);    //po tym idexie usunąć pozycję z listy
-    this.customerList.splice(this.customerToDelete,1);
+    this.customerList.splice(index,1);
   }
 
   customerToDelete:number;
