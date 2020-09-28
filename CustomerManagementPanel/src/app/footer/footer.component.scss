@@ -21,26 +21,24 @@
 }
 
 .case-media{
-    display: inline-block;
+    display:block;
     text-align: center;
     top: 80px;
 }
 
 .media{
     position: absolute;
-    float: left;
-    left: 45%;
-    top: 55%;
-    z-index: 1;
+    left: 55%;
+    top: 10%;
 }
 
 .media-icons{
     position: relative;
-    font-size: 58px;
-    padding: 10px;
-    left: 75%;
     float: left;
-    z-index: 1;
+    font-size: 47px;
+    padding: 10px;
+    left: 62%;
+    top: 40%;
 }
 
 a{
