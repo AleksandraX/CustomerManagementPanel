@@ -6,3 +6,9 @@
 <ul *ngFor="let customer of customerList">
     <li>{{customer}}</li><button (click)="deleteCustomer(customer)">Delete</button>
 </ul>
+
+
+<p>NOWA LISTA</p>
+<ul *ngFor="let customer of customerObjectList">
+    <li>{{customer.name}} {{customer.lastName}}, age: {{customer.age}}</li>
+</ul>
