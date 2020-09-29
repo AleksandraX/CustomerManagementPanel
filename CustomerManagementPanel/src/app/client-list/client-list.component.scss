@@ -1,0 +1,43 @@
+.btnAdd{
+    background-color: rgb(255, 255, 255);
+    border: none;
+    border-radius: 5px;
+    padding: 1%;
+    transition: .3s color, .3s transform ;
+}
+
+.btnAdd:hover{
+    color: rgb(45, 221, 45);
+    transform: scale(1.1);
+}
+
+.bntDelete{
+    padding: .5%;
+    font-size: 140%;
+    background-color: white;
+    border: none;
+    transition: .5s color, .3s transform;
+}
+
+.bntDelete:hover{
+    color: red;
+    transform: scale(1.1);
+}
+
+.inputNewCustomer{
+    border: none;
+    border-bottom: 3px dotted black;
+}
+
+.inputNewCustomer:hover{
+
+}
+
+ul{
+    counter-reset: li;
+    list-style: none;
+    padding: 0;
+}
+ul ul {
+    margin: 0 0 0 2em;
+}

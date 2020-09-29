@@ -1,10 +1,10 @@
 <p>client-list works!</p>
 
-<input type="text" #newCustomer>
-<button (click)="addCustomer(newCustomer.value)">Add</button>
+<input class="inputNewCustomer" type="text" #newCustomer>
+<button class="btnAdd" (click)="addCustomer(newCustomer.value)"><i class="fa fa-plus"></i></button>
 
 <ul *ngFor="let customer of customerList">
-    <li>{{customer}}</li><button (click)="deleteCustomer(customer)">Delete</button>
+    <li>{{customer}}</li><button class="bntDelete" (click)="deleteCustomer(customer)"><i class="fa fa-trash"></i></button>
 </ul>
 
 
