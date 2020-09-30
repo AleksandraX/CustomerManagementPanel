@@ -10,7 +10,7 @@ export class ClientListComponent implements OnInit {
   customerList: string[] = ["Paulina Murlik" , "Sisi Murlik", "Amor Murlik"];
   customerObjectList: Customer[] = [
      { 
-     id: 1, 
+     id: 11111, 
      name: "Kacper",
      lastName: "Bergański", 
      age: 21, 
@@ -19,8 +19,8 @@ export class ClientListComponent implements OnInit {
      phoneNumber: 72123132, 
      mail: "kacper.berganski@onet.pl"
     },
-    new Customer(2, "Amor", "Murlik", 4, "M", "Gdynia", 312312312, "amor@onet.pl"),
-    new Customer(3, "Sisi", "Murlik", 7, "w", "Gdynia", 62438187, "sisi@wp.pl")
+    new Customer(11112, "Amor", "Murlik", 4, "M", "Gdynia", 312312312, "amor@onet.pl"),
+    new Customer(11113, "Sisi", "Murlik", 7, "w", "Gdynia", 62438187, "sisi@wp.pl")
   ];
 
   constructor() { }
@@ -39,6 +39,13 @@ export class ClientListComponent implements OnInit {
     this.customerList.splice(index,1);
   }
   
+  deleteNewListCustomer(customerToDelete:Customer){
+    for (let i = 0; i < this.customerObjectList.length; i++){
+      if(customerToDelete.id === this.customerObjectList[i].id){
+        this.customerObjectList.splice(i,1);
+      }
+    } 
+  }
 }
 
 // todo przenieś do osobnej klasy

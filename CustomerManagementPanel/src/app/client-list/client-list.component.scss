@@ -1,22 +1,30 @@
 .btnAdd{
-    background-color: rgb(255, 255, 255);
+    position: relative;
+    background-color: rgb(45, 221, 45);
+    color: rgb(255, 255, 255);
     border: none;
     border-radius: 5px;
-    padding: 1%;
+    padding: .4%;
     transition: .3s color, .3s transform ;
+    outline: none;
+    left: 3.1%;
 }
 
 .btnAdd:hover{
-    color: rgb(45, 221, 45);
+    color: rgb(255, 255, 255);
     transform: scale(1.1);
 }
 
 .bntDelete{
-    padding: .5%;
+    position: relative;
+    color: red;
+    padding: .8%;
     font-size: 140%;
     background-color: white;
     border: none;
     transition: .5s color, .3s transform;
+    outline: none;
+    left: .5%;
 }
 
 .bntDelete:hover{
@@ -25,19 +33,33 @@
 }
 
 .inputNewCustomer{
-    border: none;
-    border-bottom: 3px dotted black;
+    position: relative;
+    left: 3%;
+    border: 2px dashed black;
 }
 
-.inputNewCustomer:hover{
-
+input:focus{
+    outline: none;
+    background-color: rgb(255, 248, 151);
 }
 
-ul{
-    counter-reset: li;
+input:focus:hover{
+    transition: .5s background-color;
+}
+
+ol{
     list-style: none;
-    padding: 0;
 }
-ul ul {
-    margin: 0 0 0 2em;
+
+.customerList{
+    display: inline-block;
+}
+
+.customerNumber{
+    display: inline-block;
+    margin-right: .8%;
+}
+
+.newList{
+    display: inline;
 }

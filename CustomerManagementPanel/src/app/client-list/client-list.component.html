@@ -1,14 +1,24 @@
 <p>client-list works!</p>
 
-<input class="inputNewCustomer" type="text" #newCustomer>
+<input class="inputNewCustomer" type="text" placeholder="Add Customer" onfocus="this.placeholder=' '" onblur="this.placeholder=' Add Customer '" #newCustomer>
 <button class="btnAdd" (click)="addCustomer(newCustomer.value)"><i class="fa fa-plus"></i></button>
 
-<ul *ngFor="let customer of customerList">
-    <li>{{customer}}</li><button class="bntDelete" (click)="deleteCustomer(customer)"><i class="fa fa-trash"></i></button>
-</ul>
 
+<div *ngIf="!!customerList && customerList.length > 0; else emptyList">   
+    <ol *ngFor="let customer of customerList; let i = index">
+            <p class="customerNumber">{{i}}</p><li class="customerList">{{customer}}</li><button class="bntDelete" (click)="deleteCustomer(customer)"><i class="fa fa-trash"></i></button>
+    </ol>
+</div>
 
-<p>NOWA LISTA</p>
-<ul *ngFor="let customer of customerObjectList">
-    <li>{{customer.name}} {{customer.lastName}}, age: {{customer.age}}</li>
-</ul>
+<ng-template #emptyList>
+    <div>
+        The user list is empty.
+    </div>
+</ng-template>
+
+<p class="newList">NOWA LISTA</p>
+<ol *ngFor="let customer of customerObjectList">
+    <li class="customerList">{{customer.name}} {{customer.lastName}}, age: {{customer.age}}</li>
+    <button class="bntDelete" (click)="deleteNewListCustomer(customer)">
+    <i class="fa fa-trash"></i></button>
+</ol>
