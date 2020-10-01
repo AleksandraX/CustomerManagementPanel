@@ -1,14 +1,48 @@
-<p>client-list works!</p>
-
-<input class="inputNewCustomer" type="text" placeholder="Add Customer" onfocus="this.placeholder=' '" onblur="this.placeholder=' Add Customer '" #newCustomer>
-<button class="btnAdd" (click)="addCustomer(newCustomer.value)"><i class="fa fa-plus"></i></button>
+<!-- <input class="inputNewCustomer" type="text" placeholder="Add Customer" onfocus="this.placeholder=' '" onblur="this.placeholder=' Add Customer '" #newCustomer> -->
+<!-- <button class="btnAdd" (click)="addCustomer(newCustomer.value)"><i class="fa fa-plus"></i></button> -->
 
 
-<div *ngIf="!!customerList && customerList.length > 0; else emptyList">   
+<!-- <div *ngIf="!!customerList && customerList.length > 0; else emptyList">   
     <ol *ngFor="let customer of customerList; let i = index">
             <p class="customerNumber">{{i}}</p><li class="customerList">{{customer}}</li>
             <button class="bntDelete" (click)="deleteCustomer(customer)"><i class="fa fa-trash"></i></button>
     </ol>
+</div> -->
+
+<!-- <div *ngIf="!!customerObjectList && customerObjectList.length > 0; else emptyList">
+    <p class="newList">New List : </p>
+    <ol *ngFor="let customer of customerObjectList">
+        <li class="customerList">{{customer.name}} {{customer.lastName}}, age: {{customer.age}}</li>
+        <button class="bntDelete" (click)="deleteNewListCustomer(customer)">
+        <i class="fa fa-trash"></i></button>
+    </ol>
+</div> -->
+
+<div *ngIf="!!customerObjectList && customerObjectList.length > 0; else emptyList">
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">ID</th>
+    <th scope="col">Name</th>
+    <th scope="col">City</th>
+    <th scope="col">Sex F/M</th>
+    <th scope="col">Remove</th>
+</tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let customer of customerObjectList; index as i">
+    <th scope="row">{{ i + 1 }}</th>
+    <td>{{ customer.id}}</td>
+    <td>{{ customer.name}}</td>
+    <td>{{ customer.city}}</td>
+    <td>{{ customer.sex}}</td>
+    <td><button class="bntDelete" (click)="deleteNewListCustomer(customer)">
+        <i class="fa fa-trash"></i></button></td>
+  </tr>
+  </tbody>
+</table>
 </div>
 
 <ng-template #emptyList>
@@ -16,12 +50,3 @@
         INFO! The user list is empty.
     </div>
 </ng-template>
-
-<div *ngIf="!!customerObjectList && customerObjectList.length > 0; else emptyList">
-    <p class="newList">New List : </p>
-    <ol *ngFor="let customer of customerObjectList">
-        <li class="customerList">{{customer.name}} {{customer.lastName}}, age: {{customer.age}}</li>
-        <button class="bntDelete" (click)="deleteNewListCustomer(customer)">
-        <i class="fa fa-trash"></i></button>
-    </ol>
-</div>

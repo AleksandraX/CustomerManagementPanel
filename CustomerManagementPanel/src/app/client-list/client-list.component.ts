@@ -20,7 +20,7 @@ export class ClientListComponent implements OnInit {
      mail: "kacper.berganski@onet.pl"
     },
     new Customer(11112, "Amor", "Murlik", 4, "M", "Gdynia", 312312312, "amor@onet.pl"),
-    new Customer(11113, "Sisi", "Murlik", 7, "w", "Gdynia", 62438187, "sisi@wp.pl")
+    new Customer(11113, "Sisi", "Murlik", 7, "F", "Gdynia", 62438187, "sisi@wp.pl")
   ];
 
   constructor() { }
@@ -76,8 +76,8 @@ export class Customer {
       this.sex = sex;
       this.city = city;
       this.phoneNumber = phoneNumber;
-      this.mail = mail;
-    
+      this.mail = mail; 
   }
 }
+
 
