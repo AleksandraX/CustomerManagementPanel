@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ClientListComponent implements OnInit {
 
-  customerList: string[] = ["Paulina Murlik" , "Sisi Murlik", "Amor Murlik"];
+  customerList: string[] = ["Paula Murlik" , "Sisi Murlik", "Amor Murlik"];
   customerObjectList: Customer[] = [
      { 
      id: 11111, 

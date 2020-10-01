@@ -18,7 +18,7 @@
 .bntDelete{
     position: relative;
     color: red;
-    padding: .8%;
+    padding: .1% .8%;
     font-size: 140%;
     background-color: white;
     border: none;
@@ -53,6 +53,7 @@ ol{
 
 .customerList{
     display: inline-block;
+    padding: 2% 1%;
 }
 
 .customerNumber{
@@ -61,5 +62,26 @@ ol{
 }
 
 .newList{
+    background-color: #1476ff;
+    color: white;
+    font-weight: bold;
+    box-shadow: 0 5px darken(#1476ff, 10%);
+    border: solid 2px darken(#1476ff, 10%);
+    padding: .8% 5%;
     display: inline;
+    position: relative;
+    left: 3.3%;
+}
+
+.emptyList{
+    background-color: rgb(175, 25, 25);
+    color: white;
+    text-align: center;
+    margin-bottom: 1%;
+    padding: 1.2%;
+    transition: transform .2s;
+}
+
+.emptyList:hover{
+    transform: scale(1.1);
 }
