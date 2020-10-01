@@ -20,11 +20,11 @@
     color: red;
     padding: .1% .8%;
     font-size: 140%;
-    background-color: white;
+    background: transparent;
     border: none;
     transition: .5s color, .3s transform;
     outline: none;
-    left: .5%;
+    left: 20%;
 }
 
 .bntDelete:hover{
@@ -85,3 +85,10 @@ ol{
 .emptyList:hover{
     transform: scale(1.1);
 }
+
+
+.table-striped{
+    border: solid .2rem black;
+}
+
+
