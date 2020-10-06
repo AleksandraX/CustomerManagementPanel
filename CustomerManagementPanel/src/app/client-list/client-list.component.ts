@@ -6,6 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./client-list.component.scss']
 })
 export class ClientListComponent implements OnInit {
+  flag: boolean = false;
+
+  chosenCustomer: Customer;
 
   customerList: string[] = ["Paula Murlik" , "Sisi Murlik", "Amor Murlik"];
   customerObjectList: Customer[] = [
@@ -46,6 +49,12 @@ export class ClientListComponent implements OnInit {
       }
     } 
   }
+
+  showDetails(customer: Customer){
+    this.flag =!this.flag;
+    this.chosenCustomer = customer;
+  }
+
 }
 
 // todo przenieś do osobnej klasy

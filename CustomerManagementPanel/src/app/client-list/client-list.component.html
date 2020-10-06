@@ -39,10 +39,28 @@
     <td class="columnUser">{{ customer.city}}</td>
     <td class="columnUser">{{ customer.sex}}</td>
     <td class="columnUser"><button class="bntDelete" (click)="deleteNewListCustomer(customer)">
-        <i class="fa fa-trash"></i></button></td>
+        <i class="fa fa-trash"></i></button>
+        <button class="btnDelete" (click)="showDetails(customer)">
+            <i class="fa fa-trash"></i></button>
+    </td>
   </tr>
   </tbody>
 </table>
+</div>
+
+<div *ngIf="flag">Chosen user:
+    <br>
+    id: {{chosenCustomer.id}}
+    <br>
+    name: {{chosenCustomer.name}}
+    <br>
+    city: {{chosenCustomer.city}}
+    <br>
+    sex: {{chosenCustomer.sex}}
+    <br>
+    phone number: {{chosenCustomer.phoneNumber}}
+    <br>
+    mail: {{chosenCustomer.mail}}
 </div>
 
 <ng-template #emptyList>
