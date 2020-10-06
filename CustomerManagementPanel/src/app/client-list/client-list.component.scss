@@ -91,4 +91,37 @@ ol{
     border: solid .2rem black;
 }
 
+.columnBnt{
+    position: relative;
+}
 
+.bntShow{
+    position: relative;
+    padding: .3rem ;
+    left: 6rem;
+    color: black;
+    border: none;
+    background: transparent;
+    font-size: 1.6rem;
+    transition: .3s transform;
+}
+
+.bntShow:focus{
+    outline: none;
+}
+
+.bntShow:hover{
+    transform: scale(1.2)
+}
+
+.chosenUser{
+    position: relative;
+    top: 1rem;
+}
+
+.infoUser {
+  position: relative;
+  display: inline;
+  bottom: 1rem;
+  //border-bottom: solid .1rem black;
+}

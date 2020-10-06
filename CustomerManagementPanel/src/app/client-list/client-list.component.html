@@ -1,3 +1,4 @@
+<!-- First version -->
 <!-- <input class="inputNewCustomer" type="text" placeholder="Add Customer" onfocus="this.placeholder=' '" onblur="this.placeholder=' Add Customer '" #newCustomer> -->
 <!-- <button class="btnAdd" (click)="addCustomer(newCustomer.value)"><i class="fa fa-plus"></i></button> -->
 
@@ -38,29 +39,33 @@
     <td class="columnUser">{{ customer.name}}</td>
     <td class="columnUser">{{ customer.city}}</td>
     <td class="columnUser">{{ customer.sex}}</td>
-    <td class="columnUser"><button class="bntDelete" (click)="deleteNewListCustomer(customer)">
-        <i class="fa fa-trash"></i></button>
-        <button class="btnDelete" (click)="showDetails(customer)">
+    <td class="columnBnt">
+        <button class="bntDelete" (click)="deleteNewListCustomer(customer)">
             <i class="fa fa-trash"></i></button>
+        <button class="bntShow" (click)="showDetails(customer)">
+            <i class="fa fa-info-circle"></i></button>
     </td>
   </tr>
   </tbody>
 </table>
 </div>
 
-<div *ngIf="flag">Chosen user:
-    <br>
-    id: {{chosenCustomer.id}}
-    <br>
-    name: {{chosenCustomer.name}}
-    <br>
-    city: {{chosenCustomer.city}}
-    <br>
-    sex: {{chosenCustomer.sex}}
-    <br>
-    phone number: {{chosenCustomer.phoneNumber}}
-    <br>
-    mail: {{chosenCustomer.mail}}
+<div *ngIf="flag">
+    <h1 class="chosenUser">Chosen user:</h1>
+    <div class="info">
+        <br>
+        <p class="infoUser"><i class="fa fa-id-card"></i>Id: {{chosenCustomer.id}}</p>
+        <br>
+        <p class="infoUser">Name: {{chosenCustomer.name}}</p>
+        <br>
+        <p class="infoUser"><i class="fa fa-city"></i>City: {{chosenCustomer.city}}</p>
+        <br>
+        <p class="infoUser">Sex: {{chosenCustomer.sex}}</p>
+        <br>
+        <p class="infoUser">Phone number: {{chosenCustomer.phoneNumber}}</p>
+        <br>
+        <p class="infoUser">Mail: {{chosenCustomer.mail}}</p>
+    </div>
 </div>
 
 <ng-template #emptyList>
