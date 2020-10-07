@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-client-list',
@@ -6,11 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./client-list.component.scss']
 })
 export class ClientListComponent implements OnInit {
-  flag: boolean = false;
-
+  isDetailsClicked: boolean = false;
+  isAddingMode: boolean = false;
   chosenCustomer: Customer;
-
+  customer: string;
   customerList: string[] = ["Paula Murlik" , "Sisi Murlik", "Amor Murlik"];
+  newCustomer: Customer = null;
+  id: number = 11114;
+
   customerObjectList: Customer[] = [
      { 
      id: 11111, 
@@ -23,7 +27,7 @@ export class ClientListComponent implements OnInit {
      mail: "kacper.berganski@onet.pl"
     },
     new Customer(11112, "Amor", "Murlik", 4, "M", "Gdynia", 312312312, "amor@onet.pl"),
-    new Customer(11113, "Sisi", "Murlik", 7, "F", "Gdynia", 62438187, "sisi@wp.pl")
+    new Customer(11113, "Sisi", "Murlik", 7, "F", "Gdynia", 624381876, "sisi@wp.pl")
   ];
 
   constructor() { }
@@ -31,33 +35,45 @@ export class ClientListComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  addCustomer(newCustomer:string){
-    console.log(newCustomer);
-    this.customerList.push(newCustomer);
-    console.log(this.customerList);
-  }
-
-  deleteCustomer(customerToDelete:string){
-    let index = this.customerList.indexOf(customerToDelete);    //po tym idexie usunąć pozycję z listy
-    this.customerList.splice(index,1);
-  }
+  // Another removal method
+  // deleteCustomer(customerToDelete:string){
+  //   let index = this.customerList.indexOf(customerToDelete); 
+  //   this.customerList.splice(index,1);
+  // }
   
   deleteNewListCustomer(customerToDelete:Customer){
     for (let i = 0; i < this.customerObjectList.length; i++){
       if(customerToDelete.id === this.customerObjectList[i].id){
         this.customerObjectList.splice(i,1);
       }
+    }
+    if(this.chosenCustomer.id == customerToDelete.id){
+      this.chosenCustomer = null;
     } 
   }
 
   showDetails(customer: Customer){
-    this.flag =!this.flag;
+    this.isDetailsClicked =!this.isDetailsClicked;
     this.chosenCustomer = customer;
+    this.isAddingMode = false;
+  }
+
+  addCustomer(){
+    this.isAddingMode =!this.isAddingMode;
+    this.isDetailsClicked = false;
+    this.newCustomer = new Customer(this.id++,"","", 0, "", "", 0, "");
+  }
+
+  saveCustomer(){
+    this.customerObjectList.push(this.newCustomer); 
+    this.isAddingMode = false;
+  }
+
+  onSubmit(addingUser: NgForm){
+    console.log(addingUser.value);
   }
 
 }
-
-// todo przenieś do osobnej klasy
 
 export class Customer {
   id:number;

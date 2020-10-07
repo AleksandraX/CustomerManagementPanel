@@ -21,36 +21,40 @@
 
 <div *ngIf="!!customerObjectList && customerObjectList.length > 0; else emptyList">
 
-<table class="table table-striped">
-  <thead>
-  <tr>
-    <th scope="col">#</th>
-    <th scope="col">ID</th>
-    <th scope="col">Name</th>
-    <th scope="col">City</th>
-    <th scope="col">Sex F/M</th>
-    <th scope="col">Remove</th>
-</tr>
-  </thead>
-  <tbody>
-  <tr *ngFor="let customer of customerObjectList; index as i">
-    <th scope="row">{{ i + 1 }}</th>
-    <td class="columnUser">{{ customer.id}}</td>
-    <td class="columnUser">{{ customer.name}}</td>
-    <td class="columnUser">{{ customer.city}}</td>
-    <td class="columnUser">{{ customer.sex}}</td>
-    <td class="columnBnt">
-        <button class="bntDelete" (click)="deleteNewListCustomer(customer)">
-            <i class="fa fa-trash"></i></button>
-        <button class="bntShow" (click)="showDetails(customer)">
-            <i class="fa fa-info-circle"></i></button>
-    </td>
-  </tr>
-  </tbody>
-</table>
+    <div class="add">
+        <button class="bntAdd" (click)="addCustomer()"><i class="fa fa-plus-circle"></i> Add Customer</button>
+    </div>
+
+    <table class="table table-striped">
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">City</th>
+        <th scope="col">Sex F/M</th>
+        <th scope="col">Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let customer of customerObjectList; index as i">
+        <th scope="row">{{ i + 1 }}</th>
+        <td class="columnUser">{{ customer.id}}</td>
+        <td class="columnUser">{{ customer.name}}</td>
+        <td class="columnUser">{{ customer.city}}</td>
+        <td class="columnUser">{{ customer.sex}}</td>
+        <td class="columnBnt">
+            <button class="bntDelete" (click)="deleteNewListCustomer(customer)">
+                <i class="fa fa-trash"></i></button>
+            <button class="bntShow" (click)="showDetails(customer)">
+                <i class="fa fa-info-circle"></i></button>
+        </td>
+    </tr>
+    </tbody>
+    </table>
 </div>
 
-<div *ngIf="flag">
+<div *ngIf="isDetailsClicked && chosenCustomer != null">
     <h1 class="chosenUser">Chosen user:</h1>
     <div class="info">
         <br>
@@ -60,12 +64,65 @@
         <br>
         <p class="infoUser"><i class="fa fa-city"></i>City: {{chosenCustomer.city}}</p>
         <br>
-        <p class="infoUser">Sex: {{chosenCustomer.sex}}</p>
+        <p class="infoUser"><i class="fa fa-user-alt"></i>Sex: {{chosenCustomer.sex}}</p>
         <br>
-        <p class="infoUser">Phone number: {{chosenCustomer.phoneNumber}}</p>
+        <p class="infoUser"><i class="fas fa-phone-alt"></i>Phone number: {{chosenCustomer.phoneNumber}}</p>
         <br>
         <p class="infoUser">Mail: {{chosenCustomer.mail}}</p>
     </div>
+</div>
+
+<div *ngIf="isAddingMode">
+    
+        <h1 class="addCustomer">New customer</h1>
+        <!-- Place id display -->
+        <!-- <input name="id" type="text" placeholder="Id" [value]="newCustomer.id"> --> 
+        <input type="text" placeholder="Name" [(ngModel)]="newCustomer.name" required minlength="2" maxlength="10" name="name" id="name" #name="ngModel"> 
+        <div *ngIf="name.errors && (name.dirty || name.touched)"
+                class="alert alert-danger">
+            <div *ngIf="name.errors.required">
+                Name is required.
+            </div>
+            <div *ngIf="name.errors.minlength">
+                Name is too short.
+            </div>
+            <div *ngIf="name.errors.maxlength">
+                Name is too long.
+            </div>
+        </div>
+        <input type="text" placeholder="City" [(ngModel)]="newCustomer.city" required minlength="2" maxlength="20" name="city" id="city" #name="ngModel">
+        <div *ngIf="name.errors && (name.dirty || name.touched)"
+            class="alert alert-danger">
+            <div *ngIf="name.errors.required">
+                City is required.
+            </div>
+            <div *ngIf="name.errors.minlength">
+                City is too short.
+            </div>
+        </div>
+        <label for="sex">Choose your gender: </label>
+        <select name="sex" id="sex" [(ngModel)]="newCustomer.sex">
+            <option value="M">M</option>
+            <option value="F">F</option>
+        </select>
+        <input name="phoneNumber" type="text" placeholder="Phone number" [(ngModel)]="newCustomer.phoneNumber">
+        <input name="mail" type="email" placeholder="Mail" [(ngModel)]="newCustomer.mail">
+        <button class="btn btn-primary"  (click)="saveCustomer()">Submit Form</button>
+    
+        <br>
+        <br>
+        <p class="infoUser"><i class="fa fa-id-card"></i>Id: {{newCustomer.id}}</p>
+        <br>
+        <p class="infoUser"><i class="fa fa-smile"></i>Name: {{newCustomer.name}}</p>
+        <br>
+        <p class="infoUser"><i class="fa fa-building"></i>City: {{newCustomer.city}}</p>
+        <br>
+        <p class="infoUser"><i class="fa fa-user-alt"></i>Sex: {{newCustomer.sex}}</p>
+        <br>
+        <p class="infoUser"><i class="fas fa-phone-alt"></i>Phone number: {{newCustomer.phoneNumber}}</p>
+        <br>
+        <p class="infoUser"><i class="fa fa-envelope"></i>Mail: {{newCustomer.mail}}</p>
+
 </div>
 
 <ng-template #emptyList>

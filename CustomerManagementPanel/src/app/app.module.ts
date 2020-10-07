@@ -7,6 +7,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { AlertModule } from 'ngx-bootstrap/alert';
 import { ClientListComponent } from './client-list/client-list.component'; 
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { ClientListComponent } from './client-list/client-list.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     AlertModule.forRoot()
   ],
   providers: [],
