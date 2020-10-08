@@ -14,6 +14,8 @@ export class ClientListComponent implements OnInit {
   customerList: string[] = ["Paula Murlik" , "Sisi Murlik", "Amor Murlik"];
   newCustomer: Customer = null;
   id: number = 11114;
+  
+  
 
   customerObjectList: Customer[] = [
      { 
@@ -73,7 +75,21 @@ export class ClientListComponent implements OnInit {
     console.log(addingUser.value);
   }
 
+  onCustomerEdit(editedCustomer: Customer) {
+    let index = this.customerObjectList.findIndex(customer => customer.id == editedCustomer.id);
+    this.customerObjectList[index] = Object.assign({}, editedCustomer);
+  }
+
+  onCustomerAdd(newCustomer: Customer){
+    console.log(newCustomer);
+    newCustomer.id = this.id++;
+    this.customerObjectList.push(newCustomer);
+
+  }
+
 }
+
+
 
 export class Customer {
   id:number;
@@ -104,5 +120,4 @@ export class Customer {
       this.mail = mail; 
   }
 }
-
 
