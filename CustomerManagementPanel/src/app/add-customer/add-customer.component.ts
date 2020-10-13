@@ -10,6 +10,7 @@ export class AddCustomerComponent implements OnInit {
 
   @Input("newCustomerInput") newCustomer: Customer;
   copyOfCustomer: Customer;
+  isDisabled: boolean = true;
  
   @Output() addNewCustomerEventEmitter = new EventEmitter<Customer>();
 
@@ -21,5 +22,4 @@ export class AddCustomerComponent implements OnInit {
   saveCustomer(newCustomer: Customer){
     this.addNewCustomerEventEmitter.emit(newCustomer);
   }
-
 }

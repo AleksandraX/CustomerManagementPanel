@@ -4,17 +4,17 @@
     <div class="caseAddCustomer">
 
         <div>
-            <input class="nameInput" type="text" placeholder="Name" [(ngModel)]="newCustomer.name" required minlength="2" maxlength="15" name="name" id="name" #name="ngModel"> 
+            <input class="nameInput" type="text" placeholder="Name" [(ngModel)]="newCustomer.name" required minlength="2" maxlength="15" name="name" id="name" #name="ngModel" > 
             <div *ngIf="name.errors && (name.dirty || name.touched)"
                     class="alert alert-danger">
                 <div *ngIf="name.errors.required">
-                    Name is required.
+                    Name is required <i class="fa fa-exclamation"></i>
                 </div>
                 <div *ngIf="name.errors.minlength">
-                    Name is too short.
+                    Name is too short <i class="fa fa-exclamation"></i>
                 </div>
                 <div *ngIf="name.errors.maxlength">
-                    Name is too long.
+                    Name is too long <i class="fa fa-exclamation"></i>
                 </div>
             </div>
         </div>
@@ -24,13 +24,13 @@
             <div *ngIf="lastName.errors && (lastName.dirty || lastName.touched)"
                     class="alert alert-danger">
                 <div *ngIf="lastName.errors.required">
-                    LastName is required.
+                    LastName is required <i class="fa fa-exclamation"></i>
                 </div>
                 <div *ngIf="lastName.errors.minlength">
-                    LastName is too short.
+                    LastName is too short <i class="fa fa-exclamation"></i>
                 </div>
                 <div *ngIf="lastName.errors.maxlength">
-                    LastName is too long.
+                    LastName is too long <i class="fa fa-exclamation"></i>
                 </div>
             </div>
         </div>
@@ -40,10 +40,10 @@
             <div *ngIf="city.errors && (city.dirty || city.touched)"
                 class="alert alert-danger">
                 <div *ngIf="city.errors.required">
-                    City is required.
+                    City is required <i class="fa fa-exclamation"></i>
                 </div>
                 <div *ngIf="city.errors.minlength">
-                    City is too short.
+                    City is too short <i class="fa fa-exclamation"></i>
                 </div>
             </div>
         </div>
@@ -61,13 +61,13 @@
             <div *ngIf="phoneNumber.errors && (phoneNumber.dirty || phoneNumber.touched)"
                     class="alert alert-danger">
                 <div *ngIf="phoneNumber.errors.required">
-                    Phone number is required.
+                    Phone number is required <i class="fa fa-exclamation"></i>
                 </div>
                 <div *ngIf="phoneNumber.errors.minlength">
-                    Phone number is too short.
+                    Phone number is too short <i class="fa fa-exclamation"></i>
                 </div>
                 <div *ngIf="phoneNumber.errors.maxlength">
-                    Phone number is too long.
+                    Phone number is too long <i class="fa fa-exclamation"></i>
                 </div>
             </div>
         </div>
@@ -77,20 +77,20 @@
             <div *ngIf="mail.errors && (mail.dirty || mail.touched)"
                     class="alert alert-danger">
                 <div *ngIf="mail.errors.required">
-                    Email is required
+                    Email is required <i class="fa fa-exclamation"></i>
                 </div>
                 <div *ngIf="mail.errors.pattern">
-                    Please provide a valid email address.
+                    Please provide a valid email address <i class="fa fa-exclamation"></i>
                 </div>
                 <div *ngIf="mail.errors.minlength">
-                    Email is too short.
+                    Email is too short <i class="fa fa-exclamation"></i>
                 </div>
             </div>
         </div>
 
 
         <div class="bntSave">
-            <button class="btn btn-primary"  (click)="saveCustomer(newCustomer)">Submit Form</button>
+            <button class="btn btn-primary" [disabled]="isDisabled" (click)="saveCustomer(newCustomer)">Submit Form</button>
         </div>    
 
     </div>

@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { Customer } from '../client-list/client-list.component';
 
 @Component({
@@ -13,7 +14,7 @@ export class ClientDetailsComponent implements OnInit {
 
  @Output() editedCustomerEventEmitter = new EventEmitter<Customer>();
 
-  constructor() { }
+  constructor(private toastr: ToastrService) { }
 
   // don't care about this.
   ngOnInit() {
@@ -25,7 +26,8 @@ export class ClientDetailsComponent implements OnInit {
       console.error(`Error: name cannot equals ${copyOfCustomer.name}`);
     }else {
       this.editedCustomerEventEmitter.emit(copyOfCustomer);
-    }
+      this.toastr.success('Changes were made to the name.', 'Saved');
+    };
   }
 
   saveLastName(copyOfCustomer){
@@ -33,6 +35,7 @@ export class ClientDetailsComponent implements OnInit {
       console.error(`Error: lastName cannot equals ${copyOfCustomer.lastName}`);
     }else {
       this.editedCustomerEventEmitter.emit(copyOfCustomer);
+      this.toastr.success('Changes were made to the last name.', 'Saved');
     }
   }
 
@@ -41,6 +44,7 @@ export class ClientDetailsComponent implements OnInit {
       console.error(`Error: city cannot equals ${copyOfCustomer.city}`);
     }else {
       this.editedCustomerEventEmitter.emit(copyOfCustomer);
+      this.toastr.success('Changes were made to the city.', 'Saved');
     }
   }
 
@@ -49,6 +53,7 @@ export class ClientDetailsComponent implements OnInit {
       console.error(`Error: sex cannot equals ${copyOfCustomer.sex}`);
     }else {
       this.editedCustomerEventEmitter.emit(copyOfCustomer);
+      this.toastr.success('Gender changes were made.', 'Saved');
     }
   }
 
@@ -57,6 +62,7 @@ export class ClientDetailsComponent implements OnInit {
       console.error(`Error: city cannot equals ${copyOfCustomer.phoneNumber}`);
     }else {
       this.editedCustomerEventEmitter.emit(copyOfCustomer);
+      this.toastr.success('Changes were made to the phone number.', 'Saved');
     }
   }
 
@@ -65,6 +71,7 @@ export class ClientDetailsComponent implements OnInit {
       console.error(`Error: city cannot equals ${copyOfCustomer.mail}`);
     }else {
       this.editedCustomerEventEmitter.emit(copyOfCustomer);
+      this.toastr.success('Changes were made to the email.', 'Saved');
     }
   }
 

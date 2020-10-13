@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-client-list',
@@ -32,7 +33,7 @@ export class ClientListComponent implements OnInit {
     new Customer(11113, "Sisi", "Murlik", 7, "F", "Gdynia", 624381876, "sisi@wp.pl")
   ];
 
-  constructor() { }
+  constructor(private toastr: ToastrService) { }
 
   ngOnInit(): void {
   }
@@ -66,11 +67,6 @@ export class ClientListComponent implements OnInit {
     this.newCustomer = new Customer(this.id++,"","", 0, "", "", 0, "");
   }
 
-  saveCustomer(){
-    this.customerObjectList.push(this.newCustomer); 
-    this.isAddingMode = false;
-  }
-
   onSubmit(addingUser: NgForm){
     console.log(addingUser.value);
   }
@@ -84,8 +80,27 @@ export class ClientListComponent implements OnInit {
     console.log(newCustomer);
     newCustomer.id = this.id++;
     this.customerObjectList.push(newCustomer);
+    this.toastr.success('A new customer has been added!', 'New Customer');
 
   }
+
+  // Examples for preview
+  
+  // showSuccess(){
+  //   this.toastr.success('Hello world!', 'Toastr fun!');
+  // }
+
+  // showError(){
+  //   this.toastr.error('Hello world!', 'Toastr not fun!');
+  // }
+
+  // showInfo(){
+  //   this.toastr.info('Hello world!', 'Toastr info!');
+  // }
+
+  // showWarning(){
+  //   this.toastr.warning('Hello world!', 'Toastr warn!');
+  // }
 
 }
 

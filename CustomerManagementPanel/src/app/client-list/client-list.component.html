@@ -61,6 +61,11 @@
     <app-client-details [chosenCustomerInput]="chosenCustomer" (editedCustomerEventEmitter)="onCustomerEdit($event)"></app-client-details>
 </div>
 
+<!-- <button type="button" (click)="showSuccess()">Show Success</button>
+<button type="button" (click)="showError()">Show Error</button>
+<button type="button" (click)="showWarning()">Show Warning</button>
+<button type="button" (click)="showInfo()">Show Info</button> -->
+
 <div *ngIf="isAddingMode">
     <app-add-customer [newCustomerInput]="newCustomer" (addNewCustomerEventEmitter)="onCustomerAdd($event)"></app-add-customer> 
 </div>
