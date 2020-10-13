@@ -1,0 +1,113 @@
+<h1 class="addCustomer">New customer</h1>
+        <!-- Place id display -->
+        <!-- <input name="id" type="text" placeholder="Id" [value]="newCustomer.id"> --> 
+    <div class="caseAddCustomer">
+
+        <div>
+            <input class="nameInput" type="text" placeholder="Name" [(ngModel)]="newCustomer.name" required minlength="2" maxlength="15" name="name" id="name" #name="ngModel"> 
+            <div *ngIf="name.errors && (name.dirty || name.touched)"
+                    class="alert alert-danger">
+                <div *ngIf="name.errors.required">
+                    Name is required.
+                </div>
+                <div *ngIf="name.errors.minlength">
+                    Name is too short.
+                </div>
+                <div *ngIf="name.errors.maxlength">
+                    Name is too long.
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <input type="text" placeholder="Last name" [(ngModel)]="newCustomer.lastName" required minlength="3" maxlength="25" name="lastName" id="lastName" #lastName="ngModel"> 
+            <div *ngIf="lastName.errors && (lastName.dirty || lastName.touched)"
+                    class="alert alert-danger">
+                <div *ngIf="lastName.errors.required">
+                    LastName is required.
+                </div>
+                <div *ngIf="lastName.errors.minlength">
+                    LastName is too short.
+                </div>
+                <div *ngIf="lastName.errors.maxlength">
+                    LastName is too long.
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <input type="text" placeholder="City" [(ngModel)]="newCustomer.city" required minlength="3" maxlength="20" name="city" id="city" #city="ngModel">
+            <div *ngIf="city.errors && (city.dirty || city.touched)"
+                class="alert alert-danger">
+                <div *ngIf="city.errors.required">
+                    City is required.
+                </div>
+                <div *ngIf="city.errors.minlength">
+                    City is too short.
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <label for="sex">Choose your gender: </label>
+            <select name="sex" id="sex" [(ngModel)]="newCustomer.sex">
+                <option value="M">M</option>
+                <option value="F">F</option>
+            </select>
+        </div>
+            
+        <div>
+            <input type="text" placeholder="Phone number" [(ngModel)]="newCustomer.phoneNumber" required minlength="9" maxlength="10" name="phoneNumber" id="phoneNumber" #phoneNumber="ngModel"> 
+            <div *ngIf="phoneNumber.errors && (phoneNumber.dirty || phoneNumber.touched)"
+                    class="alert alert-danger">
+                <div *ngIf="phoneNumber.errors.required">
+                    Phone number is required.
+                </div>
+                <div *ngIf="phoneNumber.errors.minlength">
+                    Phone number is too short.
+                </div>
+                <div *ngIf="phoneNumber.errors.maxlength">
+                    Phone number is too long.
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <input type="text" placeholder="Mail" [(ngModel)]="newCustomer.mail" required minlength="5" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" maxlength="35" name="mail" id="mail" #mail="ngModel">
+            <div *ngIf="mail.errors && (mail.dirty || mail.touched)"
+                    class="alert alert-danger">
+                <div *ngIf="mail.errors.required">
+                    Email is required
+                </div>
+                <div *ngIf="mail.errors.pattern">
+                    Please provide a valid email address.
+                </div>
+                <div *ngIf="mail.errors.minlength">
+                    Email is too short.
+                </div>
+            </div>
+        </div>
+
+
+        <div class="bntSave">
+            <button class="btn btn-primary"  (click)="saveCustomer(newCustomer)">Submit Form</button>
+        </div>    
+
+    </div>
+    
+        <br>
+        <br>
+        <p class="infoUser"><i class="fa fa-id-card"></i>Id: {{newCustomer.id}}</p>
+        <br>
+        <p class="infoUser"><i class="fa fa-smile"></i>Name: {{newCustomer.name}}</p>
+        <br>
+        <p class="infoUser"><i class="fa fa-building"></i>City: {{newCustomer.city}}</p>
+        <br>
+        <p class="infoUser"><i class="fa fa-user-alt"></i>Sex: {{newCustomer.sex}}</p>
+        <br>
+        <p class="infoUser"><i class="fas fa-phone-alt"></i>Phone number: {{newCustomer.phoneNumber}}</p>
+        <br>
+        <p class="infoUser"><i class="fa fa-envelope"></i>Mail: {{newCustomer.mail}}</p>
+
+    
+

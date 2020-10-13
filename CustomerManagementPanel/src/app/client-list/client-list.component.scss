@@ -1,0 +1,133 @@
+.bntAdd{
+    position: sticky;
+    background-color: rgb(71, 194, 71);
+    color: rgb(255, 255, 255);
+    border: none;
+    border-radius: 5px;
+    padding: .4%;
+    transition: .3s color, .3s transform ;
+    outline: none;
+    left: 100rem;
+    margin-bottom: .2rem;
+}
+
+.bntAdd:hover{
+    color: rgb(255, 255, 255);
+    transform: scale(.9);
+}
+
+.bntDelete{
+    position: relative;
+    color: red;
+    padding: .1% .8%;
+    font-size: 140%;
+    background: transparent;
+    border: none;
+    transition: .5s color, .3s transform;
+    outline: none;
+    left: 75%;
+}
+
+.bntDelete:hover{
+    color: red;
+    transform: scale(1.1);
+}
+
+.inputNewCustomer{
+    position: relative;
+    left: 3%;
+    border: 2px dashed black;
+}
+
+input{
+    display: block;
+    margin-bottom: .4rem;
+}
+
+input:focus{
+    outline: none;
+    background-color: rgb(255, 248, 151);
+}
+
+input:focus:hover{
+    transition: .5s background-color;
+}
+
+ol{
+    list-style: none;
+}
+
+.customerList{
+    display: inline-block;
+    padding: 2% 1%;
+}
+
+.customerNumber{
+    display: inline-block;
+    margin-right: .8%;
+}
+
+.newList{
+    background-color: #1476ff;
+    color: white;
+    font-weight: bold;
+    box-shadow: 0 5px darken(#1476ff, 10%);
+    border: solid 2px darken(#1476ff, 10%);
+    padding: .8% 5%;
+    display: inline;
+    position: relative;
+    left: 3.3%;
+}
+
+.emptyList{
+    background-color: rgb(175, 25, 25);
+    color: white;
+    text-align: center;
+    margin-bottom: 1%;
+    padding: 1.2%;
+    transition: transform .2s;
+}
+
+.emptyList:hover{
+    transform: scale(1.1);
+}
+
+
+.table-striped{
+    border: solid .2rem black;
+}
+
+.columnBnt{
+    position: relative;
+}
+
+.bntShow{
+    position: relative;
+    padding: .3rem ;
+    right: .2rem;
+    color: black;
+    border: none;
+    background: transparent;
+    font-size: 1.6rem;
+    transition: .3s transform;
+}
+
+.bntShow:focus{
+    outline: none;
+}
+
+.bntShow:hover{
+    transform: scale(1.2)
+}
+
+.chosenUser{
+    position: relative;
+    top: 1rem;
+}
+
+.infoUser {
+  position: relative;
+  display: inline;
+  bottom: 1rem;
+}
+
