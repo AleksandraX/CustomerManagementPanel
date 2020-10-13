@@ -51,7 +51,7 @@
         <option value="M">M</option>
         <option value="F">F</option>
     </select>
-    <button (click)="saveGender(copyOfCustomer)">save</button>
+    <button class="saveGender" (click)="saveGender(copyOfCustomer)">save</button>
     <br>
 
     <input type="text" placeholder="Phone number" [(ngModel)]="copyOfCustomer.phoneNumber" required minlength="9" maxlength="10" name="phoneNumber" id="phoneNumber" #phoneNumber="ngModel"> 
