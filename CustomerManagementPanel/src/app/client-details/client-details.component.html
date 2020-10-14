@@ -33,14 +33,14 @@
     </div>
     <button (click)="saveLastName(copyOfCustomer)">save</button>
     <br>
-    <input type="text" placeholder="City" [(ngModel)]="copyOfCustomer.city" required minlength="3" maxlength="20" name="city" id="city" #city="ngModel">
-    <div *ngIf="city.errors && (city.dirty || city.touched)"
+    <input type="text" placeholder="Address" [(ngModel)]="copyOfCustomer.address.city" required minlength="3" maxlength="20" name="address" id="address" #address="ngModel">
+    <div *ngIf="address.errors && (address.dirty || address.touched)"
         class="alert alert-danger">
-        <div *ngIf="city.errors.required">
-            City is required.
+        <div *ngIf="address.errors.required">
+            Address is required.
         </div>
-        <div *ngIf="city.errors.minlength">
-            City is too short.
+        <div *ngIf="address.errors.minlength">
+            Address is too short.
         </div>
     </div>
     <button (click)="saveCity(copyOfCustomer)">save</button>

@@ -40,11 +40,11 @@ export class ClientDetailsComponent implements OnInit {
   }
 
   saveCity(copyOfCustomer){
-    if(copyOfCustomer.city == this.chosenCustomer.city) {
-      console.error(`Error: city cannot equals ${copyOfCustomer.city}`);
+    if(copyOfCustomer.address.id == this.chosenCustomer.address.id) {
+      console.error(`Error: address cannot equals ${copyOfCustomer.address.id}`);
     }else {
       this.editedCustomerEventEmitter.emit(copyOfCustomer);
-      this.toastr.success('Changes were made to the city.', 'Saved');
+      this.toastr.success('Changes were made to the address.', 'Saved');
     }
   }
 

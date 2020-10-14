@@ -25,12 +25,18 @@ export class ClientListComponent implements OnInit {
      lastName: "Bergański", 
      age: 21, 
      sex: "M", 
-     city: "Chawszczyno", 
+     address: {
+      id: 1,
+      city: "Gdynia",
+      zipCode: 89302,
+      street: "Buraczana",
+      country: "Polska"
+     },
      phoneNumber: 72123132, 
      mail: "kacper.berganski@onet.pl"
     },
-    new Customer(11112, "Amor", "Murlik", 4, "M", "Gdynia", 312312312, "amor@onet.pl"),
-    new Customer(11113, "Sisi", "Murlik", 7, "F", "Gdynia", 624381876, "sisi@wp.pl")
+    new Customer(11112, "Amor", "Murlik", 4, "M",{id: 2 ,city:"Gdynia", zipCode:81310, street:"Sosnowa", country:"Polska"},  312312312, "amor@onet.pl"),
+    new Customer(11113, "Sisi", "Murlik", 7, "F",{id: 3 ,city:"Gdynia", zipCode:43310, street:"Polna", country:"Polska"}, 624381876, "sisi@wp.pl")
   ];
 
   constructor(private toastr: ToastrService) { }
@@ -64,7 +70,7 @@ export class ClientListComponent implements OnInit {
   addCustomer(){
     this.isAddingMode =!this.isAddingMode;
     this.isDetailsClicked = false;
-    this.newCustomer = new Customer(this.id++,"","", 0, "", "", 0, "");
+    this.newCustomer = new Customer(this.id++,"","", 0, "", null, 0, "");
   }
 
   onSubmit(addingUser: NgForm){
@@ -112,7 +118,7 @@ export class Customer {
   lastName:string;
   age:number;
   sex:string;
-  city:string;
+  address:address;
   phoneNumber:number;
   mail:string;
 
@@ -122,7 +128,7 @@ export class Customer {
      lastName:string,
      age:number,
      sex:string,
-     city:string,
+     address:address,
      phoneNumber:number,
      mail:string) {
       this.id = id;
@@ -130,9 +136,17 @@ export class Customer {
       this.lastName = lastName;
       this.age = age;
       this.sex = sex;
-      this.city = city;
+      this.address = address;
       this.phoneNumber = phoneNumber;
       this.mail = mail; 
   }
+}
+
+export interface address{
+  id: number,
+  city: string,
+  zipCode: number,
+  street: string,
+  country: string
 }
 

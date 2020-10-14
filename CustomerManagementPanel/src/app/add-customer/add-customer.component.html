@@ -36,7 +36,7 @@
         </div>
 
         <div>
-            <input type="text" placeholder="City" [(ngModel)]="newCustomer.city" required minlength="3" maxlength="20" name="city" id="city" #city="ngModel">
+            <input type="text" placeholder="City" [(ngModel)]="newCustomer.address" required minlength="3" maxlength="20" name="city" id="city" #city="ngModel">
             <div *ngIf="city.errors && (city.dirty || city.touched)"
                 class="alert alert-danger">
                 <div *ngIf="city.errors.required">
@@ -88,9 +88,11 @@
             </div>
         </div>
 
+        <!-- button method -->
+        <!--[disabled]="isDisabled"-->
 
         <div class="bntSave">
-            <button class="btn btn-primary" [disabled]="isDisabled" (click)="saveCustomer(newCustomer)">Submit Form</button>
+            <button class="btn btn-primary"  (click)="saveCustomer(newCustomer)">Submit Form</button>
         </div>    
 
     </div>
@@ -104,7 +106,7 @@
 
         <p class="infoUser">Last name: {{newCustomer.lastName}}</p>
         
-        <p class="infoUser">City: {{newCustomer.city}}</p>
+        <p class="infoUser">City: {{newCustomer.address}}</p>
         
         <p class="infoUser">Sex: {{newCustomer.sex}}</p>
         

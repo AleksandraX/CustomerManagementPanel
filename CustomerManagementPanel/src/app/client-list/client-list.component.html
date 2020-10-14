@@ -41,7 +41,7 @@
         <th scope="row">{{ i + 1 }}</th>
         <td class="columnUser">{{ customer.id}}</td>
         <td class="columnUser">{{ customer.name}} {{customer.lastName}}</td>
-        <td class="columnUser">{{ customer.city}}</td>
+        <td class="columnUser">{{ customer.address.city}}</td>
         <td class="columnUser">{{ customer.sex}}</td>
         <td class="columnBnt">
             <button class="bntDelete" (click)="deleteNewListCustomer(customer)">
