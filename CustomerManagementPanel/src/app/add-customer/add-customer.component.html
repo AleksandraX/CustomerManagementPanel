@@ -114,6 +114,104 @@
         
         <p class="infoUser">Mail: {{newCustomer.mail}}</p>
     </div> 
+    <br>
+    <br>
+    <h1>Ng form here</h1>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div>
+            <label>Name:</label>
+            <input
+            type="text"
+            formControlName="name">
+        
+            <div *ngIf="form.controls['name'].invalid && (form.controls['name'].dirty || form.controls['name'].touched)"
+                class="alert alert-danger">
+                <div *ngIf="form.controls['name'].errors.required">
+                    Name is required <i class="fa fa-exclamation"></i>
+                </div>
+                <div *ngIf="form.controls['name'].errors.minlength">
+                    Name is too short <i class="fa fa-exclamation"></i>
+                </div>
+                <div *ngIf="form.controls['name'].errors.maxlength">
+                    Name is too long <i class="fa fa-exclamation"></i>
+               </div>
+            </div>
+        </div>
+        <div>
+            <div>
+            <label>Last name:</label>
+            <input
+            type="text"
+            formControlName="lastName">      
+            
+            <div *ngIf="required(lastName.name)" class="alert alert-danger">
+                lastName is required <i class="fa fa-exclamation"></i>
+            </div>
+            </div>
+            <div formGroupName="address">
+                <div>
+                    <label>Country:</label>
+                    <input
+                    type="text"
+                    formControlName="country">
+
+                    
+                </div>
+
+                <div>
+                    <label>City:</label>
+                    <input
+                    type="text"
+                    formControlName="city">
+                </div>
+                <div>
+                    <label>Zip code:</label>
+                    <input
+                    type="text"
+                    formControlName="zipCode">
+                </div>
+                <div>
+                    <label>Street:</label>
+                    <input
+                    type="text"
+                    formControlName="street">
+                </div>
+            </div>
+        <div>
+            <label>Gender:</label>
+            <input
+            type="text"
+            formControlName="gender"
+            #gender>
+
+            <div *ngIf="required(gender.name)" class="alert alert-danger">
+                lastName is required <i class="fa fa-exclamation"></i>
+            </div>
+        </div>
+        <div>
+            <label>Phone number:</label>
+            <input
+            type="text"
+            formControlName="phoneNumber">
+        </div>
+        <div>
+            <label>Email:</label>
+            <input
+            type="text"
+            formControlName="mail">
+        </div>
+        <div>
+            <br>
+            <button type="submit">
+                Save customer
+            </button>
+        </div>
+
+        <pre>{{form.value | json }}</pre>
+        </div>
+    </form>
+
 
     
 
