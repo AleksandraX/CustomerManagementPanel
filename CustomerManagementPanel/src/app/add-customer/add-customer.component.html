@@ -145,7 +145,7 @@
             type="text"
             formControlName="lastName">      
             
-            <div *ngIf="required(lastName.name)" class="alert alert-danger">
+            <div *ngIf="required('lastName')" class="alert alert-danger">
                 lastName is required <i class="fa fa-exclamation"></i>
             </div>
             </div>
@@ -155,7 +155,12 @@
                     <input
                     type="text"
                     formControlName="country">
-
+                    <div *ngIf="required('address.country')" class="alert alert-danger">
+                        country is required <i class="fa fa-exclamation"></i>
+                    </div>
+                    <div *ngIf="minLength('address.country')" class="alert alert-danger">
+                        country has to be min 3 char length <i class="fa fa-exclamation"></i>
+                    </div>
                     
                 </div>
 
@@ -164,6 +169,7 @@
                     <input
                     type="text"
                     formControlName="city">
+
                 </div>
                 <div>
                     <label>Zip code:</label>

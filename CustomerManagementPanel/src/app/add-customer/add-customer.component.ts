@@ -18,7 +18,7 @@ export class AddCustomerComponent implements OnInit {
     "name": new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(30)]),
     "lastName": new FormControl('',[Validators.required, Validators.minLength(3), Validators.maxLength(30)]),
     "address": new FormGroup({
-      "country": new FormControl('',[Validators.minLength(3), Validators.maxLength(30)]),
+      "country": new FormControl('',[Validators.required, Validators.minLength(3), Validators.maxLength(30)]),
       "zipCode": new FormControl('',[Validators.minLength(4), Validators.maxLength(30)]),
       "city": new FormControl('',[Validators.minLength(3), Validators.maxLength(30)]),
       "street": new FormControl('',[Validators.minLength(3), Validators.maxLength(40)])
@@ -45,13 +45,19 @@ export class AddCustomerComponent implements OnInit {
   }
 
   required(propName: string): boolean {
-    console.log("required:", this.form.controls[propName].errors?.required);
-    console.log("touched:", this.form.controls[propName].touched);
-    console.log("dirty:", this.form.controls[propName].dirty);
+     return (
+      this.form.get(propName)?.hasError('required') && 
+      this.form.get(propName).touched &&
+      this.form.get(propName).dirty
+    );
+    }
 
-    return this.form.controls[propName].invalid && 
-    this.form.controls[propName].errors?.required && 
-    this.form.controls[propName].touched &&
-     this.form.controls[propName].dirty;
-  }
+    minLength(propName: string): boolean {
+      console.log("error:", this.form.get(propName).errors);
+      return (
+       this.form.get(propName)?.hasError('minlength') && 
+       this.form.get(propName).touched &&
+       this.form.get(propName).dirty
+     );
+      }
 }
