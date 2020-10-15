@@ -120,9 +120,9 @@
 
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
         <div>
-            <label>Name:</label>
-            <input
+            <input class="inputNgForm"
             type="text"
+            placeholder="Name"
             formControlName="name">
         
             <div *ngIf="form.controls['name'].invalid && (form.controls['name'].dirty || form.controls['name'].touched)"
@@ -140,53 +140,89 @@
         </div>
         <div>
             <div>
-            <label>Last name:</label>
-            <input
+            <input class="inputNgForm"
             type="text"
+            placeholder="Last name"
             formControlName="lastName">      
             
             <div *ngIf="required('lastName')" class="alert alert-danger">
-                lastName is required <i class="fa fa-exclamation"></i>
+                Last Name is required <i class="fa fa-exclamation"></i>
+            </div>
+            <div *ngIf="minLength('lastName')" class="alert alert-danger">
+                Last Name has to be min 3 char length <i class="fa fa-exclamation"></i>
+            </div>
+            <div *ngIf="maxLength('lastName')" class="alert alert-danger">
+                Last Name has to be max 30 char length <i class="fa fa-exclamation"></i>
             </div>
             </div>
             <div formGroupName="address">
                 <div>
-                    <label>Country:</label>
-                    <input
+                    <input class="inputNgForm"
                     type="text"
+                    placeholder="Country"
                     formControlName="country">
                     <div *ngIf="required('address.country')" class="alert alert-danger">
-                        country is required <i class="fa fa-exclamation"></i>
+                        Country is required <i class="fa fa-exclamation"></i>
                     </div>
                     <div *ngIf="minLength('address.country')" class="alert alert-danger">
-                        country has to be min 3 char length <i class="fa fa-exclamation"></i>
+                        Country has to be min 3 char length <i class="fa fa-exclamation"></i>
+                    </div>
+                    <div *ngIf="maxLength('address.country')" class="alert alert-danger">
+                        Country has to be max 30 char length <i class="fa fa-exclamation"></i>
                     </div>
                     
                 </div>
 
                 <div>
-                    <label>City:</label>
-                    <input
+                    <input class="inputNgForm"
                     type="text"
+                    placeholder="City"
                     formControlName="city">
+                    <div *ngIf="required('address.city')" class="alert alert-danger">
+                        City is required <i class="fa fa-exclamation"></i>
+                    </div>
+                    <div *ngIf="minLength('address.city')" class="alert alert-danger">
+                        City has to be min 3 char length <i class="fa fa-exclamation"></i>
+                    </div>
+                    <div *ngIf="maxLength('address.city')" class="alert alert-danger">
+                        Country has to be max 30 char length <i class="fa fa-exclamation"></i>
+                    </div>
 
                 </div>
                 <div>
-                    <label>Zip code:</label>
-                    <input
+                    <input class="inputNgForm"
                     type="text"
+                    placeholder="Zip Code"
                     formControlName="zipCode">
+                    <div *ngIf="required('address.zipCode')" class="alert alert-danger">
+                        Zip Code is required <i class="fa fa-exclamation"></i>
+                    </div>
+                    <div *ngIf="minLength('address.zipCode')" class="alert alert-danger">
+                        Zip Code has to be min 4 char length <i class="fa fa-exclamation"></i>
+                    </div>
+                    <div *ngIf="maxLength('address.zipCode')" class="alert alert-danger">
+                        Country has to be max 30 char length <i class="fa fa-exclamation"></i>
+                    </div>
                 </div>
                 <div>
-                    <label>Street:</label>
-                    <input
+                    <input class="inputNgForm"
                     type="text"
+                    placeholder="Street"
                     formControlName="street">
+                    <div *ngIf="required('address.street')" class="alert alert-danger">
+                        Street is required <i class="fa fa-exclamation"></i>
+                    </div>
+                    <div *ngIf="minLength('address.street')" class="alert alert-danger">
+                        Street has to be min 3 char length <i class="fa fa-exclamation"></i>
+                    </div>
+                    <div *ngIf="maxLength('address.street')" class="alert alert-danger">
+                        Country has to be max 40 char length <i class="fa fa-exclamation"></i>
+                    </div>
                 </div>
             </div>
         <div>
-            <label>Gender:</label>
-            <input
+            <input class="inputNgForm"
+            placeholder="Gender"
             type="text"
             formControlName="gender"
             #gender>
@@ -196,16 +232,34 @@
             </div>
         </div>
         <div>
-            <label>Phone number:</label>
-            <input
+            <input class="inputNgForm"
             type="text"
+            placeholder="Phone number"
             formControlName="phoneNumber">
+            <div *ngIf="required('phoneNumber')" class="alert alert-danger">
+                Phone Number is required <i class="fa fa-exclamation"></i>
+            </div>
+            <div *ngIf="minLength('phoneNumber')" class="alert alert-danger">
+                Phone Number has to be min 9 char length <i class="fa fa-exclamation"></i>
+            </div>
+            <div *ngIf="maxLength('phoneNumber')" class="alert alert-danger">
+                Country has to be max 15 char length <i class="fa fa-exclamation"></i>
+            </div>
         </div>
         <div>
-            <label>Email:</label>
-            <input
+            <input class="inputNgForm"
             type="text"
+            placeholder="Email"
             formControlName="mail">
+            <div *ngIf="required('mail')" class="alert alert-danger">
+                Email is required <i class="fa fa-exclamation"></i>
+            </div>
+            <div *ngIf="minLength('mail')" class="alert alert-danger">
+                Email has to be min 5 char length <i class="fa fa-exclamation"></i>
+            </div>
+            <div *ngIf="maxLength('mail')" class="alert alert-danger">
+                Country has to be max 35 char length <i class="fa fa-exclamation"></i>
+            </div>
         </div>
         <div>
             <br>

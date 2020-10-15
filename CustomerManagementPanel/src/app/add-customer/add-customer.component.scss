@@ -20,7 +20,7 @@ select{
     font-size: 1.1rem;
     display: block;
     height: 1rem;
-    width: 24.3rem;
+    width: 28.3rem;
     bottom: .5rem;
     right: 1.2rem;
     color: red;
@@ -44,4 +44,10 @@ select{
 
 .normal {
     color: green;
+}
+
+.inputNgForm{
+    position: relative;
+    background-color: rgb(250, 166, 166);
+    width: 20rem;
 }
