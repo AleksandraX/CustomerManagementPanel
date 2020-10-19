@@ -17,13 +17,13 @@ export class AddCustomerComponent implements OnInit {
   form: FormGroup = new FormGroup({
     "name": new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(30)]),
     "lastName": new FormControl('',[Validators.required, Validators.minLength(3), Validators.maxLength(30)]),
-    "address": new FormGroup({
-      "country": new FormControl('',[Validators.required, Validators.minLength(3), Validators.maxLength(30)]),
-      "zipCode": new FormControl('',[Validators.required, Validators.minLength(4), Validators.maxLength(30)]),
-      "city": new FormControl('',[Validators.required, Validators.minLength(3), Validators.maxLength(30)]),
-      "street": new FormControl('',[Validators.required, Validators.minLength(3), Validators.maxLength(40)])
-    }),
-    "gender": new FormControl(''),
+      "address": new FormGroup({
+        "country": new FormControl('',[Validators.required, Validators.minLength(3), Validators.maxLength(30)]),
+        "zipCode": new FormControl('',[Validators.required, Validators.minLength(4), Validators.maxLength(30)]),
+        "city": new FormControl('',[Validators.required, Validators.minLength(3), Validators.maxLength(30)]),
+        "street": new FormControl('',[Validators.required, Validators.minLength(3), Validators.maxLength(40)]),
+      }),
+    "gender": new FormControl('', [Validators.required]),
     "phoneNumber": new FormControl('',[Validators.required, Validators.minLength(9), Validators.maxLength(15)]),
     "mail": new FormControl('',[Validators.required, Validators.minLength(5), Validators.maxLength(35), Validators.email])
   });
@@ -65,6 +65,15 @@ export class AddCustomerComponent implements OnInit {
       console.log("error:", this.form.get(propName).errors);
       return (
         this.form.get(propName)?.hasError('maxlength') && 
+        this.form.get(propName).touched &&
+        this.form.get(propName).dirty
+      );
+      }
+
+    email(propName: string): boolean {
+      console.log("error:", this.form.get(propName).errors);
+      return (
+        this.form.get(propName)?.hasError('email') && 
         this.form.get(propName).touched &&
         this.form.get(propName).dirty
       );
