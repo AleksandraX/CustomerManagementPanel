@@ -46,7 +46,7 @@
         <td class="columnBnt">
             <button class="bntDelete" (click)="deleteNewListCustomer(customer)">
                 <i class="fa fa-trash"></i></button>
-            <button class="bntShow" (click)="showDetails(customer)">
+            <button class="bntShow" [routerLink]='["/details" + customer.id]'>
                 <i class="fa fa-info-circle"></i></button>
         </td>
     </tr>
@@ -56,10 +56,10 @@
 
 
 
-
+<!-- 
 <div *ngIf="isDetailsClicked && chosenCustomer != null">
-    <app-client-details [chosenCustomerInput]="chosenCustomer" (editedCustomerEventEmitter)="onCustomerEdit($event)"></app-client-details>
-</div>
+    <app-client-details (editedCustomerEventEmitter)="onCustomerEdit($event)"></app-client-details>
+</div> -->
 
 <!-- <button type="button" (click)="showSuccess()">Show Success</button>
 <button type="button" (click)="showError()">Show Error</button>
