@@ -14,15 +14,19 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ClientDetailsComponent } from './client-details/client-details.component';
 import { AddCustomerComponent } from './add-customer/add-customer.component';
 import { ToastrModule } from 'ngx-toastr';
+import { AboutComponent } from './about/about.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
-  declarations: [		
+  declarations: [							
     AppComponent,
     HeaderComponent,
     FooterComponent,
     ClientListComponent,
     ClientDetailsComponent,
-      AddCustomerComponent
+      AddCustomerComponent,
+      AboutComponent,
+      NotFoundComponent
    ],
   imports: [
     BrowserModule,
