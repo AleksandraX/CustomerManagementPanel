@@ -11,12 +11,12 @@ const routes: Routes = [
     children: [
       {
         path:'',
-        redirectTo: '/home',
+        redirectTo: 'clients',
         pathMatch: 'full',
       },
       {
         path: 'home',
-        component: ClientListComponent,
+        redirectTo: '/clients',
       },
       {
         path: 'about',
@@ -46,4 +46,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
