@@ -13,7 +13,7 @@ ul{
     position: relative;
     float: left;
     left: 10rem;
-    bottom: .5rem;
+    bottom: 1.1rem;
 }
 
 a{
@@ -32,19 +32,20 @@ a:hover{
 .logo{
     position: relative;
     display: inline-block;
-    margin-right: 3rem;
-    right: 30rem;
+    margin-right: 1rem;
+    right: 38rem;
     top: .5rem;
 }
 
 .title{
     position: relative;
     float: right;
-    right: 24rem;
+    right: 15rem;
     top: .5rem;
 }
 
 .userPlace{
+    font-size: .9rem;
     position: relative;
     float: right;
     left: 22rem;
