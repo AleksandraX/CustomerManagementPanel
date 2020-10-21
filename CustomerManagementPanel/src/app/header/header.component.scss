@@ -1,0 +1,52 @@
+.header{
+    color: white;
+    position: static;
+    background-color: rgb(51,174,233);
+}
+
+li{
+    display: inline-block;
+    margin: 1rem;
+}
+
+ul{
+    position: relative;
+    float: left;
+    left: 10rem;
+    bottom: .5rem;
+}
+
+a{
+    padding: 8px;
+    background-color: transparent;
+    text-decoration: none;
+    color: white;
+}
+
+a:hover{
+    color: #000;
+    transition: color .3s;
+    border-bottom: .3rem solid black;
+}
+
+.logo{
+    position: relative;
+    display: inline-block;
+    margin-right: 3rem;
+    right: 30rem;
+    top: .5rem;
+}
+
+.title{
+    position: relative;
+    float: right;
+    right: 24rem;
+    top: .5rem;
+}
+
+.userPlace{
+    position: relative;
+    float: right;
+    left: 22rem;
+    top: .5rem;
+}

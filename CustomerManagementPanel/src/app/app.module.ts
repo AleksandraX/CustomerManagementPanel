@@ -1,22 +1,38 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
-import { AlertModule } from 'ngx-bootstrap/alert'; 
+import { AlertModule } from 'ngx-bootstrap/alert';
+import { ClientListComponent } from './client-list/client-list.component'; 
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ClientDetailsComponent } from './client-details/client-details.component';
+import { AddCustomerComponent } from './add-customer/add-customer.component';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
-  declarations: [
+  declarations: [		
     AppComponent,
     HeaderComponent,
-    FooterComponent
-  ],
+    FooterComponent,
+    ClientListComponent,
+    ClientDetailsComponent,
+      AddCustomerComponent
+   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
+    CommonModule,
     AppRoutingModule,
-    AlertModule.forRoot()
+    FormsModule,
+    AlertModule.forRoot(),
+    ReactiveFormsModule,
+    ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

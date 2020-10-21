@@ -1,0 +1,81 @@
+.caseAddCustomer{
+    background-color: burlywood;
+    display: inline;
+}
+
+.bntSave{
+    position: relative;
+    top: .5rem;
+}
+
+input{
+    margin-bottom: .3rem;
+}
+
+select{
+    margin-left: .3rem;
+}
+
+.alert{
+    font-size: 1.1rem;
+    display: block;
+    height: 1rem;
+    width: 28.3rem;
+    bottom: .5rem;
+    right: 1.2rem;
+    color: red;
+    background-color: transparent;
+    border: none;
+}
+
+
+.infoUser{
+    border-bottom: .1rem solid black;
+}
+
+.btn-primary{
+    width: 16.4rem;
+    margin-top: 2rem;
+}
+
+.classCss-errors {
+    color: red;
+}
+
+.normal {
+    color: green;
+}
+
+.inputNgForm, option{
+    font-size: 1rem;
+    position: relative;
+    background-color: rgb(255, 251, 251);
+    width: 20rem;
+    border: .1rem solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    display: inline-block;
+    bottom: .5rem;
+}
+
+#gender{
+    right: .3rem;
+}
+
+.saveNCustomer{
+    background-color: #1476ff;
+    color: white;
+    font-weight: bold;
+    border-radius: .3rem;
+    padding: .8% 5%;
+    display: inline;
+    position: relative;
+    left: 1.2rem;
+    bottom: 1rem;
+    transition: background-color .5s, color .5s ;
+}
+
+.saveNCustomer:hover{
+    background-color: white;
+    color: #1476ff;
+}
