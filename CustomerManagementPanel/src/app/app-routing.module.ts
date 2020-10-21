@@ -16,7 +16,7 @@ const routes: Routes = [
       },
       {
         path: 'home',
-        redirectTo: '/clients',
+        redirectTo: 'clients',
       },
       {
         path: 'about',

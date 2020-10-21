@@ -22,7 +22,7 @@
 <div *ngIf="!!customerObjectList && customerObjectList.length > 0; else emptyList">
 
     <div class="add">
-        <button class="bntAdd" (click)="addCustomer()"><i class="fa fa-plus-circle"></i> Add Customer</button>
+        <button class="bntAdd" [routerLink]='["/clients/add"]'><i class="fa fa-plus-circle"></i> Add Customer</button>
     </div>
 
     <table class="table table-striped">

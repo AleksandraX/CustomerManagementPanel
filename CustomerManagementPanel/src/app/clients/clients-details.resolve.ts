@@ -12,6 +12,8 @@ export class ClientsDetailsResolver implements Resolve<Customer>{
 
         let customer = CUSTOMERLIST.find(c => c.id == id);
 
+        console.log("resolver: ", customer);
+
         return customer; 
     }
 

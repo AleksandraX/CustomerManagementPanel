@@ -20,15 +20,13 @@ chosenCustomer: Customer;
     private toastr: ToastrService, 
     private route: ActivatedRoute
     ) { 
-    this.route.data.subscribe(data =>
-      this.chosenCustomer = data['custmer']);
-
-      console.log("constr details: ", this.chosenCustomer);
+    this.route.data.subscribe(value => {
+      this.copyOfCustomer = value["customer"];
+      console.log(value["customer"]);
+    });
   }
 
-  // don't care about this.
   ngOnInit() {
-    this.copyOfCustomer = Object.assign({}, this.chosenCustomer);
   }
 
   saveName(copyOfCustomer){
