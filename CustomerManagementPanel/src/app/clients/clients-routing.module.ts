@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AddCustomerComponent } from './add-customer/add-customer.component';
+import { EditCustomerComponent } from './edit-customer/edit-customer.component';
 import { ClientDetailsComponent } from './client-details/client-details.component';
+import { ClientListResolver } from './client-list.resolver';
 import { ClientListComponent } from './client-list/client-list.component';
-import { ClientsDetailsResolver } from './clients-details.resolve';
+import { ClientsDetailsResolver } from './clients-details.resolver';
+import { ClientEditResolver } from './client-edit.resolver';
 
 const routes: Routes = [
     {
@@ -17,10 +19,21 @@ const routes: Routes = [
         {
             path:'list',
             component: ClientListComponent,
+            resolve: {
+              customerList: ClientListResolver,
+            }
         },
         {
-            path: 'add',
-            component: AddCustomerComponent,
+          path:'add',
+          redirectTo: '/edit/0',
+          pathMatch: 'full',
+        },
+        {
+            path: 'edit/:id',
+            component: EditCustomerComponent,
+            resolve: {
+              customer: ClientEditResolver,
+            }
         },
         {
             path: 'details/:id',
@@ -36,7 +49,12 @@ const routes: Routes = [
   @NgModule({
     imports: [RouterModule.forChild(routes)],
     exports: [RouterModule],
-    providers: [ClientsDetailsResolver]
+    providers: [
+      ClientsDetailsResolver, 
+      ClientListResolver,
+      ClientEditResolver
+    ]
   })
-  export class ClientsRoutingModule { }
+  export class ClientsRoutingModule { 
+  }
   

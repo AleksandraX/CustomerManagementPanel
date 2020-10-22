@@ -4,7 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AlertModule } from 'ngx-bootstrap/alert';
 import { ToastrModule } from 'ngx-toastr';
-import { AddCustomerComponent } from './add-customer/add-customer.component';
+import { EditCustomerComponent } from './edit-customer/edit-customer.component';
 import { ClientDetailsComponent } from './client-details/client-details.component';
 import { ClientListComponent } from './client-list/client-list.component';
 import { ClientsRoutingModule } from './clients-routing.module';
@@ -13,7 +13,7 @@ import { ClientsRoutingModule } from './clients-routing.module';
     declarations: [							
         ClientListComponent,
         ClientDetailsComponent,
-        AddCustomerComponent,
+        EditCustomerComponent,
      ],
     imports: [
       CommonModule,

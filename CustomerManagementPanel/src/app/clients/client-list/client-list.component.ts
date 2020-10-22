@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Customer } from '../models/customer';
 import { CUSTOMERLIST } from '../models/customer-list';
@@ -13,12 +14,17 @@ export class ClientListComponent implements OnInit {
   isDetailsClicked: boolean = false;
   isAddingMode: boolean = false;
   chosenCustomer: Customer;
-  customer: string;
   newCustomer: Customer = null;
   id: number = 11114;
-  customerObjectList: Customer[] = CUSTOMERLIST;
+  customerObjectList: Customer[];
   
-  constructor(private toastr: ToastrService) { 
+  constructor(
+    private toastr: ToastrService,
+    private route: ActivatedRoute
+    ) { 
+      this.route.data.subscribe(value => {
+        this.customerObjectList = value["customerList"];
+      });
   }
 
   ngOnInit(): void {

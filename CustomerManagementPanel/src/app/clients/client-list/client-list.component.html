@@ -46,6 +46,8 @@
         <td class="columnBnt">
             <button class="bntDelete" (click)="deleteNewListCustomer(customer)">
                 <i class="fa fa-trash"></i></button>
+            <button class="bntEdit" [routerLink]='["/clients/edit/" + customer.id]'>
+                <i class="fa fa-edit"></i></button>
             <button class="bntShow" [routerLink]='["/clients/details/" + customer.id]'>
                 <i class="fa fa-info-circle"></i></button>
         </td>
@@ -66,9 +68,6 @@
 <button type="button" (click)="showWarning()">Show Warning</button>
 <button type="button" (click)="showInfo()">Show Info</button> -->
 
-<div *ngIf="isAddingMode">
-    <app-add-customer [newCustomerInput]="newCustomer" (addNewCustomerEventEmitter)="onCustomerAdd($event)"></app-add-customer> 
-</div>
 
 <ng-template #emptyList>
     <div class="emptyList">
