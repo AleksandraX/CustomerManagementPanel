@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Customer } from '../client-list/client-list.component';
+import { Customer } from '../models/customer';
 
 @Component({
   selector: 'app-add-customer',

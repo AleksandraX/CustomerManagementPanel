@@ -22,7 +22,7 @@
 <div *ngIf="!!customerObjectList && customerObjectList.length > 0; else emptyList">
 
     <div class="add">
-        <button class="bntAdd" (click)="addCustomer()"><i class="fa fa-plus-circle"></i> Add Customer</button>
+        <button class="bntAdd" [routerLink]='["/clients/add"]'><i class="fa fa-plus-circle"></i> Add Customer</button>
     </div>
 
     <table class="table table-striped">
@@ -46,7 +46,7 @@
         <td class="columnBnt">
             <button class="bntDelete" (click)="deleteNewListCustomer(customer)">
                 <i class="fa fa-trash"></i></button>
-            <button class="bntShow" (click)="showDetails(customer)">
+            <button class="bntShow" [routerLink]='["/clients/details/" + customer.id]'>
                 <i class="fa fa-info-circle"></i></button>
         </td>
     </tr>
@@ -56,10 +56,10 @@
 
 
 
-
+<!-- 
 <div *ngIf="isDetailsClicked && chosenCustomer != null">
-    <app-client-details [chosenCustomerInput]="chosenCustomer" (editedCustomerEventEmitter)="onCustomerEdit($event)"></app-client-details>
-</div>
+    <app-client-details (editedCustomerEventEmitter)="onCustomerEdit($event)"></app-client-details>
+</div> -->
 
 <!-- <button type="button" (click)="showSuccess()">Show Success</button>
 <button type="button" (click)="showError()">Show Error</button>

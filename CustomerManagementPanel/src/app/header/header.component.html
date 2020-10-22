@@ -1,10 +1,11 @@
 <div class="header">
     <p class="logo">LOGO</p>
     <ul>
-        <li><a href="">Home</a></li>
-        <li><a href="">Info</a></li>
-        <li><a href="">Contact</a></li>
-        <li><a href="">Customer List</a></li>
+        <li [routerLinkActive]='["link-active"]' class="nav-item"><a [routerLink]='["/home"]' class="nav-link" href="#">Home</a></li>
+        <li [routerLinkActive]='["link-active"]' class="nav-item"><a [routerLink]='["/about"]' class="nav-link" href="#">About</a></li>
+        <li [routerLinkActive]='["link-active"]' class="nav-item"><a [routerLink]='["/contact"]' class="nav-link" href="#">Contact</a></li>
+        <li [routerLinkActive]='["link-active"]' class="nav-item"><a [routerLink]='["/clients"]' class="nav-link" href="#">Customer List</a></li>
+        <li [routerLinkActive]='["link-active"]' class="nav-item"><a [routerLink]='["/orders"]' class="nav-link" href="#">Orders</a></li>
     </ul>
 
     <p class="title">CUSTOMER MANAGEMENT PANEL </p>
