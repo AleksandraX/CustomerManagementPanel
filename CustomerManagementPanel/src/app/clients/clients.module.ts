@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AlertModule } from 'ngx-bootstrap/alert';
 import { ToastrModule } from 'ngx-toastr';
 import { EditCustomerComponent } from './edit-customer/edit-customer.component';
@@ -13,7 +12,7 @@ import { ClientsRoutingModule } from './clients-routing.module';
     declarations: [							
         ClientListComponent,
         ClientDetailsComponent,
-        EditCustomerComponent,
+        EditCustomerComponent
      ],
     imports: [
       CommonModule,

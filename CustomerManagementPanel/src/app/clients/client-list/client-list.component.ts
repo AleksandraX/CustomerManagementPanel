@@ -13,7 +13,6 @@ import { CUSTOMERLIST } from '../models/customer-list';
 export class ClientListComponent implements OnInit {
   isDetailsClicked: boolean = false;
   isAddingMode: boolean = false;
-  chosenCustomer: Customer;
   newCustomer: Customer = null;
   id: number = 11114;
   customerObjectList: Customer[];
@@ -35,16 +34,7 @@ export class ClientListComponent implements OnInit {
       if(customerToDelete.id === CUSTOMERLIST[i].id){
         CUSTOMERLIST.splice(i,1);
       }
-    }
-    if(this.chosenCustomer.id == customerToDelete.id){
-      this.chosenCustomer = null;
     } 
-  }
-
-  showDetails(customer: Customer){
-    this.isDetailsClicked =!this.isDetailsClicked;
-    this.chosenCustomer = customer;
-    this.isAddingMode = false;
   }
 
   addCustomer(){

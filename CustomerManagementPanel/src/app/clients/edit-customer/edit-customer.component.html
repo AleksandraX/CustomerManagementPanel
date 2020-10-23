@@ -1,6 +1,6 @@
 <h1 class="addCustomer">New customer</h1>
        
-    <div *ngIf="customerExist; else #customerNotFound">
+    <div *ngIf="customerExist; else customerNotFound">
 
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
         <div class="ngFormHere">
