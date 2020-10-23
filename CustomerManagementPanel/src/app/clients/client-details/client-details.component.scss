@@ -1,35 +1,86 @@
-.infoUser{
+// .infoUser{
+//     position: relative;
+//     bottom: .8rem;
+//     font-size: 2rem;
+// }
+
+// input, select,button{
+//     position: relative;
+//     bottom: 3.4rem;
+//     margin-bottom: .8rem;
+// }
+
+// .saveGender{
+//     position: relative;
+//     margin-left: 1.3rem;
+// }
+
+// button{
+//     width: 4rem;
+//     margin-left: 1rem;
+//     background-color: #4CAF50;
+//     color: white;
+//     border-radius: .3rem;
+//     transition: background-color .3s;
+// }
+
+// button:hover{
+//     color:  #4CAF50;
+//     background-color:white;
+// }
+
+// .chosenUser{
+//     position: relative;
+//     top: .5rem;
+// }
+
+// new profil customer style
+
+a{
+    color: black;
+    text-decoration: none;
+}
+
+a:hover{
+    color: rgb(128, 128, 128);
+    transition: color .2s;
+    border-bottom: .1rem solid rgb(0, 0, 0);
+}
+
+.infoCustomer{
+    margin-bottom: 4rem;
+    border-bottom: .2rem solid rgb(51,174,233);
+    width: 38rem;
+    height: 3.7rem;
+}
+
+.halo1{
+    
+    border-left: rgb(0, 0, 0) .2rem solid;
+}
+
+.foto{
     position: relative;
-    bottom: .8rem;
-    font-size: 2rem;
+    left: 4rem;
 }
 
-input, select,button{
+.nameId{
     position: relative;
-    bottom: 3.4rem;
-    margin-bottom: .8rem;
+    top: 3rem;
+    left: 3rem;
 }
 
-.saveGender{
-    position: relative;
-    margin-left: 1.3rem;
+.foto{
+    display: block;
+    width: 12rem;
+    height: 11rem;
+    background-color: hotpink;
 }
 
-button{
-    width: 4rem;
-    margin-left: 1rem;
-    background-color: #4CAF50;
-    color: white;
-    border-radius: .3rem;
-    transition: background-color .3s;
+.country, .city, .zipCode, .street, .phoneNumber, .email{
+    margin-bottom: 1rem;
 }
 
-button:hover{
-    color:  #4CAF50;
-    background-color:white;
-}
-
-.chosenUser{
-    position: relative;
-    top: .5rem;
+.name , .lastName, .gender{
+    margin-bottom: 2rem;
 }
