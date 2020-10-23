@@ -1,5 +1,6 @@
 <h1 class="addCustomer">New customer</h1>
        
+    <div *ngIf="customerExist; else customerNotFound">
 
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
         <div class="ngFormHere">
@@ -118,9 +119,9 @@
                 <div  class="ngFormHere">
                     <label>Gender :</label>
                     <br>
-                    <select formControlName="gender" class="inputNgForm"  id="gender" name="gender">
-                        <option class="optionGender" value="Male">Male</option>
-                        <option class="optionGender" value="Female">Female</option>
+                    <select formControlName="gender" class="inputNgForm"  id="gender" name="gender" >
+                        <option class="optionGender" value="M">Male</option>
+                        <option class="optionGender" value="F">Female</option>
                     </select>
 
                     <div *ngIf="required('gender.name')" class="alert alert-danger">
@@ -166,7 +167,9 @@
                 </div>
                 <div>
                     <br>
-                    <button type="submit" class="saveNCustomer">
+                    <button type="submit" class="saveNCustomer" 
+                        [disabled] ="form.invalid"
+                    > 
                         Save customer
                     </button>
                 </div>
@@ -174,6 +177,13 @@
             <pre>{{form.value | json }}</pre>
         </div>
     </form>
+</div>
+
+<ng-template #customerNotFound>
+    <div class="emptyList">
+        INFO! The user list is empty.
+    </div>
+</ng-template>
 
 
     
