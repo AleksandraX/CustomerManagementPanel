@@ -51,3 +51,65 @@ a:hover{
     left: 22rem;
     top: .5rem;
 }
+
+@media only screen and (min-width: 1145px) and (max-width: 1500px) {
+    li{
+        display: inline-block;
+        margin-left: .5rem;
+    }
+    
+    ul{
+        font-size: 1.1rem;
+        left: 3rem;
+        bottom: 1rem;
+    }
+
+     .logo{
+        position: relative;
+        display: inline-block;
+        right: 33rem;
+        top: .5rem;
+    }
+    
+    .title{
+        font-size: 1.2rem;
+        width: 20rem;
+    }
+    
+    .userPlace{
+        font-size: .7rem;
+        bottom: 10rem;
+        width: 12rem;
+    }
+};
+
+// in progress
+
+// @media only screen and (min-width: 300px) and (max-width: 1145px) {
+//     li{
+//         display: inline-block;
+//         margin-left: .5rem;
+//     }
+    
+//     ul{
+//         // visibility: hidden;
+//     }
+
+//      .logo{
+//         position: relative;
+//         display: inline-block;
+//         right: 33rem;
+//         top: .5rem;
+//     }
+    
+//     .title{
+//         font-size: 1.2rem;
+//         width: 20rem;
+//     }
+    
+//     .userPlace{
+//         font-size: .7rem;
+//         bottom: 10rem;
+//         width: 12rem;
+//     }
+// };
