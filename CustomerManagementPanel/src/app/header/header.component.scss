@@ -85,31 +85,31 @@ a:hover{
 
 // in progress
 
-// @media only screen and (min-width: 300px) and (max-width: 1145px) {
-//     li{
-//         display: inline-block;
-//         margin-left: .5rem;
-//     }
+@media only screen and (min-width: 900px) and (max-width: 1145px) {
+    li{
+        margin-left: .1rem;
+        font-size: .9rem;
+    }
     
-//     ul{
-//         // visibility: hidden;
-//     }
+    ul{
+        left: 2rem;
+        // visibility: hidden;
+    }
 
-//      .logo{
-//         position: relative;
-//         display: inline-block;
-//         right: 33rem;
-//         top: .5rem;
-//     }
+     .logo{
+        color: black;
+    }
     
-//     .title{
-//         font-size: 1.2rem;
-//         width: 20rem;
-//     }
+    .title{
+        font-size: 1rem;
+        color: black;
+        right: 10rem;
+        
+    }
     
-//     .userPlace{
-//         font-size: .7rem;
-//         bottom: 10rem;
-//         width: 12rem;
-//     }
-// };
+    .userPlace{
+        font-size: .6rem;
+        color: black;
+        left: 16rem;
+    }
+};
