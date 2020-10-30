@@ -1,32 +1,39 @@
 import { Address } from './address';
 
 export class Customer {
-    id:number;
+    id:string;
     name:string;
     lastName:string;
     age:number;
-    sex:string;
+    gender:Gender;
     address:Address;
-    phoneNumber:number;
-    mail:string;
-    static id: number;
+    addressId: string;
+    phoneNumber:string;
+    email:string;
   
     constructor(
-       id: number,
+       id: string,
        name: string,
        lastName:string,
        age:number,
-       sex:string,
+       gender:Gender,
        address:Address,
-       phoneNumber:number,
-       mail:string) {
+       addressId: string,
+       phoneNumber:string,
+       email:string) {
         this.id = id;
         this.name = name;
         this.lastName = lastName;
         this.age = age;
-        this.sex = sex;
+        this.gender = gender;
         this.address = address;
+        this.addressId = addressId;
         this.phoneNumber = phoneNumber;
-        this.mail = mail; 
+        this.email = email; 
     }
+  }
+
+  export enum Gender{
+    male = 0,
+    female = 1
   }

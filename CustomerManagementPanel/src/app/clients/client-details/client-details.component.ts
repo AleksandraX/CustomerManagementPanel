@@ -57,8 +57,8 @@ chosenCustomer: Customer;
   }
 
   saveGender(copyOfCustomer){
-    if(copyOfCustomer.sex == this.chosenCustomer.sex) {
-      console.error(`Error: sex cannot equals ${copyOfCustomer.sex}`);
+    if(copyOfCustomer.gender == this.chosenCustomer.gender) {
+      console.error(`Error: gender cannot equals ${copyOfCustomer.gender}`);
     }else {
       this.editedCustomerEventEmitter.emit(copyOfCustomer);
       this.toastr.success('Gender changes were made.', 'Saved');
@@ -75,8 +75,8 @@ chosenCustomer: Customer;
   }
 
   saveMail(copyOfCustomer){
-    if(copyOfCustomer.mail == this.chosenCustomer.mail) {
-      console.error(`Error: city cannot equals ${copyOfCustomer.mail}`);
+    if(copyOfCustomer.email == this.chosenCustomer.email) {
+      console.error(`Error: city cannot equals ${copyOfCustomer.email}`);
     }else {
       this.editedCustomerEventEmitter.emit(copyOfCustomer);
       this.toastr.success('Changes were made to the email.', 'Saved');

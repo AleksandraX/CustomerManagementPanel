@@ -2,7 +2,7 @@
        
     <div *ngIf="customerExist; else customerNotFound">
 
-    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <form [formGroup]="form" (ngSubmit)="saveCustomer()">
         <div class="ngFormHere">
             <label>Name :</label>
             <br>
@@ -120,8 +120,8 @@
                     <label>Gender :</label>
                     <br>
                     <select formControlName="gender" class="inputNgForm"  id="gender" name="gender" >
-                        <option class="optionGender" value="M">Male</option>
-                        <option class="optionGender" value="F">Female</option>
+                        <option class="optionGender" value=0>Male</option>
+                        <option class="optionGender" value=1>Female</option>
                     </select>
 
                     <div *ngIf="required('gender.name')" class="alert alert-danger">

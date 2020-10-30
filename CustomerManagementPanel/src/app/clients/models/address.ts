@@ -1,5 +1,5 @@
 export interface Address{
-    id: number,
+    id: string,
     city: string,
     zipCode: number,
     street: string,

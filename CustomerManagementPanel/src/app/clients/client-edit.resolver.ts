@@ -1,21 +1,38 @@
+import { getNumberOfCurrencyDigits } from '@angular/common';
 import { Injectable } from "@angular/core";
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
+import { Observable, of } from 'rxjs';
+import { ClientsService } from './clients.service';
+import { Address } from './models/address';
 import { Customer } from './models/customer';
-import { CUSTOMERLIST } from './models/customer-list';
 
 @Injectable()
 export class ClientEditResolver implements Resolve<Customer>{
 
-    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Customer{
-        const id: number = +route.paramMap.get('id');
+    constructor(private clientsService: ClientsService) {
+
+    }
+
+    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Customer>{
+        const id: string = route.paramMap.get('id');
         let customer: Customer = null;
 
-        if(id === 0){
-            customer = new Customer(0, "","", 0, "", {id: 0,city:"", zipCode:0, street:"", country:"" }, 0, "");
+        if(id === "0"){
+            console.log("creating client from resolver...");
+            let address: Address =  {
+                id: "",
+                city: "",
+                zipCode: 0,
+                street: "",
+                country: ""
+               };
+
+            customer = new Customer("", "", "", 0, 0, address, "", "", "");
         }else{
-            customer = CUSTOMERLIST.find(c => c.id == id);
+            console.log("fetching client from resolver...");
+           return this.clientsService.getById(id);
         }
-        return customer;
+        return of(customer);
     }
 
 }

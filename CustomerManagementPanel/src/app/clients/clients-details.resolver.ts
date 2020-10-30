@@ -1,20 +1,18 @@
 import { Injectable } from "@angular/core";
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs';
+import { ClientsService } from './clients.service';
 import { Customer } from './models/customer';
-import { CUSTOMERLIST } from './models/customer-list';
 
 @Injectable()
 export class ClientsDetailsResolver implements Resolve<Customer>{
 
-    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Customer{
-        const id: number = +route.paramMap.get('id');
+    constructor(private clientsService: ClientsService) {}
 
-        let customer = CUSTOMERLIST.find(c => c.id == id);
+    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Customer>{
+        const id: string = route.paramMap.get('id');
 
-        console.log("resolver: ", customer);
-
-        return customer; 
+        return this.clientsService.getById(id);
     }
 
 }
