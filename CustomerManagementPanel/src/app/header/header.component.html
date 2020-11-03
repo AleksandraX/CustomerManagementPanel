@@ -1,13 +1,38 @@
-<div class="header">
-        <p class="logo"><i class="fa fa-american-sign-language-interpreting"></i></p>
-    <ul>
-        <li [routerLinkActive]='["link-active"]' class="nav-item"><a [routerLink]='["/home"]' class="nav-link" href="#">Home</a></li>
-        <li [routerLinkActive]='["link-active"]' class="nav-item"><a [routerLink]='["/about"]' class="nav-link" href="#">About</a></li>
-        <li [routerLinkActive]='["link-active"]' class="nav-item"><a [routerLink]='["/contact"]' class="nav-link" href="#">Contact</a></li>
-        <li [routerLinkActive]='["link-active"]' class="nav-item"><a [routerLink]='["/clients"]' class="nav-link" href="#">Customer List</a></li>
-        <li [routerLinkActive]='["link-active"]' class="nav-item"><a [routerLink]='["/orders"]' class="nav-link" href="#">Orders</a></li>
+<nav class="navbar navbar-expand-lg navbar-dark bg-customer-header">
+  <a class="navbar-brand" [routerLink]='["/home"]'href="#">
+    <img src=".\..\..\assets\logo.PNG" width="60" height="35" alt="logo image">
+  </a>
+  <!-- Collapse button -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+    aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+<!-- Collapsible content -->
+<div class="collapse navbar-collapse" id="basicExampleNav">
+
+    <ul class="navbar-nav ">
+        <li [routerLinkActive]='["link-active"]' class="nav-item"><a [routerLink]='["/about"]' class="nav-link buttons-in-navbar" href="#">About</a></li>
+        <li [routerLinkActive]='["link-active"]' class="nav-item"><a [routerLink]='["/contact"]' class="nav-link buttons-in-navbar" href="#">Contact</a></li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle buttons-in-navbar" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+              Dropdown
+            </a>
+            <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+              <a [routerLink]='["/clients/list"]' class="dropdown-item buttons-in-navbar" href="#">Customer list</a>
+              <a [routerLink]='["/addresses"]' class="dropdown-item buttons-in-navbar" href="#">Addresses</a>
+              <a class="dropdown-item buttons-in-navbar" href="#">Something else here</a>
+            </div>
+        </li>
+        <li class="nav-item"><a class="nav-link buttons-in-navbar" href="#">Orders</a></li>
     </ul>
 
-    <p class="title">CUSTOMER MANAGEMENT PANEL </p>
-    <p class="userPlace">Kacper Bergański (Admin)</p>
 </div>
+
+<div class="info">
+  <p class="title">CUSTOMER MANAGEMENT PANEL </p>
+  <p class="userPlace">Kacper Bergański (Admin)</p>
+</div>
+
+
+</nav>
