@@ -83,6 +83,10 @@
 
 }
 
+.titleHamburger{
+    display: none;
+}
+
 @media only screen and (min-width: 100px) and (max-width: 991px) {
     .info{
         display: none;
@@ -90,6 +94,12 @@
 
     .logo{
         display: none;
+    }
+
+    .titleHamburger{
+        display: block;
+        color: white;
+        font-size: 1.1rem;
     }
 }
 
