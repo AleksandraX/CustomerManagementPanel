@@ -14,6 +14,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { AboutComponent } from './about/about.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ClientsModule } from './clients/clients.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [							
@@ -32,7 +33,8 @@ import { ClientsModule } from './clients/clients.module';
     AlertModule.forRoot(),
     ReactiveFormsModule,
     ToastrModule.forRoot(),
-    ClientsModule
+    ClientsModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
