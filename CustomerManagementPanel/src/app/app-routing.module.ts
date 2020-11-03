@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AboutComponent } from './about/about.component';
+import { AddressesComponent } from './clients/addresses/addresses.component';
 import { ClientListComponent } from './clients/client-list/client-list.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { OrdersComponent } from './orders/orders.component';
@@ -16,7 +17,7 @@ const routes: Routes = [
       },
       {
         path: 'home',
-        redirectTo: 'clients',
+        redirectTo: '/clients/list',
       },
       {
         path: 'about',
@@ -29,6 +30,10 @@ const routes: Routes = [
       {
         path: 'clients',
         loadChildren: () => import('./clients/clients.module').then(m => m.ClientsModule),
+      },
+      {
+        path:'addresses',
+        component: AddressesComponent,
       },
       {
         path: '**',
