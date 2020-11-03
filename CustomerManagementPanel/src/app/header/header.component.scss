@@ -67,20 +67,16 @@
 }
 
 .navbar-nav {
-    
     .nav-link {
       color: white;
     }
-
 }
 
 .navbar-nav{
-    
     .nav-link:hover{
       color: black;
       transition: .4s color;
     }
-
 }
 
 .titleHamburger{
@@ -102,129 +98,3 @@
         font-size: 1.1rem;
     }
 }
-
-
-
-// .dropdown-item{
-//     color: black;
-//     border: none;
-//     text-decoration: none;
-// }
-
-// li{
-//     display: inline-block;
-//     margin: 1rem;
-// }
-
-// ul{
-//     font-size: 1.1rem;
-//     position: relative;
-//     float: left;
-//     left: 10rem;
-//     bottom: .9rem;
-// }
-
-// a{
-//     padding: 8px;
-//     background-color: transparent;
-//     text-decoration: none;
-//     color: white;
-// }
-
-// a:hover{
-//     color: #000;
-//     transition: color .3s;
-//     border-bottom: .2rem solid black;
-// }
-
-// .logo{
-//     font-size: 1.3rem;
-//     position: relative;
-//     display: inline-block;
-//     margin-right: 1rem;
-//     right: 23rem;
-//     top: .5rem;
-//     cursor: pointer;
-// }
-
-// .title{
-//     font-size: 1.3rem;
-//     position: relative;
-//     float: right;
-//     right: 15rem;
-//     top: .3rem;
-// }
-
-// .userPlace{
-//     font-size: .8rem;
-//     position: relative;
-//     float: right;
-//     left: 19rem;
-//     top: .5rem;
-// }
-
-// @media only screen and (min-width: 1000px) and (max-width: 1200px) {
-//     li{
-//         display: inline-block;
-//         margin-left: .5rem;
-//     }
-    
-//     ul{
-//         font-size: 1.1rem;
-//         left: 4rem;
-//         bottom: 1rem;
-//     }
-
-//      .logo{
-//         position: relative;
-//         display: inline-block;
-//         right: 25rem;
-//         top: .5rem;
-//     }
-    
-//     .title{
-//         font-size: 1.3rem;
-//         width: 20rem;
-//         right: 10rem;
-//     }
-    
-//     .userPlace{
-//         font-size: .7rem;
-//         bottom: 10rem;
-//         width: 12rem;
-//         left: 23rem;
-//     }
-// };
-
-// // in progress
-
-// @media only screen and (min-width: 880px) and (max-width: 1000px) {
-//     li{
-//         margin-left: .1rem;
-//         font-size: .9rem;
-//     }
-    
-//     ul{
-//         left: 4rem;
-//         bottom: .7rem;
-//         // visibility: hidden;
-//     }
-
-//      .logo{
-//         color: white;
-//         right: 20.5rem;
-//     }
-    
-//     .title{
-//         font-size: 1.3rem;
-//         color: white;
-//         right: 10rem;
-        
-//     }
-    
-//     .userPlace{
-//         font-size: .6rem;
-//         color: white;
-//         left: 19rem;
-//     }
-// };
