@@ -1,6 +1,9 @@
+.navbar{
+    margin-bottom: 4rem;
+}
+
 .header{
     color: white;
-    position: static;
     background-color: rgb(51,174,233);
     margin-bottom: 3rem;
 }
@@ -14,10 +17,10 @@
 }
 
 .title{
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     position: relative;
     float: right;
-    right: 15rem;
+    right: 13rem;
     top: .3rem;
     color: white;
 }
@@ -26,14 +29,68 @@
     font-size: .8rem;
     position: relative;
     float: right;
-    left: 19rem;
-    top: .5rem;
+    left: 21rem;
+    top: .1rem;
     color: white;
 }
 
 .buttons-in-navbar{
+    color:white;
+    background-color: transparent;
+}
+
+.buttons-in-navbar:hover{
+    color: black;
+    transition: .4s color;
+}
+
+.hamburger{
+    position: relative;
+    float: right;
+    border: none;
+}
+
+.hamburger:hover{
+    background-color: rgb(71, 185, 252);
+    transition: .4s background-color;
+}
+
+.hamburger:focus{
+    border: none;
+    text-decoration: none;
+}
+
+.dropdown-list{
+    border: none;
     color: white;
     background-color:  rgb(51,174,233);
+}
+
+.navbar-nav {
+    
+    .nav-link {
+      color: white;
+    }
+
+}
+
+.navbar-nav{
+    
+    .nav-link:hover{
+      color: black;
+      transition: .4s color;
+    }
+
+}
+
+@media only screen and (min-width: 100px) and (max-width: 991px) {
+    .info{
+        display: none;
+    }
+
+    .logo{
+        display: none;
+    }
 }
 
 
