@@ -104,7 +104,7 @@ ol{
 .bntShow{
     position: relative;
     padding: .3rem ;
-    right: .2rem;
+    right: 1.8rem;
     color: black;
     border: none;
     background: transparent;
@@ -131,3 +131,21 @@ ol{
   bottom: 1rem;
 }
 
+.bntEdit{
+    font-size: 1.6rem;
+    position: relative;
+    background: transparent;
+    border: none;
+    right: 1.7rem;
+    padding: .1rem .5rem ;
+    transition: .3s transform;
+}
+
+
+.bntEdit:hover{
+    transform: scale(1.2)
+}
+
+.bntEdit:focus{
+    outline: none;
+}

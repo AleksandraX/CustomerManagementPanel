@@ -7,6 +7,7 @@
             <th scope="col">City</th>
             <th scope="col">Zip Code</th>
             <th scope="col">Street</th>
+            <th scope="col">Details</th>
         </tr>
         </thead>
         <tbody>
@@ -16,6 +17,10 @@
             <td class="columnUserAddress">{{address.city}}</td>
             <td class="columnUserAddress">{{address.zipCode}}</td>
             <td class="columnUserAddress">{{address.street}}</td>
+            <td class="columnBnt">
+                <button class="bntDetails" title="Show details" (click)="addressDetails(address)">
+                    <i class="fa fa-info-circle"></i></button>
+            </td>
         </tr>
         </tbody>
     </table>
