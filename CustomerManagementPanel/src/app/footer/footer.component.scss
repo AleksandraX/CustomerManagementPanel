@@ -66,7 +66,7 @@ a:hover{
 
 //TABLET VERSION
 
-@media only screen and (min-width: 365px) and (max-width: 770px) {
+@media only screen and (min-width: 395px) and (max-width: 770px) {
     .cointeiner{
         color: white;
         background: rgb(51,174,233);
@@ -115,22 +115,19 @@ a:hover{
 
 //PHONE VERSION
 
-@media only screen and (min-width: 150px) and (max-width: 380px) {
+@media only screen and (min-width: 365px) and (max-width: 395px) {
 
     .cointeiner{
         color: white;
         background: rgb(51,174,233);
-        height: 10rem;
+        height: 13rem;
     }
 
     .header-by{
-        font-size: .8rem;
-    }
-    
-    .case{
-        font-size: .8rem;
-        left: 2rem;
-    }
+        position: relative;
+        font-size: .7rem;
+        top: 2rem;
+    }  
     
     .media-icons{
         position: relative;
@@ -144,5 +141,56 @@ a:hover{
         visibility: hidden;
     }    
 
-
+    .socialMedia{
+        top: 4.5rem;
+        right: 2rem;
+    }
+    
+    .contact{
+        font-size: .8rem;
+        top: 3rem;
+        left: .5rem;
+        text-align: center;
+    }
 }
+
+@media only screen and (min-width: 150px) and (max-width: 365px) {
+
+    .cointeiner{
+        color: white;
+        background: rgb(51,174,233);
+        height: 13rem;
+    }
+
+    .header-by{
+        position: relative;
+        font-size: .7rem;
+        top: 3rem;
+        left: 4rem;
+    }  
+    
+    .media-icons{
+        position: relative;
+        font-size: 1.4rem;
+        padding: 10px;
+        bottom: 3rem;
+        margin-right: 1rem;
+    }
+
+    .media{
+        visibility: hidden;
+    }    
+
+    .socialMedia{
+        top: 3rem;
+        right: 1rem;
+    }
+    
+    .contact{
+        font-size: .8rem;
+        top: 2rem;
+        left: .1rem;
+        text-align: center;
+    }
+}
+
