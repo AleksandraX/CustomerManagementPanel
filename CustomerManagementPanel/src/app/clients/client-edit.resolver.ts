@@ -1,4 +1,3 @@
-import { getNumberOfCurrencyDigits } from '@angular/common';
 import { Injectable } from "@angular/core";
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
 import { Observable, of } from 'rxjs';

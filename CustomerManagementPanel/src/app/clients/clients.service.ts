@@ -5,7 +5,6 @@ import { catchError, tap } from 'rxjs/operators';
 import { of } from 'rxjs/internal/observable/of';
 import { Observable } from 'rxjs';
 import { CustomerForCreation } from './models/customerForCreation';
-import { ClassGetter } from '@angular/compiler/src/output/output_ast';
 
 @Injectable()
 
@@ -28,8 +27,7 @@ constructor(private httpClient:HttpClient) {
                     console.log("From services:", response);
                 }),
             catchError(this.handleError<Customer[]>("getAllCustomers"))
-        );
-    
+        );  
     }
 
     getById(id) : Observable<Customer> {

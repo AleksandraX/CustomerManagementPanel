@@ -15,6 +15,8 @@ import { AboutComponent } from './about/about.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ClientsModule } from './clients/clients.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AddressesService } from './clients/addresses/addresses.service';
+import { AddressesComponent } from './clients/addresses/addresses.component';
 
 @NgModule({
   declarations: [							
@@ -22,7 +24,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     HeaderComponent,
     FooterComponent,
     AboutComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    AddressesComponent
    ],
   imports: [
     BrowserModule,
@@ -36,7 +39,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ClientsModule,
     NgbModule
   ],
-  providers: [],
+  providers: [
+    AddressesService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
