@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { ClientsService } from '../clients.service';
 import { Customer } from '../models/customer';
 
 
@@ -19,7 +20,8 @@ export class ClientListComponent implements OnInit {
   
   constructor(
     private toastr: ToastrService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private clientService: ClientsService
     ) { 
       this.route.data.subscribe(value => {      
         this.customerObjectList = value["customerList"];
@@ -30,12 +32,11 @@ export class ClientListComponent implements OnInit {
   ngOnInit(): void {
   }
   
-  deleteNewListCustomer(customerToDelete:Customer){
-  //   for (let i = 0; i < CUSTOMERLIST.length; i++){
-  //     if(customerToDelete.id === CUSTOMERLIST[i].id){
-  //       CUSTOMERLIST.splice(i,1);
-  //     }
-  //   } 
+  deleteCustomer(customerId:string){
+    this.clientService.delete(customerId).subscribe(response =>{
+      console.log("delete");
+    })
+
   }
 
   addCustomer(){

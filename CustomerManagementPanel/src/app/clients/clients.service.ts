@@ -30,7 +30,7 @@ constructor(private httpClient:HttpClient) {
         );  
     }
 
-    getById(id) : Observable<Customer> {
+    getById(id: string) : Observable<Customer> {
         return this.httpClient.get<Customer>(this.baseUrl + "/getById/" + id).pipe(
             tap(response =>
                 {
@@ -48,6 +48,16 @@ constructor(private httpClient:HttpClient) {
                 }),
             catchError(this.handleError<any>("create"))
         );
+    }
+
+    delete(customerId: string) : Observable<any> {
+        return this.httpClient.delete<any>(this.baseUrl + "/delete/" + customerId).pipe(
+            tap(response =>
+                {
+                    console.log("From services:", response);
+                }),
+            catchError(this.handleError<any>("delete"))
+        ); 
     }
 
 

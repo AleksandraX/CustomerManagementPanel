@@ -5,3 +5,10 @@ export interface Address{
     street: string,
     country: string
   }
+
+  export interface AddressForCreation {
+    country: string;
+    city: string;
+    street: string;
+    zipCode: string;
+  }

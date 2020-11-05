@@ -1,4 +1,9 @@
 <div *ngIf="!!addressesList && addressesList.length > 0; else emptyList"> 
+
+    <div class="add">
+        <button class="bntAdd" [routerLink]='["/addresses/add"]'><i class="fa fa-plus-circle"></i> Add Address</button>
+    </div>
+
   <table class="table">
         <thead class="thead-dark">
         <tr>
@@ -20,6 +25,8 @@
             <td class="columnBnt">
                 <button class="bntDetails" title="Show details" (click)="addressDetails(address)">
                     <i class="fa fa-info-circle"></i></button>
+                    <button class="bntDelete" title="Delete" (click)="addressDelete(address.id)">
+                        <i class="fa fa-trash"></i></button>
             </td>
         </tr>
         </tbody>

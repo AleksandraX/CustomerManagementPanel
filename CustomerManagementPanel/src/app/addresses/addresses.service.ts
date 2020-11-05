@@ -2,8 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
-import { Address } from '../models/address';
-import { Customer } from '../models/customer';
+import { Address } from '../clients/models/address';
 
 @Injectable()
 
@@ -37,6 +36,17 @@ constructor(private httpClient:HttpClient) {
                 }),
             catchError(this.handleError<Address>("getById"))
         );
+    }
+
+
+    delete(id: string) : Observable<any> {
+        return this.httpClient.delete<any>(this.baseUrl + "/delete/" + id).pipe(
+            tap(response =>
+                {
+                    console.log("From services:", response);
+                }),
+            catchError(this.handleError<any>("delete"))
+        ); 
     }
 
     handleError<T>(operation, result?: T){

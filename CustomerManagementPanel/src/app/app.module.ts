@@ -15,8 +15,8 @@ import { AboutComponent } from './about/about.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ClientsModule } from './clients/clients.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { AddressesService } from './clients/addresses/addresses.service';
-import { AddressesComponent } from './clients/addresses/addresses.component';
+import { AddressesService } from './addresses/addresses.service';
+import { AddressesModule } from './addresses/addresses.module';
 
 @NgModule({
   declarations: [							
@@ -24,8 +24,7 @@ import { AddressesComponent } from './clients/addresses/addresses.component';
     HeaderComponent,
     FooterComponent,
     AboutComponent,
-    NotFoundComponent,
-    AddressesComponent
+    NotFoundComponent
    ],
   imports: [
     BrowserModule,
@@ -37,7 +36,8 @@ import { AddressesComponent } from './clients/addresses/addresses.component';
     ReactiveFormsModule,
     ToastrModule.forRoot(),
     ClientsModule,
-    NgbModule
+    NgbModule,
+    AddressesModule
   ],
   providers: [
     AddressesService

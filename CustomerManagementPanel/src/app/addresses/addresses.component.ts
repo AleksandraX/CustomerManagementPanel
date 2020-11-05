@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { Address } from '../models/address';
+import { Address } from '../clients/models/address';
+import { AddressesService } from './addresses.service';
 
 
 @Component({
@@ -15,7 +16,8 @@ export class AddressesComponent implements OnInit {
 
     constructor(
       private toastr: ToastrService,
-      private route: ActivatedRoute
+      private route: ActivatedRoute,
+      private addressService: AddressesService
     ) { 
       this.route.data.subscribe(value => {      
         this.addressesList = value["addressesList"];
@@ -24,6 +26,18 @@ export class AddressesComponent implements OnInit {
     }
   
     ngOnInit(): void {
+    }
+
+    addressDelete(addressId:string){
+        this.addressService.delete(addressId)
+        .subscribe(response => {
+            let index = this.addressesList.findIndex(address => address.id == addressId)
+            this.addressesList.splice(index ,1);
+        });
+    }
+
+    addressDetails(addressToDelete:Address){
+
     }
   
 }

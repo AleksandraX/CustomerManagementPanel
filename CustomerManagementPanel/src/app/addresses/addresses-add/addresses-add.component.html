@@ -1,0 +1,50 @@
+<h1>Add Address</h1>
+
+<form [formGroup]="form" (ngSubmit)="saveAddress()">
+  <div class="ngFormHere">
+    <label>Country :</label>
+      <br>
+      <input class="inputNgForm"
+      type="text"
+      formControlName="country">
+    
+      <div *ngIf="form.controls['country'].invalid && (form.controls['country'].dirty || form.controls['name'].touched)"
+        class="alert alert-danger">
+        <div *ngIf="form.controls['country'].errors.required">
+          Country is required <i class="fa fa-exclamation"></i>
+        </div>
+        <div *ngIf="form.controls['country'].errors.minlength">
+          Country is too short <i class="fa fa-exclamation"></i>
+        </div>
+        <div *ngIf="form.controls['country'].errors.maxlength">
+          Country is too long <i class="fa fa-exclamation"></i>
+        </div>
+      </div>
+
+     
+  </div>
+
+  <p>
+    City: <input type="text">
+  </p>
+
+  <p>
+    Zip Code: <input type="text">
+  </p>
+
+  <p>
+    Street: <input type="text">
+  </p>
+ 
+
+
+  <button type="submit"> Submit button</button>
+ 
+  <pre>{{form.value | json }}</pre>
+
+</form>
+
+
+<button>Save</button>
+<button>Clear</button>
+<button>Cancel</button>

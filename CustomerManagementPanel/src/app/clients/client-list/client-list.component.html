@@ -44,7 +44,7 @@
         <td class="columnUser">{{ customer.age}}</td>
         <td class="columnUser">{{ customer.address?.city}}</td>
         <td class="columnBnt">
-            <button class="bntDelete" title="Delete" (click)="deleteNewListCustomer(customer)">
+            <button class="bntDelete" title="Delete" (click)="deleteCustomer(customer.id)">
                 <i class="fa fa-trash"></i></button>
             <button class="bntEdit" title="Edit" [routerLink]='["/clients/edit/" + customer.id]'>
                 <i class="fa fa-edit"></i></button>
