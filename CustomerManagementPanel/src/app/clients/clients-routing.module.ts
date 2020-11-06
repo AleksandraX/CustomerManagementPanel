@@ -29,18 +29,18 @@ const routes: Routes = [
           pathMatch: 'full',
         },
         {
-            path: 'edit/:id',
-            component: EditCustomerComponent,
-            resolve: {
-              customer: ClientEditResolver,
-            }
+          path: 'edit/:id',
+          component: EditCustomerComponent,
+          resolve: {
+            customer: ClientEditResolver,
+          }
         },
         {
-            path: 'details/:id',
-            component: ClientDetailsComponent,
-            resolve: {
-                customer: ClientsDetailsResolver,
-            }
+          path: 'details/:id',
+          component: ClientDetailsComponent,
+          resolve: {
+            customer: ClientsDetailsResolver,
+          }
         },
 
       ]}

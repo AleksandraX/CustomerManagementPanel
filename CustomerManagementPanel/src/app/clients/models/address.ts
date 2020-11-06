@@ -12,3 +12,20 @@ export interface Address{
     street: string;
     zipCode: string;
   }
+
+  export interface AddressWithResidents {
+    id: string;
+    country: string;
+    city: string;
+    street: string;
+    zipCode: string;
+    residents: Resident[];
+}
+
+export interface Resident{
+    customerId: string;
+    name: string;
+    lastName: string;
+    email: string;
+    phoneNumber: string;
+}

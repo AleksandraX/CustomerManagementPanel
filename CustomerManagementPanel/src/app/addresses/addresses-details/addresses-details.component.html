@@ -1,0 +1,46 @@
+<h1>Address</h1>
+<div>
+  <p>Id: {{address?.id}}</p>
+  <p>Country: {{address?.country}}</p>
+  <p>City: {{address?.city}}</p>
+  <p>Zip Code: {{address?.zipCode}}</p>
+  <p>Street: {{address?.street}}</p>
+</div>
+
+<br>
+
+<h2>Customers</h2>
+
+<!-- 
+<carousel>
+
+        <slide *ngFor="let resident of address?.residents; index as i">
+        <div class="d-block w-100">
+          <p>Id: {{resident?.customerId}}</p>
+          <p>Name: {{resident?.name}}</p>
+          <p>Last Name: {{resident?.lastName}}</p>
+          <p>Email: {{resident?.email}}</p>
+          <p>Phone Number: {{resident?.phoneNumber}}</p>
+        </div>
+    </slide>
+
+</carousel> -->
+
+<!-- dokończyć robić ngIf dla pustego pola  -->
+<!-- <div>*ngIf="expression"</div> -->
+<carousel [itemsPerSlide]="address?.residents.length <= 3 ? address?.residents.length : 3"
+[singleSlideOffset]="true"
+[startFromIndex]="0"
+[noWrap]="false">
+<!-- <div class="text-center py-5 bg-dark text-white"> -->
+      <slide *ngFor="let resident of address?.residents; let index=index">
+        <div class="text-center py-5 bg-dark text-white" style="display: block; width: 100%;">
+          <h2>{{index}}</h2>        
+          <p>Name: {{resident?.name}}</p>
+          <p>Last Name: {{resident?.lastName}}</p>
+          <p>Email: {{resident?.email}}</p>
+          <p>Phone Number: {{resident?.phoneNumber}}</p>   
+        </div>
+    </slide>
+  <!-- </div> -->
+</carousel>

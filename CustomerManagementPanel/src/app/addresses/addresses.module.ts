@@ -5,13 +5,16 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AlertModule } from 'ngx-bootstrap/alert';
 import { ToastrModule } from 'ngx-toastr';
 import { AddressesAddComponent } from './addresses-add/addresses-add.component';
+import { AddressesDetailsComponent } from './addresses-details/addresses-details.component';
 import { AddressesRoutingModule } from './addresses-routing.module';
 import { AddressesComponent } from './addresses.component';
+import { CarouselModule } from 'ngx-bootstrap/carousel';
 
 @NgModule({
     declarations: [							
         AddressesComponent,
-        AddressesAddComponent
+        AddressesAddComponent,
+        AddressesDetailsComponent
      ],
     imports: [
       CommonModule,
@@ -20,7 +23,8 @@ import { AddressesComponent } from './addresses.component';
       ReactiveFormsModule,
       ToastrModule.forRoot(),
       AddressesRoutingModule,
-      HttpClientModule
+      HttpClientModule,
+      CarouselModule.forRoot()
     ],
     providers: [
     ],

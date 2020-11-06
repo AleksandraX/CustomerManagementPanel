@@ -8,7 +8,7 @@
       type="text"
       formControlName="country">
     
-      <div *ngIf="form.controls['country'].invalid && (form.controls['country'].dirty || form.controls['name'].touched)"
+      <div *ngIf="form.controls['country'].invalid && (form.controls['country'].dirty || form.controls['country'].touched)"
         class="alert alert-danger">
         <div *ngIf="form.controls['country'].errors.required">
           Country is required <i class="fa fa-exclamation"></i>
@@ -19,32 +19,88 @@
         <div *ngIf="form.controls['country'].errors.maxlength">
           Country is too long <i class="fa fa-exclamation"></i>
         </div>
+        <div *ngIf="form.controls['country'].errors.pattern"> 
+          Cannot contain numbers <i class="fa fa-exclamation"></i>
+        </div>
       </div>
+    </div>
 
-     
-  </div>
+    <div class="cityDiv">
+      <label>City :</label>
+        <br>
+        <input class="inputNgForm"
+        type="text"
+        formControlName="city">
+      
+        <div *ngIf="form.controls['city'].invalid && (form.controls['city'].dirty || form.controls['city'].touched)"
+          class="alert alert-danger">
+          <div *ngIf="form.controls['city'].errors.required">
+            City is required <i class="fa fa-exclamation"></i>
+          </div>
+          <div *ngIf="form.controls['city'].errors.minlength">
+            City is too short <i class="fa fa-exclamation"></i>
+          </div>
+          <div *ngIf="form.controls['city'].errors.maxlength">
+            City is too long <i class="fa fa-exclamation"></i>
+          </div>
+          <div *ngIf="form.controls['city'].errors.pattern"> 
+            Cannot contain numbers <i class="fa fa-exclamation"></i>
+          </div>
+        </div>
+      </div>
+    
+      <div class="zipCodeDiv">
+        <label>Zip Code :</label>
+          <br>
+          <input class="inputNgForm"
+          type="text"
+          formControlName="zipCode">
+        
+          <div *ngIf="form.controls['zipCode'].invalid && (form.controls['zipCode'].dirty || form.controls['zipCode'].touched)"
+            class="alert alert-danger">
+            <div *ngIf="form.controls['zipCode'].errors.required">
+              Zip Code is required <i class="fa fa-exclamation"></i>
+            </div>
+            <div *ngIf="form.controls['zipCode'].errors.minlength">
+              Zip Code is too short <i class="fa fa-exclamation"></i>
+            </div>
+            <div *ngIf="form.controls['zipCode'].errors.maxlength">
+              Zip Code is too long <i class="fa fa-exclamation"></i>
+            </div>
+            <div *ngIf="form.controls['zipCode'].errors.pattern"> 
+              Cannot contain letters <i class="fa fa-exclamation"></i>
+            </div>
+          </div>
+        </div>
+    
+        <div class="streetDiv">
+          <label>Street :</label>
+            <br>
+            <input class="inputNgForm"
+            type="text"
+            formControlName="street">
+          
+            <div *ngIf="form.controls['street'].invalid && (form.controls['street'].dirty || form.controls['street'].touched)"
+              class="alert alert-danger">
+              <div *ngIf="form.controls['street'].errors.required">
+                Street is required <i class="fa fa-exclamation"></i>
+              </div>
+              <div *ngIf="form.controls['street'].errors.minlength">
+                Street is too short <i class="fa fa-exclamation"></i>
+              </div>
+              <div *ngIf="form.controls['street'].errors.maxlength">
+                Street is too long <i class="fa fa-exclamation"></i>
+              </div>
+            </div>
+          </div>
 
-  <p>
-    City: <input type="text">
-  </p>
+          <br>
 
-  <p>
-    Zip Code: <input type="text">
-  </p>
-
-  <p>
-    Street: <input type="text">
-  </p>
- 
-
-
-  <button type="submit"> Submit button</button>
+  <button type="submit"> Save</button>
  
   <pre>{{form.value | json }}</pre>
 
 </form>
 
-
-<button>Save</button>
 <button>Clear</button>
 <button>Cancel</button>

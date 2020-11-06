@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
-import { Address } from '../clients/models/address';
+import { Address, AddressForCreation, AddressWithResidents } from '../clients/models/address';
 
 @Injectable()
 
@@ -38,6 +38,16 @@ constructor(private httpClient:HttpClient) {
         );
     }
 
+    getAddressWithResidents(id) : Observable<AddressWithResidents> {
+        return this.httpClient.get<AddressWithResidents>(this.baseUrl + "/GetAddressWithResidents/" + id).pipe(
+            tap(response =>
+                {
+                    console.log("AddressWithResidents from services:", response);
+                }),
+            catchError(this.handleError<AddressWithResidents>("AddressWithResidents"))
+        );
+    }
+
 
     delete(id: string) : Observable<any> {
         return this.httpClient.delete<any>(this.baseUrl + "/delete/" + id).pipe(
@@ -47,6 +57,16 @@ constructor(private httpClient:HttpClient) {
                 }),
             catchError(this.handleError<any>("delete"))
         ); 
+    }
+
+    create(addressForCreation: AddressForCreation) : Observable<any>{
+        return this.httpClient.post<any>(this.baseUrl + "/create", addressForCreation).pipe(
+            tap(response =>
+                {
+                    console.log("Create address", response);
+                }),
+            catchError(this.handleError<any>("create"))
+        );
     }
 
     handleError<T>(operation, result?: T){
@@ -60,5 +80,4 @@ constructor(private httpClient:HttpClient) {
             return of(result as T);
     };
 }
-
 }

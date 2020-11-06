@@ -23,7 +23,7 @@
             <td class="columnUserAddress">{{address.zipCode}}</td>
             <td class="columnUserAddress">{{address.street}}</td>
             <td class="columnBnt">
-                <button class="bntDetails" title="Show details" (click)="addressDetails(address)">
+                <button class="bntDetails" title="Show details" [routerLink]='["/addresses/details/" + address.id]'>
                     <i class="fa fa-info-circle"></i></button>
                     <button class="bntDelete" title="Delete" (click)="addressDelete(address.id)">
                         <i class="fa fa-trash"></i></button>

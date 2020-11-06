@@ -34,10 +34,6 @@ const routes: Routes = [
       {
         path:'addresses',
         loadChildren: () => import('./addresses/addresses.module').then(m => m.AddressesModule),
-        // component: AddressesComponent,
-        // resolve: {
-        //   addressesList: AddressesResolver,
-        // }
       },
       {
         path: '**',
