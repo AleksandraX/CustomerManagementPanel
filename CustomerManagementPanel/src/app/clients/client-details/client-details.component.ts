@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { Customer } from '../client-list/client-list.component';
+import { Customer } from '../models/customer';
 
 @Component({
   selector: 'app-client-details',
@@ -8,17 +9,24 @@ import { Customer } from '../client-list/client-list.component';
   styleUrls: ['./client-details.component.scss']
 })
 export class ClientDetailsComponent implements OnInit {
+chosenCustomer: Customer;
 
- @Input("chosenCustomerInput") chosenCustomer: Customer;
+//  @Input("chosenCustomerInput") chosenCustomer: Customer;
  copyOfCustomer: Customer;
 
  @Output() editedCustomerEventEmitter = new EventEmitter<Customer>();
 
-  constructor(private toastr: ToastrService) { }
+  constructor(
+    private toastr: ToastrService, 
+    private route: ActivatedRoute
+    ) { 
+    this.route.data.subscribe(value => {
+      this.copyOfCustomer = value["customer"];
+      console.log(value["customer"]);
+    });
+  }
 
-  // don't care about this.
   ngOnInit() {
-    this.copyOfCustomer = Object.assign({}, this.chosenCustomer);
   }
 
   saveName(copyOfCustomer){

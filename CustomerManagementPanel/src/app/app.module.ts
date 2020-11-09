@@ -8,21 +8,21 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { AlertModule } from 'ngx-bootstrap/alert';
-import { ClientListComponent } from './client-list/client-list.component'; 
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
-import { ClientDetailsComponent } from './client-details/client-details.component';
-import { AddCustomerComponent } from './add-customer/add-customer.component';
 import { ToastrModule } from 'ngx-toastr';
+import { AboutComponent } from './about/about.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { ClientsModule } from './clients/clients.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
-  declarations: [		
+  declarations: [							
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    ClientListComponent,
-    ClientDetailsComponent,
-      AddCustomerComponent
+    AboutComponent,
+    NotFoundComponent
    ],
   imports: [
     BrowserModule,
@@ -32,7 +32,9 @@ import { ToastrModule } from 'ngx-toastr';
     FormsModule,
     AlertModule.forRoot(),
     ReactiveFormsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    ClientsModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
