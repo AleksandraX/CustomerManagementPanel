@@ -97,10 +97,8 @@
           <br>
 
   <button type="submit"> Save</button>
+  <button type="button" (click)="form.reset()">Clear</button>
  
   <pre>{{form.value | json }}</pre>
 
 </form>
-
-<button>Clear</button>
-<button>Cancel</button>
