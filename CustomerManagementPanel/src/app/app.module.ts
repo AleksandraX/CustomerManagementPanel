@@ -15,6 +15,8 @@ import { AboutComponent } from './about/about.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ClientsModule } from './clients/clients.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AddressesService } from './addresses/addresses.service';
+import { AddressesModule } from './addresses/addresses.module';
 
 @NgModule({
   declarations: [							
@@ -34,9 +36,12 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ReactiveFormsModule,
     ToastrModule.forRoot(),
     ClientsModule,
-    NgbModule
+    NgbModule,
+    AddressesModule
   ],
-  providers: [],
+  providers: [
+    AddressesService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

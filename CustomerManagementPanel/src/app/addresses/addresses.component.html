@@ -1,0 +1,40 @@
+<div *ngIf="!!addressesList && addressesList.length > 0; else emptyList"> 
+
+    <div class="add">
+        <button class="bntAdd" [routerLink]='["/addresses/add"]'><i class="fa fa-plus-circle"></i> Add Address</button>
+    </div>
+
+  <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Country</th>
+            <th scope="col">City</th>
+            <th scope="col">Zip Code</th>
+            <th scope="col">Street</th>
+            <th scope="col">Details</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let address of addressesList; index as i">
+            <th scope="row">{{ i + 1 }}</th>
+            <td class="columnUserAddress">{{address.country}}</td>
+            <td class="columnUserAddress">{{address.city}}</td>
+            <td class="columnUserAddress">{{address.zipCode}}</td>
+            <td class="columnUserAddress">{{address.street}}</td>
+            <td class="columnBnt">
+                <button class="bntDetails" title="Show details" [routerLink]='["/addresses/details/" + address.id]'>
+                    <i class="fa fa-info-circle"></i></button>
+                    <button class="bntDelete" title="Delete" (click)="addressDelete(address.id)">
+                        <i class="fa fa-trash"></i></button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<ng-template #emptyList>
+    <div class="emptyList">
+        INFO! The address list is empty.
+    </div>
+</ng-template>

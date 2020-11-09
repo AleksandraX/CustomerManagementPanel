@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AboutComponent } from './about/about.component';
-import { AddressesComponent } from './clients/addresses/addresses.component';
+import { AddressesResolver } from './addresses/addresses.resolver';
 import { ClientListComponent } from './clients/client-list/client-list.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { OrdersComponent } from './orders/orders.component';
@@ -33,7 +33,7 @@ const routes: Routes = [
       },
       {
         path:'addresses',
-        component: AddressesComponent,
+        loadChildren: () => import('./addresses/addresses.module').then(m => m.AddressesModule),
       },
       {
         path: '**',
@@ -49,6 +49,9 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [
+    AddressesResolver
+  ]
 })
 export class AppRoutingModule {}

@@ -29,26 +29,26 @@
     <thead>
     <tr>
         <th scope="col">#</th>
-        <th scope="col">ID</th>
         <th scope="col">Full name</th>
-        <th scope="col">City</th>
         <th scope="col">Sex F/M</th>
+        <th scope="col">Age</th>
+        <th scope="col">City</th>
         <th scope="col">Actions</th>
     </tr>
     </thead>
     <tbody>
     <tr *ngFor="let customer of customerObjectList; index as i">
         <th scope="row">{{ i + 1 }}</th>
-        <td class="columnUser">{{ customer.id}}</td>
         <td class="columnUser">{{ customer.name}} {{customer.lastName}}</td>
-        <td class="columnUser">{{ customer.address.city}}</td>
-        <td class="columnUser">{{ customer.sex}}</td>
+        <td class="columnUser">{{ customer.gender === 0 ? "Male" : "Female"}}</td>
+        <td class="columnUser">{{ customer.age}}</td>
+        <td class="columnUser">{{ customer.address?.city}}</td>
         <td class="columnBnt">
-            <button class="bntDelete" (click)="deleteNewListCustomer(customer)">
+            <button class="bntDelete" title="Delete" (click)="deleteCustomer(customer.id)">
                 <i class="fa fa-trash"></i></button>
-            <button class="bntEdit" [routerLink]='["/clients/edit/" + customer.id]'>
+            <button class="bntEdit" title="Edit" [routerLink]='["/clients/edit/" + customer.id]'>
                 <i class="fa fa-edit"></i></button>
-            <button class="bntShow" [routerLink]='["/clients/details/" + customer.id]'>
+            <button class="bntShow" title="Show details" [routerLink]='["/clients/details/" + customer.id]'>
                 <i class="fa fa-info-circle"></i></button>
         </td>
     </tr>
