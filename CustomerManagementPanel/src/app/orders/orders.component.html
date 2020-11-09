@@ -1,3 +1,24 @@
-<p>
-  orders works!
-</p>
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Ordered by customer id</th>
+      <th scope="col">Price</th>
+      <th scope="col">Ordered date</th>
+      <th scope="col">Last update date</th>
+      <th scope="col">Days of last update</th>
+      <th scope="col">Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let order of ordersList; index as i">
+      <th scope="row">{{ i + 1 }}</th>
+      <td class="column" [routerLink]='["/clients/details/" + order.orderedByCustomerId]'>{{order.orderedByCustomerId}}</td>
+      <td class="column">{{order.price.toFixed(2)}}</td>
+      <td class="column">{{order.orderedDate | date}}</td>
+      <td class="column">{{order.lastUpdateDate | date}}</td>
+      <td class="column">{{getDays(order.lastUpdateDate)}}</td>
+      <td class="column">{{order.status}}</td>
+  </tr>
+  </tbody>
+</table>

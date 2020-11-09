@@ -17,6 +17,8 @@ import { ClientsModule } from './clients/clients.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AddressesService } from './addresses/addresses.service';
 import { AddressesModule } from './addresses/addresses.module';
+import { OrdersComponent } from './orders/orders.component';
+import { OrdersService } from './orders/orders.service';
 
 @NgModule({
   declarations: [							
@@ -24,7 +26,8 @@ import { AddressesModule } from './addresses/addresses.module';
     HeaderComponent,
     FooterComponent,
     AboutComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    OrdersComponent
    ],
   imports: [
     BrowserModule,
@@ -40,7 +43,8 @@ import { AddressesModule } from './addresses/addresses.module';
     AddressesModule
   ],
   providers: [
-    AddressesService
+    AddressesService,
+    OrdersService
   ],
   bootstrap: [AppComponent]
 })
