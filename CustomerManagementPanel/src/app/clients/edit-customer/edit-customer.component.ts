@@ -1,8 +1,10 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { ClientsService } from '../clients.service';
 import { Customer } from '../models/customer';
-import { CUSTOMERLIST } from '../models/customer-list';
+import { CustomerForCreation } from '../models/customerForCreation';
+
 
 @Component({
   selector: 'app-edit-customer',
@@ -22,12 +24,14 @@ export class EditCustomerComponent implements OnInit {
   
 
   constructor(
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private clientsService: ClientsService
   ) { 
     this.route.data.subscribe(value => {
       this.copyOfCustomer = value["customer"];
+      console.log("in component: ", this.copyOfCustomer);
 
-      if(this.copyOfCustomer.id===0){
+      if(this.copyOfCustomer.id==="0"){
         this.addingMode = true;
       }else if(this.copyOfCustomer === null){
         this.customerExist = false;
@@ -43,9 +47,9 @@ export class EditCustomerComponent implements OnInit {
       "city": new FormControl(this.copyOfCustomer.address.city,[Validators.required, Validators.minLength(3), Validators.maxLength(30)]),
       "street": new FormControl(this.copyOfCustomer.address.street,[Validators.required, Validators.minLength(3), Validators.maxLength(40)])
     }),
-    "gender": new FormControl(this.copyOfCustomer.sex, [Validators.required]),
+    "gender": new FormControl(this.copyOfCustomer.gender, [Validators.required]),
     "phoneNumber": new FormControl(this.copyOfCustomer.phoneNumber,[Validators.required, Validators.minLength(9), Validators.maxLength(15),]),
-    "mail": new FormControl(this.copyOfCustomer.mail,[Validators.required, Validators.minLength(5), Validators.maxLength(35), Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")])
+    "mail": new FormControl(this.copyOfCustomer.email,[Validators.required, Validators.minLength(5), Validators.maxLength(35), Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")])
   });
 
 }
@@ -53,15 +57,24 @@ export class EditCustomerComponent implements OnInit {
   ngOnInit() {
   }
 
-  saveCustomer(newCustomer: Customer){
-    console.log(newCustomer);
-    CUSTOMERLIST.push(newCustomer);
-    console.log(CUSTOMERLIST);
-  }
+  saveCustomer(){
+    console.log("fisr step saving", this.form.value);
 
+    let customerToCreate: CustomerForCreation = {
+      name: this.form.value.name,
+      lastName: this.form.value.lastName,
+      age: this.form.value.age,
+      address: this.form.value.address,
+      phoneNumber: this.form.value.phoneNumber,
+      email: this.form.value.email,
+      gender: this.form.value.gender
+    }
 
-  onSubmit() {
-    console.log(this.form.value);
+    console.log("saving", customerToCreate)
+    // wywolac service i zapisac
+     this.clientsService.create(customerToCreate).subscribe(response => {
+       console.log("Subscribe for creation")
+     });
   }
 
   required(propName: string): boolean {

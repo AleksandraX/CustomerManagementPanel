@@ -1,0 +1,58 @@
+.bntDetails{
+    font-size: 1.6rem;
+    position: relative;
+    background: transparent;
+    border: none;
+    left: .5rem;
+    padding: .1rem .5rem ;
+    transition: .3s transform;
+}
+
+.bntDetails:hover{
+    transform: scale(1.2)
+}
+
+.bntDetails:focus{
+    outline: none;
+}
+
+.table{
+    margin-bottom: 3rem;
+}
+
+.bntDelete{
+    color: red;
+    position: relative;
+    background: transparent;
+    border: none;
+    padding: .1rem .5rem;
+    font-size: 1.6rem;
+    transition: .3s transform;
+    left: 3rem;
+}
+
+.bntDelete:hover{
+    transform: scale(1.2)
+}
+
+.bntDelete:focus{
+    outline: none;
+}
+
+.bntAdd{
+    position: sticky;
+    background-color: rgb(71, 194, 71);
+    color: rgb(255, 255, 255);
+    border: none;
+    border-radius: 5px;
+    padding: .4%;
+    transition: .3s color, .3s transform ;
+    outline: none;
+    left: 100rem;
+    margin-bottom: .2rem;
+}
+
+.bntAdd:hover{
+    color: rgb(255, 255, 255);
+    transform: scale(.9);
+}

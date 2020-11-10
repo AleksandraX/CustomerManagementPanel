@@ -7,6 +7,8 @@ import { EditCustomerComponent } from './edit-customer/edit-customer.component';
 import { ClientDetailsComponent } from './client-details/client-details.component';
 import { ClientListComponent } from './client-list/client-list.component';
 import { ClientsRoutingModule } from './clients-routing.module';
+import { HttpClientModule } from '@angular/common/http';
+import { ClientsService } from './clients.service';
 
 @NgModule({
     declarations: [							
@@ -20,9 +22,12 @@ import { ClientsRoutingModule } from './clients-routing.module';
       AlertModule.forRoot(),
       ReactiveFormsModule,
       ToastrModule.forRoot(),
-      ClientsRoutingModule
+      ClientsRoutingModule,
+      HttpClientModule
     ],
-    providers: [],
+    providers: [
+      ClientsService
+    ],
   })
   export class ClientsModule { }
   

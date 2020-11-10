@@ -47,9 +47,9 @@
 
     <br>
     <label for="sex">Choose your gender: </label>
-    <select name="sex" id="sex" [(ngModel)]="copyOfCustomer.sex">
-        <option value="M">M</option>
-        <option value="F">F</option>
+    <select name="sex" id="sex" [(ngModel)]="copyOfCustomer.gender">
+        <option value="male">M</option>
+        <option value="female">F</option>
     </select>
     <button class="saveGender" (click)="saveGender(copyOfCustomer)">save</button>
     <br>
@@ -70,7 +70,7 @@
     <button (click)="savePhoneNumber(copyOfCustomer)">save</button>
     <br>
 
-    <input type="text" placeholder="Mail" [(ngModel)]="copyOfCustomer.mail" required minlength="5" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" maxlength="35" name="mail" id="mail" #mail="ngModel">
+    <input type="text" placeholder="Mail" [(ngModel)]="copyOfCustomer.email" required minlength="5" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" maxlength="35" name="mail" id="mail" #mail="ngModel">
     <div *ngIf="mail.errors && (mail.dirty || mail.touched)"
             class="alert alert-danger">
         <div *ngIf="mail.errors.required">
