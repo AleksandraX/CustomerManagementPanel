@@ -2,7 +2,7 @@
   <thead class="thead-dark">
     <tr>
       <th scope="col">Id</th>
-      <th scope="col">Ordered by customer id</th>
+      <th scope="col">Ordered by customer</th>
       <th scope="col">Price</th>
       <th scope="col">Ordered date</th>
       <th scope="col">Last update date</th>
@@ -13,12 +13,12 @@
   <tbody>
     <tr *ngFor="let order of ordersList; index as i">
       <th scope="row">{{ i + 1 }}</th>
-      <td class="column" [routerLink]='["/clients/details/" + order.orderedByCustomerId]'>{{order.orderedByCustomerId}}</td>
+      <td class="column" [routerLink]='["/clients/details/" + order.orderedByCustomerId]'>{{order.orderedByCustomerFullName}}</td>
       <td class="column">{{order.price.toFixed(2)}}</td>
-      <td class="column">{{order.orderedDate | date}}</td>
+      <td class="column">{{order.creationDate | date}}</td>
       <td class="column">{{order.lastUpdateDate | date}}</td>
       <td class="column">{{getDays(order.lastUpdateDate)}}</td>
-      <td class="column">{{order.status}}</td>
+      <td class="column">{{order.statusId}}</td>
   </tr>
   </tbody>
 </table>

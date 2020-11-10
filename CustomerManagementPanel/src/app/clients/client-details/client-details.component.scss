@@ -47,40 +47,24 @@ a:hover{
     border-bottom: .1rem solid rgb(0, 0, 0);
 }
 
-.infoCustomer{
-    margin-bottom: 4rem;
-    border-bottom: .2rem solid rgb(51,174,233);
-    width: 38rem;
-    height: 3.7rem;
-}
-
-.halo1{
-    
-    border-left: rgb(0, 0, 0) .2rem solid;
-}
-
-.foto{
-    position: relative;
-    left: 4rem;
-}
-
-.nameId{
-    position: relative;
-    top: 3rem;
-    left: 3rem;
-}
-
-.foto{
-    display: block;
+img{
     width: 12rem;
-    height: 11rem;
-    background-color: hotpink;
+    height: 13rem;
 }
 
-.country, .city, .zipCode, .street, .phoneNumber, .email{
-    margin-bottom: 1rem;
+li{
+    border: none;
+    transition: transform .3s ;
+}
+li:hover{
+    color: chocolate;
+    transform: scale(1.2);
 }
 
-.name , .lastName, .gender{
-    margin-bottom: 2rem;
+.colNAV{
+    border: none;
+}
+
+td{
+    border-top: .1rem solid black;
 }

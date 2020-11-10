@@ -1,9 +1,14 @@
-export interface Orders{
+export interface Order{
     id: string,
-    orderedByCustomerId: string,
     price: number,
-    orderedDate: Date,
-    lastUpdateDate: Date,
-    status: string
+    creationDate: Date,
+    lastUpdateDate?: Date,
+    orderedByCustomerId: string,
+    orderedByCustomerFullName: string,
+    statusId: string
   }
 
+  export enum Gender{
+    male = 0,
+    female = 1
+  }

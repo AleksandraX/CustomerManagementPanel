@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
 import { of } from 'rxjs/internal/observable/of';
 import { tap, catchError } from 'rxjs/operators';
-import { Orders } from '../clients/models/orders';
+import { Order } from '../clients/models/orders';
 
 @Injectable()
 
@@ -18,13 +18,13 @@ constructor(private httpClient:HttpClient) {
     this.options = { headers: this.headers };
  }
 
- getAll() : Observable<Orders[]> {
-    return this.httpClient.get<Orders[]>(this.baseUrl + "/getall").pipe(
+ getAllListItems() : Observable<Order[]> {
+    return this.httpClient.get<Order[]>(this.baseUrl + "/getAllListItems").pipe(
         tap(response =>
             {
                 console.log("From services:", response);
             }),
-        catchError(this.handleError<Orders[]>("getAllCustomers"))
+        catchError(this.handleError<Order[]>("getAllCustomers"))
     );  
 }
 
