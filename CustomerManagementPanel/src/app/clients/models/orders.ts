@@ -8,7 +8,17 @@ export interface Order{
     statusId: string
   }
 
+export interface OrderStatus{
+  id: string,
+  name: string
+}
+
   export enum Gender{
     male = 0,
     female = 1
+  }
+
+  export interface OrderStatusChangeParameters {
+    orderId: string;
+    newOrderStatusId: string;
   }

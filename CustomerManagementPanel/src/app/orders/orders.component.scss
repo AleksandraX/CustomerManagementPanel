@@ -1,0 +1,30 @@
+.column1{
+    cursor: pointer;
+    transition: transform .3s ;
+}
+
+.column1:focus{
+    border: none;
+    text-decoration: none;
+    outline: none;
+    background: transparent;
+}
+
+.column1:hover{
+    color: chocolate;
+    transform: scale(1.1);
+}
+
+select {
+    border: .2rem solid #E6E6E6;
+    border-radius: .2rem;
+    transition: background-color .3s ;
+}
+
+select:hover{
+    background-color: #E6E6E6;
+}
+
+.column, .columnInfo{
+    text-align: center;
+}
