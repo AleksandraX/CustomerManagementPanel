@@ -28,3 +28,12 @@ select:hover{
 .column, .columnInfo{
     text-align: center;
 }
+
+
+.optionDelivered {
+    background-color: green;
+}
+
+.optionCancelled {
+    background-color: grey;
+}

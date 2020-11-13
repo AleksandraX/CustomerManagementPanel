@@ -16,6 +16,7 @@ export class OrdersComponent implements OnInit {
   id: number = 1;
   orderStatuses: OrderStatus[];
   selectedOrderStatus: OrderStatus;
+  optionDisabled: boolean = false;
 
   constructor(    
     private toastr: ToastrService,
@@ -70,5 +71,11 @@ export class OrdersComponent implements OnInit {
 
     getSelected(orderId:string) : OrderStatus{
       return this.orderStatuses.find(status => status.id == orderId);
+    }
+
+
+    checkIsCancelled(chosen: string) {
+      console.log(chosen);
+      return true;
     }
 }

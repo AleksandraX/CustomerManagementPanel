@@ -20,8 +20,21 @@
       <td class="column">{{getDays(order.lastUpdateDate)}}</td>
       <td class="column">
 
-        <select (change)="onSelectedStatus($event.target.value, order.id)">
-          <option *ngFor="let orderStatus of orderStatuses" [selected]="orderStatus.id === order.statusId" [value]="orderStatus.id" >{{orderStatus.name}}</option>
+        <select 
+        #orderStatusSelect
+        [ngClass]="{
+          'optionCancelled': checkIsCancelled()
+        }"
+        (change)="onSelectedStatus($event.target.value, order.id)">
+          <option 
+           *ngFor="let orderStatus of orderStatuses" 
+           [selected]="orderStatus.id === order.statusId" 
+           [value]="orderStatus.id" 
+           [ngClass]="{
+            'optionDelivered': orderStatus.name === 'Delivered', 
+            'optionCancelled': orderStatus.name === 'Cancelled'}" >
+           {{orderStatus.name}}
+          </option>
         </select>
 
       </td>
