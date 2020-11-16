@@ -19,15 +19,17 @@ import { AddressesService } from './addresses/addresses.service';
 import { AddressesModule } from './addresses/addresses.module';
 import { OrdersComponent } from './orders/orders.component';
 import { OrdersService } from './orders/orders.service';
+import { ContactComponent } from './contact/contact.component';
 
 @NgModule({
-  declarations: [							
+  declarations: [								
     AppComponent,
     HeaderComponent,
     FooterComponent,
     AboutComponent,
     NotFoundComponent,
-    OrdersComponent
+    OrdersComponent,
+      ContactComponent
    ],
   imports: [
     BrowserModule,
