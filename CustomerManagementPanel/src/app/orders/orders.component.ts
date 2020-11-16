@@ -48,7 +48,7 @@ export class OrdersComponent implements OnInit {
       let date = new Date(dateInString);
       
       let now = new Date(Date.now());
-      let data = (now.getDay() - date.getDay());
+      let data = (date.getDay() - now.getDay());
       return(data + " days") ;
   };
 
@@ -73,9 +73,12 @@ export class OrdersComponent implements OnInit {
       return this.orderStatuses.find(status => status.id == orderId);
     }
 
+    checkStatus(orderStatusId: string, cokolwiekCoPowiemywHtmlu: string) {
+      let orderStatus = this.orderStatuses.find(status => status.id == orderStatusId);
 
-    checkIsCancelled(chosen: string) {
-      console.log(chosen);
-      return true;
+      if(orderStatus.name === cokolwiekCoPowiemywHtmlu) {
+        return true;
+      }
+        return false;
     }
 }

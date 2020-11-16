@@ -16,24 +16,39 @@
 }
 
 select {
-    border: .2rem solid #E6E6E6;
+    border: .1em solid #E6E6E6;
     border-radius: .2rem;
+    background-color: rgb(255, 251, 245);
     transition: background-color .3s ;
 }
 
-select:hover{
-    background-color: #E6E6E6;
-}
+
 
 .column, .columnInfo{
     text-align: center;
 }
 
-
-.optionDelivered {
-    background-color: green;
+.optionDelivered{
+    background-color: rgb(4, 192, 4);
 }
 
-.optionCancelled {
-    background-color: grey;
+.optionCancelled{
+    background-color: rgb(241, 102, 102);
 }
+
+.optionDelivered:disabled{
+    background-color: rgb(4, 192, 4);
+    cursor: not-allowed;
+    opacity: .9;
+    color: rgb(53, 53, 53);
+}
+
+.optionCancelled:disabled{
+    background-color: rgb(241, 102, 102);
+    cursor: not-allowed;
+    opacity: .9;
+    color: rgb(53, 53, 53);
+    
+}
+
+

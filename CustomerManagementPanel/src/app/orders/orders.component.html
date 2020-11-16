@@ -22,17 +22,19 @@
 
         <select 
         #orderStatusSelect
+        [disabled]="checkStatus(order.statusId, 'Cancelled') || checkStatus(order.statusId, 'Delivered')"
         [ngClass]="{
-          'optionCancelled': checkIsCancelled()
+          'optionCancelled':  checkStatus(order.statusId, 'Cancelled'),
+          'optionDelivered' : checkStatus(order.statusId, 'Delivered')
         }"
         (change)="onSelectedStatus($event.target.value, order.id)">
           <option 
            *ngFor="let orderStatus of orderStatuses" 
            [selected]="orderStatus.id === order.statusId" 
            [value]="orderStatus.id" 
-           [ngClass]="{
+           [ngClass]="{ 
             'optionDelivered': orderStatus.name === 'Delivered', 
-            'optionCancelled': orderStatus.name === 'Cancelled'}" >
+            'optionCancelled': orderStatus.name === 'Cancelled'}">
            {{orderStatus.name}}
           </option>
         </select>
