@@ -1,25 +1,136 @@
 <div class="container">
   <div style="text-align:center">
     <h2>Contact</h2>
-    <p>Swing by for a cup of coffee, or leave us a message:</p>
+    <p>Leave a message: </p>
   </div>
   <div class="row">
     <div class="column">
-      <form action="/action_page.php">
-        <label for="fname">First Name</label>
-        <input type="text" id="fname" name="firstname" placeholder="Your name..">
-        <label for="lname">Last Name</label>
-        <input type="text" id="lname" name="lastname" placeholder="Your last name..">
-        <label for="country">Country</label>
-        <select id="country" name="country">
-          <option value="australia">Australia</option>
-          <option value="canada">Canada</option>
-          <option value="usa">USA</option>
-        </select>
+      <form  [formGroup]="form" action="/action_page.php">
+        <label for="name">First Name</label>
+        <input 
+        class="inputNgForm"
+        type="text" 
+        formControlName="name" 
+        id="name" 
+        name="firstname" 
+        placeholder="Your name..">
+
+        <div *ngIf="form.controls['name'].invalid && (form.controls['name'].dirty || form.controls['name'].touched)"
+        class="alert alert-danger">
+        <div *ngIf="form.controls['name'].errors.required">
+            Name is required <i class="fa fa-exclamation"></i>
+        </div>
+        <div *ngIf="form.controls['name'].errors.minlength">
+            Name is too short <i class="fa fa-exclamation"></i>
+        </div>
+        <div *ngIf="form.controls['name'].errors.maxlength">
+            Name is too long <i class="fa fa-exclamation"></i>
+        </div>
+        <div *ngIf="form.controls['name'].errors.pattern">
+            Name cannot be a number <i class="fa fa-exclamation"></i>
+        </div>
+      </div>
+
+        <label for="lastName">Last Name</label>
+        <input 
+        class="inputNgForm"
+        formControlName="lastName" 
+        type="text" 
+        id="lastName" 
+        name="lastname" 
+        placeholder="Your last name..">
+
+        <div *ngIf="form.controls['lastName'].invalid && (form.controls['lastName'].dirty || form.controls['lastName'].touched)"
+        class="alert alert-danger">
+        <div *ngIf="form.controls['lastName'].errors.required">
+          Last name is required <i class="fa fa-exclamation"></i>
+        </div>
+        <div *ngIf="form.controls['lastName'].errors.minlength">
+          Last name is too short <i class="fa fa-exclamation"></i>
+        </div>
+        <div *ngIf="form.controls['lastName'].errors.maxlength">
+          Last name is too long <i class="fa fa-exclamation"></i>
+       </div>
+       <div *ngIf="form.controls['lastName'].errors.pattern">
+          Last name cannot be a number <i class="fa fa-exclamation"></i>
+     </div>
+      </div>
+
+        <label for="phoneNumber">Phone <h6> *(not obligatory)</h6></label>
+        <input 
+        class="inputNgForm"
+        formControlName="phoneNumber" 
+        type="text" 
+        id="phone" 
+        name="phone" 
+        placeholder="Your phone number..">
+
+        <div *ngIf="form.controls['phoneNumber'].invalid && (form.controls['phoneNumber'].dirty || form.controls['phoneNumber'].touched)"
+        class="alert alert-danger">
+        <div *ngIf="form.controls['phoneNumber'].errors.minlength">
+          Phone number is too short <i class="fa fa-exclamation"></i>
+        </div>
+        <div *ngIf="form.controls['phoneNumber'].errors.maxlength">
+          Phone number is too long <i class="fa fa-exclamation"></i>
+       </div>
+       <div *ngIf="form.controls['phoneNumber'].errors.pattern">
+        Phone number cannot be a digit <i class="fa fa-exclamation"></i>
+     </div>
+      </div>
+
+      <label for="email">Email</label>
+      <input 
+      class="inputNgForm"
+      formControlName="email" 
+      type="text" 
+      id="email" 
+      name="email" 
+      placeholder="Your email..">
+
+      <div *ngIf="form.controls['email'].invalid && (form.controls['email'].dirty || form.controls['email'].touched)"
+      class="alert alert-danger">
+      <div *ngIf="form.controls['email'].errors.required">
+        Email is required <i class="fa fa-exclamation"></i>
+      </div>
+      <div *ngIf="form.controls['email'].errors.minlength">
+        Email is too short <i class="fa fa-exclamation"></i>
+      </div>
+      <div *ngIf="form.controls['email'].errors.maxlength">
+        Email is too long <i class="fa fa-exclamation"></i>
+     </div>
+     <div *ngIf="form.controls['email'].errors.pattern">
+        Email is invalid  <i class="fa fa-exclamation"></i>
+   </div>
+    </div>
+
+      <div  class="ngFormHere">
         <label for="subject">Subject</label>
-        <textarea id="subject" name="subject" placeholder="Write something.." style="height:170px"></textarea>
-        <input type="submit" value="Submit">
+        <input 
+        class="inputNgForm"
+        formControlName="subject" 
+        type="text" 
+        id="subject" 
+        name="subject" 
+        placeholder="Your subject..">
+
+        <div *ngIf="form.controls['subject'].invalid && (form.controls['subject'].dirty || form.controls['subject'].touched)"
+        class="alert alert-danger">
+        <div *ngIf="form.controls['subject'].errors.required">
+          Subject is required <i class="fa fa-exclamation"></i>
+        </div>
+        <div *ngIf="form.controls['subject'].errors.minlength">
+          Subject is too short <i class="fa fa-exclamation"></i>
+        </div>
+        <div *ngIf="form.controls['subject'].errors.maxlength">
+          Subject is too long <i class="fa fa-exclamation"></i>
+       </div>
+      </div>
+    </div>
+        <label for="text">Text</label>
+        <textarea id="subject" name="subject" placeholder="Write something.." style="height:13rem"></textarea>
+        <button class="buttonSubmit" type="text"><a href="mailto: kacper.berganski@onet.pl">Submit</a></button>
       </form>
     </div>
   </div>
 </div>
+

@@ -21,6 +21,7 @@ import { OrdersComponent } from './orders/orders.component';
 import { OrdersService } from './orders/orders.service';
 import { ContactComponent } from './contact/contact.component';
 
+
 @NgModule({
   declarations: [								
     AppComponent,
@@ -29,7 +30,7 @@ import { ContactComponent } from './contact/contact.component';
     AboutComponent,
     NotFoundComponent,
     OrdersComponent,
-      ContactComponent
+    ContactComponent
    ],
   imports: [
     BrowserModule,
