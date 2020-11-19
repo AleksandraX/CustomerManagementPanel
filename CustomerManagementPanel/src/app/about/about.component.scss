@@ -11,6 +11,20 @@ ul{
     list-style-type: none;
 }
 
+.interestsUl{
+    // width: 7rem;
+    display: block;
+}
+
+.zero{
+    width: 15rem;
+    display: block;
+}
+
+.interestsLi{
+    width: 15rem;
+}
+
 li{
     margin-top: 1rem;
     font-weight: bold;
