@@ -19,6 +19,7 @@ import { AddressesService } from './addresses/addresses.service';
 import { AddressesModule } from './addresses/addresses.module';
 import { OrdersComponent } from './orders/orders.component';
 import { OrdersService } from './orders/orders.service';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [							
@@ -40,7 +41,8 @@ import { OrdersService } from './orders/orders.service';
     ToastrModule.forRoot(),
     ClientsModule,
     NgbModule,
-    AddressesModule
+    AddressesModule,
+    FontAwesomeModule
   ],
   providers: [
     AddressesService,
