@@ -1,0 +1,99 @@
+.imgProfil{
+    width: 18rem;
+}
+
+.secondRow, .thirdRow, .firstRow{
+    margin-bottom: 5rem;
+}
+
+ul{
+    text-decoration: none;
+    list-style-type: none;
+}
+
+.zero{
+    width: 15rem;
+    display: inline-block;
+}
+
+li{
+    margin-top: 1rem;
+    font-weight: bold;
+}
+
+.interestsLi{
+    list-style-type: none;
+}
+
+.interests{
+    position: relative;
+    left: .8rem;
+}
+
+.zero{
+    bottom: 1.3rem;
+}
+
+
+.line{
+    border-top: .1rem solid black;
+}
+
+h2{
+    margin-top: 2rem;
+}
+
+.bar{
+    width: 40%;
+    background-color: #ddd;
+    height: 1.6rem;
+    border-radius: .4rem;
+}
+  
+.skills{
+    text-align: right;
+    color: rgb(255, 255, 255);
+    height: 1.6rem;
+    border-radius: .4rem;
+}
+
+.html {width: 50%; background-color: #4CAF50;}
+.css {width: 50%; background-color: #2196F3;}
+.scss {width: 50%; background-color: #9e36f4;}
+.typeScript {width: 20%; background-color: #3ce2ff;}
+.angular {width: 20%; background-color: #ff1100;}
+.javaScript {width: 20%; background-color: #ffe600;}
+.c {width: 10%; background-color: #f436cb;}
+
+
+.abilities{
+    margin-bottom: 4.2rem;
+}
+
+.ulAbilities{
+    position: relative;
+    top: 2rem;
+}
+
+.achievements, .interests{
+    margin-bottom: 3.5rem;
+}
+
+.achievementsUl{
+    width: 80%;
+}
+
+.achievementsLi{
+    margin-bottom: 2rem;
+}
+
+
+.icon{
+    font-size: 1.5rem;
+    margin-right: 1.5rem;
+}
+
+.icon1{
+    font-size: 1.2rem;
+    margin-right: 1rem;
+}
