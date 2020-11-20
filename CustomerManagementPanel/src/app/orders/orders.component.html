@@ -1,24 +1,45 @@
 <table class="table">
   <thead class="thead-dark">
     <tr>
-      <th scope="col">Id</th>
-      <th scope="col">Ordered by customer id</th>
-      <th scope="col">Price</th>
-      <th scope="col">Ordered date</th>
-      <th scope="col">Last update date</th>
-      <th scope="col">Days of last update</th>
-      <th scope="col">Status</th>
+      <th class="columnInfo1" scope="col">Id</th>
+      <th class="columnInfo1" scope="col">Ordered by customer</th>
+      <th class="columnInfo" scope="col">Price</th>
+      <th class="columnInfo" scope="col">Ordered date</th>
+      <th class="columnInfo" scope="col">Last update date</th>
+      <th class="columnInfo" scope="col">Days of last update</th>
+      <th class="columnInfo" scope="col">Status</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let order of ordersList; index as i">
       <th scope="row">{{ i + 1 }}</th>
-      <td class="column" [routerLink]='["/clients/details/" + order.orderedByCustomerId]'>{{order.orderedByCustomerId}}</td>
+      <td class="column1" [routerLink]='["/clients/details/" + order.orderedByCustomerId]'>{{order.orderedByCustomerFullName}}</td>
       <td class="column">{{order.price.toFixed(2)}}</td>
-      <td class="column">{{order.orderedDate | date}}</td>
+      <td class="column">{{order.creationDate | date}}</td>
       <td class="column">{{order.lastUpdateDate | date}}</td>
       <td class="column">{{getDays(order.lastUpdateDate)}}</td>
-      <td class="column">{{order.status}}</td>
+      <td class="column">
+
+        <select 
+        #orderStatusSelect
+        [disabled]="checkStatus(order.statusId, 'Cancelled') || checkStatus(order.statusId, 'Delivered')"
+        [ngClass]="{
+          'optionCancelled':  checkStatus(order.statusId, 'Cancelled'),
+          'optionDelivered' : checkStatus(order.statusId, 'Delivered')
+        }"
+        (change)="onSelectedStatus($event.target.value, order.id)">
+          <option 
+           *ngFor="let orderStatus of orderStatuses" 
+           [selected]="orderStatus.id === order.statusId" 
+           [value]="orderStatus.id" 
+           [ngClass]="{ 
+            'optionDelivered': orderStatus.name === 'Delivered', 
+            'optionCancelled': orderStatus.name === 'Cancelled'}">
+           {{orderStatus.name}}
+          </option>
+        </select>
+
+      </td>
   </tr>
   </tbody>
 </table>

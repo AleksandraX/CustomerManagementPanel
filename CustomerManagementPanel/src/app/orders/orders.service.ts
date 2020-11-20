@@ -1,9 +1,9 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
 import { of } from 'rxjs/internal/observable/of';
 import { tap, catchError } from 'rxjs/operators';
-import { Orders } from '../clients/models/orders';
+import { Order, OrderStatus, OrderStatusChangeParameters } from '../clients/models/orders';
 
 @Injectable()
 
@@ -18,15 +18,40 @@ constructor(private httpClient:HttpClient) {
     this.options = { headers: this.headers };
  }
 
- getAll() : Observable<Orders[]> {
-    return this.httpClient.get<Orders[]>(this.baseUrl + "/getall").pipe(
+ getAllListItems() : Observable<Order[]> {
+    return this.httpClient.get<Order[]>(this.baseUrl + "/getAllListItems").pipe(
         tap(response =>
             {
                 console.log("From services:", response);
             }),
-        catchError(this.handleError<Orders[]>("getAllCustomers"))
+        catchError(this.handleError<Order[]>("getAllCustomers"))
     );  
 }
+
+    getAllOrderStatus() : Observable<OrderStatus[]>{
+        return this.httpClient.get<OrderStatus[]>("https://customermanagmentportalapi.azurewebsites.net/api/orderStatuses" + "/getAll").pipe(
+            tap(response =>
+                {
+                    console.log("From services:", response);
+                }),
+            catchError(this.handleError<OrderStatus[]>("getAllOrderStatus"))
+        );  
+    };
+
+    changeOrderStatus(orderStatusChangeParameters: OrderStatusChangeParameters): Observable<any>{
+        let params = new HttpParams();
+        params = params.append("OrderId", orderStatusChangeParameters.orderId);
+        params = params.append('NewOrderStatusId', orderStatusChangeParameters.newOrderStatusId);
+
+        return this.httpClient.put<any>(this.baseUrl + "/ChangeOrderStatus",  null, { params: params }).pipe(
+            tap(response =>
+                {
+                    console.log("Save Status", response);
+                }),
+            catchError(this.handleError<any>("putOrderStatus"))
+        );
+    };
+
 
     getDays(lastUpdateDate: Date, theNumberOfDays: Date){
       // let data1: Date = parseInt(lastUpdateDate);

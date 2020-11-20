@@ -3,6 +3,9 @@
     background: rgb(51,174,233);
     height: 9rem;
     width: 100%;
+    clear: both;
+    position: sticky;
+    bottom: 0;
 }
 
 .header-by{
@@ -11,6 +14,7 @@
     left: 0;
     right: 0;
     text-align: center;
+    top: .8rem;
 }
 
 .case{
