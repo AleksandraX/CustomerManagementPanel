@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { faTrash, faInfo, faPlusSquare } from '@fortawesome/free-solid-svg-icons';
 import { ToastrService } from 'ngx-toastr';
 import { Address } from '../clients/models/address';
 import { AddressesService } from './addresses.service';
@@ -13,6 +14,10 @@ import { AddressesService } from './addresses.service';
 export class AddressesComponent implements OnInit {
   addressesList: Address[];
   id: number = 1;
+
+  faTrash = faTrash;
+  faInfo = faInfo;
+  faPlusSquare = faPlusSquare;
 
     constructor(
       private toastr: ToastrService,

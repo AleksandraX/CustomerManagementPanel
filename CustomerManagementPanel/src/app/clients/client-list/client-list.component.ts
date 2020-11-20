@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { faEdit, faInfo, faPlusCircle, faPlusSquare, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { ToastrService } from 'ngx-toastr';
 import { ClientsService } from '../clients.service';
 import { Customer } from '../models/customer';
@@ -17,6 +18,11 @@ export class ClientListComponent implements OnInit {
   newCustomer: Customer = null;
   id: number = 11114;
   customerObjectList: Customer[];
+
+  faTrash = faTrash;
+  faEdit = faEdit;
+  faInfo = faInfo;
+  faPlusSquare = faPlusSquare;
   
   constructor(
     private toastr: ToastrService,

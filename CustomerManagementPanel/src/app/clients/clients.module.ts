@@ -9,6 +9,7 @@ import { ClientListComponent } from './client-list/client-list.component';
 import { ClientsRoutingModule } from './clients-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ClientsService } from './clients.service';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
     declarations: [							
@@ -23,7 +24,8 @@ import { ClientsService } from './clients.service';
       ReactiveFormsModule,
       ToastrModule.forRoot(),
       ClientsRoutingModule,
-      HttpClientModule
+      HttpClientModule,
+      FontAwesomeModule
     ],
     providers: [
       ClientsService

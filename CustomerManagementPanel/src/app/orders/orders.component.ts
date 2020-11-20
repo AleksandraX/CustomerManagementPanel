@@ -48,7 +48,7 @@ export class OrdersComponent implements OnInit {
       let date = new Date(dateInString);
       
       let now = new Date(Date.now());
-      let data = (date.getDay() - now.getDay());
+      let data = (now.getDay() - date.getDay());
       return(data + " days") ;
   };
 

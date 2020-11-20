@@ -1,46 +1,33 @@
-<h1>Address</h1>
-<div>
-  <p>Id: {{address?.id}}</p>
-  <p>Country: {{address?.country}}</p>
-  <p>City: {{address?.city}}</p>
-  <p>Zip Code: {{address?.zipCode}}</p>
-  <p>Street: {{address?.street}}</p>
+<h1>Address :</h1>
+<div class="adressDeails">
+  <p class="adressDeailsP"><fa-icon class="icon" [icon]="faIdCard"></fa-icon> Id: {{address?.id}}</p>
+  <p class="adressDeailsP"><fa-icon class="icon" [icon]="faGlobaleAmericas"></fa-icon> Country: {{address?.country}}</p>
+  <p class="adressDeailsP"><fa-icon class="icon" [icon]="faCity"></fa-icon> City: {{address?.city}}</p>
+  <p class="adressDeailsP"><fa-icon class="icon" [icon]="faMailBulk"></fa-icon> Zip Code: {{address?.zipCode}}</p>
+  <p class="adressDeailsP"><fa-icon class="icon" [icon]="faRoad"></fa-icon> Street: {{address?.street}}</p>
 </div>
-
 <br>
 
-<h2>Customers</h2>
+<h2 class="customersH2">Customers:</h2>
+<div *ngIf="!!address?.residents && address?.residents.length > 0; else emptyList"></div>
 
-<!-- 
-<carousel>
-
-        <slide *ngFor="let resident of address?.residents; index as i">
-        <div class="d-block w-100">
-          <p>Id: {{resident?.customerId}}</p>
-          <p>Name: {{resident?.name}}</p>
-          <p>Last Name: {{resident?.lastName}}</p>
-          <p>Email: {{resident?.email}}</p>
-          <p>Phone Number: {{resident?.phoneNumber}}</p>
-        </div>
-    </slide>
-
-</carousel> -->
-
-<!-- dokończyć robić ngIf dla pustego pola  -->
-<!-- <div>*ngIf="expression"</div> -->
-<carousel [itemsPerSlide]="address?.residents.length <= 3 ? address?.residents.length : 3"
+<carousel class="bloc" [itemsPerSlide]="address?.residents.length <= 3 ? address?.residents.length : 3"
 [singleSlideOffset]="true"
 [startFromIndex]="0"
 [noWrap]="false">
-<!-- <div class="text-center py-5 bg-dark text-white"> -->
       <slide *ngFor="let resident of address?.residents; let index=index">
-        <div class="text-center py-5 bg-dark text-white" style="display: block; width: 100%;">
-          <h2>{{index}}</h2>        
-          <p>Name: {{resident?.name}}</p>
-          <p>Last Name: {{resident?.lastName}}</p>
-          <p>Email: {{resident?.email}}</p>
-          <p>Phone Number: {{resident?.phoneNumber}}</p>   
+        <div class="text-center bloc py-5 text-white" style="display: block; width: 100%;">
+          <h2 class="h2Bloc">{{index}}</h2>        
+          <p class="blocP">Name: {{resident?.name}}</p>
+          <p class="blocP">Last Name: {{resident?.lastName}}</p>
+          <p class="blocP">Email: {{resident?.email}}</p>
+          <p class="blocP">Phone Number: {{resident?.phoneNumber}}</p>   
         </div>
     </slide>
-  <!-- </div> -->
 </carousel>
+
+<ng-template #emptyList>
+  <div class="emptyList">
+      INFO! The customer list is empty.
+  </div>
+</ng-template>
