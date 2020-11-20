@@ -11,24 +11,29 @@ ul{
     list-style-type: none;
 }
 
-.interestsUl{
-    // width: 7rem;
-    display: block;
-}
-
 .zero{
     width: 15rem;
-    display: block;
-}
-
-.interestsLi{
-    width: 15rem;
+    display: inline-block;
 }
 
 li{
     margin-top: 1rem;
     font-weight: bold;
 }
+
+.interestsLi{
+    list-style-type: none;
+}
+
+.interests{
+    position: relative;
+    left: .8rem;
+}
+
+.zero{
+    bottom: 1.3rem;
+}
+
 
 .line{
     border-top: .1rem solid black;
@@ -58,7 +63,7 @@ h2{
 .typeScript {width: 20%; background-color: #3ce2ff;}
 .angular {width: 20%; background-color: #ff1100;}
 .javaScript {width: 20%; background-color: #ffe600;}
-.c {width: 5%; background-color: #f436cb;}
+.c {width: 10%; background-color: #f436cb;}
 
 
 .abilities{
@@ -80,4 +85,15 @@ h2{
 
 .achievementsLi{
     margin-bottom: 2rem;
+}
+
+
+.icon{
+    font-size: 1.5rem;
+    margin-right: 1.5rem;
+}
+
+.icon1{
+    font-size: 1.2rem;
+    margin-right: 1rem;
 }
