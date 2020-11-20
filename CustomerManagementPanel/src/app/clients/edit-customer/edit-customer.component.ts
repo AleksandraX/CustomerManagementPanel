@@ -58,7 +58,7 @@ export class EditCustomerComponent implements OnInit {
   }
 
   saveCustomer(){
-    console.log("fisr step saving", this.form.value);
+    console.log("first step saving", this.form.value);
 
     let customerToCreate: CustomerForCreation = {
       name: this.form.value.name,
