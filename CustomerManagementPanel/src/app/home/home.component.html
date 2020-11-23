@@ -1,0 +1,122 @@
+<div class="home-container">
+  <h2 class="icons-title">About application</h2>
+
+  <p>
+    This site was designed to present acquired skills. This site was created
+    after consulting with my mentor. It was designed to present acquired skills.
+    Together we have chosen that the best way it will be work on imitation of
+    real life example. We decided to build simple portal for managment clients
+    and their orders. The most important idea was to keep everything with the
+    best coding standards. My mentor watched over the architecture, good practices and a clean code. 
+    We created repository on GitHub where I pushed
+    features as proper branches where I have professional reviews. Backend staff
+    and publish application was done by my mentor. But whole front part - it
+    means everything without access to database and object manipulation - shows
+    my real skills in programming.
+
+    I invite you to try my site by yourself. Please fell fry to try every functionality.
+    If you find anything to improvement or bug you can let me know by contact section
+    <a [routerLink]='["/contact"]'> contact</a>.
+     
+  </p>
+
+  <h2 class="icons-title">Used technologies on frontend</h2>
+
+  <img src="./../../assets/angular-badge.png" class="tech-badge-bigger" />
+  <img src="./../../assets/typescript-badge.png" class="tech-badge" />
+  <img src="./../../assets/css-badge.png" class="tech-badge" />
+  <img src="./../../assets/HTML5_badge.png" class="tech-badge" />
+  <img src="./../../assets/boostrap-logo.png" class="tech-badge-bigger" />
+  <img src="./../../assets/sass-badge.png" class="tech-badge" />
+  <p class="icons-description">
+    On the frontend we have decided for <strong>Angular</strong> framework because of our love
+    for clean architecture that this framework forces it on developers. We like to
+    have order of folder structure and clean config file putted everything in
+    one place. Angular used with Angular Cli is very powerfull tool for managing
+    of reusable components and bindig logic with views.
+    Naturally with Angular came <strong>Typescript</strong> language, but even not we would
+    choose it anyway. We love stron typing for it safety and readability for
+    other programmers. It provides static checking, so programming become with it really 
+    easy thing and code becomes even more bugproof.
+    The same reasons as above standing when we have choosen <strong>Sass</strong> as our precompilation language for css.
+    It develops productivity and allow us to use variables, so with little programming changes 
+    we have impact on whole site and it it also free of bugs.
+
+    Out choises we could simply reassumed by <strong>DRY principle</strong>. :)
+  </p>
+
+  <h2 class="icons-title">Used technologies on backend</h2>
+  <img src="./../../assets/sql-logo.png" class="tech-badge" />
+  <img src="./../../assets/csharp-badge.png" class="tech-badge-much-bigger" />
+
+  <img src="./../../assets/Azure-logo.png" class="tech-badge" />
+  <p class="icons-description">
+    We have chosen .NET technology stack for the backend because it was the quickest way for us. We dont say it is the best solution for such little project,
+    but in the future I consider to learn a backend staff also and it will be C# language, as I had it on my studies and I have mentor for this path of growth.
+    Backend is done simple so I understand what is going there and after I achieve strong skills in Angular it will be smooth for try doing again by myself.
+  </p>
+
+  <h2 class="icons-title">Tools used:</h2>
+  <img src="./../../assets/visual-studio-code-logo.jpg" class="tech-badge" />
+  <img src="./../../assets/visual-studio-logo.jpg" class="tech-badge" />
+  <img src="./../../assets/git-ext-logo.png" class="tech-badge-little-smaller"/>
+  <img src="./../../assets/Swagger-logo.png" class="tech-badge" />
+  <img src="./../../assets/github-logo.png" class="tech-badge" />
+  <img src="./../../assets/Azure-logo.png" class="tech-badge-little-smaller" />
+  <img src="./../../assets/trello-badge.jpg" class="tech-badge" />
+  <img src="./../../assets/npm-logo.png" class="tech-badge-bigger" />
+  <p class="icons-description">
+    Choosing such stack of technologies these tools was natural choice. 
+    Visual Studio Code according to us is the best front IDE as is free, light and powerfull.
+    With many available extensions it is really professional tool for every operation we need to perform.
+    
+    Visual Studio was not necessary as we wrote above - in VSC we could do everything, but it is a little more 
+    convenient with IntelliSense for backend and after years of use.
+
+    Probably we could use different hosting service, 
+    but practice on technology stack we want to use and work with it is always the best choise. ;)
+    Azure portal come with very simple tool to use especially for .NET and Angular technolgies. 
+    For small applications it is almost free.
+
+    For work with professional application it is always good practice, even only for one person army, to use 
+    source control versioning - GIT. We choose Git Extensions for better undestand processes that are going on with repositorium.
+    Visualisation of branching helps me to better understand what going on under the hood.
+
+    As we use source control versioning and application was for practice my programming skills we created reporisory on GitHub
+    where we were I created pull request and after approved review it could be merged to master and being publish.
+
+    For tasks order we used Trello - Kanban table which helps us to imitate work in Scrum process even if our team was only composed from two persons.
+
+    As we use package manager console and Angular CLI we used a the most popular npm libraries as:
+    - toastr (for alerts notifications) 
+    FONT AWESOME LICENSE - <a href="https://use.fontawesome.com/releases/v5.15.1/css/all.css">
+      <fa-icon class="icon" [icon]="faFontAwesome"></fa-icon></a>
+
+
+
+
+  </p>
+
+  <h2 class="icons-title">It is deployed on</h2>
+  <img src="./../../assets/azure-service-badge.png" class="tech-badge" />
+  <img src="./../../assets/azure-storage-logo.png" class="tech-badge" />
+  <img src="./../../assets/sql-azure-logo.png" class="tech-badge" />
+  <p class="icons-description">
+    Application was deployed on Azure Portal as a App Service for API (backend part) and on the Blob Storage as a static web page (output of Angular build).
+    Database is in pay-as-you-go service mode, sql server.
+     <a href="https://customermanagmentportalapi.azurewebsites.net/swagger/index.html">(Link for api)</a>
+    Static webpage simply calls this API which send proper request to database. 
+  </p>
+
+
+
+  <h2 class="icons-title">In the future we want to add</h2>
+  <ul>
+    <li>Sorting of our lists e.g. by names alphabetically, by age asc/desc </li>
+    <li>Grouping result eg. customers by city</li>
+    <li>Filtering lists by specific filters?</li>
+    <li>Paging - done on frontend site</li>
+    <li>Searching by any criteria</li>
+    <li>Show customer addresess on Google Maps</li>
+  </ul>
+</div>

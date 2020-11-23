@@ -1,20 +1,40 @@
+
+a{
+    text-decoration: none;
+    color: white;
+}
+
+a:hover{
+    color: rgb(149, 255, 232);
+}
+
+.loginLi{
+    margin-bottom: .8rem;
+}
+
 .navbar{
     margin-bottom: 5rem;
 }
 
 .header{
     color: white;
-    background-color: rgb(51,174,233);
+    background-color: #101010;
     margin-bottom: 3rem;
 }
 
 .bg-customer-header{
-    background-color: #33aee9;
+    background-color: #181717;
 }
 
 .info {
     display: inline-block;
 }
+
+.dropdown-menu{
+    background-color: #343A40;
+    border: none;
+}
+
 
 .title{
     font-size: 1.4rem;
@@ -36,22 +56,27 @@
 
 .buttons-in-navbar{
     color:white;
-    background-color: transparent;
+    background-color: #343A40;
 }
 
 .buttons-in-navbar:hover{
-    color: black;
+    color: rgb(149, 255, 232);
     transition: .4s color;
 }
 
+.bg-customer-header{
+    background: #343A40;
+}
+
 .hamburger{
+    color: black;
     position: relative;
     float: right;
     border: none;
 }
 
 .hamburger:hover{
-    background-color: rgb(71, 185, 252);
+    background-color: #343A40;
     transition: .4s background-color;
 }
 
@@ -60,11 +85,11 @@
     text-decoration: none;
 }
 
-.dropdown-list{
-    border: none;
-    color: white;
-    background-color:  rgb(51,174,233);
-}
+// .dropdown-list{
+//     border: none;
+//     color: white;
+//     background-color:  rgb(51,174,233);
+// }
 
 .navbar-nav {
     .nav-link {
@@ -74,7 +99,7 @@
 
 .navbar-nav{
     .nav-link:hover{
-      color: black;
+      color: rgb(149, 255, 232);
       transition: .4s color;
     }
 }
@@ -96,5 +121,14 @@
         display: block;
         color: white;
         font-size: 1.1rem;
+    }
+
+
+    .nav-right-option {
+        margin-right: 2%;
+    }
+
+    .navbar-right {
+        min-width: 300px;
     }
 }

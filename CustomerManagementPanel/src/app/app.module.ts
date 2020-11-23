@@ -21,17 +21,21 @@ import { OrdersComponent } from './orders/orders.component';
 import { OrdersService } from './orders/orders.service';
 import { ContactComponent } from './contact/contact.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { HomeComponent } from './home/home.component';
+import { InProgressComponent } from './inProgress/inProgress.component';
 
 
 @NgModule({
-  declarations: [								
+  declarations: [										
     AppComponent,
     HeaderComponent,
     FooterComponent,
     AboutComponent,
     NotFoundComponent,
     OrdersComponent,
-    ContactComponent
+    ContactComponent,
+    HomeComponent,
+    InProgressComponent
    ],
   imports: [
     BrowserModule,

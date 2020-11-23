@@ -1,0 +1,53 @@
+.home-container{
+    text-align: center;
+}
+
+.icons-title{
+    margin-top: 4%;
+    margin-bottom: 4%;
+}
+
+.tech-badge {
+    height: 90px;
+    margin-right: 3%;
+}
+
+.tech-badge-bigger {
+    @extend .tech-badge; 
+    height: 100px;
+}
+
+.tech-badge-much-bigger {
+    @extend .tech-badge; 
+    height: 170px;
+}
+
+.tech-badge-little-smaller {
+    @extend .tech-badge; 
+    height: 80px;
+}
+
+.tech-badge-smaller {
+    @extend .tech-badge; 
+    height: 70px;
+}
+
+.icons-description {
+    margin-top: 4%;
+}
+
+li{
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+a:hover{
+    color: rgb(50, 103, 216);
+    transition: color .5s;
+}
+
