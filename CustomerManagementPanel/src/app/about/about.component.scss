@@ -1,9 +1,55 @@
 .imgProfil{
-    width: 18rem;
+    position: relative;
+    width: 19rem;
+}
+
+.textDescription{
+    font-size: 1.3rem;
+    text-align: center;
+}
+
+.descriptionH2{
+    text-align: center;
 }
 
 .secondRow, .thirdRow, .firstRow{
     margin-bottom: 5rem;
+}
+
+.tech-badge {
+    height: 90px;
+    margin-right: 3%;
+}
+
+.tech-badge-bigger {
+    @extend .tech-badge; 
+    height: 100px;
+}
+
+.tech-badge-much-bigger {
+    @extend .tech-badge; 
+    height: 170px;
+}
+
+.tech-badge-little-smaller {
+    @extend .tech-badge; 
+    height: 80px;
+}
+
+.tech-badge-smaller {
+    @extend .tech-badge; 
+    height: 70px;
+}
+
+.technologiesH2{
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.imgSkill{
+    text-align: center;
+    margin-bottom: 4rem;
 }
 
 ul{
@@ -14,6 +60,32 @@ ul{
 .zero{
     width: 15rem;
     display: inline-block;
+}
+
+.skillCol{
+    text-align: center;
+    display: inline-table;
+    width: 34rem;
+    list-style-type: none;
+}
+
+.skillRow{
+    margin-bottom: 4rem;
+}
+
+.skillLi{
+    color: rgb(0, 0, 0);
+    background: rgb(131,58,180);
+    background: linear-gradient(90deg, rgb(219, 219, 219) 0%, rgb(197, 153, 153) 50%, rgb(219, 169, 99) 100%);
+    font-size: 1.2rem;
+    border: .1rem solid black;
+    border-radius: 3rem;
+    margin-bottom: 2rem;
+    height: 2rem;
+}
+
+.iconSkill{
+    margin-right: 1rem;
 }
 
 li{
@@ -43,7 +115,16 @@ h2{
     margin-top: 2rem;
 }
 
+// SKILLS IT
 .bar{
+    width: 40%;
+    background-color: #ddd;
+    height: 1.6rem;
+    border-radius: .4rem;
+}
+
+.barSkill{
+    display: inline-block;
     width: 40%;
     background-color: #ddd;
     height: 1.6rem;
@@ -65,6 +146,43 @@ h2{
 .javaScript {width: 20%; background-color: #ffe600;}
 .c {width: 10%; background-color: #f436cb;}
 
+// SKILLS 
+.bar2{
+    width: 40%;
+    background-color: #ddd;
+    height: 2rem;
+    border-radius: .4rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.textSkill:hover{
+    transform: scale(.9);
+}
+
+.skills2{
+    text-align: right;
+    color: rgb(255, 255, 255);
+    height: 2rem;
+    border-radius: .4rem;
+}
+
+.titleSkills{
+    text-align: center;
+}
+
+.textSkill{
+    font-size: 1.7rem;
+    position: relative;
+    text-align: center;
+    top: 2rem;
+    margin-top: 0;
+    transition: .3s transform ;
+}
+
+
+.oneC {width: 100%; background-color: #42f7b2;}
+.twoC {width: 100%; background-color: #949494;}
 
 .abilities{
     margin-bottom: 4.2rem;
@@ -98,8 +216,34 @@ h2{
     margin-right: 1rem;
 }
 
+.iconAngular{
+    color: #d40f01;
+    font-size: 2.4rem;
+}
+
+.h2FirstRow{
+    text-align: center;
+}
+
+@media only screen and (min-width: 780px) and (max-width: 1050px) {
+    .bar2{
+        width: 60%;
+    }
+}
+
+@media only screen and (min-width: 155px) and (max-width: 780px) {
+    .bar2{
+        width: 70%;
+    }
+
+    .textSkill{
+        font-size: .9rem;
+        top: 1.6rem;
+    }
+}
+
 @media only screen and (min-width: 155px) and (max-width: 990px) {
-    .secondRow{
+    .secondRow, .firstRow, .skillRow{
         display: inline;
         text-align: center;
     }
@@ -111,14 +255,28 @@ h2{
         width: 60%;
     }
 
+    .h2FirstRow, .technologiesH2{
+        text-align: center;
+    }
+
+    .imgProfil{
+        position: relative;
+        width: 10rem;
+    }
 
 }
+
+
 
 @media only screen and (min-width: 155px) and (max-width: 570px) {
 
     .thirdRow, .achievementsUl{
         display: inline;
         text-align: center;
+    }
+
+    .skillLi{
+        width: 14rem;
     }
 }
 

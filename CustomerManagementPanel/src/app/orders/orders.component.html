@@ -13,12 +13,12 @@
   <tbody>
     <tr *ngFor="let order of ordersList; index as i">
       <th scope="row">{{ i + 1 }}</th>
-      <td class="column1" [routerLink]='["/clients/details/" + order.orderedByCustomerId]'>{{order.orderedByCustomerFullName}}</td>
-      <td class="column">{{order.price.toFixed(2)}}</td>
-      <td class="column">{{order.creationDate | date}}</td>
-      <td class="column">{{order.lastUpdateDate | date}}</td>
-      <td class="column">{{getDays(order.lastUpdateDate)}}</td>
-      <td class="column">
+      <td class="column1" [routerLink]='["/clients/details/" + order.orderedByCustomerId]'><p class="tel">Ordered by customer: </p>{{order.orderedByCustomerFullName}}</td>
+      <td class="column"><p class="tel">Price: </p>{{order.price.toFixed(2)}}</td>
+      <td class="column"><p class="tel">Ordered date: </p>{{order.creationDate | date}}</td>
+      <td class="column"><p class="tel">Last update date: </p>{{order.lastUpdateDate | date}}</td>
+      <td class="column"><p class="tel">Days of last update: </p>{{getDays(order.lastUpdateDate)}}</td>
+      <td class="column"><p class="tel">Status: </p>
 
         <select 
         #orderStatusSelect

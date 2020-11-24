@@ -18,11 +18,11 @@
         <tbody>
         <tr *ngFor="let address of addressesList; index as i">
             <th scope="row">{{ i + 1 }}</th>
-            <td class="columnUserAddress">{{address.country}}</td>
-            <td class="columnUserAddress">{{address.city}}</td>
-            <td class="columnUserAddress">{{address.zipCode}}</td>
-            <td class="columnUserAddress">{{address.street}}</td>
-            <td class="columnBnt">
+            <td class="columnUserAddress lineBorder"><p class="tel">Country: </p>{{address.country}}</td>
+            <td class="columnUserAddress"><p class="tel">City: </p>{{address.city}}</td>
+            <td class="columnUserAddress"><p class="tel">Zip Code: </p>{{address.zipCode}}</td>
+            <td class="columnUserAddress"><p class="tel">Street: </p>{{address.street}}</td>
+            <td class="columnBnt"><p class="tel">Actions: </p>
                 <button class="bntDetails" title="Show details" [routerLink]='["/addresses/details/" + address.id]'>
                     <fa-icon [icon]="faInfo"></fa-icon></button>
                     <button class="bntDelete" title="Delete" (click)="addressDelete(address.id)">

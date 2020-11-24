@@ -48,7 +48,44 @@ select {
     cursor: not-allowed;
     opacity: .9;
     color: rgb(53, 53, 53);
-    
+}
+
+.tel{
+    display: none;
 }
 
 
+@media screen and (max-width: 625px) {
+
+    .tel{
+        display: inline;
+        font-weight: bold;
+    }
+
+    table thead {
+        display: none;
+      }
+
+    table td {
+      display: block;
+    }
+    
+    table td::before {
+      content: attr(label);
+      font-weight: bold;
+      width: 120px;
+      min-width: 120px;
+    }
+
+    .bntDelete{
+        left: 1rem;
+    }
+
+    .column1, .column{
+        text-align: left;
+    }
+
+    .column1{
+        border-top: .1rem solid black;
+    }
+  }
