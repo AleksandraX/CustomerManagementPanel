@@ -17,29 +17,28 @@
         <li [routerLinkActive]='["link-active"]' class="nav-item"><a [routerLink]='["/contact"]' class="nav-link buttons-in-navbar" href="#">Contact</a></li>
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle buttons-in-navbar" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-              Dropdown
+              Menage
             </a>
             <div class="dropdown-menu dropdown-primary dropdown-list" aria-labelledby="navbarDropdownMenuLink">
-              <a [routerLink]='["/clients/list"]' class="dropdown-item buttons-in-navbar" href="#">Customer list</a>
+              <a [routerLink]='["/clients/list"]' class="dropdown-item buttons-in-navbar" href="#">Clients</a>
               <a [routerLink]='["/addresses"]' class="dropdown-item buttons-in-navbar" href="#">Addresses</a>
-              <a class="dropdown-item buttons-in-navbar" href="#">Something else here</a>
+              <a [routerLink]='["/orders"]' class="dropdown-item buttons-in-navbar" href="#">Orders</a>
             </div>
         </li>
-        <li class="nav-item"><a [routerLink]='["/orders"]' class="nav-link buttons-in-navbar" href="#">Orders</a></li>
     </ul>
 
 </div>
 
 <ul class="nav navbar-nav navbar-right">
   <li class="nav-item">
-    <a class="nav-link buttons-in-navbar" href="#"><fa-icon [icon]="faUser"></fa-icon>Profile</a>
+    <a [routerLink]='["inProgress"]' class="nav-link buttons-in-navbar" href="#"><fa-icon [icon]="faUser"></fa-icon>Profile</a>
   </li>
   <li class="nav-item">
     <a href="#" class="dropdown-toggle nav-link dropdown-toggle buttons-in-navbar" data-toggle="dropdown">
     <fa-icon [icon]="faSignInAlt"></fa-icon> Login / Sign Up <span class="caret"></span></a>
-      <ul class="dropdown-menu">
-          <li class="loginLi"><a [routerLink]='["inProgress"]' href="#">Login</a></li>
-          <li class="loginLi"><a [routerLink]='["inProgress"]' href="#">Sign Up</a></li>
+      <ul class="dropdown-menu loginSingUpDropDown">
+          <li class="loginLi"><a [routerLink]='["inProgress"]' href="#"><fa-icon [icon]="faSignInAlt"></fa-icon> Login</a></li>
+          <li class="loginLi"><a [routerLink]='["inProgress"]' href="#"><fa-icon [icon]="faUserPlus"></fa-icon> Sign Up</a></li>
       </ul>
   </li>
 </ul>

@@ -1,3 +1,7 @@
+.tel{
+    display: none;
+}
+
 .bntDetails{
     font-size: 1.6rem;
     position: relative;
@@ -28,7 +32,7 @@
     padding: .1rem .5rem;
     font-size: 1.6rem;
     transition: .3s transform;
-    left: 3rem;
+    left: 1rem;
 }
 
 .bntDelete:hover{
@@ -48,7 +52,7 @@
     padding: .4%;
     transition: .3s color, .3s transform ;
     outline: none;
-    left: 100rem;
+    left: 100%;
     margin-bottom: .2rem;
 }
 
@@ -56,3 +60,34 @@
     color: rgb(255, 255, 255);
     transform: scale(.9);
 }
+
+@media screen and (max-width: 625px) {
+
+    .tel{
+        display: inline;
+        font-weight: bold;
+    }
+
+    table thead {
+        display: none;
+      }
+
+    table td {
+      display: block;
+    }
+    
+    table td::before {
+      content: attr(label);
+      font-weight: bold;
+      width: 120px;
+      min-width: 120px;
+    }
+
+    .bntDelete{
+        left: 1rem;
+    }
+
+    .lineBorder{
+        border-top: .1rem solid black;
+    }
+  }

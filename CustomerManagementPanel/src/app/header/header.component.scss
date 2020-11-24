@@ -8,10 +8,6 @@ a:hover{
     color: rgb(149, 255, 232);
 }
 
-.loginLi{
-    margin-bottom: .8rem;
-}
-
 .navbar{
     margin-bottom: 5rem;
 }
@@ -33,6 +29,15 @@ a:hover{
 .dropdown-menu{
     background-color: #343A40;
     border: none;
+}
+
+.loginSingUpDropDown{
+    left: 93%;
+}
+
+.loginLi{
+    margin-bottom: .8rem;
+    margin-left: .4rem;
 }
 
 
@@ -85,12 +90,6 @@ a:hover{
     text-decoration: none;
 }
 
-// .dropdown-list{
-//     border: none;
-//     color: white;
-//     background-color:  rgb(51,174,233);
-// }
-
 .navbar-nav {
     .nav-link {
       color: white;
@@ -106,6 +105,27 @@ a:hover{
 
 .titleHamburger{
     display: none;
+}
+
+@media only screen and (min-width: 1300px) and (max-width: 1650px) {
+
+    .loginSingUpDropDown{
+        left: 90%;
+    }
+}
+
+@media only screen and (min-width: 1150px) and (max-width: 1300px) {
+
+    .loginSingUpDropDown{
+        left: 87%;
+    }
+}
+
+@media only screen and (min-width: 793px) and (max-width: 1150px) {
+
+    .loginSingUpDropDown{
+        left: 85%;
+    }
 }
 
 @media only screen and (min-width: 100px) and (max-width: 991px) {
