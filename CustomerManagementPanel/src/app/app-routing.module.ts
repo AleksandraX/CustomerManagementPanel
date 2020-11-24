@@ -2,11 +2,8 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AboutComponent } from './about/about.component';
 import { AddressesResolver } from './addresses/addresses.resolver';
-import { ClientListComponent } from './clients/client-list/client-list.component';
 import { ContactComponent } from './contact/contact.component';
 import { NotFoundComponent } from './not-found/not-found.component';
-import { OrdersComponent } from './orders/orders.component';
-import { OrdersResolver } from './orders/orders.resolver';
 
 const routes: Routes = [
   {
@@ -31,10 +28,7 @@ const routes: Routes = [
       },
       {
         path: 'orders',
-        component: OrdersComponent,
-        resolve: {
-          ordersList: OrdersResolver,
-        }
+        loadChildren: () => import('./orders/orders.module').then(m => m.OrdersModule),
       },
       {
         path: 'clients',
@@ -60,8 +54,7 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
   providers: [
-    AddressesResolver,
-    OrdersResolver
+    AddressesResolver
   ]
 })
 export class AppRoutingModule {}

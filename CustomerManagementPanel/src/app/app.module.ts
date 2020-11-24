@@ -17,10 +17,9 @@ import { ClientsModule } from './clients/clients.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AddressesService } from './addresses/addresses.service';
 import { AddressesModule } from './addresses/addresses.module';
-import { OrdersComponent } from './orders/orders.component';
-import { OrdersService } from './orders/orders.service';
 import { ContactComponent } from './contact/contact.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { OrdersModule } from './orders/orders.module';
 
 
 @NgModule({
@@ -30,7 +29,6 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     FooterComponent,
     AboutComponent,
     NotFoundComponent,
-    OrdersComponent,
     ContactComponent
    ],
   imports: [
@@ -45,11 +43,11 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     ClientsModule,
     NgbModule,
     AddressesModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    OrdersModule
   ],
   providers: [
     AddressesService,
-    OrdersService
   ],
   bootstrap: [AppComponent]
 })

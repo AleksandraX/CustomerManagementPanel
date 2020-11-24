@@ -1,6 +1,7 @@
 import { formatDate } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { faPlusSquare } from '@fortawesome/free-solid-svg-icons';
 import { ToastrService } from 'ngx-toastr';
 import { Order, OrderStatus, OrderStatusChangeParameters } from '../clients/models/orders';
 import { OrdersService } from './orders.service';
@@ -17,6 +18,7 @@ export class OrdersComponent implements OnInit {
   orderStatuses: OrderStatus[];
   selectedOrderStatus: OrderStatus;
   optionDisabled: boolean = false;
+  faPlusSquare = faPlusSquare;
 
   constructor(    
     private toastr: ToastrService,
