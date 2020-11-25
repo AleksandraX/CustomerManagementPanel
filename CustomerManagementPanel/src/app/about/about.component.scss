@@ -149,7 +149,6 @@ h2{
 // SKILLS 
 .bar2{
     width: 40%;
-    background-color: #ddd;
     height: 2rem;
     border-radius: .4rem;
     margin-left: auto;
@@ -162,9 +161,8 @@ h2{
 
 .skills2{
     text-align: right;
-    color: rgb(255, 255, 255);
     height: 2rem;
-    border-radius: .4rem;
+    border-radius: 3rem;
 }
 
 .titleSkills{
@@ -181,8 +179,11 @@ h2{
 }
 
 
-.oneC {width: 100%; background-color: #42f7b2;}
-.twoC {width: 100%; background-color: #949494;}
+.oneC {
+    background: rgb(247,239,209);
+    background: radial-gradient(circle, rgb(255, 200, 0) 38%, rgb(253, 131, 114) 100%);}
+.twoC {width: 100%; background: rgb(247,239,209);
+    background: radial-gradient(circle, rgb(255, 200, 0) 38%, rgb(253, 131, 114) 100%);}
 
 .abilities{
     margin-bottom: 4.2rem;
