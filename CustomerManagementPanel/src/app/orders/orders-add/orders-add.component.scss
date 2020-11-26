@@ -1,0 +1,38 @@
+h1{
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.addContainer{
+    text-align: center;
+    font-weight: bold;
+}
+
+.addDiv{
+    margin-bottom: 1rem;
+}
+
+button{
+    margin-left: 1rem;
+    margin-right: 1rem;
+    border: none;
+    font-size: 1.4rem;
+}
+
+.buttonC, .buttonS{
+    font-size: 1.6rem;
+    position: relative;
+    background: transparent;
+    border: none;
+    left: .5rem;
+    padding: .1rem .5rem ;
+    transition: .3s transform;
+}
+
+.buttonC:hover{
+    transform: scale(1.2)
+}
+
+.buttonS:hover{
+    transform: scale(1.2)
+}

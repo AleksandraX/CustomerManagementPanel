@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
 import { of } from 'rxjs/internal/observable/of';
 import { tap, catchError } from 'rxjs/operators';
-import { Order, OrderStatus, OrderStatusChangeParameters } from '../clients/models/orders';
+import { Order, OrdersForCreation, OrderStatus, OrderStatusChangeParameters } from '../clients/models/orders';
 
 @Injectable()
 
@@ -26,6 +26,16 @@ constructor(private httpClient:HttpClient) {
             }),
         catchError(this.handleError<Order[]>("getAllCustomers"))
     );  
+}
+
+create(ordersForCreation: OrdersForCreation) : Observable<any>{
+    return this.httpClient.post<any>(this.baseUrl + "/create", ordersForCreation).pipe(
+        tap(response =>
+            {
+                console.log("Create orders", response);
+            }),
+        catchError(this.handleError<any>("create"))
+    );
 }
 
     getAllOrderStatus() : Observable<OrderStatus[]>{
