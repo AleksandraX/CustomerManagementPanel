@@ -23,6 +23,7 @@ export interface OrderStatus{
     fullName: string,
     price: number,
     creationDate: Date,
+    orderedByCustomerId: string
   }
 
   export interface OrderStatusChangeParameters {

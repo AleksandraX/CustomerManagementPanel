@@ -16,6 +16,7 @@ export class OrdersAddComponent implements OnInit {
   faSave = faSave;
 
   order: OrdersForCreation ={ 
+    orderedByCustomerId: "",
     id: "",
     price: 0,
     creationDate: null,
