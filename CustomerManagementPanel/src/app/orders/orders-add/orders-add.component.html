@@ -1,29 +1,6 @@
 <h1>Add Order</h1>
 
 <form class="addContainer" [formGroup]="form" (ngSubmit)="saveOrders()">
-  <!-- <div class="addDiv">
-    <label class="label">Full Name :</label>
-      <br>
-      <input class="inputNgForm"
-      type="text"
-      formControlName="fullName">
-    
-      <div *ngIf="form.controls['fullName'].invalid && (form.controls['fullName'].dirty || form.controls['fullName'].touched)"
-        class="alert alert-danger">
-        <div *ngIf="form.controls['fullName'].errors.required">
-          Full Name is required <i class="fa fa-exclamation"></i>
-        </div>
-        <div *ngIf="form.controls['fullName'].errors.minlength">
-          Full Name is too short <i class="fa fa-exclamation"></i>
-        </div>
-        <div *ngIf="form.controls['fullName'].errors.maxlength">
-          Full Name is too long <i class="fa fa-exclamation"></i>
-        </div>
-        <div *ngIf="form.controls['fullName'].errors.pattern"> 
-          Cannot contain numbers <i class="fa fa-exclamation"></i>
-        </div>
-      </div>
-    </div> -->
 
     <div class="addDiv">
       <label class="label">Price :</label>
@@ -48,50 +25,26 @@
           </div>
         </div>
       </div>
-    
-      <!-- <div class="addDiv">
-        <label class="label">Creation date :</label>
-          <br>
-          <input class="inputNgForm"
-          type="text"
-          formControlName="creationDate">
-        
-          <div *ngIf="form.controls['creationDate'].invalid && (form.controls['creationDate'].dirty || form.controls['creationDate'].touched)"
-            class="alert alert-danger">
-            <div *ngIf="form.controls['creationDate'].errors.required">
-              Creation date is required <i class="fa fa-exclamation"></i>
-            </div>
-            <div *ngIf="form.controls['creationDate'].errors.minlength">
-              Creation date is too short <i class="fa fa-exclamation"></i>
-            </div>
-            <div *ngIf="form.controls['creationDate'].errors.maxlength">
-              Creation date is too long <i class="fa fa-exclamation"></i>
-            </div>
-            <div *ngIf="form.controls['creationDate'].errors.pattern"> 
-              Cannot contain letters <i class="fa fa-exclamation"></i>
-            </div>
-          </div>
-        </div> -->
 
         <div class="addDiv">
           <label class="label">Ordered By Customer Id :</label>
             <br>
             <input class="inputNgForm"
             type="text"
-            formControlName="id">
+            formControlName="orderedByCustomerId">
           
-            <div *ngIf="form.controls['id'].invalid && (form.controls['id'].dirty || form.controls['id'].touched)"
+            <div *ngIf="form.controls['orderedByCustomerId'].invalid && (form.controls['orderedByCustomerId'].dirty || form.controls['orderedByCustomerId'].touched)"
               class="alert alert-danger">
-              <div *ngIf="form.controls['id'].errors.required">
-                Id is required <i class="fa fa-exclamation"></i>
+              <div *ngIf="form.controls['orderedByCustomerId'].errors.required">
+                Ordered By Customer Id is required <i class="fa fa-exclamation"></i>
               </div>
-              <div *ngIf="form.controls['id'].errors.minlength">
-                Id is too short <i class="fa fa-exclamation"></i>
+              <div *ngIf="form.controls['orderedByCustomerId'].errors.minlength">
+                Ordered By Customer Id is too short <i class="fa fa-exclamation"></i>
               </div>
-              <div *ngIf="form.controls['id'].errors.maxlength">
-                Id is too long <i class="fa fa-exclamation"></i>
+              <div *ngIf="form.controls['orderedByCustomerId'].errors.maxlength">
+                Ordered By Customer Id is too long <i class="fa fa-exclamation"></i>
               </div>
-              <div *ngIf="form.controls['id'].errors.pattern"> 
+              <div *ngIf="form.controls['orderedByCustomerId'].errors.pattern"> 
                 Cannot contain numbers <i class="fa fa-exclamation"></i>
               </div>
             </div>

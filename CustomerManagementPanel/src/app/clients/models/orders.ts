@@ -19,10 +19,7 @@ export interface OrderStatus{
   }
 
   export interface OrdersForCreation {
-    id: string,
-    fullName: string,
     price: number,
-    creationDate: Date,
     orderedByCustomerId: string
   }
 

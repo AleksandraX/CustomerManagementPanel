@@ -18,7 +18,7 @@ const routes: Routes = [
             }
         }, 
         {
-            path: 'add',
+            path: 'CreateOrder',
             component: OrdersAddComponent,
             // resolve: {
             //     addressesList: OrdersResolver,

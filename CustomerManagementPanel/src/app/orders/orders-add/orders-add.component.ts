@@ -17,20 +17,15 @@ export class OrdersAddComponent implements OnInit {
 
   order: OrdersForCreation ={ 
     orderedByCustomerId: "",
-    id: "",
     price: 0,
-    creationDate: null,
-    fullName: "",
   };
 
   constructor(
     private ordersService: OrdersService,
   ) { 
     this.form = new FormGroup({
-      "id": new FormControl(this.order.id,[Validators.required, Validators.minLength(3), Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*')]),
       "price": new FormControl(this.order.price,[Validators.required, Validators.minLength(1), Validators.maxLength(9), Validators.pattern('[0-9]*')]),
-      "creationDate": new FormControl(this.order.creationDate,[Validators.required, Validators.minLength(3), Validators.maxLength(30), Validators.pattern('[0-9]*')]),
-      "fullName": new FormControl(this.order.fullName,[Validators.required, Validators.minLength(3), Validators.maxLength(40), Validators.pattern('[a-zA-Z ]*')])
+      "orderedByCustomerId": new FormControl(this.order.orderedByCustomerId,[Validators.required, Validators.minLength(3), Validators.maxLength(40), Validators.pattern('[a-zA-Z ]*')])
     }); 
 
   }
@@ -42,10 +37,8 @@ export class OrdersAddComponent implements OnInit {
     console.log("first step saving", this.form.value);
 
     let ordersToCreate: OrdersForCreation = {
-      id: this.form.value.id,
       price: this.form.value.price,
-      creationDate: this.form.value.creationDate,
-      fullName: this.form.value.fullName
+      orderedByCustomerId: this.form.value.orderedByCustomerId,
     }
 
     console.log("saving", ordersToCreate)
