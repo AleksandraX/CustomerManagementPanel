@@ -2,58 +2,59 @@
 
 <form class="addContainer" [formGroup]="form" (ngSubmit)="saveOrders()">
 
-    <div class="addDiv">
+   <div class="addDiv">
       <label class="label">Price :</label>
         <br>
-        <input class="inputNgForm"
-        type="text"
-        formControlName="price">
+        <input 
+          class="inputNgForm"
+          type="number"
+          formControlName="price"
+          placeholder="Enter the price"
+          min="0"
+          step="1" 
+          data-number-to-fixed="2"
+          data-number-stepfactor="100" >
       
         <div *ngIf="form.controls['price'].invalid && (form.controls['price'].dirty || form.controls['price'].touched)"
           class="alert alert-danger">
           <div *ngIf="form.controls['price'].errors.required">
             Price is required <i class="fa fa-exclamation"></i>
           </div>
-          <div *ngIf="form.controls['price'].errors.minlength">
-            Price is too short <i class="fa fa-exclamation"></i>
+          <div *ngIf="form.controls['price'].errors.pattern">
+            Price is required <i class="fa fa-exclamation"></i>
           </div>
-          <div *ngIf="form.controls['price'].errors.maxlength">
-            Price is too long <i class="fa fa-exclamation"></i>
           </div>
-          <div *ngIf="form.controls['price'].errors.pattern"> 
-            Cannot contain letters  <i class="fa fa-exclamation"></i>
-          </div>
-        </div>
       </div>
 
         <div class="addDiv">
           <label class="label">Ordered By Customer Id :</label>
             <br>
-            <input class="inputNgForm"
-            type="text"
-            formControlName="orderedByCustomerId">
-          
-            <div *ngIf="form.controls['orderedByCustomerId'].invalid && (form.controls['orderedByCustomerId'].dirty || form.controls['orderedByCustomerId'].touched)"
-              class="alert alert-danger">
-              <div *ngIf="form.controls['orderedByCustomerId'].errors.required">
-                Ordered By Customer Id is required <i class="fa fa-exclamation"></i>
-              </div>
-              <div *ngIf="form.controls['orderedByCustomerId'].errors.minlength">
-                Ordered By Customer Id is too short <i class="fa fa-exclamation"></i>
-              </div>
-              <div *ngIf="form.controls['orderedByCustomerId'].errors.maxlength">
-                Ordered By Customer Id is too long <i class="fa fa-exclamation"></i>
-              </div>
-              <div *ngIf="form.controls['orderedByCustomerId'].errors.pattern"> 
-                Cannot contain numbers <i class="fa fa-exclamation"></i>
-              </div>
-            </div>
-          </div>
+            <select 
+              class="inputNgForm"
+              type="text"
+              formControlName="orderedByCustomerId">
 
+              <option *ngFor="let client of clientsList; index as i" [value]="client.id">
+                {{client.name}} {{client.lastName}}
+              </option>
+
+            </select>
+
+          </div>
           <br>
 
-  <button class="buttonS" type="submit"> Save <fa-icon class="icon" [icon]="faSave"></fa-icon></button>
-  <button class="buttonC" type="button" (click)="form.reset()">Clear <fa-icon class="icon" [icon]="faBroom"></fa-icon></button>
+  <button 
+    class="buttonS" type="submit" 
+    (click)= showSuccess()
+  > Save <fa-icon class="icon" [icon]="faSave"></fa-icon>
+  </button>
+
+  <button
+   class="buttonC" 
+   type="button" 
+   (click)="form.reset(); clean()"
+   >Clear <fa-icon class="icon" [icon]="faTimes"></fa-icon>
+  </button>
  
   <!-- <pre>{{form.value | json }}</pre> -->
 

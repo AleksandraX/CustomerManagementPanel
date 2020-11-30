@@ -29,12 +29,12 @@ constructor(private httpClient:HttpClient) {
 }
 
 create(ordersForCreation: OrdersForCreation) : Observable<any>{
-    return this.httpClient.post<any>(this.baseUrl + "/create", ordersForCreation).pipe(
+    return this.httpClient.post<any>(this.baseUrl + "/CreateOrder", ordersForCreation).pipe(
         tap(response =>
             {
                 console.log("Create orders", response);
             }),
-        catchError(this.handleError<any>("create"))
+        catchError(this.handleError<any>("CreateOrder"))
     );
 }
 

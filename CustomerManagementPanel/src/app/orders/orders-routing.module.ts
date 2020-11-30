@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { OrdersAddResolver } from './orders-add/order-add.resolver';
 
 import { OrdersAddComponent } from './orders-add/orders-add.component';
 import { OrdersComponent } from './orders.component';
@@ -20,9 +21,9 @@ const routes: Routes = [
         {
             path: 'CreateOrder',
             component: OrdersAddComponent,
-            // resolve: {
-            //     addressesList: OrdersResolver,
-            // }
+            resolve: {
+                customerList: OrdersAddResolver,
+            }
         },
 
 ]}]
@@ -31,7 +32,8 @@ const routes: Routes = [
     imports: [RouterModule.forChild(routes)],
     exports: [RouterModule],
     providers: [
-        OrdersResolver
+        OrdersResolver,
+        OrdersAddResolver
     ]
     })
 export class OrdersRoutingModule { 

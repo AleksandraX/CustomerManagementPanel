@@ -1,6 +1,8 @@
 h1{
     text-align: center;
     margin-bottom: 3rem;
+    font-size: 3rem;
+    font-weight: bold;
 }
 
 .addContainer{
@@ -16,11 +18,11 @@ button{
     margin-left: 1rem;
     margin-right: 1rem;
     border: none;
-    font-size: 1.4rem;
+    font-size: 1.7rem;
 }
 
 .buttonC, .buttonS{
-    font-size: 1.6rem;
+    font-size: 1.9rem;
     position: relative;
     background: transparent;
     border: none;
@@ -30,9 +32,25 @@ button{
 }
 
 .buttonC:hover{
-    transform: scale(1.2)
+    transform: scale(1.2);
+    color: rgb(253, 77, 77);
 }
 
 .buttonS:hover{
-    transform: scale(1.2)
+    transform: scale(1.2);
+    color: rgb(0, 116, 0);
+    
 }
+
+.inputNgForm{
+    text-align: center;
+    height: 3.4rem;
+    width: 30rem;
+    font-size: 1.5rem;
+}
+
+.label{
+    font-size: 1.8rem;
+}
+
+
