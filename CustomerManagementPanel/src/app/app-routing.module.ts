@@ -6,6 +6,7 @@ import { ClientListComponent } from './clients/client-list/client-list.component
 import { ContactComponent } from './contact/contact.component';
 import { HomeComponent } from './home/home.component';
 import { InProgressComponent } from './inProgress/inProgress.component';
+import { LoginPanelComponent } from './loginPanel/loginPanel.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { OrdersComponent } from './orders/orders.component';
 import { OrdersResolver } from './orders/orders.resolver';
@@ -37,6 +38,10 @@ const routes: Routes = [
         resolve: {
           ordersList: OrdersResolver,
         }
+      },
+      {
+        path: 'loginPanel',
+        component: LoginPanelComponent,
       },
       {
         path: 'inProgress',
