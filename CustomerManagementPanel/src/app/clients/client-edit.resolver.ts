@@ -9,9 +9,8 @@ import { Customer } from './models/customer';
 export class ClientEditResolver implements Resolve<Customer>{
 
     constructor(private clientsService: ClientsService) {
-
     }
-
+    
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Customer>{
         const id: string = route.paramMap.get('id');
         let customer: Customer = null;

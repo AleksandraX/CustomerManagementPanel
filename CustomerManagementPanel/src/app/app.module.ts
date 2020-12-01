@@ -24,10 +24,10 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HomeComponent } from './home/home.component';
 import { InProgressComponent } from './inProgress/inProgress.component';
 import { LoginPanelComponent } from './loginPanel/loginPanel.component';
-
+import { SignUpPanelComponent } from './signUpPanel/signUpPanel.component';
 
 @NgModule({
-  declarations: [											
+  declarations: [												
     AppComponent,
     HeaderComponent,
     FooterComponent,
@@ -37,7 +37,8 @@ import { LoginPanelComponent } from './loginPanel/loginPanel.component';
     ContactComponent,
     HomeComponent,
     InProgressComponent,
-      LoginPanelComponent
+      LoginPanelComponent,
+      SignUpPanelComponent,
    ],
   imports: [
     BrowserModule,

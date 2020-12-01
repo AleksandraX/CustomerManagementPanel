@@ -10,6 +10,7 @@ import { LoginPanelComponent } from './loginPanel/loginPanel.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { OrdersComponent } from './orders/orders.component';
 import { OrdersResolver } from './orders/orders.resolver';
+import { SignUpPanelComponent } from './signUpPanel/signUpPanel.component';
 
 const routes: Routes = [
   {
@@ -42,6 +43,10 @@ const routes: Routes = [
       {
         path: 'loginPanel',
         component: LoginPanelComponent,
+      },
+      {
+        path: 'signUpPanel',
+        component: SignUpPanelComponent,
       },
       {
         path: 'inProgress',
