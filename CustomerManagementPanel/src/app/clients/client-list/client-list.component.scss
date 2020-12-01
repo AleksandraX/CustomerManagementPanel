@@ -7,7 +7,7 @@
     padding: .4%;
     transition: .3s color, .3s transform ;
     outline: none;
-    left: 100rem;
+    left: 100%;
     margin-bottom: .2rem;
 }
 
@@ -149,3 +149,36 @@ ol{
 .bntEdit:focus{
     outline: none;
 }
+
+.tel{
+    display: none;
+}
+
+
+@media screen and (max-width: 600px) {
+
+    .tel{
+        display: inline;
+        font-weight: bold;
+        margin-right: .6rem;
+    }
+
+    table thead {
+        display: none;
+      }
+
+    table td {
+      display: block;
+    }
+    
+    table td::before {
+      content: attr(label);
+      font-weight: bold;
+      width: 120px;
+      min-width: 120px;
+    }
+
+    .bntDelete{
+        left: 4rem;
+    }
+  }

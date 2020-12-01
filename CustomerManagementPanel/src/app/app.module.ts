@@ -20,16 +20,21 @@ import { AddressesModule } from './addresses/addresses.module';
 import { ContactComponent } from './contact/contact.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { OrdersModule } from './orders/orders.module';
+import { HomeComponent } from './home/home.component';
+import { InProgressComponent } from './inProgress/inProgress.component';
 
 
 @NgModule({
-  declarations: [								
+  declarations: [										
     AppComponent,
     HeaderComponent,
     FooterComponent,
     AboutComponent,
     NotFoundComponent,
-    ContactComponent
+    OrdersComponent,
+    ContactComponent,
+    HomeComponent,
+    InProgressComponent
    ],
   imports: [
     BrowserModule,
