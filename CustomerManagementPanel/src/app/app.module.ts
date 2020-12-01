@@ -22,6 +22,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { OrdersModule } from './orders/orders.module';
 import { HomeComponent } from './home/home.component';
 import { InProgressComponent } from './inProgress/inProgress.component';
+import { OrdersComponent } from './orders/orders.component';
 
 
 @NgModule({
@@ -31,7 +32,6 @@ import { InProgressComponent } from './inProgress/inProgress.component';
     FooterComponent,
     AboutComponent,
     NotFoundComponent,
-    OrdersComponent,
     ContactComponent,
     HomeComponent,
     InProgressComponent
