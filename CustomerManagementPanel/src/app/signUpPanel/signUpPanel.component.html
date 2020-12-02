@@ -5,23 +5,136 @@
                     <h1 >Sign Up</h1>
                  </div>
               </div>
-              <form action="#" name="registration">
-                 <div class="form-group">
-                    <label for="exampleInputEmail1"><fa-icon class="iconloginInput" [icon]="faUser"></fa-icon> First Name</label>
-                    <input type="text"  name="firstname" class="form-control" id="firstname" aria-describedby="emailHelp" placeholder="Enter Firstname">
+              <form [formGroup]="form" (ngSubmit)="saveUserAccount()" action="#" name="registration">
+                 <div class="form-group"
+                 >
+                    <label 
+                      for="exampleInputEmail1"><fa-icon class="iconloginInput" [icon]="faUser"></fa-icon>First Name
+                    </label>
+
+                    <input 
+                      formControlName="firstName"
+                      type="text"  
+                      name="firstname" 
+                      class="form-control" 
+                      id="firstname" 
+                      aria-describedby="emailHelp" 
+                      placeholder="Enter Firstname">
+
+                  <div *ngIf="form.controls['firstName'].invalid && (form.controls['firstName'].dirty || form.controls['firstName'].touched)"
+                    class="alert alert-danger">
+                    <div *ngIf="form.controls['firstName'].errors.required">
+                      First Name is required <fa-icon class="iconExclamation" [icon]="faExclamation"></fa-icon>
+                    </div>
+                    <div *ngIf="form.controls['firstName'].errors.minlength">
+                      First Name is too short (min. 3 characters) <fa-icon class="iconExclamation" [icon]="faExclamation"></fa-icon>
+                    </div>
+                    <div *ngIf="form.controls['firstName'].errors.maxlength">
+                      First Name is too long (max. 25 characters) <fa-icon class="iconExclamation" [icon]="faExclamation"></fa-icon>
+                    </div>
+                    <div *ngIf="form.controls['firstName'].errors.pattern"> 
+                      Cannot contain numbers <fa-icon class="iconExclamation" [icon]="faExclamation"></fa-icon>
+                    </div>
+                  </div>
+
                  </div>
                  <div class="form-group">
-                    <label for="exampleInputEmail1"><fa-icon class="iconloginInput" [icon]="faUser"></fa-icon> Last Name</label>
-                    <input type="text"  name="lastname" class="form-control" id="lastname" aria-describedby="emailHelp" placeholder="Enter Lastname">
+                    <label 
+                      for="exampleInputEmail1"><fa-icon class="iconloginInput" [icon]="faUser"></fa-icon> Last Name
+                    </label>
+
+                    <input
+                      formControlName="lastName"
+                      type="text"  
+                      name="lastname" 
+                      class="form-control" 
+                      id="lastname" 
+                      aria-describedby="emailHelp" 
+                      placeholder="Enter Lastname">
+
+                    <div *ngIf="form.controls['lastName'].invalid && (form.controls['lastName'].dirty || form.controls['lastName'].touched)"
+                      class="alert alert-danger">
+                      <div *ngIf="form.controls['lastName'].errors.required">
+                        Last Name is required <fa-icon class="iconExclamation" [icon]="faExclamation"></fa-icon>
+                      </div>
+                      <div *ngIf="form.controls['lastName'].errors.minlength">
+                        Last Name is too short (min. 3 characters) <fa-icon class="iconExclamation" [icon]="faExclamation"></fa-icon>
+                      </div>
+                      <div *ngIf="form.controls['lastName'].errors.maxlength">
+                        Last Name is too long (max. 30 characters) <fa-icon class="iconExclamation" [icon]="faExclamation"></fa-icon>
+                      </div>
+                      <div *ngIf="form.controls['lastName'].errors.pattern"> 
+                        Cannot contain numbers <fa-icon class="iconExclamation" [icon]="faExclamation"></fa-icon>
+                      </div>
+                    </div>
+
                  </div>
                  <div class="form-group">
-                    <label for="exampleInputEmail1"><fa-icon class="iconloginInput" [icon]="faEnvelope"></fa-icon> Email address</label>
-                    <input type="email" name="email"  class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
+
+                    <label 
+                      for="exampleInputEmail1"><fa-icon class="iconloginInput" [icon]="faEnvelope"></fa-icon> Email address
+                    </label>
+
+                    <input 
+                      formControlName="emailAddress"
+                      type="email" 
+                      name="email"  
+                      class="form-control" 
+                      id="email" 
+                      aria-describedby="emailHelp" 
+                      placeholder="Enter email">
+
+                    <div *ngIf="form.controls['emailAddress'].invalid && (form.controls['emailAddress'].dirty || form.controls['emailAddress'].touched)"
+                      class="alert alert-danger">
+                      <div *ngIf="form.controls['emailAddress'].errors.required">
+                        Email address is required <fa-icon class="iconExclamation" [icon]="faExclamation"></fa-icon>
+                      </div>
+                      <div *ngIf="form.controls['emailAddress'].errors.minlength">
+                        Email address is too short (min. 5 characters) <fa-icon class="iconExclamation" [icon]="faExclamation"></fa-icon>
+                      </div>
+                      <div *ngIf="form.controls['emailAddress'].errors.maxlength">
+                        Email address is too long (max. 40 characters) <fa-icon class="iconExclamation" [icon]="faExclamation"></fa-icon>
+                      </div>
+                      <div *ngIf="form.controls['emailAddress'].errors.pattern"> 
+                        Email is invalid <fa-icon class="iconExclamation" [icon]="faExclamation"></fa-icon>
+                      </div>
+                    </div>
+
+
                  </div>
+
                  <div class="form-group">
-                    <label for="exampleInputEmail1"><fa-icon class="iconloginInput" [icon]="faKey"></fa-icon> Password</label>
-                    <input type="text" name="password" id="password"  class="form-control" aria-describedby="emailHelp" placeholder="Enter Password">
+
+                    <label 
+                      for="exampleInputEmail1"><fa-icon class="iconloginInput" [icon]="faKey"></fa-icon> Password
+                    </label>
+
+                    <input
+                      formControlName="password"
+                      type="text" 
+                      name="password" 
+                      id="password"  
+                      class="form-control" 
+                      aria-describedby="emailHelp" 
+                      placeholder="Enter Password">
+
+
+                    <div *ngIf="form.controls['password'].invalid && (form.controls['password'].dirty || form.controls['password'].touched)"
+                      class="alert alert-danger">
+                      <div *ngIf="form.controls['password'].errors.required">
+                        Password is required <fa-icon class="iconExclamation" [icon]="faExclamation"></fa-icon>
+                      </div>
+                      <div *ngIf="form.controls['password'].errors.minlength">
+                        Password is too short (min. 8 characters) <fa-icon class="iconExclamation" [icon]="faExclamation"></fa-icon>
+                      </div>
+                      <div *ngIf="form.controls['password'].errors.maxlength">
+                        Password is too long (max. 40 characters) <fa-icon class="iconExclamation" [icon]="faExclamation"></fa-icon>
+                      </div>
+
+                    </div>
+
                  </div>
+
                  <div class="col-md-12 text-center mb-3">
                     <button type="submit" class=" btn btn-block mybtn btn-primary tx-tfm bntStart">Get Started For Free</button>
                  </div>
@@ -34,82 +147,3 @@
               </form>
            </div>
 </div>
-
-
-
-<!-- FOR JAVASCRIPT CODE PATERN -->
-<!-- $("#signup").click(function() {
-  $("#first").fadeOut("fast", function() {
-  $("#second").fadeIn("fast");
-  });
-  });
-  
-  $("#signin").click(function() {
-  $("#second").fadeOut("fast", function() {
-  $("#first").fadeIn("fast");
-  });
-  });
-  
-  
-    
-           $(function() {
-             $("form[name='login']").validate({
-               rules: {
-                 
-                 email: {
-                   required: true,
-                   email: true
-                 },
-                 password: {
-                   required: true,
-                   
-                 }
-               },
-                messages: {
-                 email: "Please enter a valid email address",
-                
-                 password: {
-                   required: "Please enter password",
-                  
-                 }
-                 
-               },
-               submitHandler: function(form) {
-                 form.submit();
-               }
-             });
-           });
-           
-  
-  
-  $(function() {
-    
-    $("form[name='registration']").validate({
-      rules: {
-        firstname: "required",
-        lastname: "required",
-        email: {
-          required: true,
-          email: true
-        },
-        password: {
-          required: true,
-          minlength: 5
-        }
-      },
-      
-      messages: {
-        firstname: "Please enter your firstname",
-        lastname: "Please enter your lastname",
-        password: {
-          required: "Please provide a password",
-          minlength: "Your password must be at least 5 characters long"
-        },
-        email: "Please enter a valid email address"
-      },
-    
-      submitHandler: function(form) {
-        form.submit();
-      }
-    });
-  }); -->

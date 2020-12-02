@@ -25,6 +25,7 @@ import { HomeComponent } from './home/home.component';
 import { InProgressComponent } from './inProgress/inProgress.component';
 import { LoginPanelComponent } from './loginPanel/loginPanel.component';
 import { SignUpPanelComponent } from './signUpPanel/signUpPanel.component';
+import { SignUpService } from './signUpPanel/signUp.service';
 
 @NgModule({
   declarations: [												
@@ -37,8 +38,9 @@ import { SignUpPanelComponent } from './signUpPanel/signUpPanel.component';
     ContactComponent,
     HomeComponent,
     InProgressComponent,
-      LoginPanelComponent,
-      SignUpPanelComponent,
+    LoginPanelComponent,
+    SignUpPanelComponent,
+
    ],
   imports: [
     BrowserModule,
@@ -56,7 +58,8 @@ import { SignUpPanelComponent } from './signUpPanel/signUpPanel.component';
   ],
   providers: [
     AddressesService,
-    OrdersService
+    OrdersService,
+    SignUpService
   ],
   bootstrap: [AppComponent]
 })
