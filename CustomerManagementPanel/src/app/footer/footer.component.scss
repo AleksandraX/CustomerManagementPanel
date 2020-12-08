@@ -57,7 +57,7 @@ a{
 }
 
 a:hover{
-    color:  #FFC312;
+    color: var(--colorMustard);
     transition: color .5s;
 }
 

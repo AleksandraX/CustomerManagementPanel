@@ -2,7 +2,6 @@ a{
     text-decoration:none !important;
 }
 
-
 .myform{
     color: white;
    position: relative;
@@ -34,12 +33,12 @@ h1{
 .mybtn{
     border: none;
     border-radius: .5rem;
-    background-color: #FFC312;
+    background-color: var(--colorMustard);
     color: black;
 }
 
 .mybtn:focus{
-    background-color:  #FFC312;
+    background-color:  var(--colorMustard);
 }
 
 .mybtn:hover{
@@ -52,11 +51,11 @@ form .error {
 }
 
 .link{
-    color: #FFC312;
+    color: var(--colorMustard);
 }
 
 .link:hover{
-    border-bottom: .1rem solid #FFC312;
+    border-bottom: .1rem solid var(--colorMustard);
 }
 
 .alert-danger{
