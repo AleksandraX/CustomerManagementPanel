@@ -21,23 +21,21 @@
                       aria-describedby="emailHelp" 
                       placeholder="Enter Firstname">
 
-                  <div *ngIf="form.controls['firstName'].invalid && (form.controls['firstName'].dirty || form.controls['firstName'].touched)"
-                    class="alert alert-danger">
-                    <div *ngIf="form.controls['firstName'].errors.required">
+
+                    <div class="alert alert-danger" *ngIf="formHelper.checkIsRequired('firstname')">
                       First Name is required <fa-icon class="iconExclamation" [icon]="faExclamation"></fa-icon>
                     </div>
-                    <div *ngIf="form.controls['firstName'].errors.minlength">
+                    <div class="alert alert-danger" *ngIf="formHelper.checkIsMinLength('firstname')">
                       First Name is too short (min. 3 characters) <fa-icon class="iconExclamation" [icon]="faExclamation"></fa-icon>
                     </div>
-                    <div *ngIf="form.controls['firstName'].errors.maxlength">
+                    <div class="alert alert-danger" *ngIf="formHelper.checkIsMaxLength('firstname')">
                       First Name is too long (max. 25 characters) <fa-icon class="iconExclamation" [icon]="faExclamation"></fa-icon>
                     </div>
-                    <div *ngIf="form.controls['firstName'].errors.pattern"> 
+                    <div class="alert alert-danger" *ngIf="formHelper.checkIsPattern('firstname')"> 
                       Cannot contain numbers <fa-icon class="iconExclamation" [icon]="faExclamation"></fa-icon>
                     </div>
                   </div>
 
-                 </div>
                  <div class="form-group">
                     <label 
                       for="exampleInputEmail1"><fa-icon class="iconloginInput" [icon]="faUser"></fa-icon> Last Name
@@ -52,21 +50,18 @@
                       aria-describedby="emailHelp" 
                       placeholder="Enter Lastname">
 
-                    <div *ngIf="form.controls['lastName'].invalid && (form.controls['lastName'].dirty || form.controls['lastName'].touched)"
-                      class="alert alert-danger">
-                      <div *ngIf="form.controls['lastName'].errors.required">
+                      <div class="alert alert-danger" *ngIf="formHelper.checkIsRequired('lastName')">
                         Last Name is required <fa-icon class="iconExclamation" [icon]="faExclamation"></fa-icon>
                       </div>
-                      <div *ngIf="form.controls['lastName'].errors.minlength">
+                      <div class="alert alert-danger" *ngIf="formHelper.checkIsMinLength('lastName')">
                         Last Name is too short (min. 3 characters) <fa-icon class="iconExclamation" [icon]="faExclamation"></fa-icon>
                       </div>
-                      <div *ngIf="form.controls['lastName'].errors.maxlength">
+                      <div class="alert alert-danger" *ngIf="formHelper.checkIsMaxLength('lastName')">
                         Last Name is too long (max. 30 characters) <fa-icon class="iconExclamation" [icon]="faExclamation"></fa-icon>
                       </div>
-                      <div *ngIf="form.controls['lastName'].errors.pattern"> 
+                      <div class="alert alert-danger" *ngIf="formHelper.checkIsPattern('lastName')"> 
                         Cannot contain numbers <fa-icon class="iconExclamation" [icon]="faExclamation"></fa-icon>
                       </div>
-                    </div>
 
                  </div>
                  <div class="form-group">
@@ -84,24 +79,20 @@
                       aria-describedby="emailHelp" 
                       placeholder="Enter email">
 
-                    <div *ngIf="form.controls['emailAddress'].invalid && (form.controls['emailAddress'].dirty || form.controls['emailAddress'].touched)"
-                      class="alert alert-danger">
-                      <div *ngIf="form.controls['emailAddress'].errors.required">
+                    <div class="alert alert-danger" *ngIf="formHelper.checkIsRequired('emailAddress')">
                         Email address is required <fa-icon class="iconExclamation" [icon]="faExclamation"></fa-icon>
                       </div>
-                      <div *ngIf="form.controls['emailAddress'].errors.minlength">
+                      <div class="alert alert-danger" *ngIf="formHelper.checkIsMinLength('emailAddress')">
                         Email address is too short (min. 5 characters) <fa-icon class="iconExclamation" [icon]="faExclamation"></fa-icon>
                       </div>
-                      <div *ngIf="form.controls['emailAddress'].errors.maxlength">
+                      <div class="alert alert-danger" *ngIf="formHelper.checkIsMaxLength('emailAddress')">
                         Email address is too long (max. 40 characters) <fa-icon class="iconExclamation" [icon]="faExclamation"></fa-icon>
                       </div>
-                      <div *ngIf="form.controls['emailAddress'].errors.pattern"> 
+                      <div class="alert alert-danger" *ngIf="formHelper.checkIsPattern('emailAddress')"> 
                         Email is invalid <fa-icon class="iconExclamation" [icon]="faExclamation"></fa-icon>
                       </div>
                     </div>
 
-
-                 </div>
 
                  <div class="form-group">
 
@@ -111,29 +102,24 @@
 
                     <input
                       formControlName="password"
-                      type="text" 
+                      type="password" 
                       name="password" 
                       id="password"  
                       class="form-control" 
                       aria-describedby="emailHelp" 
                       placeholder="Enter Password">
 
-
-                    <div *ngIf="form.controls['password'].invalid && (form.controls['password'].dirty || form.controls['password'].touched)"
-                      class="alert alert-danger">
-                      <div *ngIf="form.controls['password'].errors.required">
+                      <div class="alert alert-danger" *ngIf="formHelper.checkIsRequired('password')">
                         Password is required <fa-icon class="iconExclamation" [icon]="faExclamation"></fa-icon>
                       </div>
-                      <div *ngIf="form.controls['password'].errors.minlength">
+                      <div class="alert alert-danger" *ngIf="formHelper.checkIsMinLength('password')">
                         Password is too short (min. 8 characters) <fa-icon class="iconExclamation" [icon]="faExclamation"></fa-icon>
                       </div>
-                      <div *ngIf="form.controls['password'].errors.maxlength">
+                      <div class="alert alert-danger" *ngIf="formHelper.checkIsMaxLength('password')">
                         Password is too long (max. 40 characters) <fa-icon class="iconExclamation" [icon]="faExclamation"></fa-icon>
                       </div>
 
                     </div>
-
-                 </div>
 
                  <div class="col-md-12 text-center mb-3">
                     <button type="submit" class=" btn btn-block mybtn btn-primary tx-tfm bntStart">Get Started For Free</button>

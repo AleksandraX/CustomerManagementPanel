@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { faEnvelope, faExclamation, faKey, faUser } from '@fortawesome/free-solid-svg-icons';
 import { UserAccountForCreation } from '../clients/models/signUp';
+import { FormHelpersService } from '../shared/helpers/formHelpers.service';
 import { SignUpService } from './signUp.service';
 @Component({
   selector: 'app-signUpPanel',
@@ -25,7 +26,9 @@ export class SignUpPanelComponent implements OnInit {
 
   constructor(
     private signUpService: SignUpService,
+    public formHelper: FormHelpersService
   ) { 
+    
 
     this.form = new FormGroup({
       "firstName": new FormControl(this.userAccount.firstName,[
@@ -51,10 +54,38 @@ export class SignUpPanelComponent implements OnInit {
         Validators.minLength(8), 
         Validators.maxLength(40)])
     }); 
+
+    this.formHelper.form = this.form;
   }
 
   ngOnInit() {
   }
+
+  // checkIsRequired(propName: string) : boolean {
+  //   return this.checkError(propName, 'required');
+  // }
+
+  // checkIsMinLength(propName: string) : boolean {
+  //   return this.checkError(propName, 'minlength');
+  // }
+
+  // checkIsMaxLength(propName: string) : boolean {
+  //   return this.checkError(propName, 'maxlength');
+  // }
+
+  // checkIsPattern(propName: string) : boolean {
+  //   return this.checkError(propName, 'pattern');
+  // }
+
+
+  // checkError(propName: string, errorType: string): boolean{
+  //   return (
+  //    this.form.get(propName)?.invalid &&
+  //    this.form.get(propName)?.hasError(errorType) && 
+  //    this.form.get(propName).touched &&
+  //    this.form.get(propName).dirty
+  //  );
+  // }
 
   saveUserAccount(){
     console.log("first step saving", this.form.value);
@@ -72,36 +103,4 @@ export class SignUpPanelComponent implements OnInit {
      });
   
   };
-
-  required(propName: string): boolean {
-    return (
-     this.form.get(propName)?.hasError('required') && 
-     this.form.get(propName).touched &&
-     this.form.get(propName).dirty
-   );
-   }
-
-   minLength(propName: string): boolean {
-     return (
-      this.form.get(propName)?.hasError('minlength') && 
-      this.form.get(propName).touched &&
-      this.form.get(propName).dirty
-    );
-     }
-
-   maxLength(propName: string): boolean {
-     return (
-       this.form.get(propName)?.hasError('maxlength') && 
-       this.form.get(propName).touched &&
-       this.form.get(propName).dirty
-     );
-     }
-
-    pattern(propName: string): boolean {
-    return (
-      this.form.get(propName)?.hasError('pattern') && 
-      this.form.get(propName).touched &&
-      this.form.get(propName).dirty
-    );
-    }
 }
