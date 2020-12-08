@@ -13,7 +13,7 @@ a{
 }
 
 a:hover{
-    color: #000;
+    color: #FFC312;
     transition: color .5s;
 }
 
@@ -29,6 +29,16 @@ a:hover{
 .contact{
     width: 20rem;
     font-size: 1.3rem;
+}
+
+.signUpBtn{
+    color: white;
+    transition: .3s transform ;
+}
+
+.signUpBtn:hover{
+    color: white;
+    transform: scale(.9);
 }
 
 
