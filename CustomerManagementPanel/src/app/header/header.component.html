@@ -29,7 +29,10 @@
 
 </div>
 
-<ul class="nav navbar-nav navbar-right">
+<ul class="nav navbar-nav navbar-right titleAndLoginPanel">
+  <p class="titleD">
+    <a [routerLink]='["/home"]' href="#"> CUSTOMER MANAGEMENT PANEL</a>
+  </p>
   <li class="nav-item">
     <a [routerLink]='["inProgress"]' class="nav-link buttons-in-navbar" href="#"><fa-icon [icon]="faUser"></fa-icon>Profile</a>
   </li>
@@ -42,10 +45,4 @@
       </ul>
   </li>
 </ul>
-
-<!-- <div class="info">
-  <p class="title">CUSTOMER MANAGEMENT PANEL </p>
-  <p class="userPlace">Kacper Bergański (Admin)</p>
-</div> -->
-
 </nav>
