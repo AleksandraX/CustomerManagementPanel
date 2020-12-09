@@ -173,17 +173,14 @@ h2{
     font-size: 1.7rem;
     position: relative;
     text-align: center;
-    top: 2rem;
+    top: 2.1rem;
     margin-top: 0;
     transition: .3s transform ;
 }
 
 
-.oneC {
-    background: rgb(247,239,209);
-    background: radial-gradient(circle, rgb(255, 200, 0) 38%, rgb(253, 131, 114) 100%);}
-.twoC {width: 100%; background: rgb(247,239,209);
-    background: radial-gradient(circle, rgb(255, 200, 0) 38%, rgb(253, 131, 114) 100%);}
+.oneC {width: 100%; background-color:  #FFC312;}
+.twoC {width: 100%; background-color: #949494;}
 
 .abilities{
     margin-bottom: 4.2rem;
