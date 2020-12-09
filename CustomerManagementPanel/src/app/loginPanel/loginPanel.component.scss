@@ -1,0 +1,82 @@
+.container{
+    height: 100%;
+    align-content: center;
+}
+    
+.card{
+    height: 23rem;
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 30rem;
+    background-color: #343A40 !important;
+}
+    
+.card-header h3{
+    color: white;
+}
+    
+.input-group-prepend span{
+    width: 3rem;
+    background-color: #FFC312;
+    color: black;
+    border:0 !important;
+}
+    
+input:focus{
+    outline: 0 0 0 0  !important;
+    box-shadow: 0 0 0 0 !important;
+}
+    
+.remember{
+    color: white;
+}
+    
+.remember input{
+    width: 2.5rem;
+    height: 1.3rem;
+    margin-left: 1.1rem;
+    margin-right: .5rem;
+}
+
+.iconloginInput{
+    font-size: 1.1rem;
+}
+    
+.login_btn{
+    color: black;
+    background-color: #FFC312;
+    width: 7rem;
+}
+    
+.login_btn:hover{
+    color: black;
+    background-color: white;
+}
+    
+.links{
+    color: white;
+}
+    
+.links a{
+    margin-left: 4px;
+}
+
+.singUpBtn{
+    color: #FFC312;
+}
+
+.forgotBtn{
+    color: #FFC312;
+}
+
+@media only screen and (min-width: 100px) and (max-width: 410px) {
+
+    .card-footer{
+        font-size: .8rem;
+    }
+
+    .login_btn{
+        position: relative;
+        top: 1rem;
+    }
+}

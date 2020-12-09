@@ -5,7 +5,9 @@ import { AddressesResolver } from './addresses/addresses.resolver';
 import { ContactComponent } from './contact/contact.component';
 import { HomeComponent } from './home/home.component';
 import { InProgressComponent } from './inProgress/inProgress.component';
+import { LoginPanelComponent } from './loginPanel/loginPanel.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { SignUpPanelComponent } from './signUpPanel/signUpPanel.component';
 
 const routes: Routes = [
   {
@@ -31,6 +33,14 @@ const routes: Routes = [
       {
         path: 'orders',
         loadChildren: () => import('./orders/orders.module').then(m => m.OrdersModule),
+      },
+      {
+        path: 'loginPanel',
+        component: LoginPanelComponent,
+      },
+      {
+        path: 'signUpPanel',
+        component: SignUpPanelComponent,
       },
       {
         path: 'inProgress',

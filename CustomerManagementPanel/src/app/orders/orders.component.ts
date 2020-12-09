@@ -45,7 +45,6 @@ export class OrdersComponent implements OnInit {
     if(lastUpdateDate == null){
       return "-";
     }
-
       let dateInString = formatDate(lastUpdateDate, "yyyy-MM-dd", 'en');
       let date = new Date(dateInString);
       

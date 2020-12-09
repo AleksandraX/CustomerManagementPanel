@@ -22,11 +22,13 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { OrdersModule } from './orders/orders.module';
 import { HomeComponent } from './home/home.component';
 import { InProgressComponent } from './inProgress/inProgress.component';
-import { OrdersComponent } from './orders/orders.component';
-
+import { LoginPanelComponent } from './loginPanel/loginPanel.component';
+import { SignUpPanelComponent } from './signUpPanel/signUpPanel.component';
+import { SignUpService } from './signUpPanel/signUp.service';
+// import { FormHelpersService } from './shared/helpers/formHelpers.service';
 
 @NgModule({
-  declarations: [										
+  declarations: [												
     AppComponent,
     HeaderComponent,
     FooterComponent,
@@ -34,7 +36,10 @@ import { OrdersComponent } from './orders/orders.component';
     NotFoundComponent,
     ContactComponent,
     HomeComponent,
-    InProgressComponent
+    InProgressComponent,
+    LoginPanelComponent,
+    SignUpPanelComponent,
+
    ],
   imports: [
     BrowserModule,
@@ -53,6 +58,8 @@ import { OrdersComponent } from './orders/orders.component';
   ],
   providers: [
     AddressesService,
+    SignUpService,
+    // FormHelpersService
   ],
   bootstrap: [AppComponent]
 })
