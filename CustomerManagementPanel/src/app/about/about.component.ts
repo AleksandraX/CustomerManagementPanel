@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import { faAngular } from '@fortawesome/free-brands-svg-icons';
 import { faBiking, faBook, faCar, faCogs, faDrumstickBite, faDumbbell, faGamepad, faMeteor, faMicrochip, faMountain, faMusic, faRunning, faSkiing, faSkiingNordic, faSnowman, faStopwatch, faTools, faTree, faUtensils } from '@fortawesome/free-solid-svg-icons';
