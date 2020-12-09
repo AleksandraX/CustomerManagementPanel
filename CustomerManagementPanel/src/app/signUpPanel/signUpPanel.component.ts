@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { faEnvelope, faExclamation, faKey, faUser } from '@fortawesome/free-solid-svg-icons';
 import { UserAccountForCreation } from '../clients/models/signUp';
-import { FormHelpersService } from '../shared/helpers/formHelpers.service';
+// import { FormHelpersService } from '../shared/helpers/formHelpers.service';
 import { SignUpService } from './signUp.service';
 @Component({
   selector: 'app-signUpPanel',
@@ -26,7 +26,7 @@ export class SignUpPanelComponent implements OnInit {
 
   constructor(
     private signUpService: SignUpService,
-    public formHelper: FormHelpersService
+    // public formHelper: FormHelpersService
   ) { 
     
 
@@ -55,37 +55,37 @@ export class SignUpPanelComponent implements OnInit {
         Validators.maxLength(40)])
     }); 
 
-    this.formHelper.form = this.form;
+    // this.formHelper.form = this.form;
   }
 
   ngOnInit() {
   }
 
-  // checkIsRequired(propName: string) : boolean {
-  //   return this.checkError(propName, 'required');
-  // }
+  checkIsRequired(propName: string) : boolean {
+    return this.checkError(propName, 'required');
+  }
 
-  // checkIsMinLength(propName: string) : boolean {
-  //   return this.checkError(propName, 'minlength');
-  // }
+  checkIsMinLength(propName: string) : boolean {
+    return this.checkError(propName, 'minlength');
+  }
 
-  // checkIsMaxLength(propName: string) : boolean {
-  //   return this.checkError(propName, 'maxlength');
-  // }
+  checkIsMaxLength(propName: string) : boolean {
+    return this.checkError(propName, 'maxlength');
+  }
 
-  // checkIsPattern(propName: string) : boolean {
-  //   return this.checkError(propName, 'pattern');
-  // }
+  checkIsPattern(propName: string) : boolean {
+    return this.checkError(propName, 'pattern');
+  }
 
 
-  // checkError(propName: string, errorType: string): boolean{
-  //   return (
-  //    this.form.get(propName)?.invalid &&
-  //    this.form.get(propName)?.hasError(errorType) && 
-  //    this.form.get(propName).touched &&
-  //    this.form.get(propName).dirty
-  //  );
-  // }
+  checkError(propName: string, errorType: string): boolean{
+    return (
+     this.form.get(propName)?.invalid &&
+     this.form.get(propName)?.hasError(errorType) && 
+     this.form.get(propName).touched &&
+     this.form.get(propName).dirty
+   );
+  }
 
   saveUserAccount(){
     console.log("first step saving", this.form.value);

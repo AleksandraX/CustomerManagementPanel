@@ -26,7 +26,7 @@ import { InProgressComponent } from './inProgress/inProgress.component';
 import { LoginPanelComponent } from './loginPanel/loginPanel.component';
 import { SignUpPanelComponent } from './signUpPanel/signUpPanel.component';
 import { SignUpService } from './signUpPanel/signUp.service';
-import { FormHelpersService } from './shared/helpers/formHelpers.service';
+// import { FormHelpersService } from './shared/helpers/formHelpers.service';
 
 @NgModule({
   declarations: [												
@@ -61,7 +61,7 @@ import { FormHelpersService } from './shared/helpers/formHelpers.service';
     AddressesService,
     OrdersService,
     SignUpService,
-    FormHelpersService
+    // FormHelpersService
   ],
   bootstrap: [AppComponent]
 })
