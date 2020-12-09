@@ -32,7 +32,7 @@ a:hover{
 }
 
 .loginSingUpDropDown{
-    left: 93%;
+    left: 78.5%;
 }
 
 .loginLi{
@@ -103,28 +103,31 @@ a:hover{
     }
 }
 
-.titleHamburger{
-    display: none;
+.titleD{
+    color: white;
+    display: block;
+    font-size: 1.7rem;
+    margin-right: 1rem;
 }
 
-@media only screen and (min-width: 1300px) and (max-width: 1650px) {
+.titleAndLoginPanel{
+    position: relative;
+    top: .3rem;
+}
+
+
+
+@media only screen and (min-width: 1150px) and (max-width: 1400px) {
 
     .loginSingUpDropDown{
-        left: 90%;
+        left: 78%;
     }
 }
 
-@media only screen and (min-width: 1150px) and (max-width: 1300px) {
+@media only screen and (min-width: 1000px) and (max-width: 1300px) {
 
     .loginSingUpDropDown{
-        left: 87%;
-    }
-}
-
-@media only screen and (min-width: 793px) and (max-width: 1150px) {
-
-    .loginSingUpDropDown{
-        left: 85%;
+        left: 76%;
     }
 }
 
@@ -150,5 +153,18 @@ a:hover{
 
     .navbar-right {
         min-width: 300px;
+    }
+}
+
+@media only screen and (min-width: 100px) and (max-width: 995px) {
+    .titleD{
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 1300px){
+
+    .titleD{
+        font-size: 1.5rem;
     }
 }

@@ -1,54 +1,10 @@
-.cointeiner{
-    color: white;
-    background: #343A40;
-    height: 9rem;
-    width: 100%;
-    clear: both;
-    position: sticky;
-    bottom: 0;
-}
-
-.header-by{
-    position: absolute;
-    font-size: 1.7rem;
-    left: 0;
-    right: 0;
+.contact{
     text-align: center;
-    top: .8rem;
 }
 
-.case{
-    position: relative;
-    font-size: 1.2rem;
-    float: left;
-    top: 2rem;
-}
-
-.case-media{
-    position: relative;
-    font-size: 1.2rem;
-    top: 2rem;
-    float: right;
-}
-
-.media{
-    font-size: 1.2rem;
-}
-
-.media-icons{
-    position: relative;
-    font-size: 2rem;
-    padding: 10px;
-    left: 3rem;
-    bottom: 1rem;
-}
-
-.socialMedia{
-    position: relative;
-    font-size: 1rem;
-    float: right;
-    top: 2rem;
-    margin-right: 2rem;
+.footer{
+    background: #343A40;
+    color: white;
 }
 
 a{
@@ -57,100 +13,48 @@ a{
 }
 
 a:hover{
+.signUpPanel
     color: var(--colorMustard);
+
     transition: color .5s;
 }
 
-.contact{
-    position: relative;
-    left: 5%;
-    top: 40%;
+.iconMedia{
+    font-size: 3rem;
 }
 
+.iconLi{
+    margin-left: 2.5rem;
+    margin-right: 2.5rem;
+}
 
-//TABLET VERSION
+.contact{
+    width: 20rem;
+    font-size: 1.3rem;
+}
 
-@media only screen and (min-width: 395px) and (max-width: 770px) {
-    .cointeiner{
-        color: white;
-        height: 7rem;
-    }
-    
-    .header-by{
-        position: absolute;
-        font-size: 1rem;
-        left: 0;
-        right: 0;
-        text-align: center;
-    }
-    
-    .case{
-        position: relative;
-        font-size: .8rem;
-        top: 2.5rem;
-    }
-    
-    .media{
-        visibility: hidden;
-    }
-    
-    .media-icons{
-        position: relative;
-        font-size: 1.5rem;
-        padding: 10px;
-        text-decoration: none;
-        color: white;
-        bottom: 6.5rem;
-        margin-right: .5rem;
-    }
+.signUpBtn{
+    color: white;
+    transition: .3s transform ;
+}
 
-    .case-media{
-    position: relative;
-    left: 4rem;
-    }
-    
-    .media-icons:hover{
-        color: #000;
-        transition: color .5s;
-    }
+.signUpBtn:hover{
+    color: white;
+    transform: scale(.9);
+}
 
-};
-
-//PHONE VERSION
 
 @media only screen and (min-width: 100px) and (max-width: 400px) {
-
-    .cointeiner{
-        color: white;
-        height: 13rem;
+    .iconLi{
+        margin-left: 1.5rem;
+        margin-right: 1.5rem;
     }
 
-    .header-by{
-        font-size: .8rem;
-        top: 3rem;
-    }  
-    
-    .media-icons{
-        margin-left: auto;
-        margin-right: auto;
-        bottom: 1rem;
-    }
-
-    .media{
-        visibility: hidden;
-    }    
-    
     .contact{
-        font-size: .8rem;
-        top: 3rem;
-        left: .5rem;
-        text-align: center;
+        font-size: 1rem;
     }
 
-    .socialMedia{
-        right: 2.5rem;
+    .info{
+        font-size: .8rem;
     }
 }
-
-
-
