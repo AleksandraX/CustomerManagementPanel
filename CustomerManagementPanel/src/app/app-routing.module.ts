@@ -2,14 +2,11 @@ import { Component, NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AboutComponent } from './about/about.component';
 import { AddressesResolver } from './addresses/addresses.resolver';
-import { ClientListComponent } from './clients/client-list/client-list.component';
 import { ContactComponent } from './contact/contact.component';
 import { HomeComponent } from './home/home.component';
 import { InProgressComponent } from './inProgress/inProgress.component';
 import { LoginPanelComponent } from './loginPanel/loginPanel.component';
 import { NotFoundComponent } from './not-found/not-found.component';
-import { OrdersComponent } from './orders/orders.component';
-import { OrdersResolver } from './orders/orders.resolver';
 import { SignUpPanelComponent } from './signUpPanel/signUpPanel.component';
 
 const routes: Routes = [
@@ -35,10 +32,7 @@ const routes: Routes = [
       },
       {
         path: 'orders',
-        component: OrdersComponent,
-        resolve: {
-          ordersList: OrdersResolver,
-        }
+        loadChildren: () => import('./orders/orders.module').then(m => m.OrdersModule),
       },
       {
         path: 'loginPanel',
@@ -76,8 +70,7 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
   providers: [
-    AddressesResolver,
-    OrdersResolver
+    AddressesResolver
   ]
 })
 export class AppRoutingModule {}

@@ -15,6 +15,24 @@
     transform: scale(1.1);
 }
 
+.bntAdd{
+    position: sticky;
+    background-color: rgb(71, 194, 71);
+    color: rgb(255, 255, 255);
+    border: none;
+    border-radius: 5px;
+    padding: .4%;
+    transition: .3s color, .3s transform ;
+    outline: none;
+    left: 100%;
+    margin-bottom: .2rem;
+}
+
+.bntAdd:hover{
+    color: rgb(255, 255, 255);
+    transform: scale(.9);
+}
+
 select {
     border: .1em solid #E6E6E6;
     border-radius: .2rem;
