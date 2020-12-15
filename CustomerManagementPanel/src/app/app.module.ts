@@ -17,10 +17,9 @@ import { ClientsModule } from './clients/clients.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AddressesService } from './addresses/addresses.service';
 import { AddressesModule } from './addresses/addresses.module';
-import { OrdersComponent } from './orders/orders.component';
-import { OrdersService } from './orders/orders.service';
 import { ContactComponent } from './contact/contact.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { OrdersModule } from './orders/orders.module';
 import { HomeComponent } from './home/home.component';
 import { InProgressComponent } from './inProgress/inProgress.component';
 import { LoginPanelComponent } from './loginPanel/loginPanel.component';
@@ -35,7 +34,6 @@ import { SignUpService } from './signUpPanel/signUp.service';
     FooterComponent,
     AboutComponent,
     NotFoundComponent,
-    OrdersComponent,
     ContactComponent,
     HomeComponent,
     InProgressComponent,
@@ -55,11 +53,11 @@ import { SignUpService } from './signUpPanel/signUp.service';
     ClientsModule,
     NgbModule,
     AddressesModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    OrdersModule
   ],
   providers: [
     AddressesService,
-    OrdersService,
     SignUpService,
     // FormHelpersService
   ],

@@ -18,6 +18,11 @@ export interface OrderStatus{
     female = 1
   }
 
+  export interface OrdersForCreation {
+    price: number,
+    orderedByCustomerId: string
+  }
+
   export interface OrderStatusChangeParameters {
     orderId: string;
     newOrderStatusId: string;
