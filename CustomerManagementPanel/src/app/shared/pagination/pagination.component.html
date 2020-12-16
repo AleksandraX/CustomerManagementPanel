@@ -1,0 +1,19 @@
+<div style="background-color: black;">
+<ul *ngIf="pages && pages.length" class="pagination">
+  <li [ngClass]="{disabled:page === 1}" class="page-item first-item">
+      <a (click)="setPage(1)" class="page-link">First</a>
+  </li>
+  <li [ngClass]="{disabled:page === 1}" class="page-item previous-item">
+      <a (click)="setPage(page - 1)" class="page-link">Previous</a>
+  </li>
+  <li *ngFor="let pagee of pages; let index = index" [ngClass]="{active:page === index}" class="page-item number-item">
+      <a (click)="setPage(index)" class="page-link">{{index}}</a>
+  </li>
+  <li [ngClass]="{disabled:page === maxPages}" class="page-item next-item">
+      <a (click)="setPage(page + 1)" class="page-link">Next</a>
+  </li>
+  <li [ngClass]="{disabled:page === maxPages}" class="page-item last-item">
+      <a (click)="setPage(maxPages)" class="page-link">Last</a>
+  </li>
+</ul>
+</div>

@@ -15,7 +15,8 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let order of ordersList; index as i">
+
+    <tr *ngFor="let order of pageOfOrders; index as i">
       <th scope="row">{{ i + 1 }}</th>
       <td class="column1" [routerLink]='["/clients/details/" + order.orderedByCustomerId]'><p class="tel">Ordered by customer: </p>{{order.orderedByCustomerFullName}}</td>
       <td class="column"><p class="tel">Price: </p>{{order.price.toFixed(2)}}</td>
@@ -47,3 +48,8 @@
   </tr>
   </tbody>
 </table>
+
+<app-pagination
+[items]="ordersList"
+(pageChangedEventEmitter)="onPageChanged($event)"></app-pagination>
+

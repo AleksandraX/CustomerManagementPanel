@@ -10,6 +10,7 @@ import { OrdersComponent } from './orders.component';
 import { OrdersAddComponent } from './orders-add/orders-add.component';
 import { OrdersRoutingModule } from './orders-routing.module';
 import { OrdersService } from './orders.service';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
     declarations: [							
@@ -25,7 +26,8 @@ import { OrdersService } from './orders.service';
       OrdersRoutingModule,
       HttpClientModule,
       CarouselModule.forRoot(),
-      FontAwesomeModule
+      FontAwesomeModule,
+      SharedModule       
     ],
     providers: [
         OrdersService,
