@@ -7,23 +7,20 @@
       <input class="inputNgForm"
       type="text"
       formControlName="country">
-    
-      <div *ngIf="form.controls['country'].invalid && (form.controls['country'].dirty || form.controls['country'].touched)"
-        class="alert alert-danger">
-        <div *ngIf="form.controls['country'].errors.required">
+  
+        <div class="alert alert-danger" *ngIf="form.checkIsRequired('country')">
           Country is required <i class="fa fa-exclamation"></i>
         </div>
-        <div *ngIf="form.controls['country'].errors.minlength">
+        <div class="alert alert-danger" *ngIf="form.checkIsMinLength('country')">
           Country is too short <i class="fa fa-exclamation"></i>
         </div>
-        <div *ngIf="form.controls['country'].errors.maxlength">
+        <div class="alert alert-danger" *ngIf="form.checkIsMaxLength('country')">
           Country is too long <i class="fa fa-exclamation"></i>
         </div>
-        <div *ngIf="form.controls['country'].errors.pattern"> 
+        <div class="alert alert-danger" *ngIf="form.checkIsPattern('country')"> 
           Cannot contain numbers <i class="fa fa-exclamation"></i>
         </div>
       </div>
-    </div>
 
     <div class="cityDiv">
       <label>City :</label>
@@ -32,22 +29,20 @@
         type="text"
         formControlName="city">
       
-        <div *ngIf="form.controls['city'].invalid && (form.controls['city'].dirty || form.controls['city'].touched)"
-          class="alert alert-danger">
-          <div *ngIf="form.controls['city'].errors.required">
+          <div class="alert alert-danger" *ngIf="form.checkIsRequired('city')">
             City is required <i class="fa fa-exclamation"></i>
           </div>
-          <div *ngIf="form.controls['city'].errors.minlength">
+          <div class="alert alert-danger" *ngIf="form.checkIsMinLength('city')">
             City is too short <i class="fa fa-exclamation"></i>
           </div>
-          <div *ngIf="form.controls['city'].errors.maxlength">
+          <div class="alert alert-danger" *ngIf="form.checkIsMaxLength('city')">
             City is too long <i class="fa fa-exclamation"></i>
           </div>
-          <div *ngIf="form.controls['city'].errors.pattern"> 
+          <div class="alert alert-danger" *ngIf="form.checkIsPattern('city')"> 
             Cannot contain numbers <i class="fa fa-exclamation"></i>
           </div>
         </div>
-      </div>
+
     
       <div class="zipCodeDiv">
         <label>Zip Code :</label>
@@ -56,23 +51,20 @@
           type="text"
           formControlName="zipCode">
         
-          <div *ngIf="form.controls['zipCode'].invalid && (form.controls['zipCode'].dirty || form.controls['zipCode'].touched)"
-            class="alert alert-danger">
-            <div *ngIf="form.controls['zipCode'].errors.required">
+            <div class="alert alert-danger" *ngIf="form.checkIsRequired('zipCode')">
               Zip Code is required <i class="fa fa-exclamation"></i>
             </div>
-            <div *ngIf="form.controls['zipCode'].errors.minlength">
+            <div class="alert alert-danger" *ngIf="form.checkIsMinLength('zipCode')">
               Zip Code is too short <i class="fa fa-exclamation"></i>
             </div>
-            <div *ngIf="form.controls['zipCode'].errors.maxlength">
+            <div class="alert alert-danger" *ngIf="form.checkIsMaxLength('zipCode')">
               Zip Code is too long <i class="fa fa-exclamation"></i>
             </div>
-            <div *ngIf="form.controls['zipCode'].errors.pattern"> 
+            <div class="alert alert-danger" *ngIf="form.checkIsPattern('zipCode')"> 
               Cannot contain letters <i class="fa fa-exclamation"></i>
             </div>
           </div>
-        </div>
-    
+
         <div class="streetDiv">
           <label>Street :</label>
             <br>
@@ -80,19 +72,16 @@
             type="text"
             formControlName="street">
           
-            <div *ngIf="form.controls['street'].invalid && (form.controls['street'].dirty || form.controls['street'].touched)"
-              class="alert alert-danger">
-              <div *ngIf="form.controls['street'].errors.required">
+              <div class="alert alert-danger" *ngIf="form.checkIsRequired('street')">
                 Street is required <i class="fa fa-exclamation"></i>
               </div>
-              <div *ngIf="form.controls['street'].errors.minlength">
+              <div class="alert alert-danger" *ngIf="form.checkIsMinLength('street')">
                 Street is too short <i class="fa fa-exclamation"></i>
               </div>
-              <div *ngIf="form.controls['street'].errors.maxlength">
+              <div class="alert alert-danger" *ngIf="form.checkIsPattern('street')">
                 Street is too long <i class="fa fa-exclamation"></i>
               </div>
             </div>
-          </div>
 
           <br>
 
