@@ -14,17 +14,11 @@
           step="1" 
           data-number-to-fixed="2"
           data-number-stepfactor="100" >
-      
-        <div *ngIf="form.controls['price'].invalid && (form.controls['price'].dirty || form.controls['price'].touched)"
-          class="alert alert-danger">
-          <div *ngIf="form.controls['price'].errors.required">
-            Price is required <i class="fa fa-exclamation"></i>
+
+          <div class="alert alert-danger" *ngIf="form.checkIsRequired('price')">
+            Price is required <fa-icon class="iconExclamation" [icon]="faExclamation"></fa-icon>
           </div>
-          <div *ngIf="form.controls['price'].errors.pattern">
-            Price is required <i class="fa fa-exclamation"></i>
-          </div>
-          </div>
-      </div>
+    </div>
 
         <div class="addDiv">
           <label class="label">Ordered By Customer Id :</label>

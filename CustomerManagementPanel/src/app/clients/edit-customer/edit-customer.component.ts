@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { MyFormGroup } from 'src/app/shared/extentions/myFormGroup';
 import { ClientsService } from '../clients.service';
 import { Customer } from '../models/customer';
 import { CustomerForCreation } from '../models/customerForCreation';
@@ -19,7 +20,7 @@ export class EditCustomerComponent implements OnInit {
   isDisabled: boolean = true;
   addingMode:boolean = false;
   
-  form: FormGroup;
+  form: MyFormGroup = null;
   customerExist: boolean = true;
   
 
@@ -38,7 +39,7 @@ export class EditCustomerComponent implements OnInit {
       }
   });
 
-  this.form = new FormGroup({
+  this.form = new MyFormGroup({
     "name": new FormControl(this.copyOfCustomer.name, [Validators.required, Validators.minLength(2), Validators.maxLength(30)]),
     "lastName": new FormControl(this.copyOfCustomer.lastName,[Validators.required, Validators.minLength(3), Validators.maxLength(30)]),
     "address": new FormGroup({
@@ -76,36 +77,4 @@ export class EditCustomerComponent implements OnInit {
        console.log("Subscribe for creation")
      });
   }
-
-  required(propName: string): boolean {
-     return (
-      this.form.get(propName)?.hasError('required') && 
-      this.form.get(propName).touched &&
-      this.form.get(propName).dirty
-    );
-    }
-
-    minLength(propName: string): boolean {
-      return (
-       this.form.get(propName)?.hasError('minlength') && 
-       this.form.get(propName).touched &&
-       this.form.get(propName).dirty
-     );
-      }
-
-    maxLength(propName: string): boolean {
-      return (
-        this.form.get(propName)?.hasError('maxlength') && 
-        this.form.get(propName).touched &&
-        this.form.get(propName).dirty
-      );
-      }
-
-      pattern(propName: string): boolean {
-      return (
-        this.form.get(propName)?.hasError('pattern') && 
-        this.form.get(propName).touched &&
-        this.form.get(propName).dirty
-      );
-      }
 }

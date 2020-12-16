@@ -19,8 +19,8 @@ export interface OrderStatus{
   }
 
   export interface OrdersForCreation {
+    orderedByCustomerId: string,
     price: number,
-    orderedByCustomerId: string
   }
 
   export interface OrderStatusChangeParameters {

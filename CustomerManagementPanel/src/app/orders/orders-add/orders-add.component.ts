@@ -2,10 +2,11 @@ import { CurrencyPipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { faBroom, faSave, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faBroom, faExclamation, faSave, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { ToastrService } from 'ngx-toastr';
 import { Customer } from 'src/app/clients/models/customer';
 import {OrdersForCreation } from 'src/app/clients/models/orders';
+import { MyFormGroup } from 'src/app/shared/extentions/myFormGroup';
 import { OrdersService } from '../orders.service';
 
 @Component({
@@ -17,9 +18,10 @@ export class OrdersAddComponent implements OnInit {
 
   clientsList: Customer[];
   ordersAddList: OrdersForCreation[];
-  form: FormGroup = null;
+  form: MyFormGroup = null;
   faTimes = faTimes;
   faSave = faSave;
+  faExclamation = faExclamation;
 
   order: OrdersForCreation ={ 
     orderedByCustomerId: "",
@@ -31,7 +33,7 @@ export class OrdersAddComponent implements OnInit {
     private ordersService: OrdersService,
     private route: ActivatedRoute
   ) { 
-    this.form = new FormGroup({
+    this.form = new MyFormGroup({
       "price": new FormControl(this.order.price,[Validators.required, Validators.pattern("[0-9]*[.]?[0-9]+")]),
       "orderedByCustomerId": new FormControl(this.order.orderedByCustomerId,[Validators.required, Validators.minLength(3), Validators.maxLength(40)])
     }); 
@@ -44,21 +46,6 @@ export class OrdersAddComponent implements OnInit {
   }
 
   
-  // onSelectedStatus(orderedByCustomerId: string, price: number){
-  //   let parametersButton: OrdersForCreation = {
-  //     price: price,
-  //     orderedByCustomerId: orderedByCustomerId
-  //   };
-
-  //   this.ordersService.changeOrderStatus(parametersButton).subscribe(response => {
-  //     this.ordersService.getAllListItems().subscribe(response => 
-  //       {
-  //         this.ordersAddList = response;
-  //       });
-  //       this.toastr.success('Order status changed!', 'Success');
-  //   })
-  // }
-
   saveOrders(){
     console.log("first step saving", this.form.value);
 
@@ -74,38 +61,6 @@ export class OrdersAddComponent implements OnInit {
      });
   
   };
-
-  required(propName: string): boolean {
-    return (
-     this.form.get(propName)?.hasError('required') && 
-     this.form.get(propName).touched &&
-     this.form.get(propName).dirty
-   );
-   }
-
-   minLength(propName: string): boolean {
-     return (
-      this.form.get(propName)?.hasError('minlength') && 
-      this.form.get(propName).touched &&
-      this.form.get(propName).dirty
-    );
-     }
-
-   maxLength(propName: string): boolean {
-     return (
-       this.form.get(propName)?.hasError('maxlength') && 
-       this.form.get(propName).touched &&
-       this.form.get(propName).dirty
-     );
-     }
-
-    pattern(propName: string): boolean {
-    return (
-      this.form.get(propName)?.hasError('pattern') && 
-      this.form.get(propName).touched &&
-      this.form.get(propName).dirty
-    );
-    }
 
     showSuccess() {
       this.toastr.success('Order added!','Success!');

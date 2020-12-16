@@ -22,16 +22,16 @@
                       placeholder="Enter Firstname">
 
 
-                    <div class="alert alert-danger" *ngIf="checkIsRequired('firstName')">
+                    <div class="alert alert-danger" *ngIf="form.checkIsRequired('firstName')">
                       First Name is required <fa-icon class="iconExclamation" [icon]="faExclamation"></fa-icon>
                     </div>
-                    <div class="alert alert-danger" *ngIf="checkIsMinLength('firstName')">
+                    <div class="alert alert-danger" *ngIf="form.checkIsMinLength('firstName')">
                       First Name is too short (min. 3 characters) <fa-icon class="iconExclamation" [icon]="faExclamation"></fa-icon>
                     </div>
-                    <div class="alert alert-danger" *ngIf="checkIsMaxLength('firstName')">
+                    <div class="alert alert-danger" *ngIf="form.checkIsMaxLength('firstName')">
                       First Name is too long (max. 25 characters) <fa-icon class="iconExclamation" [icon]="faExclamation"></fa-icon>
                     </div>
-                    <div class="alert alert-danger" *ngIf="checkIsPattern('firstName')"> 
+                    <div class="alert alert-danger" *ngIf="form.checkIsPattern('firstName')"> 
                       Cannot contain numbers <fa-icon class="iconExclamation" [icon]="faExclamation"></fa-icon>
                     </div>
                   </div>
@@ -50,16 +50,16 @@
                       aria-describedby="emailHelp" 
                       placeholder="Enter Lastname">
 
-                      <div class="alert alert-danger" *ngIf="checkIsRequired('lastName')">
+                      <div class="alert alert-danger" *ngIf="form.checkIsRequired('lastName')">
                         Last Name is required <fa-icon class="iconExclamation" [icon]="faExclamation"></fa-icon>
                       </div>
-                      <div class="alert alert-danger" *ngIf="checkIsMinLength('lastName')">
+                      <div class="alert alert-danger" *ngIf="form.checkIsMinLength('lastName')">
                         Last Name is too short (min. 3 characters) <fa-icon class="iconExclamation" [icon]="faExclamation"></fa-icon>
                       </div>
-                      <div class="alert alert-danger" *ngIf="checkIsMaxLength('lastName')">
+                      <div class="alert alert-danger" *ngIf="form.checkIsMaxLength('lastName')">
                         Last Name is too long (max. 30 characters) <fa-icon class="iconExclamation" [icon]="faExclamation"></fa-icon>
                       </div>
-                      <div class="alert alert-danger" *ngIf="checkIsPattern('lastName')"> 
+                      <div class="alert alert-danger" *ngIf="form.checkIsPattern('lastName')"> 
                         Cannot contain numbers <fa-icon class="iconExclamation" [icon]="faExclamation"></fa-icon>
                       </div>
 
@@ -79,16 +79,16 @@
                       aria-describedby="emailHelp" 
                       placeholder="Enter email">
 
-                    <div class="alert alert-danger" *ngIf="checkIsRequired('emailAddress')">
+                    <div class="alert alert-danger" *ngIf="form.checkIsRequired('emailAddress')">
                         Email address is required <fa-icon class="iconExclamation" [icon]="faExclamation"></fa-icon>
                       </div>
-                      <div class="alert alert-danger" *ngIf="checkIsMinLength('emailAddress')">
+                      <div class="alert alert-danger" *ngIf="form.checkIsMinLength('emailAddress')">
                         Email address is too short (min. 5 characters) <fa-icon class="iconExclamation" [icon]="faExclamation"></fa-icon>
                       </div>
-                      <div class="alert alert-danger" *ngIf="checkIsMaxLength('emailAddress')">
+                      <div class="alert alert-danger" *ngIf="form.checkIsMaxLength('emailAddress')">
                         Email address is too long (max. 40 characters) <fa-icon class="iconExclamation" [icon]="faExclamation"></fa-icon>
                       </div>
-                      <div class="alert alert-danger" *ngIf="checkIsPattern('emailAddress')"> 
+                      <div class="alert alert-danger" *ngIf="form.checkIsPattern('emailAddress')"> 
                         Email is invalid <fa-icon class="iconExclamation" [icon]="faExclamation"></fa-icon>
                       </div>
                     </div>
@@ -109,13 +109,13 @@
                       aria-describedby="emailHelp" 
                       placeholder="Enter Password">
 
-                      <div class="alert alert-danger" *ngIf="checkIsRequired('password')">
+                      <div class="alert alert-danger" *ngIf="form.checkIsRequired('password')">
                         Password is required <fa-icon class="iconExclamation" [icon]="faExclamation"></fa-icon>
                       </div>
-                      <div class="alert alert-danger" *ngIf="checkIsMinLength('password')">
+                      <div class="alert alert-danger" *ngIf="form.checkIsMinLength('password')">
                         Password is too short (min. 8 characters) <fa-icon class="iconExclamation" [icon]="faExclamation"></fa-icon>
                       </div>
-                      <div class="alert alert-danger" *ngIf="checkIsMaxLength('password')">
+                      <div class="alert alert-danger" *ngIf="form.checkIsMaxLength('password')">
                         Password is too long (max. 40 characters) <fa-icon class="iconExclamation" [icon]="faExclamation"></fa-icon>
                       </div>
 
