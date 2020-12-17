@@ -8,6 +8,7 @@ import {
   OrderStatus,
   OrderStatusChangeParameters,
 } from '../clients/models/orders';
+import { MyPager, OrderedItem } from '../shared/models/shared.models';
 import { OrdersService } from './orders.service';
 
 @Component({
@@ -22,7 +23,7 @@ export class OrdersComponent implements OnInit {
   selectedOrderStatus: OrderStatus;
   optionDisabled: boolean = false;
   faPlusSquare = faPlusSquare;
-  pageOfOrders: Order[];
+  orderedOrders: OrderedItem[];
 
   constructor(
     private toastr: ToastrService,
@@ -85,8 +86,8 @@ export class OrdersComponent implements OnInit {
   }
 
 
-  onPageChanged(event: any) {
+  onPageChanged(event: MyPager) {
     console.log("łapiemy event", event);
-    this.pageOfOrders = event.pageOfItems;
+    this.orderedOrders = event.pageOfItems;
   }
 }

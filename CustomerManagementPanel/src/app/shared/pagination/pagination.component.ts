@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { skip, filter } from 'rxjs/operators';
+import { MyPager, OrderedItem } from '../models/shared.models';
 
 @Component({
   selector: 'app-pagination',
@@ -8,72 +8,41 @@ import { skip, filter } from 'rxjs/operators';
 })
 export class PaginationComponent implements OnInit {
   @Input() items = [];
-  @Input() pageSize = 5;
+  @Input() pageSize = 10;
   @Input() startPage = 1;
 
-  @Output("pageChangedEventEmitter") pageChangedEventEmitter: EventEmitter<MyPager> = new EventEmitter<MyPager>();
+  @Output("pageChangedEventEmitter") pageChangedEventEmitter: EventEmitter<MyPager>
+  = new EventEmitter<MyPager>();
   
+  orderedItems: Array<OrderedItem> = [];
   
   page: number = 1;  
-  pageOfItems: Array<any>;
+  pageOfItems: Array<OrderedItem> = [];
   maxPages: number;
   pages: number[];
 
 
   constructor() { 
-   
   }
 
   ngOnInit() {
+    for (let i = 0; i < this.items.length; i++) {
+      let item = new OrderedItem(i + 1, this.items[i]);
+      this.orderedItems.push(item);    
+    }
+
     this.maxPages = this.items.length / this.pageSize;
-    this.pages = new Array(this.maxPages);
+    this.pages = new Array(this.maxPages).fill(1).map((x, i) => (++i));
+    this.setPage(this.startPage);
   }
 
 
 setPage(page: number) {
   this.page = page;
-
   let numberToSlice = ((this.page - 1) * this.pageSize);
-  this.pageOfItems = this.items.slice(numberToSlice, numberToSlice + this.pageSize);
-  console.log("page of items:", this.pageOfItems);
+  this.pageOfItems = this.orderedItems.slice(numberToSlice, numberToSlice + this.pageSize);
 
-  // call change page function in parent component
   let myPager = new MyPager(this.pageOfItems, this.page, this.maxPages);
-  console.log("yPager:", myPager);
   this.pageChangedEventEmitter.emit(myPager);
 }
-
-// paginate(itemsLength: number, page: number, pageSize: number, maxPages: number){
-//   let pages = itemsLength / pageSize;
-
-//   let pager = {
-//     currentPage: 1,
-//     totalPages: 10,
-//     pages: [1, 2, 3, 4, 5]
-//   };
-
-//   return pager;
-// }
-// }
-
-// export interface Pager {
-//   currentPage: number;
-//   totalPages: number;
-//   pages: number[];
-// }
-}
-
-export class MyPager {
-  pageOfItems: any[];
-  currentPage: number;
-  totalPages: number;
-
-  /**
-   *
-   */
-  constructor(pageOfItems: any[], currentPage: number, totalPages: number) {
-    this.pageOfItems = pageOfItems;
-    this.currentPage = currentPage;
-    this.totalPages = totalPages;
-  }
 }

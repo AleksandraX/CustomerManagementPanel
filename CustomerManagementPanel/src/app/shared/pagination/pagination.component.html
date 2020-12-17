@@ -6,8 +6,8 @@
   <li [ngClass]="{disabled:page === 1}" class="page-item previous-item">
       <a (click)="setPage(page - 1)" class="page-link">Previous</a>
   </li>
-  <li *ngFor="let pagee of pages; let index = index" [ngClass]="{active:page === index}" class="page-item number-item">
-      <a (click)="setPage(index)" class="page-link">{{index}}</a>
+  <li *ngFor="let pagee of pages" [ngClass]="{active:page === pagee}" class="page-item number-item">
+      <a (click)="setPage(pagee)" class="page-link">{{pagee}}</a>
   </li>
   <li [ngClass]="{disabled:page === maxPages}" class="page-item next-item">
       <a (click)="setPage(page + 1)" class="page-link">Next</a>

@@ -14,28 +14,28 @@
       <th class="columnInfo" scope="col">Status</th>
     </tr>
   </thead>
-  <tbody>
+  <tbody >
 
-    <tr *ngFor="let order of pageOfOrders; index as i">
-      <th scope="row">{{ i + 1 }}</th>
-      <td class="column1" [routerLink]='["/clients/details/" + order.orderedByCustomerId]'><p class="tel">Ordered by customer: </p>{{order.orderedByCustomerFullName}}</td>
-      <td class="column"><p class="tel">Price: </p>{{order.price.toFixed(2)}}</td>
-      <td class="column"><p class="tel">Ordered date: </p>{{order.creationDate | date}}</td>
-      <td class="column"><p class="tel">Last update date: </p>{{order.lastUpdateDate | date}}</td>
-      <td class="column"><p class="tel">Days of last update: </p>{{getDays(order.lastUpdateDate)}}</td>
+    <tr *ngFor="let order of orderedOrders">
+      <th scope="row">{{ order.orderNumber }}</th>
+      <td class="column1" [routerLink]='["/clients/details/" + order.item.orderedByCustomerId]'><p class="tel">Ordered by customer: </p>{{order.item.orderedByCustomerFullName}}</td>
+      <td class="column"><p class="tel">Price: </p>{{order.item.price.toFixed(2)}}</td>
+      <td class="column"><p class="tel">Ordered date: </p>{{order.item.creationDate | date}}</td>
+      <td class="column"><p class="tel">Last update date: </p>{{order.item.lastUpdateDate | date}}</td>
+      <td class="column"><p class="tel">Days of last update: </p>{{getDays(order.item.lastUpdateDate)}}</td>
       <td class="column"><p class="tel">Status: </p>
 
         <select 
         #orderStatusSelect
-        [disabled]="checkStatus(order.statusId, 'Cancelled') || checkStatus(order.statusId, 'Delivered')"
+        [disabled]="checkStatus(order.item.statusId, 'Cancelled') || checkStatus(order.item.statusId, 'Delivered')"
         [ngClass]="{
-          'optionCancelled':  checkStatus(order.statusId, 'Cancelled'),
-          'optionDelivered' : checkStatus(order.statusId, 'Delivered')
+          'optionCancelled':  checkStatus(order.item.statusId, 'Cancelled'),
+          'optionDelivered' : checkStatus(order.item.statusId, 'Delivered')
         }"
-        (change)="onSelectedStatus($event.target.value, order.id)">
+        (change)="onSelectedStatus($event.target.value, order.item.id)">
           <option 
            *ngFor="let orderStatus of orderStatuses" 
-           [selected]="orderStatus.id === order.statusId" 
+           [selected]="orderStatus.id === order.item.statusId" 
            [value]="orderStatus.id" 
            [ngClass]="{ 
             'optionDelivered': orderStatus.name === 'Delivered', 
