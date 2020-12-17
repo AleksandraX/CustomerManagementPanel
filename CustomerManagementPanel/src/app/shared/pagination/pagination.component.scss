@@ -1,0 +1,21 @@
+.pagination{
+    position: absolute;
+    top: 95%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)
+}
+
+.numberPage{
+    text-decoration: none;
+    color: white;
+    background-color: black;
+}
+
+.numberPage:hover{
+    color: var(--colorMustard);
+
+    transition: color .2s;
+}
+
+@media only screen and (min-width: 100px) and (max-width: 400px) {}
