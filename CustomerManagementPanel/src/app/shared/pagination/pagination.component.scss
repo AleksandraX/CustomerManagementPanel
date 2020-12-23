@@ -1,0 +1,32 @@
+.pagination{
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-right: -50%;
+    margin-top: 2.5rem;
+    transform: translate(-50%, -50%)
+}
+
+.numberPage{
+    text-decoration: none;
+    color: black;
+    background-color:  white;
+    outline:none;
+}
+
+.page-item.active .page-link{
+    background-color: #343A40;
+    color: var(--colorMustard);
+    border: black;
+}
+
+.numberPage:hover{
+    color: var(--colorMustard);
+    transition: color .2s;
+    background-color: #343A40;
+    cursor: pointer;
+}
+
+@media only screen and (min-width: 100px) and (max-width: 800px) {
+
+}

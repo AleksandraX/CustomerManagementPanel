@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -25,6 +24,8 @@ import { InProgressComponent } from './inProgress/inProgress.component';
 import { LoginPanelComponent } from './loginPanel/loginPanel.component';
 import { SignUpPanelComponent } from './signUpPanel/signUpPanel.component';
 import { SignUpService } from './signUpPanel/signUp.service';
+import { JwPaginationModule } from 'jw-angular-pagination';
+import { PaginationComponent } from './shared/pagination/pagination.component';
 // import { FormHelpersService } from './shared/helpers/formHelpers.service';
 
 @NgModule({
@@ -39,7 +40,6 @@ import { SignUpService } from './signUpPanel/signUp.service';
     InProgressComponent,
     LoginPanelComponent,
     SignUpPanelComponent,
-
    ],
   imports: [
     BrowserModule,
@@ -54,7 +54,8 @@ import { SignUpService } from './signUpPanel/signUp.service';
     NgbModule,
     AddressesModule,
     FontAwesomeModule,
-    OrdersModule
+    OrdersModule,
+    JwPaginationModule
   ],
   providers: [
     AddressesService,

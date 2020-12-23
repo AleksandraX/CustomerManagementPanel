@@ -1,0 +1,19 @@
+<div class="selectionBar">
+<ul *ngIf="pages && pages.length" class="pagination">
+  <li [ngClass]="{disabled:page === 1}" class="page-item first-item numberPage">
+      <a (click)="setPage(1)" class="page-link numberPage">First</a>
+  </li>
+  <li [ngClass]="{disabled:page === 1}" class="page-item previous-item numberPage">
+      <a (click)="setPage(page - 1)" class="page-link numberPage">Previous</a>
+  </li>
+  <li *ngFor="let pagee of pages" [ngClass]="{active:page === pagee}" class="page-item number-item">
+      <a (click)="setPage(pagee)" class="page-link numberPage">{{pagee}}</a>
+  </li>
+  <li [ngClass]="{disabled:page === maxPages}" class="page-item next-item numberPage">
+      <a (click)="setPage(page + 1)" class="page-link numberPage">Next</a>
+  </li>
+  <li [ngClass]="{disabled:page === maxPages}" class="page-item last-item numberPage">
+      <a (click)="setPage(maxPages)" class="page-link numberPage">Last</a>
+  </li>
+</ul>
+</div>
