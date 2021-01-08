@@ -2,13 +2,13 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
-import { Address, AddressForCreation, AddressWithResidents } from '../clients/models/address';
+import { Address, AddressForCreation, AddressWithResidents, Country } from '../clients/models/address';
 
 @Injectable()
 
 export class AddressesService {
 
-    baseUrl: string = "https://customermanagmentportalapi.azurewebsites.net/api/addresses";
+    baseUrl: string = "https://localhost:44391/api/addresses";
     headers: Headers = null;
     options;
 
@@ -47,6 +47,16 @@ constructor(private httpClient:HttpClient) {
             catchError(this.handleError<AddressWithResidents>("AddressWithResidents"))
         );
     }
+
+    getAllCountries() : Observable<Country[]>{
+        return this.httpClient.get<Country[]>(this.baseUrl + "/GetAllCountries").pipe(
+          tap(response =>
+              {
+                  console.log("From services:", response);
+              }),
+          catchError(this.handleError<Country[]>("GetAllCountries"))
+      );  
+      }
 
 
     delete(id: string) : Observable<any> {

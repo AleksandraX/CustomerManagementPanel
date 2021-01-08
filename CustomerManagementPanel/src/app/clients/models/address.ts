@@ -29,3 +29,9 @@ export interface Resident{
     email: string;
     phoneNumber: string;
 }
+
+export class Country{
+  name: string;
+  code: string;
+  id: string;
+}

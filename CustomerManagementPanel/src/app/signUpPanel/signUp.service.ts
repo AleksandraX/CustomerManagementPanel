@@ -9,7 +9,7 @@ import { UserAccountForCreation } from '../clients/models/signUp';
 
 export class SignUpService {
 
-    baseUrl: string = "https://customermanagmentportalapi.azurewebsites.net/api/addresses";
+    baseUrl: string = "https://localhost:44391/api/addresses";
     headers: Headers = null;
     options;
 

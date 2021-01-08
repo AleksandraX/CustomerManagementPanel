@@ -9,7 +9,8 @@ import { Order, OrdersForCreation, OrderStatus, OrderStatusChangeParameters } fr
 
 export class OrdersService {
 
-    baseUrl: string = "https://customermanagmentportalapi.azurewebsites.net/api/orders";
+    baseUrl: string = "https://localhost:44391/api/orders";
+    statusUrl: string = "https://localhost:44391/api/orderStatuses";
     headers: Headers = null;
     options: { headers: Headers; };
 
@@ -19,7 +20,7 @@ constructor(private httpClient:HttpClient) {
  }
 
  getAllListItems() : Observable<Order[]> {
-    return this.httpClient.get<Order[]>(this.baseUrl + "/getAllListItems").pipe(
+    return this.httpClient.get<Order[]>(this.baseUrl + "/GetAllListItems").pipe(
         tap(response =>
             {
                 console.log("From services:", response);
@@ -39,7 +40,7 @@ create(ordersForCreation: OrdersForCreation) : Observable<any>{
 }
 
     getAllOrderStatus() : Observable<OrderStatus[]>{
-        return this.httpClient.get<OrderStatus[]>("https://customermanagmentportalapi.azurewebsites.net/api/orderStatuses" + "/getAll").pipe(
+        return this.httpClient.get<OrderStatus[]>(this.statusUrl + "/getAll").pipe(
             tap(response =>
                 {
                     console.log("From services:", response);

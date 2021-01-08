@@ -4,7 +4,16 @@
   <div class="ngFormHere">
     <label>Country :</label>
       <br>
-      <input class="inputNgForm"
+      <select 
+
+        formControlName="orderedByCustomerId">
+
+        <option *ngFor="let country of countries; index as i" [value]="country.id">
+          {{country.name}}
+        </option>
+
+    </select>
+      <!-- <input class="inputNgForm"
       type="text"
       formControlName="country">
   
@@ -19,7 +28,7 @@
         </div>
         <div class="alert alert-danger" *ngIf="form.checkIsPattern('country')"> 
           Cannot contain numbers <i class="fa fa-exclamation"></i>
-        </div>
+        </div> -->
       </div>
 
     <div class="cityDiv">
@@ -85,7 +94,7 @@
 
           <br>
 
-  <button type="submit"> Save</button>
+  <button type="submit" (click)= showSuccess()> Save<fa-icon class="icon" [icon]="faSave"></fa-icon></button>
   <button type="button" (click)="form.reset()">Clear</button>
  
   <pre>{{form.value | json }}</pre>

@@ -1,8 +1,8 @@
-<div *ngIf="!!addressesList && addressesList.length > 0; else emptyList"> 
-
-    <div class="add">
+   <div class="add">
         <button class="bntAdd" [routerLink]='["/addresses/add"]'><fa-icon [icon]="faPlusSquare"></fa-icon> Add Address</button>
     </div>
+
+    <div *ngIf="!!addressesList && addressesList.length > 0; else emptyList"> 
 
   <table class="table">
         <thead class="thead-dark">
@@ -30,8 +30,9 @@
             </td>
         </tr>
         </tbody>
-    </table>
+    </table>    
 </div>
+
 
 <ng-template #emptyList>
     <div class="emptyList">

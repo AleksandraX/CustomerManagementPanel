@@ -26,12 +26,16 @@ export class PaginationComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log(this.items.length);
     for (let i = 0; i < this.items.length; i++) {
       let item = new OrderedItem(i + 1, this.items[i]);
       this.orderedItems.push(item);    
     }
 
     this.maxPages = this.items.length / this.pageSize;
+    if(this.maxPages < 1) {
+      this.maxPages = 1;
+    }
     this.pages = new Array(this.maxPages).fill(1).map((x, i) => (++i));
     this.setPage(this.startPage);
   }
