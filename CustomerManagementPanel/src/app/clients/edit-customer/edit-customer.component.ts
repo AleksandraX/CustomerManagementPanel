@@ -1,6 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { faSave } from '@fortawesome/free-solid-svg-icons';
+import { ToastrService } from 'ngx-toastr';
 import { MyFormGroup } from 'src/app/shared/extentions/myFormGroup';
 import { ClientsService } from '../clients.service';
 import { Customer } from '../models/customer';
@@ -19,6 +21,7 @@ export class EditCustomerComponent implements OnInit {
   copyOfCustomer: Customer;
   isDisabled: boolean = true;
   addingMode:boolean = false;
+  faSave =faSave;
   
   form: MyFormGroup = null;
   customerExist: boolean = true;
@@ -26,7 +29,8 @@ export class EditCustomerComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private clientsService: ClientsService
+    private clientsService: ClientsService,
+    private toastr: ToastrService,
   ) { 
     this.route.data.subscribe(value => {
       this.copyOfCustomer = value["customer"];
@@ -39,14 +43,21 @@ export class EditCustomerComponent implements OnInit {
       }
   });
 
+  let country = this.copyOfCustomer.address?.country;
+
+
+  if(this.copyOfCustomer.address !== null && this.copyOfCustomer.address !== undefined) {
+    let country1 = this.copyOfCustomer.address.country;
+  }
+
   this.form = new MyFormGroup({
     "name": new FormControl(this.copyOfCustomer.name, [Validators.required, Validators.minLength(2), Validators.maxLength(30)]),
     "lastName": new FormControl(this.copyOfCustomer.lastName,[Validators.required, Validators.minLength(3), Validators.maxLength(30)]),
     "address": new FormGroup({
-      "country": new FormControl(this.copyOfCustomer.address.country,[Validators.required, Validators.minLength(3), Validators.maxLength(30)]),
-      "zipCode": new FormControl(this.copyOfCustomer.address.zipCode,[Validators.required, Validators.minLength(4), Validators.maxLength(30)]),
-      "city": new FormControl(this.copyOfCustomer.address.city,[Validators.required, Validators.minLength(3), Validators.maxLength(30)]),
-      "street": new FormControl(this.copyOfCustomer.address.street,[Validators.required, Validators.minLength(3), Validators.maxLength(40)])
+      "country": new FormControl(this.copyOfCustomer.address?.country,[Validators.required, Validators.minLength(3), Validators.maxLength(30)]),
+      "zipCode": new FormControl(this.copyOfCustomer.address?.zipCode,[Validators.required, Validators.minLength(4), Validators.maxLength(30)]),
+      "city": new FormControl(this.copyOfCustomer.address?.city,[Validators.required, Validators.minLength(3), Validators.maxLength(30)]),
+      "street": new FormControl(this.copyOfCustomer.address?.street,[Validators.required, Validators.minLength(3), Validators.maxLength(40)])
     }),
     "gender": new FormControl(this.copyOfCustomer.gender, [Validators.required]),
     "phoneNumber": new FormControl(this.copyOfCustomer.phoneNumber,[Validators.required, Validators.minLength(9), Validators.maxLength(15),]),
@@ -76,5 +87,13 @@ export class EditCustomerComponent implements OnInit {
      this.clientsService.create(customerToCreate).subscribe(response => {
        console.log("Subscribe for creation")
      });
+  }
+
+  showSuccess() {
+    this.toastr.success('Customer added!', 'Success!');
+  }
+
+  clean() {
+    this.toastr.success('Data cleared!', 'Success!');
   }
 }

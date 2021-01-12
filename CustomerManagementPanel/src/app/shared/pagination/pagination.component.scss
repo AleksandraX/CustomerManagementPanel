@@ -12,6 +12,7 @@
     color: black;
     background-color:  white;
     outline:none;
+    transition: color .2s;
 }
 
 .page-item.active .page-link{
@@ -21,10 +22,10 @@
 }
 
 .numberPage:hover{
-    color: var(--colorMustard);
-    transition: color .2s;
-    background-color: #343A40;
+    color: var(--colorMustard);   
     cursor: pointer;
+    background-color: #343A40;
+    border-radius: .3rem ;
 }
 
 @media only screen and (min-width: 100px) and (max-width: 800px) {

@@ -7,7 +7,7 @@ export interface Address{
   }
 
   export interface AddressForCreation {
-    country: string;
+    countryId: string;
     city: string;
     street: string;
     zipCode: string;

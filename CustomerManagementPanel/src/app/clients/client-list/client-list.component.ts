@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { faEdit, faInfo, faPlusCircle, faPlusSquare, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { ToastrService } from 'ngx-toastr';
+import { MyPager, OrderedItem } from 'src/app/shared/models/shared.models';
 import { ClientsService } from '../clients.service';
 import { Customer } from '../models/customer';
 
@@ -17,7 +18,8 @@ export class ClientListComponent implements OnInit {
   isAddingMode: boolean = false;
   newCustomer: Customer = null;
   id: number = 11114;
-  customerObjectList: Customer[];
+  customerObjectList: Customer[]; // dostajemy z resolvera (czyli z servera liste uzytkownikow)
+  orderedCustomers: OrderedItem[]; // wpada z pagination, juz w odpowiedniej ilosci item=customer, OrderNumber
 
   faTrash = faTrash;
   faEdit = faEdit;
@@ -31,7 +33,6 @@ export class ClientListComponent implements OnInit {
     ) { 
       this.route.data.subscribe(value => {      
         this.customerObjectList = value["customerList"];
-        console.log(this.customerObjectList);
       });
   }
 
@@ -65,7 +66,11 @@ export class ClientListComponent implements OnInit {
     newCustomer.id = (++this.id).toString();
     // CUSTOMERLIST.push(newCustomer);
     this.toastr.success('A new customer has been added!', 'New Customer');
+  }
 
+  onPageChanged(event: MyPager) {
+    console.log("łapiemy event", event);
+    this.orderedCustomers = event.pageOfItems;
   }
 }
 

@@ -32,7 +32,7 @@ export class PaginationComponent implements OnInit {
       this.orderedItems.push(item);    
     }
 
-    this.maxPages = this.items.length / this.pageSize;
+    this.maxPages = Math.ceil(this.items.length / this.pageSize);
     if(this.maxPages < 1) {
       this.maxPages = 1;
     }
