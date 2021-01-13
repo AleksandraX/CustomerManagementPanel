@@ -73,10 +73,3 @@ export class ClientListComponent implements OnInit {
     this.orderedCustomers = event.pageOfItems;
   }
 }
-
-
-
-
-
-
-

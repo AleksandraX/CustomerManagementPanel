@@ -1,75 +1,79 @@
-h1{
-    text-align: center;
-    margin-bottom: 3rem;
-    font-size: 3rem;
-    font-weight: bold;
+h1 {
+  text-align: center;
+  margin-bottom: 3rem;
+  font-size: 3rem;
+  font-weight: bold;
 }
 
-.addContainer{
-    text-align: center;
-    font-weight: bold;
+.addContainer {
+  text-align: center;
+  font-weight: bold;
 }
 
-button{
-    margin-left: 1rem;
-    margin-right: 1rem;
-    border: none;
-    font-size: 1.7rem;
+button {
+  margin-left: 1rem;
+  margin-right: 1rem;
+  border: none;
+  font-size: 1.7rem;
 }
 
-.buttonC, .buttonS{
-    font-size: 1.9rem;
-    position: relative;
-    background: transparent;
-    border: none;
-    left: .5rem;
-    padding: .1rem .5rem ;
-    transition: .3s transform;
+.buttonC,
+.buttonS {
+  font-size: 1.9rem;
+  position: relative;
+  background: transparent;
+  border: none;
+  left: 0.5rem;
+  padding: 0.1rem 0.5rem;
+  transition: 0.3s transform;
 }
 
-.buttonC:hover{
-    transform: scale(1.2);
-    color: rgb(253, 77, 77);
+.buttonC:hover {
+  transform: scale(1.2);
+  color: rgb(253, 77, 77);
 }
 
-.buttonS:hover{
-    transform: scale(1.2);
-    color: rgb(0, 116, 0); 
+.buttonS:hover {
+  transform: scale(1.2);
+  color: rgb(0, 116, 0);
 }
 
-.inputNgForm, .selectCountry{
-    text-align: center;
-    height: 2rem;
-    width: 22rem;
-    font-size: 1rem;
-    border-radius: .6rem;
-    border: .1rem solid black;
-    background-color: rgb(255, 251, 245);
+.inputNgForm,
+.selectCountry {
+  text-align: center;
+  height: 2rem;
+  width: 22rem;
+  font-size: 1rem;
+  border-radius: 0.6rem;
+  border: 0.1rem solid black;
+  background-color: rgb(255, 251, 245);
 }
 
-label{
-    font-size: 1.2rem;
+label {
+  font-size: 1.2rem;
 }
 
 .alert-danger {
-    margin-top: .5rem;
+  margin-top: 0.5rem;
 }
 
 @media only screen and (min-width: 100px) and (max-width: 550px) {
-    .inputNgForm, .selectCountry{
-        width: 16rem;
-        font-size: 1rem;
-        height: 2rem;
-    }
+  .inputNgForm,
+  .selectCountry {
+    width: 16rem;
+    font-size: 1rem;
+    height: 2rem;
+  }
 
-    h1{
-        font-size: 2rem;
-    }
+  h1 {
+    font-size: 2rem;
+  }
 
-    .label{
-        font-size: 1.2rem;
-    }
-    .buttonC, .buttonS{
-        font-size: 1.7rem;
-    }
+  .label {
+    font-size: 1.2rem;
+  }
+  .buttonC,
+  .buttonS {
+    font-size: 1.7rem;
+  }
 }

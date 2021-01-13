@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit, ɵConsole } from '@angular/core';
+import { Component, Input, OnInit, SimpleChanges, ɵConsole } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { faSave, faTimes } from '@fortawesome/free-solid-svg-icons';
@@ -20,6 +20,8 @@ import { AddressesService } from '../addresses.service';
   styleUrls: ['./addresses-add.component.scss'],
 })
 export class AddressesAddComponent implements OnInit {
+  @Input() addressesList: Address[];
+  copyAddressList: AddressForCreation[] = [];
   address: AddressForCreation = {
     countryId: '',
     city: '',
@@ -75,7 +77,7 @@ export class AddressesAddComponent implements OnInit {
   }
 
   ngOnInit() {
-   
+
   }
 
   saveAddress() {
@@ -112,4 +114,4 @@ export class AddressesAddComponent implements OnInit {
       return of(result as T);
     };
   }
-}
+};
