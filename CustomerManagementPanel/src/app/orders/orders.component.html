@@ -5,6 +5,9 @@
 <table  class="table">
   <thead class="thead-dark">
     <tr>
+      <th class="columnInfo1" scope="col">
+        <input type="checkbox" title="Check Box" class="form-check-input check-box" id="exampleCheck1">
+      </th>
       <th class="columnInfo1" scope="col">Id</th>
       <th class="columnInfo1" scope="col">Ordered by customer</th>
       <th class="columnInfo" scope="col">Price</th>
@@ -17,6 +20,9 @@
   <tbody >
 
     <tr *ngFor="let order of orderedOrders">
+      <th scope="row">
+        <input type="checkbox" title="Check Box" class="form-check-input check-box" id="exampleCheck1">
+      </th>
       <th scope="row">{{ order.orderNumber }}</th>
       <td class="column1" [routerLink]='["/clients/details/" + order.item.orderedByCustomerId]'><p class="tel">Ordered by customer: </p>{{order.item.orderedByCustomerFullName}}</td>
       <td class="column"><p class="tel">Price: </p>{{order.item.price.toFixed(2)}}</td>

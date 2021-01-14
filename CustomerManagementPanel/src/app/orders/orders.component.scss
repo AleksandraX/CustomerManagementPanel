@@ -40,11 +40,17 @@ select {
     transition: background-color .3s ;
 }
 
-
-
 .column, .columnInfo{
     text-align: center;
 }
+
+.check-box{
+    width: 100%;
+    position: relative;
+    top: .1rem;
+    left: 1.3rem;
+}
+
 
 .optionDelivered{
     background-color: rgb(4, 192, 4);
