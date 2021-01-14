@@ -4,7 +4,8 @@
     left: 50%;
     margin-right: -50%;
     margin-top: 2.5rem;
-    transform: translate(-50%, -50%)
+    transform: translate(-50%, -50%);
+    border-radius: .3rem ;
 }
 
 .numberPage{
@@ -12,7 +13,8 @@
     color: black;
     background-color:  white;
     outline:none;
-    transition: color .2s;
+    border-radius: .3rem ;
+    transition: color .2s, background-color .1s;
 }
 
 .page-item.active .page-link{
@@ -25,9 +27,5 @@
     color: var(--colorMustard);   
     cursor: pointer;
     background-color: #343A40;
-    border-radius: .3rem ;
-}
-
-@media only screen and (min-width: 100px) and (max-width: 800px) {
-
+    text-decoration: none;
 }
