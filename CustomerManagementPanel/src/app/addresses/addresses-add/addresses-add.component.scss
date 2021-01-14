@@ -17,8 +17,7 @@ button {
   font-size: 1.7rem;
 }
 
-.bnt-clear,
-.bnt-save {
+.bnt {
   font-size: 1.9rem;
   position: relative;
   background: transparent;
@@ -30,15 +29,15 @@ button {
 
 .bnt-clear:hover {
   transform: scale(1.2);
-  color: var(--colorClear);
+  color: var(--color-faded-red);
 }
 
 .bnt-save:hover {
   transform: scale(1.2);
-  color: rgb(0, 116, 0);
+  color: var(--color-grenn);
 }
 
-.inputNgForm,
+.input-text-address,
 .selectCountry {
   text-align: center;
   height: 2rem;

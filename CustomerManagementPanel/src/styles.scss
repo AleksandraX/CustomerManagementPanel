@@ -12,7 +12,8 @@ body{
     font-family: 'Lora', serif;
     scroll-behavior: smooth;
     --colorMustard: #FFC312;
-    --colorClear: rgb(253, 77, 77);
+    --color-faded-red: rgb(253, 77, 77);
+    --color-grenn:  rgb(0, 116, 0);
 }
 
 @import '~bootstrap/scss/bootstrap';

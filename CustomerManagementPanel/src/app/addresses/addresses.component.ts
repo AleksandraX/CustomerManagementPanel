@@ -32,8 +32,6 @@ export class AddressesComponent implements OnInit {
     ngOnInit(): void {
     }
 
-  
-
     addressDelete(addressId:string){
         this.addressService.delete(addressId)
         .subscribe(response => {
@@ -41,12 +39,8 @@ export class AddressesComponent implements OnInit {
             this.addressesList.splice(index ,1);
         });
     }
-
-    addressDetails(addressToDelete:Address){
-    }
   
     onPageChanged(event: MyPager) {
-      console.log("łapiemy event", event);
       this.orderedAddresses = event.pageOfItems;
     }
 }

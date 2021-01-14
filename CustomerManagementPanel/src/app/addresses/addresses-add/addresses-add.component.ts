@@ -52,6 +52,9 @@ export class AddressesAddComponent implements OnInit {
           ? this.polandId
           : this.address.countryId;
 
+      let zipCodePattern = '[0-9]{2}-[0-9]{3}' // XX-XXX
+      let cityPattern = '[a-zA-Z ]*'  // xxxxx@xx.xx
+
     this.form = new MyFormGroup({
       countryId: new FormControl(initialCountry, [
         Validators.required]),
@@ -59,13 +62,13 @@ export class AddressesAddComponent implements OnInit {
         Validators.required,
         Validators.minLength(5),
         Validators.maxLength(7),
-        Validators.pattern('[0-9]{2}\-[0-9]{3}'),
+        Validators.pattern(zipCodePattern),
       ]),
       city: new FormControl(this.address.city, [
         Validators.required,
         Validators.minLength(3),
         Validators.maxLength(30),
-        Validators.pattern('[a-zA-Z ]*'),
+        Validators.pattern(cityPattern),
       ]),
       street: new FormControl(this.address.street, [
         Validators.required,
@@ -81,18 +84,13 @@ export class AddressesAddComponent implements OnInit {
   }
 
   saveAddress() {
-    console.log('first step saving', this.form.value);
-
     let addressToCreate: AddressForCreation = {
       countryId: this.form.value.countryId,
       city: this.form.value.city,
       zipCode: this.form.value.zipCode,
       street: this.form.value.street,
     };
-
-    console.log('saving', addressToCreate);
     this.addressService.create(addressToCreate).subscribe((response) => {
-      console.log('Subscribe for creation');
     });
   }
 
@@ -106,11 +104,6 @@ export class AddressesAddComponent implements OnInit {
 
   handleError<T>(operation, result?: T) {
     return (error: any): Observable<T> => {
-      // TODO: send the error to remote logging infrastructure
-      console.error(operation);
-      console.error(error); // log to console instead
-
-      // Let the app keep running by returning an empty result.
       return of(result as T);
     };
   }
