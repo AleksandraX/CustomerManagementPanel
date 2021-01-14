@@ -1,58 +1,57 @@
-.contact{
-    text-align: center;
+.contact {
+  text-align: center;
 }
 
-.footer{
-    background: #343A40;
+.footer {
+  background: #343a40;
+  color: white;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+a:hover {
+  color: var(--colorMustard);
+  transition: color 0.5s;
+}
+
+.iconMedia {
+  font-size: 3rem;
+}
+
+.iconLi {
+  margin-left: 2.5rem;
+  margin-right: 2.5rem;
+}
+
+.contact {
+  width: 20rem;
+  font-size: 1.3rem;
+}
+
+.signUpBtn {
+  color: white;
+  transition: 0.3s background-color;
+}
+
+.signUpBtn:hover {
     color: white;
+    background-color: rgb(199, 7, 7);
 }
-
-a{
-    text-decoration: none;
-    color: white;
-}
-
-a:hover{
-    color: var(--colorMustard);
-    transition: color .5s;
-}
-
-.iconMedia{
-    font-size: 3rem;
-}
-
-.iconLi{
-    margin-left: 2.5rem;
-    margin-right: 2.5rem;
-}
-
-.contact{
-    width: 20rem;
-    font-size: 1.3rem;
-}
-
-.signUpBtn{
-    color: white;
-    transition: .3s transform ;
-}
-
-.signUpBtn:hover{
-    color: white;
-    transform: scale(.9);
-}
-
 
 @media only screen and (min-width: 100px) and (max-width: 400px) {
-    .iconLi{
-        margin-left: 1.5rem;
-        margin-right: 1.5rem;
-    }
+  .iconLi {
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+  }
 
-    .contact{
-        font-size: 1rem;
-    }
+  .contact {
+    font-size: 1rem;
+  }
 
-    .info{
-        font-size: .8rem;
-    }
+  .info {
+    font-size: 0.8rem;
+  }
 }

@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { faTrash, faInfo, faPlusSquare } from '@fortawesome/free-solid-svg-icons';
 import { ToastrService } from 'ngx-toastr';
 import { Address } from '../clients/models/address';
+import { MyPager, OrderedItem } from '../shared/models/shared.models';
 import { AddressesService } from './addresses.service';
 
 
@@ -12,7 +13,8 @@ import { AddressesService } from './addresses.service';
     styleUrls: ['./addresses.component.scss']
   })
 export class AddressesComponent implements OnInit {
-  addressesList: Address[];
+  addressesList: Address[] = [];
+  orderedAddresses: OrderedItem[];
   id: number = 1;
 
   faTrash = faTrash;
@@ -24,10 +26,7 @@ export class AddressesComponent implements OnInit {
       private route: ActivatedRoute,
       private addressService: AddressesService
     ) { 
-      this.route.data.subscribe(value => {      
-        this.addressesList = value["addressesList"];
-        console.log(this.addressesList);
-      });
+     console.log('constructor');
     }
   
     ngOnInit(): void {
@@ -40,9 +39,8 @@ export class AddressesComponent implements OnInit {
             this.addressesList.splice(index ,1);
         });
     }
-
-    addressDetails(addressToDelete:Address){
-
-    }
   
+    onPageChanged(event: MyPager) {
+      this.orderedAddresses = event.pageOfItems;
+    }
 }
