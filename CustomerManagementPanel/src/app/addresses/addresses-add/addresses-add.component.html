@@ -1,45 +1,42 @@
 <h1>Add Address</h1>
 
-<form [formGroup]="form" (ngSubmit)="saveAddress()">
-  <div class="ngFormHere">
+<form class="addContainer" [formGroup]="form" (ngSubmit)="saveAddress()">
+  <div class="ngFormHere" *ngIf="countries.length">
     <label>Country :</label>
       <br>
-      <input class="inputNgForm"
-      type="text"
-      formControlName="country">
-  
-        <div class="alert alert-danger" *ngIf="form.checkIsRequired('country')">
-          Country is required <i class="fa fa-exclamation"></i>
-        </div>
-        <div class="alert alert-danger" *ngIf="form.checkIsMinLength('country')">
-          Country is too short <i class="fa fa-exclamation"></i>
-        </div>
-        <div class="alert alert-danger" *ngIf="form.checkIsMaxLength('country')">
-          Country is too long <i class="fa fa-exclamation"></i>
-        </div>
-        <div class="alert alert-danger" *ngIf="form.checkIsPattern('country')"> 
-          Cannot contain numbers <i class="fa fa-exclamation"></i>
-        </div>
-      </div>
+      <select class="selectCountry"
+        formControlName="countryId">
+ 
+        <option *ngFor="let country of countries" 
+        [value]="country.id"
+        [selected]="country?.id === polandId">
+          {{country?.name}}        
+        </option>
+
+    </select>
+    <div class="alert alert-danger" *ngIf="form.checkIsRequired('countryId')">
+      Country is required !<i class="fa fa-exclamation"></i>
+    </div>
+  </div>
 
     <div class="cityDiv">
       <label>City :</label>
         <br>
-        <input class="inputNgForm"
+        <input class="inputNgForm input-text-address"
         type="text"
         formControlName="city">
       
           <div class="alert alert-danger" *ngIf="form.checkIsRequired('city')">
-            City is required <i class="fa fa-exclamation"></i>
+            City is required !<i class="fa fa-exclamation"></i>
           </div>
           <div class="alert alert-danger" *ngIf="form.checkIsMinLength('city')">
-            City is too short <i class="fa fa-exclamation"></i>
+            City is too short !<i class="fa fa-exclamation"></i>
           </div>
           <div class="alert alert-danger" *ngIf="form.checkIsMaxLength('city')">
-            City is too long <i class="fa fa-exclamation"></i>
+            City is too long !<i class="fa fa-exclamation"></i>
           </div>
           <div class="alert alert-danger" *ngIf="form.checkIsPattern('city')"> 
-            Cannot contain numbers <i class="fa fa-exclamation"></i>
+            Cannot contain numbers !<i class="fa fa-exclamation"></i>
           </div>
         </div>
 
@@ -47,46 +44,45 @@
       <div class="zipCodeDiv">
         <label>Zip Code :</label>
           <br>
-          <input class="inputNgForm"
+          <input class="inputNgForm input-text-address"
           type="text"
           formControlName="zipCode">
         
             <div class="alert alert-danger" *ngIf="form.checkIsRequired('zipCode')">
-              Zip Code is required <i class="fa fa-exclamation"></i>
+              Zip Code is required !<i class="fa fa-exclamation"></i>
             </div>
             <div class="alert alert-danger" *ngIf="form.checkIsMinLength('zipCode')">
-              Zip Code is too short <i class="fa fa-exclamation"></i>
+              Zip Code is too short !<i class="fa fa-exclamation"></i>
             </div>
             <div class="alert alert-danger" *ngIf="form.checkIsMaxLength('zipCode')">
-              Zip Code is too long <i class="fa fa-exclamation"></i>
+              Zip Code is too long !<i class="fa fa-exclamation"></i>
             </div>
             <div class="alert alert-danger" *ngIf="form.checkIsPattern('zipCode')"> 
-              Cannot contain letters <i class="fa fa-exclamation"></i>
+              Cannot contain letters !<i class="fa fa-exclamation"></i>
             </div>
           </div>
 
         <div class="streetDiv">
           <label>Street :</label>
             <br>
-            <input class="inputNgForm"
+            <input class="inputNgForm input-text-address"
             type="text"
             formControlName="street">
           
               <div class="alert alert-danger" *ngIf="form.checkIsRequired('street')">
-                Street is required <i class="fa fa-exclamation"></i>
+                Street is required !<i class="fa fa-exclamation"></i>
               </div>
               <div class="alert alert-danger" *ngIf="form.checkIsMinLength('street')">
-                Street is too short <i class="fa fa-exclamation"></i>
+                Street is too short !<i class="fa fa-exclamation"></i>
               </div>
               <div class="alert alert-danger" *ngIf="form.checkIsPattern('street')">
-                Street is too long <i class="fa fa-exclamation"></i>
+                Street is too long !<i class="fa fa-exclamation"></i>
               </div>
             </div>
-
           <br>
 
-  <button type="submit"> Save</button>
-  <button type="button" (click)="form.reset()">Clear</button>
+  <button class="bnt-save bnt" type="submit" (click)= showSuccess()> Save <fa-icon class="icon" [icon]="faSave"></fa-icon></button>
+  <button class="bnt-clear bnt" type="button" (click)="form.reset(); clean()">Clear <fa-icon class="icon" [icon]="faTimes"></fa-icon></button>
  
   <pre>{{form.value | json }}</pre>
 

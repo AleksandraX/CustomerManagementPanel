@@ -1,93 +1,92 @@
-.tel{
-    display: none;
+.tel {
+  display: none;
 }
 
-.bntDetails{
-    font-size: 1.6rem;
-    position: relative;
-    background: transparent;
-    border: none;
-    left: .5rem;
-    padding: .1rem .5rem ;
-    transition: .3s transform;
+.bntDetails {
+  font-size: 1.6rem;
+  position: relative;
+  background: transparent;
+  border: none;
+  left: 0.5rem;
+  padding: 0.1rem 0.5rem;
+  transition: 0.3s transform;
 }
 
-.bntDetails:hover{
-    transform: scale(1.2)
+.bntDetails:hover {
+  transform: scale(1.2);
 }
 
-.bntDetails:focus{
-    outline: none;
+.bntDetails:focus {
+  outline: none;
 }
 
-.table{
-    margin-bottom: 3rem;
+.table {
+  margin-bottom: 3rem;
 }
 
-.bntDelete{
-    color: red;
-    position: relative;
-    background: transparent;
-    border: none;
-    padding: .1rem .5rem;
-    font-size: 1.6rem;
-    transition: .3s transform;
-    left: 1rem;
+.bntDelete {
+  color: red;
+  position: relative;
+  background: transparent;
+  border: none;
+  padding: 0.1rem 0.5rem;
+  font-size: 1.6rem;
+  transition: 0.3s transform;
+  left: 1rem;
 }
 
-.bntDelete:hover{
-    transform: scale(1.2)
+.bntDelete:hover {
+  transform: scale(1.2);
 }
 
-.bntDelete:focus{
-    outline: none;
+.bntDelete:focus {
+  outline: none;
 }
 
-.bntAdd{
-    position: sticky;
-    background-color: rgb(71, 194, 71);
-    color: rgb(255, 255, 255);
-    border: none;
-    border-radius: 5px;
-    padding: .4%;
-    transition: .3s color, .3s transform ;
-    outline: none;
-    left: 100%;
-    margin-bottom: .2rem;
+.bntAdd {
+  position: sticky;
+  background-color: rgb(71, 194, 71);
+  color: rgb(255, 255, 255);
+  border: none;
+  border-radius: 5px;
+  padding: 0.4%;
+  transition: 0.3s color, 0.3s transform;
+  outline: none;
+  left: 100%;
+  margin-bottom: 0.2rem;
 }
 
-.bntAdd:hover{
-    color: rgb(255, 255, 255);
-    transform: scale(.9);
+.bntAdd:hover {
+  color: rgb(255, 255, 255);
+  transform: scale(0.9);
 }
 
 @media screen and (max-width: 625px) {
-
-    .tel{
-        display: inline;
-        font-weight: bold;
-    }
-
-    table thead {
-        display: none;
-      }
-
-    table td {
-      display: block;
-    }
-    
-    table td::before {
-      content: attr(label);
-      font-weight: bold;
-      width: 120px;
-      min-width: 120px;
-    }
-
-    .bntDelete{
-        left: 1rem;
-    }
-
-    .lineBorder{
-        border-top: .1rem solid black;
-    }
+  .tel {
+    display: inline;
+    font-weight: bold;
   }
+
+  table thead {
+    display: none;
+  }
+
+  table td {
+    display: block;
+  }
+
+  table td::before {
+    content: attr(label);
+    font-weight: bold;
+    width: 120px;
+    min-width: 120px;
+  }
+
+  .bntDelete {
+    left: 1rem;
+  }
+
+  .lineBorder {
+    border-top: 0.1rem solid black;
+  }
+}

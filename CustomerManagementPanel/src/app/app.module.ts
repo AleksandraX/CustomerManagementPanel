@@ -26,7 +26,6 @@ import { SignUpPanelComponent } from './signUpPanel/signUpPanel.component';
 import { SignUpService } from './signUpPanel/signUp.service';
 import { JwPaginationModule } from 'jw-angular-pagination';
 import { PaginationComponent } from './shared/pagination/pagination.component';
-// import { FormHelpersService } from './shared/helpers/formHelpers.service';
 
 @NgModule({
   declarations: [												
@@ -40,6 +39,7 @@ import { PaginationComponent } from './shared/pagination/pagination.component';
     InProgressComponent,
     LoginPanelComponent,
     SignUpPanelComponent,
+    // PaginationComponent
    ],
   imports: [
     BrowserModule,
@@ -60,7 +60,6 @@ import { PaginationComponent } from './shared/pagination/pagination.component';
   providers: [
     AddressesService,
     SignUpService,
-    // FormHelpersService
   ],
   bootstrap: [AppComponent]
 })

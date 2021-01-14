@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, CurrencyPipe } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -10,6 +10,7 @@ import { AddressesRoutingModule } from './addresses-routing.module';
 import { AddressesComponent } from './addresses.component';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
     declarations: [							
@@ -26,9 +27,11 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
       AddressesRoutingModule,
       HttpClientModule,
       CarouselModule.forRoot(),
-      FontAwesomeModule
+      FontAwesomeModule,
+      SharedModule
     ],
     providers: [
+      CurrencyPipe
     ],
   })
   export class AddressesModule { }

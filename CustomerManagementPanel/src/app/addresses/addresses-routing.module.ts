@@ -36,8 +36,6 @@ const routes: Routes = [
                 addressDetails: AddressesDetailsResolver,
             }
         },
-
-
 ]}]
 
 @NgModule({

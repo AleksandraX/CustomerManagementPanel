@@ -1,6 +1,6 @@
 <h1 class="addCustomer">New customer</h1>
        
-    <div *ngIf="customerExist; else customerNotFound">
+    <div class="addContainer" *ngIf="customerExist; else customerNotFound">
 
     <form [formGroup]="form" (ngSubmit)="saveCustomer()">
         <div class="ngFormHere">
@@ -171,10 +171,8 @@
                 </div>
                 <div>
                     <br>
-                    <button type="submit" class="saveNCustomer" 
-                        [disabled] ="form.invalid"
-                    > 
-                        Save customer
+                    <button (click)= showSuccess() type="submit" class="save-new-customer" 
+                        [disabled] ="form.invalid"> Save customer <fa-icon class="icon" [icon]="faSave"></fa-icon>
                     </button>
                 </div>
 

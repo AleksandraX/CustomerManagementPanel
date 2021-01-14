@@ -16,23 +16,29 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let customer of customerObjectList; index as i">
+    <tr *ngFor="let customer of orderedCustomers; index as i">
         <th scope="row">{{ i + 1 }}</th>
-        <td class="columnUser"><p class="tel">Full name: </p>{{ customer.name}} {{customer.lastName}}</td>
-        <td class="columnUser"><p class="tel">Sex F/M: </p>{{ customer.gender === 0 ? "Male" : "Female"}}</td>
-        <td class="columnUser"><p class="tel">Age: </p>{{ customer.age}}</td>
-        <td class="columnUser"><p class="tel">City: </p>{{ customer.address?.city}}</td>
+        <td class="columnUser"><p class="tel">Full name: </p>{{ customer.item.name}} {{customer.item.lastName}}</td>
+        <td class="columnUser"><p class="tel">Sex F/M: </p>{{ customer.item.gender === 0 ? "Male" : "Female"}}</td>
+        <td class="columnUser"><p class="tel">Age: </p>{{ customer.item.age}}</td>
+        <td class="columnUser"><p class="tel">City: </p>{{ customer.item.address?.city}}</td>
         <td class="columnBnt"><p class="tel">Actions: </p>
-            <button class="bntDelete" title="Delete" (click)="deleteCustomer(customer.id)">
+            <button class="bntDelete" title="Delete" (click)="deleteCustomer(customer.item.id)">
                 <fa-icon [icon]="faTrash"></fa-icon></button>
-            <button class="bntEdit" title="Edit" [routerLink]='["/clients/edit/" + customer.id]'>
+            <button class="bntEdit" title="Edit" [routerLink]='["/clients/edit/" + customer.item.id]'>
                 <fa-icon [icon]="faEdit"></fa-icon></button>
-            <button class="bntShow" title="Show details" [routerLink]='["/clients/details/" + customer.id]'>
+            <button class="bntShow" title="Show details" [routerLink]='["/clients/details/" + customer.item.id]'>
                 <fa-icon [icon]="faInfo"></fa-icon></button>
         </td>
     </tr>
     </tbody>
     </table>
+
+    <app-pagination
+        [items]="customerObjectList"
+        (pageChangedEventEmitter)="onPageChanged($event)">
+    </app-pagination>
+
 </div>
 
 <ng-template #emptyList>
