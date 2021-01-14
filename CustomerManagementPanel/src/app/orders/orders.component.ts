@@ -24,6 +24,7 @@ export class OrdersComponent implements OnInit {
   optionDisabled: boolean = false;
   faPlusSquare = faPlusSquare;
   orderedOrders: OrderedItem[];
+  selectedOrdersId: string[] = [];
 
   constructor(
     private toastr: ToastrService,
@@ -89,5 +90,37 @@ export class OrdersComponent implements OnInit {
   onPageChanged(event: MyPager) {
     console.log("łapiemy event", event);
     this.orderedOrders = event.pageOfItems;
+  }
+
+  checkCheckList(orderId: string){
+    if(this.selectedOrdersId.includes(orderId)){
+      let index = this.selectedOrdersId.findIndex(id => id == orderId);
+      this.selectedOrdersId.splice(index ,1);
+      console.log("usuń")
+      console.log(this.selectedOrdersId);
+    }else{
+      this.selectedOrdersId.push(orderId);
+      console.log("dodaj");
+      console.log(this.selectedOrdersId);
+    }
+  }
+
+  isOrderSlected(orderId: string) : boolean {
+    return this.selectedOrdersId.includes(orderId);
+  }
+
+  toggleAllCheckList(){
+    if(this.selectedOrdersId.length != this.orderedOrders.length){
+      let allVisibleIds = this.orderedOrders.map(order => order.item.id);
+      this.selectedOrdersId = [];
+      this.selectedOrdersId = [...allVisibleIds];
+      console.log("dodajemy wszystko")
+      console.log(this.selectedOrdersId);
+    }else{
+      this.orderedOrders.map(order => order.item.id);
+      this.selectedOrdersId = [];
+      console.log("usuwamy wszystko")
+      console.log(this.selectedOrdersId);
+    }
   }
 }

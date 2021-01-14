@@ -6,7 +6,11 @@
   <thead class="thead-dark">
     <tr>
       <th class="columnInfo1" scope="col">
-        <input type="checkbox" title="Check Box" class="form-check-input check-box" id="exampleCheck1">
+        <input type="checkbox" 
+        title="Check Box" 
+        (change)="toggleAllCheckList()"
+        class="form-check-input check-box" 
+        id="exampleCheck1">
       </th>
       <th class="columnInfo1" scope="col">Id</th>
       <th class="columnInfo1" scope="col">Ordered by customer</th>
@@ -21,7 +25,12 @@
 
     <tr *ngFor="let order of orderedOrders">
       <th scope="row">
-        <input type="checkbox" title="Check Box" class="form-check-input check-box" id="exampleCheck1">
+        <input type="checkbox" 
+        title="Check Box" 
+        [checked]="isOrderSlected(order.item.id)"
+        (change)="checkCheckList(order.item.id)" 
+        class="form-check-input check-box" 
+        id="exampleCheck1">
       </th>
       <th scope="row">{{ order.orderNumber }}</th>
       <td class="column1" [routerLink]='["/clients/details/" + order.item.orderedByCustomerId]'><p class="tel">Ordered by customer: </p>{{order.item.orderedByCustomerFullName}}</td>
