@@ -17,7 +17,7 @@ button{
     font-size: 1.7rem;
 }
 
-.buttonC, .saveNCustomer{
+.bnt-clear, .save-new-customer{
     font-size: 1.9rem;
     position: relative;
     background: transparent;
@@ -29,12 +29,12 @@ button{
     color: rgb(158, 158, 158);
 }
 
-.buttonC:hover{
+.bnt-clear:hover{
     transform: scale(1.2);
-    color: rgb(253, 77, 77);
+    color: var(--colorClear); 
 }
 
-.saveNCustomer:hover{
+.save-new-customer:hover{
     transform: scale(1.2);
     color: rgb(0, 116, 0); 
 }

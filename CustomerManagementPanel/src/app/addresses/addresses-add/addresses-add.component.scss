@@ -17,8 +17,8 @@ button {
   font-size: 1.7rem;
 }
 
-.buttonC,
-.buttonS {
+.bnt-clear,
+.bnt-save {
   font-size: 1.9rem;
   position: relative;
   background: transparent;
@@ -28,12 +28,12 @@ button {
   transition: 0.3s transform;
 }
 
-.buttonC:hover {
+.bnt-clear:hover {
   transform: scale(1.2);
-  color: rgb(253, 77, 77);
+  color: var(--colorClear);
 }
 
-.buttonS:hover {
+.bnt-save:hover {
   transform: scale(1.2);
   color: rgb(0, 116, 0);
 }
@@ -42,7 +42,7 @@ button {
 .selectCountry {
   text-align: center;
   height: 2rem;
-  width: 22rem;
+  width: 27%;
   font-size: 1rem;
   border-radius: 0.6rem;
   border: 0.1rem solid black;
@@ -60,7 +60,7 @@ label {
 @media only screen and (min-width: 100px) and (max-width: 550px) {
   .inputNgForm,
   .selectCountry {
-    width: 16rem;
+    width: 80%;
     font-size: 1rem;
     height: 2rem;
   }
@@ -72,8 +72,8 @@ label {
   .label {
     font-size: 1.2rem;
   }
-  .buttonC,
-  .buttonS {
+  .bnt-clear,
+  .bnt-save {
     font-size: 1.7rem;
   }
 }

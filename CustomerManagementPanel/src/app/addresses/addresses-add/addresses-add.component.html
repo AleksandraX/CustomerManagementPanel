@@ -79,11 +79,10 @@
                 Street is too long !<i class="fa fa-exclamation"></i>
               </div>
             </div>
-
           <br>
 
-  <button class="buttonS" type="submit" (click)= showSuccess()> Save <fa-icon class="icon" [icon]="faSave"></fa-icon></button>
-  <button class="buttonC" type="button" (click)="form.reset(); clean()">Clear <fa-icon class="icon" [icon]="faTimes"></fa-icon></button>
+  <button class="bnt-save" type="submit" (click)= showSuccess()> Save <fa-icon class="icon" [icon]="faSave"></fa-icon></button>
+  <button class="bnt-clear" type="button" (click)="form.reset(); clean()">Clear <fa-icon class="icon" [icon]="faTimes"></fa-icon></button>
  
   <pre>{{form.value | json }}</pre>
 
