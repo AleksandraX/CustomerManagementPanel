@@ -78,6 +78,41 @@ select {
     display: none;
 }
 
+.order-per-page{
+    color: white;
+    border: 1px solid #ced4da;
+    border-radius: 0.5rem;
+    display: inline-block;
+    position: sticky;
+    border-radius: 5px;
+    padding: 0.35rem 0.1rem;
+    margin-bottom: .5rem;
+    margin-right: 1%;
+    background-color: #343A40;
+    text-decoration: none;
+}
+
+.option-orders-per-page{
+    color: white;
+    background-color: #343A40;
+    text-decoration: none;
+}
+
+.option-orders-per-page:hover{
+    text-decoration: none;
+    outline: none;
+    color: var(--colorMustard);
+    background-color:  #343A40;
+}
+
+
+.order-per-page:hover{
+    text-decoration: none;
+    outline: none;
+    color: var(--colorMustard);
+    background-color:  #343A40;
+}
+
 
 @media screen and (max-width: 625px) {
 

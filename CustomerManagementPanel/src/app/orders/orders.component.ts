@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { faPlusSquare } from '@fortawesome/free-solid-svg-icons';
 import { ToastrService } from 'ngx-toastr';
+import { off } from 'process';
 import {
   Order,
   OrderStatus,
@@ -25,6 +26,7 @@ export class OrdersComponent implements OnInit {
   faPlusSquare = faPlusSquare;
   orderedOrders: OrderedItem[];
   selectedOrdersId: string[] = [];
+  checkBoxSelect: boolean = false;
 
   constructor(
     private toastr: ToastrService,
@@ -90,6 +92,8 @@ export class OrdersComponent implements OnInit {
   onPageChanged(event: MyPager) {
     console.log("łapiemy event", event);
     this.orderedOrders = event.pageOfItems;
+    this.checkBoxSelect = false;
+    this.selectedOrdersId = [];
   }
 
   checkCheckList(orderId: string){

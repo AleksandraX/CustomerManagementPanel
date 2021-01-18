@@ -1,6 +1,14 @@
-<div class="add">
-  <button class="bntAdd" [routerLink]='["/orders/CreateOrder"]'><fa-icon [icon]="faPlusSquare"></fa-icon> Add Order</button>
-</div>
+
+  <div class="col-sm add">
+    <button class="bntAdd" [routerLink]='["/orders/CreateOrder"]'><fa-icon [icon]="faPlusSquare"></fa-icon> Add Order</button>
+  </div>
+
+  <select class="col-sm form-select" aria-label="Default select example" class="order-per-page">
+    <option class="option-orders-per-page" value="1">10 orders per page</option>
+    <option class="option-orders-per-page" value="2">20 orders per page</option>
+    <option class="option-orders-per-page" value="3">30 orders per page</option>
+  </select>
+
 
 <table  class="table">
   <thead class="thead-dark">
@@ -8,6 +16,7 @@
       <th class="columnInfo1" scope="col">
         <input type="checkbox" 
         title="Check Box" 
+        [(ngModel)] = "checkBoxSelect" 
         (change)="toggleAllCheckList()"
         class="form-check-input check-box" 
         id="exampleCheck1">
