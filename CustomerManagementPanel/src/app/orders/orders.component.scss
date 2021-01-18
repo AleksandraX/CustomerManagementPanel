@@ -16,7 +16,7 @@
 }
 
 .bntAdd{
-    position: sticky;
+    position: absolute;
     background-color: rgb(71, 194, 71);
     color: rgb(255, 255, 255);
     border: none;
@@ -24,7 +24,7 @@
     padding: .4%;
     transition: .3s color, .3s transform ;
     outline: none;
-    left: 100%;
+    left: 93%;
     margin-bottom: .2rem;
 }
 

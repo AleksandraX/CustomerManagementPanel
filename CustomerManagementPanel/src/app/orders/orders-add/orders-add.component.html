@@ -1,9 +1,13 @@
-<h1>Add Order</h1>
-
 <form class="addContainer" [formGroup]="form" (ngSubmit)="saveOrders()">
+  <h1>Add Order</h1>
+
+  <button 
+    class="buttonClose" type="submit" 
+    ><fa-icon class="icon" [icon]="faTimes"></fa-icon>
+  </button>
 
    <div class="addDiv">
-      <label class="label">Price :</label>
+      <label class="label price-label">Price :</label>
         <br>
         <input 
           class="inputNgForm"
@@ -13,7 +17,8 @@
           min="0"
           step="1" 
           data-number-to-fixed="2"
-          data-number-stepfactor="100" >
+          data-number-stepfactor="100"
+          #price >
 
           <div class="alert alert-danger" *ngIf="form.checkIsRequired('price')">
             Price is required <fa-icon class="iconExclamation" [icon]="faExclamation"></fa-icon>
@@ -26,7 +31,8 @@
             <select 
               class="inputNgForm"
               type="text"
-              formControlName="orderedByCustomerId">
+              formControlName="orderedByCustomerId"
+              #orderedName>
 
               <option *ngFor="let client of clientsList; index as i" [value]="client.id">
                 {{client.name}} {{client.lastName}}

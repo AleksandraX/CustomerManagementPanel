@@ -1,8 +1,8 @@
 import { CurrencyPipe } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { AfterContentInit, AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { faBroom, faExclamation, faSave, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faBroom, faExclamation, faSave, faTimes, faWindowClose } from '@fortawesome/free-solid-svg-icons';
 import { ToastrService } from 'ngx-toastr';
 import { Customer } from 'src/app/clients/models/customer';
 import {OrdersForCreation } from 'src/app/clients/models/orders';
@@ -14,7 +14,10 @@ import { OrdersService } from '../orders.service';
   templateUrl: './orders-add.component.html',
   styleUrls: ['./orders-add.component.scss']
 })
-export class OrdersAddComponent implements OnInit {
+export class OrdersAddComponent implements OnInit, AfterViewInit, AfterContentInit{
+
+  @ViewChild('price') priceChild: ElementRef;
+  @ViewChild('orderedName') orderedNameList: ElementRef;
 
   clientsList: Customer[];
   ordersAddList: OrdersForCreation[];
@@ -41,9 +44,29 @@ export class OrdersAddComponent implements OnInit {
       this.route.data.subscribe(response => 
         this.clientsList = response["customerList"] );
   }
+ 
 
   ngOnInit() {
+    console.log("ngOnInit", this.priceChild);
+    console.log("ngOnInit", this.orderedNameList);
   }
+
+  ngAfterViewInit(): void {
+    this.priceChild.nativeElement.focus();
+    this.priceChild.nativeElement.setAttribute('placeholder', "Enter price");
+    this.priceChild.nativeElement.value = null;
+
+    console.log("setted", this.orderedNameList);
+
+    console.log("option", this.orderedNameList.nativeElement.options[3].value);
+    this.orderedNameList.nativeElement.value = this.orderedNameList.nativeElement.options[0].value;
+  }
+
+  ngAfterContentInit(): void {
+    console.log("ngAfterContentInit", this.priceChild);
+    console.log("ngAfterContentInit", this.orderedNameList);
+  }
+  
 
   
   saveOrders(){
@@ -55,7 +78,6 @@ export class OrdersAddComponent implements OnInit {
     }
 
     console.log("saving", ordersToCreate)
-    // wywolac service i zapisac
      this.ordersService.create(ordersToCreate).subscribe(response => {
        console.log("Subscribe for creation")
      });
