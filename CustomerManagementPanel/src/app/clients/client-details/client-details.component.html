@@ -1,37 +1,19 @@
-<table class="table">
-    <thead>
-      <tr>
-        <th class="colNAV" scope="col"></th>
-        <th class="colNAV" scope="col"><h5>Info customer: {{copyOfCustomer.name}} {{copyOfCustomer.lastName}}</h5></th>
-        <th class="colNAV" scope="col"><h5>Address:</h5></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-            <img class="card-img-top"  [src]="copyOfCustomer.gender === 0 ? './../../assets/portret.jpg' : './../../assets/woman.jpg'" alt="Foto">
-        </td>
-        <td>
-            <ul>
+<div class="case-customer">
 
-                <li class="list-group-item">Name: {{copyOfCustomer.name}}</li>
-                <li class="list-group-item">Last Name: {{copyOfCustomer.lastName}}</li>
-                <li class="list-group-item">Gender: {{ copyOfCustomer.gender === 0 ? "Male" : "Female"}}</li>
-            </ul>
-        <div class="card-body">
-            <div class="phoneNumber contactInfo">Phone Number: <a href="tel:+48720860430">{{copyOfCustomer.phoneNumber}}</a></div>
-            <br>
-            <div class="email contactInfo">Email:  <a href="mailto: kacper.berganski@onet.pl">{{copyOfCustomer.email}}</a></div>
-        </div>
-        </td>
-        <td> 
-            <li class="list-group-item">Country: {{copyOfCustomer.address.country}}</li>
-            <li class="list-group-item">City: {{copyOfCustomer.address.city}}</li>
-            <li class="list-group-item">Zip Code: {{copyOfCustomer.address.zipCode}}</li>
-            <li class="list-group-item">Street: {{copyOfCustomer.address.street}}</li>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="name-case">
+    <h1>Info customer: {{copyOfCustomer.name}} {{copyOfCustomer.lastName}}</h1>
+    <label>Name : {{copyOfCustomer.name}}</label>
+    <label>Last Name : {{copyOfCustomer.lastName}}</label>
+    <label>Gender : {{copyOfCustomer.gender === 0 ? "Male" : "Female"}}</label>
+    <label>Phone Number: <a href="tel:{{copyOfCustomer.phoneNumber}}">{{copyOfCustomer.phoneNumber}}</a></label>
+    <label>Email: <a href="mailto: {{copyOfCustomer.email}}">{{copyOfCustomer.email}}</a></label>
+  </div>
+  <div class="address-case">
+    <h1>Address:</h1>
+    <label>Country: </label>
+    <label>City: </label>
+    <label>Zip Code: </label>
+    <label class="street-case">Street: </label>
+  </div>
 
- 
+</div>

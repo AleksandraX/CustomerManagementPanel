@@ -16,7 +16,8 @@
 }
 
 .bntAdd{
-    position: absolute;
+    height: 2.3rem;
+    position: relative;
     background-color: rgb(71, 194, 71);
     color: rgb(255, 255, 255);
     border: none;
@@ -24,8 +25,9 @@
     padding: .4%;
     transition: .3s color, .3s transform ;
     outline: none;
-    left: 93%;
     margin-bottom: .2rem;
+    float: right;
+    left: .7rem;
 }
 
 .bntAdd:hover{
@@ -45,7 +47,7 @@ select {
 }
 
 .check-box{
-    width: 100%;
+    width: 1rem;
     position: relative;
     top: .1rem;
     left: 1.3rem;
@@ -147,4 +149,4 @@ select {
     .column1{
         border-top: .1rem solid black;
     }
-  }
+}

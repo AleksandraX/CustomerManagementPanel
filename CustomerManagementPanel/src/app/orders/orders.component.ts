@@ -3,7 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { faPlusSquare } from '@fortawesome/free-solid-svg-icons';
 import { ToastrService } from 'ngx-toastr';
-import { off } from 'process';
 import {
   Order,
   OrderStatus,
@@ -87,6 +86,16 @@ export class OrdersComponent implements OnInit {
     }
     return false;
   }
+
+  // getChangeNumberOfOrders(value : number){
+  //   if(value === 1){
+  //     console.log("10 orderów")
+  //   }else if(value === 2){
+  //     console.log("20 orderów")
+  //   }else{
+  //     console.log("30 orderów")
+  //   }
+  // }
 
 
   onPageChanged(event: MyPager) {
