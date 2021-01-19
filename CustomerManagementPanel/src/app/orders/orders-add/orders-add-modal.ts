@@ -3,21 +3,24 @@ import { AfterContentInit, AfterViewInit, Component, ElementRef, OnInit, ViewChi
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { faBroom, faExclamation, faSave, faTimes, faWindowClose } from '@fortawesome/free-solid-svg-icons';
+import { BsModalRef, BsModalService, ModalDirective } from 'ngx-bootstrap/modal';
 import { ToastrService } from 'ngx-toastr';
+import { ClientsService } from 'src/app/clients/clients.service';
 import { Customer } from 'src/app/clients/models/customer';
 import {OrdersForCreation } from 'src/app/clients/models/orders';
 import { MyFormGroup } from 'src/app/shared/extentions/myFormGroup';
 import { OrdersService } from '../orders.service';
 
 @Component({
-  selector: 'app-orders-add',
-  templateUrl: './orders-add.component.html',
-  styleUrls: ['./orders-add.component.scss']
+  selector: 'app-orders-add-modal',
+  templateUrl: './orders-add-modal.html',
+  styleUrls: ['./orders-add-modal.scss']
 })
-export class OrdersAddComponent implements OnInit, AfterViewInit, AfterContentInit{
+export class OrdersAddModal implements OnInit, AfterViewInit{
+
+  @ViewChild('ordersAddModal' , { static: false }) modal: ModalDirective;
 
   @ViewChild('price') priceChild: ElementRef;
-  @ViewChild('orderedName') orderedNameList: ElementRef;
 
   clientsList: Customer[];
   ordersAddList: OrdersForCreation[];
@@ -34,39 +37,30 @@ export class OrdersAddComponent implements OnInit, AfterViewInit, AfterContentIn
   constructor(
     private toastr: ToastrService,
     private ordersService: OrdersService,
-    private route: ActivatedRoute
+    private customerService: ClientsService,
+    private route: ActivatedRoute,
+    private modalService: BsModalService
   ) { 
     this.form = new MyFormGroup({
       "price": new FormControl(this.order.price,[Validators.required, Validators.pattern("[0-9]*[.]?[0-9]+")]),
       "orderedByCustomerId": new FormControl(this.order.orderedByCustomerId,[Validators.required, Validators.minLength(3), Validators.maxLength(40)])
     }); 
 
-      this.route.data.subscribe(response => 
-        this.clientsList = response["customerList"] );
+      this.clientsList = [];
   }
  
 
   ngOnInit() {
-    console.log("ngOnInit", this.priceChild);
-    console.log("ngOnInit", this.orderedNameList);
+    this.customerService.getAllClients().subscribe(clients =>
+      this.clientsList = clients);
   }
 
   ngAfterViewInit(): void {
     this.priceChild.nativeElement.focus();
     this.priceChild.nativeElement.setAttribute('placeholder', "Enter price");
     this.priceChild.nativeElement.value = null;
-
-    console.log("setted", this.orderedNameList);
-
-    console.log("option", this.orderedNameList.nativeElement.options[3].value);
-    this.orderedNameList.nativeElement.value = this.orderedNameList.nativeElement.options[0].value;
   }
 
-  ngAfterContentInit(): void {
-    console.log("ngAfterContentInit", this.priceChild);
-    console.log("ngAfterContentInit", this.orderedNameList);
-  }
-  
 
   
   saveOrders(){
@@ -77,7 +71,7 @@ export class OrdersAddComponent implements OnInit, AfterViewInit, AfterContentIn
       orderedByCustomerId: this.form.value.orderedByCustomerId,
     }
 
-    console.log("saving", ordersToCreate)
+
      this.ordersService.create(ordersToCreate).subscribe(response => {
        console.log("Subscribe for creation")
      });
@@ -90,6 +84,18 @@ export class OrdersAddComponent implements OnInit, AfterViewInit, AfterContentIn
 
     clean() {
       this.toastr.success('Data cleared!','Success!');
+    }
+
+    close(){
+      this.modal.hide();
+    }
+
+    onShown() {
+
+    }
+
+    show() {
+      this.modal.show();
     }
 
 }

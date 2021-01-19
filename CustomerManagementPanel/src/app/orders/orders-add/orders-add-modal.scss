@@ -15,13 +15,9 @@ h1{
     color: white;
     position: absolute;
     background-color: #343A40 !important;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     text-align: center;
     border: .3rem solid black;
     border-radius: 2%;
-    width: 35%;
 }
 
 .addDiv{
@@ -30,7 +26,6 @@ h1{
 
 button{
     color: white;
-
     margin-right: 1rem;
     border: none;
     font-size: 1.7rem;

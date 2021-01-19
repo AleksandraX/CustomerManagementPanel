@@ -1,7 +1,8 @@
 import { formatDate } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { faPlusSquare } from '@fortawesome/free-solid-svg-icons';
+import { BsModalRef, BsModalService, ModalDirective } from 'ngx-bootstrap/modal';
 import { ToastrService } from 'ngx-toastr';
 import {
   Order,
@@ -9,6 +10,7 @@ import {
   OrderStatusChangeParameters,
 } from '../clients/models/orders';
 import { MyPager, OrderedItem } from '../shared/models/shared.models';
+import { OrdersAddModal } from './orders-add/orders-add-modal';
 import { OrdersService } from './orders.service';
 
 @Component({
@@ -27,10 +29,13 @@ export class OrdersComponent implements OnInit {
   selectedOrdersId: string[] = [];
   checkBoxSelect: boolean = false;
 
+  @ViewChild('addOrderModal') addOrderModalRef: ModalDirective; 
+
   constructor(
     private toastr: ToastrService,
     private route: ActivatedRoute,
-    private ordersService: OrdersService
+    private ordersService: OrdersService,
+    private modalService: BsModalService
   ) {
     this.route.data.subscribe((value) => {
       this.ordersList = value['ordersList'];
@@ -135,5 +140,12 @@ export class OrdersComponent implements OnInit {
       console.log("usuwamy wszystko")
       console.log(this.selectedOrdersId);
     }
+  }
+
+  showAddOrder() {
+    // show modal
+    // this.modalRef = this.modalService.show(OrdersAddModal, {});
+
+    this.addOrderModalRef.show();
   }
 }

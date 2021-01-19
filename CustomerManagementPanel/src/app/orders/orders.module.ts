@@ -7,15 +7,16 @@ import { ToastrModule } from 'ngx-toastr';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { OrdersComponent } from './orders.component';
-import { OrdersAddComponent } from './orders-add/orders-add.component';
+import { OrdersAddModal } from './orders-add/orders-add-modal';
 import { OrdersRoutingModule } from './orders-routing.module';
 import { OrdersService } from './orders.service';
 import { SharedModule } from '../shared/shared.module';
+import { BsModalService, ModalModule } from 'ngx-bootstrap/modal';
 
 @NgModule({
     declarations: [							
         OrdersComponent,
-        OrdersAddComponent
+        OrdersAddModal
      ],
     imports: [
       CommonModule,
@@ -27,11 +28,13 @@ import { SharedModule } from '../shared/shared.module';
       HttpClientModule,
       CarouselModule.forRoot(),
       FontAwesomeModule,
-      SharedModule       
+      SharedModule,
+      ModalModule.forRoot()  
     ],
     providers: [
         OrdersService,
-        CurrencyPipe
+        CurrencyPipe,
+        BsModalService
     ],
   })
   export class OrdersModule { }
