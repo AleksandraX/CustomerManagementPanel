@@ -9,7 +9,7 @@ import { UserAccountForCreation } from '../clients/models/signUp';
 
 export class SignUpService {
 
-    baseUrl: string = "https://localhost:44391/api/addresses";
+    baseUrl: string = "https://api.kacper-berganski-portfolio.pl/api/addresses";
     headers: Headers = null;
     options;
 
