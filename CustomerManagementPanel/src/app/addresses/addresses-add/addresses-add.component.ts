@@ -31,7 +31,7 @@ export class AddressesAddComponent implements OnInit {
   form: MyFormGroup = null;
   faSave = faSave;
   faTimes = faTimes;
-  baseUrl: string = 'https://localhost:44391/api/addresses';
+  baseUrl: string = 'https://api.kacper-berganski-portfolio.pl/api/addresses';
   addressForCreation: AddressForCreation[] = [];
   countries: Country[] = [];
   polandId: string;

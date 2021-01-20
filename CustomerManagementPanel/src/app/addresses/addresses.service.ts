@@ -8,7 +8,7 @@ import { Address, AddressForCreation, AddressWithResidents, Country } from '../c
 
 export class AddressesService {
 
-    baseUrl: string = "https://localhost:44391/api/addresses";
+    baseUrl: string = "https://api.kacper-berganski-portfolio.pl/api/addresses";
     headers: Headers = null;
     options;
 

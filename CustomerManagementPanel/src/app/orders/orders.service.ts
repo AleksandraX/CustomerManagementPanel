@@ -9,8 +9,8 @@ import { Order, OrdersForCreation, OrderStatus, OrderStatusChangeParameters } fr
 
 export class OrdersService {
 
-    baseUrl: string = "https://localhost:44391/api/orders";
-    statusUrl: string = "https://localhost:44391/api/orderStatuses";
+    baseUrl: string = "https://api.kacper-berganski-portfolio.pl/api/orders";
+    statusUrl: string = "https://api.kacper-berganski-portfolio.pl/api/orderStatuses";
     headers: Headers = null;
     options: { headers: Headers; };
 

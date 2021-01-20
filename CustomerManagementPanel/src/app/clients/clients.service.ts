@@ -10,7 +10,7 @@ import { CustomerForCreation } from './models/customerForCreation';
 
 export class ClientsService {
 
-    baseUrl: string = "https://localhost:44391/api/customers";
+    baseUrl: string = "https://api.kacper-berganski-portfolio.pl/api/customers";
     headers: Headers = null;
     options;
 
