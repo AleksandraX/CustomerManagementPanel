@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { faCity, faGlobeAmericas, faIdCard, faMailBulk, faRoad } from '@fortawesome/free-solid-svg-icons';
 import { ToastrService } from 'ngx-toastr';
+import { ClientsService } from 'src/app/clients/clients.service';
 import { Address, AddressWithResidents } from 'src/app/clients/models/address';
 import { Customer } from 'src/app/clients/models/customer';
+import { AddressesService } from '../addresses.service';
 
 @Component({
   selector: 'app-addresses-details',
@@ -13,7 +15,7 @@ import { Customer } from 'src/app/clients/models/customer';
 export class AddressesDetailsComponent implements OnInit {
 
   address: AddressWithResidents = null;
-  customer: Customer;
+  customer: Customer[];
 
   faGlobaleAmericas = faGlobeAmericas;
   faCity = faCity;
@@ -23,17 +25,14 @@ export class AddressesDetailsComponent implements OnInit {
 
   constructor(
     private toastr: ToastrService, 
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private addressesService: AddressesService
   ) { 
-    this.route.data.subscribe(value => {
-      this.address = value["addressDetails"];
-      console.log(value["addressDetails"]);
-    });
   } 
 
-
-
-  ngOnInit() {
+  ngOnInit(): void {
+    this.route.data.subscribe(data => 
+    this.address = data['addressDetails']);
   }
 
 }

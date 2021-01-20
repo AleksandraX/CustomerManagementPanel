@@ -1,36 +1,30 @@
 <h1 class="addCustomer">New customer</h1>
-       
-    <div class="addContainer" *ngIf="customerExist; else customerNotFound">
+
+<div class="addContainer" *ngIf="customerExist; else customerNotFound">
 
     <form [formGroup]="form" (ngSubmit)="saveCustomer()">
         <div class="ngFormHere">
             <label>Name :</label>
             <br>
-            <input class="inputNgForm"
-            type="text"
-            placeholder="Your name.."
-            formControlName="name">
-        
-                <div class="alert alert-danger" *ngIf="form.checkIsRequired('name')">
-                    Name is required <i class="fa fa-exclamation"></i>
-                </div>
-                <div class="alert alert-danger" *ngIf="form.checkIsMinLength('name')">
-                    Name is too short <i class="fa fa-exclamation"></i>
-                </div>
-                <div class="alert alert-danger" *ngIf="form.checkIsMaxLength('name')">
-                    Name is too long <i class="fa fa-exclamation"></i>
-               </div>
+            <input class="inputNgForm" type="text" placeholder="Your name.." formControlName="name">
+
+            <div class="alert alert-danger" *ngIf="form.checkIsRequired('name')">
+                Name is required <i class="fa fa-exclamation"></i>
+            </div>
+            <div class="alert alert-danger" *ngIf="form.checkIsMinLength('name')">
+                Name is too short <i class="fa fa-exclamation"></i>
+            </div>
+            <div class="alert alert-danger" *ngIf="form.checkIsMaxLength('name')">
+                Name is too long <i class="fa fa-exclamation"></i>
+            </div>
         </div>
 
         <div>
             <div class="ngFormHere">
-                    <label>Last Name :</label>
-                    <br>
-                <input class="inputNgForm"
-                type="text"
-                placeholder="Your last name.."
-                formControlName="lastName">      
-                
+                <label>Last Name :</label>
+                <br>
+                <input class="inputNgForm" type="text" placeholder="Your last name.." formControlName="lastName">
+
                 <div class="alert alert-danger" *ngIf="form.checkIsRequired('lastName')">
                     Last Name is required <i class="fa fa-exclamation"></i>
                 </div>
@@ -41,34 +35,45 @@
                     Last Name has to be max 30 char length <i class="fa fa-exclamation"></i>
                 </div>
             </div>
+
+            <div class="ngFormHere">
+                <label>Age :</label>
+                <br>
+                <input class="inputNgForm" type="text" placeholder="Your age.." formControlName="age">
+
+                <div class="alert alert-danger" *ngIf="form.checkIsRequired('age')">
+                    Age is required <i class="fa fa-exclamation"></i>
+                </div>
+                <div class="alert alert-danger" *ngIf="form.checkIsMaxLength('age')">
+                    Age is too long !<i class="fa fa-exclamation"></i>
+                  </div>
+                <div class="alert alert-danger" *ngIf="form.checkIsPattern('age')">
+                    Age is invalid <i class="fa fa-exclamation"></i>
+                </div>
+            </div>
+
             <div formGroupName="address">
-                <div  class="ngFormHere">
+                <div class="ngFormHere" *ngIf="countries.length">
                     <label>Country :</label>
                     <br>
-                    <input class="inputNgForm"
-                    type="text"
-                    placeholder="Your country.."
-                    formControlName="country">
+                    <select class="selectCountry inputNgForm" formControlName="country">
 
+                        <option *ngFor="let country of countries" 
+                        [value]="country.id"
+                            [selected]="country?.id === polandId">
+                            {{country?.name}}
+                        </option>
+
+                    </select>
                     <div class="alert alert-danger" *ngIf="form.checkIsRequired('country')">
-                        Country is required <i class="fa fa-exclamation"></i>
+                        Country is required !<i class="fa fa-exclamation"></i>
                     </div>
-                    <div class="alert alert-danger" *ngIf="form.checkIsMinLength('country')">
-                        Country has to be min 3 char length <i class="fa fa-exclamation"></i>
-                    </div>
-                    <div class="alert alert-danger" *ngIf="form.checkIsMaxLength('country')">
-                        Country has to be max 30 char length <i class="fa fa-exclamation"></i>
-                    </div>
-                    
                 </div>
 
-                <div  class="ngFormHere">
+                <div class="ngFormHere">
                     <label>City :</label>
                     <br>
-                    <input class="inputNgForm"
-                    type="text"
-                    placeholder="Your city.."
-                    formControlName="city">
+                    <input class="inputNgForm" type="text" placeholder="Your city.." formControlName="city">
 
                     <div class="alert alert-danger" *ngIf="form.checkIsRequired('city')">
                         City is required <i class="fa fa-exclamation"></i>
@@ -81,13 +86,10 @@
                     </div>
 
                 </div>
-                <div  class="ngFormHere">
+                <div class="ngFormHere">
                     <label>Zip Code :</label>
                     <br>
-                    <input class="inputNgForm"
-                    type="text"
-                    placeholder="Your zip code.."
-                    formControlName="zipCode">
+                    <input class="inputNgForm" type="text" placeholder="Your zip code.." formControlName="zipCode">
 
                     <div class="alert alert-danger" *ngIf="form.checkIsRequired('zipCode')">
                         Zip Code is required <i class="fa fa-exclamation"></i>
@@ -99,13 +101,10 @@
                         Zip Code has to be max 30 char length <i class="fa fa-exclamation"></i>
                     </div>
                 </div>
-                <div  class="ngFormHere">
+                <div class="ngFormHere">
                     <label>Street :</label>
                     <br>
-                    <input class="inputNgForm"
-                    type="text"
-                    placeholder="Your street.."
-                    formControlName="street">
+                    <input class="inputNgForm" type="text" placeholder="Your street.." formControlName="street">
 
                     <div class="alert alert-danger" *ngIf="form.checkIsRequired('street')">
                         Street is required <i class="fa fa-exclamation"></i>
@@ -118,63 +117,57 @@
                     </div>
                 </div>
             </div>
-                <div  class="ngFormHere">
-                    <label>Gender :</label>
-                    <br>
-                    <select formControlName="gender" class="inputNgForm"  id="gender" name="gender" >
-                        <option class="optionGender" value=0>Male</option>
-                        <option class="optionGender" value=1>Female</option>
-                    </select>
+            <div class="ngFormHere">
+                <label>Gender :</label>
+                <br>
+                <select formControlName="gender" class="inputNgForm" id="gender" name="gender">
+                    <option class="optionGender" value=0>Male</option>
+                    <option class="optionGender" value=1>Female</option>
+                </select>
 
-                    <div class="alert alert-danger" *ngIf="form.checkIsRequired('gender')">
-                        Gender is required <i class="fa fa-exclamation"></i>
-                    </div>
+                <div class="alert alert-danger" *ngIf="form.checkIsRequired('gender')">
+                    Gender is required <i class="fa fa-exclamation"></i>
                 </div>
-                <div class="ngFormHere">
-                    <label>Phone number :</label>
-                    <br>
-                    <input class="inputNgForm"
-                    type="text"
-                    placeholder="Your phone number.."
-                    formControlName="phoneNumber">
+            </div>
+            <div class="ngFormHere">
+                <label>Phone number :</label>
+                <br>
+                <input class="inputNgForm" type="text" placeholder="Your phone number.." formControlName="phoneNumber">
 
-                    <div class="alert alert-danger" *ngIf="form.checkIsRequired('phoneNumber')">
-                        Phone Number is required <i class="fa fa-exclamation"></i>
-                    </div>
-                    <div class="alert alert-danger" *ngIf="form.checkIsMinLength('phoneNumber')">
-                        Phone Number has to be min 9 char length <i class="fa fa-exclamation"></i>
-                    </div>
-                    <div class="alert alert-danger" *ngIf="form.checkIsMaxLength('phoneNumber')">
-                        Phone Number has to be max 15 char length <i class="fa fa-exclamation"></i>
-                    </div>
+                <div class="alert alert-danger" *ngIf="form.checkIsRequired('phoneNumber')">
+                    Phone Number is required <i class="fa fa-exclamation"></i>
                 </div>
-                <div class="ngFormHere">
-                    <label>Email :</label>
-                    <br>
-                    <input class="inputNgForm"
-                    type="text"
-                    placeholder="Your email.."
-                    formControlName="mail">
+                <div class="alert alert-danger" *ngIf="form.checkIsMinLength('phoneNumber')">
+                    Phone Number has to be min 9 char length <i class="fa fa-exclamation"></i>
+                </div>
+                <div class="alert alert-danger" *ngIf="form.checkIsMaxLength('phoneNumber')">
+                    Phone Number has to be max 15 char length <i class="fa fa-exclamation"></i>
+                </div>
+            </div>
+            <div class="ngFormHere">
+                <label>Email :</label>
+                <br>
+                <input class="inputNgForm" type="text" placeholder="Your email.." formControlName="mail">
 
-                    <div class="alert alert-danger" *ngIf="form.checkIsRequired('mail')">
-                        Email is required <i class="fa fa-exclamation"></i>
-                    </div>
-                    <div class="alert alert-danger" *ngIf="form.checkIsMinLength('mail')">
-                        Email has to be min 5 char length <i class="fa fa-exclamation"></i>
-                    </div>
-                    <div class="alert alert-danger" *ngIf="form.checkIsMaxLength('mail')">
-                        Email has to be max 35 char length <i class="fa fa-exclamation"></i>
-                    </div>
-                    <div class="alert alert-danger" *ngIf="form.checkIsPattern('mail')"> 		   
-                        Email is invalid <i class="fa fa-exclamation"></i>
-                    </div> 
+                <div class="alert alert-danger" *ngIf="form.checkIsRequired('mail')">
+                    Email is required <i class="fa fa-exclamation"></i>
                 </div>
-                <div>
-                    <br>
-                    <button (click)= showSuccess() type="submit" class="save-new-customer" 
-                        [disabled] ="form.invalid"> Save customer <fa-icon class="icon" [icon]="faSave"></fa-icon>
-                    </button>
+                <div class="alert alert-danger" *ngIf="form.checkIsMinLength('mail')">
+                    Email has to be min 5 char length <i class="fa fa-exclamation"></i>
                 </div>
+                <div class="alert alert-danger" *ngIf="form.checkIsMaxLength('mail')">
+                    Email has to be max 35 char length <i class="fa fa-exclamation"></i>
+                </div>
+                <div class="alert alert-danger" *ngIf="form.checkIsPattern('mail')">
+                    Email is invalid <i class="fa fa-exclamation"></i>
+                </div>
+            </div>
+            <div>
+                <br>
+                <button (click)="showSuccess(); saveCustomer()" type="submit" class="save-new-customer"
+                    [disabled]="form.invalid"> Save customer <fa-icon class="icon" [icon]="faSave"></fa-icon>
+                </button>
+            </div>
 
             <!-- <pre>{{form.value | json }}</pre> -->
         </div>
@@ -186,7 +179,3 @@
         INFO! The user list is empty.
     </div>
 </ng-template>
-
-
-    
-

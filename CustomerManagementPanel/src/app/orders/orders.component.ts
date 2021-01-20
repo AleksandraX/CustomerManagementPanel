@@ -1,7 +1,8 @@
 import { formatDate } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { faPlusSquare } from '@fortawesome/free-solid-svg-icons';
+import { BsModalRef, BsModalService, ModalDirective } from 'ngx-bootstrap/modal';
 import { ToastrService } from 'ngx-toastr';
 import {
   Order,
@@ -9,6 +10,7 @@ import {
   OrderStatusChangeParameters,
 } from '../clients/models/orders';
 import { MyPager, OrderedItem } from '../shared/models/shared.models';
+import { OrdersAddModal } from './orders-add/orders-add-modal';
 import { OrdersService } from './orders.service';
 
 @Component({
@@ -24,11 +26,16 @@ export class OrdersComponent implements OnInit {
   optionDisabled: boolean = false;
   faPlusSquare = faPlusSquare;
   orderedOrders: OrderedItem[];
+  selectedOrdersId: string[] = [];
+  checkBoxSelect: boolean = false;
+
+  @ViewChild('addOrderModal') addOrderModalRef: ModalDirective; 
 
   constructor(
     private toastr: ToastrService,
     private route: ActivatedRoute,
-    private ordersService: OrdersService
+    private ordersService: OrdersService,
+    private modalService: BsModalService
   ) {
     this.route.data.subscribe((value) => {
       this.ordersList = value['ordersList'];
@@ -85,9 +92,60 @@ export class OrdersComponent implements OnInit {
     return false;
   }
 
+  // getChangeNumberOfOrders(value : number){
+  //   if(value === 1){
+  //     console.log("10 orderów")
+  //   }else if(value === 2){
+  //     console.log("20 orderów")
+  //   }else{
+  //     console.log("30 orderów")
+  //   }
+  // }
+
 
   onPageChanged(event: MyPager) {
     console.log("łapiemy event", event);
     this.orderedOrders = event.pageOfItems;
+    this.checkBoxSelect = false;
+    this.selectedOrdersId = [];
+  }
+
+  checkCheckList(orderId: string){
+    if(this.selectedOrdersId.includes(orderId)){
+      let index = this.selectedOrdersId.findIndex(id => id == orderId);
+      this.selectedOrdersId.splice(index ,1);
+      console.log("usuń")
+      console.log(this.selectedOrdersId);
+    }else{
+      this.selectedOrdersId.push(orderId);
+      console.log("dodaj");
+      console.log(this.selectedOrdersId);
+    }
+  }
+
+  isOrderSlected(orderId: string) : boolean {
+    return this.selectedOrdersId.includes(orderId);
+  }
+
+  toggleAllCheckList(){
+    if(this.selectedOrdersId.length != this.orderedOrders.length){
+      let allVisibleIds = this.orderedOrders.map(order => order.item.id);
+      this.selectedOrdersId = [];
+      this.selectedOrdersId = [...allVisibleIds];
+      console.log("dodajemy wszystko")
+      console.log(this.selectedOrdersId);
+    }else{
+      this.orderedOrders.map(order => order.item.id);
+      this.selectedOrdersId = [];
+      console.log("usuwamy wszystko")
+      console.log(this.selectedOrdersId);
+    }
+  }
+
+  showAddOrder() {
+    // show modal
+    // this.modalRef = this.modalService.show(OrdersAddModal, {});
+
+    this.addOrderModalRef.show();
   }
 }

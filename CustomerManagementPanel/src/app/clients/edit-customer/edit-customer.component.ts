@@ -3,8 +3,10 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { faSave } from '@fortawesome/free-solid-svg-icons';
 import { ToastrService } from 'ngx-toastr';
+import { AddressesService } from 'src/app/addresses/addresses.service';
 import { MyFormGroup } from 'src/app/shared/extentions/myFormGroup';
 import { ClientsService } from '../clients.service';
+import { AddressForCreation, Country } from '../models/address';
 import { Customer } from '../models/customer';
 import { CustomerForCreation } from '../models/customerForCreation';
 
@@ -21,13 +23,22 @@ export class EditCustomerComponent implements OnInit {
   isDisabled: boolean = true;
   addingMode: boolean = false;
   faSave = faSave;
+  address: AddressForCreation = {
+    countryId: '',
+    city: '',
+    street: '',
+    zipCode: '',
+  };
 
   form: MyFormGroup = null;
   customerExist: boolean = true;
+  countries: Country[] = [];
+  polandId: string;
 
   constructor(
     private route: ActivatedRoute,
     private clientsService: ClientsService,
+    private addressService: AddressesService,
     private toastr: ToastrService
   ) {
     this.route.data.subscribe((value) => {
@@ -50,6 +61,16 @@ export class EditCustomerComponent implements OnInit {
       let country1 = this.copyOfCustomer.address.country;
     }
 
+    this.addressService.getAllCountries().subscribe((response) => {
+      this.countries = response;
+
+      this.polandId = this.countries.find((x) => x.name === 'Poland')?.id;
+
+      let initialCountry =
+        this.address.countryId === '' || !this.address.countryId
+          ? this.polandId
+          : this.address.countryId;
+    
     this.form = new MyFormGroup({
       name: new FormControl(this.copyOfCustomer.name, [
         Validators.required,
@@ -61,11 +82,14 @@ export class EditCustomerComponent implements OnInit {
         Validators.minLength(3),
         Validators.maxLength(30),
       ]),
+      age: new FormControl(this.copyOfCustomer.age, [
+        Validators.required,
+        Validators.maxLength(3),
+        Validators.pattern('[0-9]*'),
+      ]),
       address: new FormGroup({
         country: new FormControl(this.copyOfCustomer.address?.country, [
           Validators.required,
-          Validators.minLength(3),
-          Validators.maxLength(30),
         ]),
         zipCode: new FormControl(this.copyOfCustomer.address?.zipCode, [
           Validators.required,
@@ -98,7 +122,8 @@ export class EditCustomerComponent implements OnInit {
         Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$'),
       ]),
     });
-  }
+  });
+}
 
   ngOnInit() {}
 
@@ -109,7 +134,10 @@ export class EditCustomerComponent implements OnInit {
       name: this.form.value.name,
       lastName: this.form.value.lastName,
       age: this.form.value.age,
-      address: this.form.value.address,
+      countryId: this.form.value.countryId,
+      city: this.form.value.city,
+      zipCode: this.form.value.zipCode,
+      street: this.form.value.street,
       phoneNumber: this.form.value.phoneNumber,
       email: this.form.value.email,
       gender: this.form.value.gender,

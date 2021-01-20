@@ -5,8 +5,11 @@ export class CustomerForCreation{
     name: string;
     lastName: string;
     age: number;
-    address: Address;
+    countryId: string;
+    city: string;
+    zipCode: string;
+    street: string;
     phoneNumber: string;
     email: string;
-    gender: Gender;
+    gender: number;
 }

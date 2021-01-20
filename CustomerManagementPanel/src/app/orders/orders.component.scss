@@ -16,7 +16,8 @@
 }
 
 .bntAdd{
-    position: sticky;
+    height: 2.3rem;
+    position: relative;
     background-color: rgb(71, 194, 71);
     color: rgb(255, 255, 255);
     border: none;
@@ -24,8 +25,9 @@
     padding: .4%;
     transition: .3s color, .3s transform ;
     outline: none;
-    left: 100%;
     margin-bottom: .2rem;
+    float: right;
+    left: .7rem;
 }
 
 .bntAdd:hover{
@@ -40,11 +42,22 @@ select {
     transition: background-color .3s ;
 }
 
-
+.status-selected{
+    cursor: pointer;
+}
 
 .column, .columnInfo{
     text-align: center;
 }
+
+.check-box{
+    cursor: pointer;
+    width: 1rem;
+    position: relative;
+    top: .1rem;
+    left: 1.3rem;
+}
+
 
 .optionDelivered{
     background-color: rgb(4, 192, 4);
@@ -72,6 +85,41 @@ select {
     display: none;
 }
 
+.order-per-page{
+    cursor: pointer;
+    color: white;
+    border: 1px solid #ced4da;
+    border-radius: 0.5rem;
+    display: inline-block;
+    position: sticky;
+    border-radius: 5px;
+    padding: 0.35rem 0.1rem;
+    margin-bottom: .5rem;
+    margin-right: 1%;
+    background-color: #343A40;
+    text-decoration: none;
+}
+
+.option-orders-per-page{
+    color: white;
+    background-color: #343A40;
+    text-decoration: none;
+}
+
+.option-orders-per-page:hover{
+    text-decoration: none;
+    outline: none;
+    color: var(--colorMustard);
+    background-color:  #343A40;
+}
+
+
+.order-per-page:hover{
+    text-decoration: none;
+    outline: none;
+    color: var(--colorMustard);
+    background-color:  #343A40;
+}
 
 @media screen and (max-width: 625px) {
 
@@ -106,4 +154,4 @@ select {
     .column1{
         border-top: .1rem solid black;
     }
-  }
+}

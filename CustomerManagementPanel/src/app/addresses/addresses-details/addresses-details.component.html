@@ -1,33 +1,35 @@
-<h1>Address :</h1>
-<div class="adressDeails">
-  <p class="adressDeailsP"><fa-icon class="icon" [icon]="faIdCard"></fa-icon> Id: {{address?.id}}</p>
-  <p class="adressDeailsP"><fa-icon class="icon" [icon]="faGlobaleAmericas"></fa-icon> Country: {{address?.country}}</p>
-  <p class="adressDeailsP"><fa-icon class="icon" [icon]="faCity"></fa-icon> City: {{address?.city}}</p>
-  <p class="adressDeailsP"><fa-icon class="icon" [icon]="faMailBulk"></fa-icon> Zip Code: {{address?.zipCode}}</p>
-  <p class="adressDeailsP"><fa-icon class="icon" [icon]="faRoad"></fa-icon> Street: {{address?.street}}</p>
-</div>
-<br>
-
-<h2 class="customersH2">Customers:</h2>
-<div *ngIf="!!address?.residents && address?.residents.length > 0; else emptyList"></div>
-
-<carousel class="bloc" [itemsPerSlide]="address?.residents.length <= 3 ? address?.residents.length : 3"
-[singleSlideOffset]="true"
-[startFromIndex]="0"
-[noWrap]="false">
-      <slide *ngFor="let resident of address?.residents; let index=index">
-        <div class="text-center bloc py-5 text-white" style="display: block; width: 100%;">
-          <h2 class="h2Bloc">{{index}}</h2>        
-          <p class="blocP">Name: {{resident?.name}}</p>
-          <p class="blocP">Last Name: {{resident?.lastName}}</p>
-          <p class="blocP">Email: {{resident?.email}}</p>
-          <p class="blocP">Phone Number: {{resident?.phoneNumber}}</p>   
-        </div>
-    </slide>
-</carousel>
-
-<ng-template #emptyList>
-  <div class="emptyList">
-      INFO! The customer list is empty.
+<div class="address-details-case">
+  <h1>Address :</h1>
+  <div class="adressDeails">
+    <p class="adressDeailsP"><fa-icon class="icon" [icon]="faIdCard"></fa-icon> Id: {{address?.id}}</p>
+    <p class="adressDeailsP"><fa-icon class="icon" [icon]="faGlobaleAmericas"></fa-icon> Country: {{address?.country}}</p>
+    <p class="adressDeailsP"><fa-icon class="icon" [icon]="faCity"></fa-icon> City: {{address?.city}}</p>
+    <p class="adressDeailsP"><fa-icon class="icon" [icon]="faMailBulk"></fa-icon> Zip Code: {{address?.zipCode}}</p>
+    <p class="adressDeailsP"><fa-icon class="icon" [icon]="faRoad"></fa-icon> Street: {{address?.street}}</p>
   </div>
-</ng-template>
+  <br>
+
+  <h2 class="customersH2">Customers:</h2>
+  <div *ngIf="!!address?.residents && address?.residents.length > 0; else emptyList"></div>
+
+  <carousel class="bloc" [itemsPerSlide]="address?.residents.length <= 3 ? address?.residents.length : 3"
+  [singleSlideOffset]="true"
+  [startFromIndex]="0"
+  [noWrap]="false">
+        <slide *ngFor="let resident of address?.residents; let index=index">
+          <div class="text-center bloc py-5 text-white" style="display: block; width: 100%;">
+            <h2 class="h2Bloc">{{index}}</h2>        
+            <p class="blocP">Name: {{resident?.name}}</p>
+            <p class="blocP">Last Name: {{resident?.lastName}}</p>
+            <p class="blocP">Email: {{resident?.email}}</p>
+            <p class="blocP">Phone Number: {{resident?.phoneNumber}}</p>   
+          </div>
+      </slide>
+  </carousel>
+
+  <ng-template #emptyList>
+    <div class="emptyList">
+        INFO! The customer list is empty.
+    </div>
+  </ng-template>
+</div>

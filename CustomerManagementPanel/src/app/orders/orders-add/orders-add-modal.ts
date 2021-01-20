@@ -1,20 +1,26 @@
 import { CurrencyPipe } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { AfterContentInit, AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { faBroom, faExclamation, faSave, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faBroom, faExclamation, faSave, faTimes, faWindowClose } from '@fortawesome/free-solid-svg-icons';
+import { BsModalRef, BsModalService, ModalDirective } from 'ngx-bootstrap/modal';
 import { ToastrService } from 'ngx-toastr';
+import { ClientsService } from 'src/app/clients/clients.service';
 import { Customer } from 'src/app/clients/models/customer';
 import {OrdersForCreation } from 'src/app/clients/models/orders';
 import { MyFormGroup } from 'src/app/shared/extentions/myFormGroup';
 import { OrdersService } from '../orders.service';
 
 @Component({
-  selector: 'app-orders-add',
-  templateUrl: './orders-add.component.html',
-  styleUrls: ['./orders-add.component.scss']
+  selector: 'app-orders-add-modal',
+  templateUrl: './orders-add-modal.html',
+  styleUrls: ['./orders-add-modal.scss']
 })
-export class OrdersAddComponent implements OnInit {
+export class OrdersAddModal implements OnInit, AfterViewInit{
+
+  @ViewChild('ordersAddModal' , { static: false }) modal: ModalDirective;
+
+  @ViewChild('price') priceChild: ElementRef;
 
   clientsList: Customer[];
   ordersAddList: OrdersForCreation[];
@@ -31,19 +37,30 @@ export class OrdersAddComponent implements OnInit {
   constructor(
     private toastr: ToastrService,
     private ordersService: OrdersService,
-    private route: ActivatedRoute
+    private customerService: ClientsService,
+    private route: ActivatedRoute,
+    private modalService: BsModalService
   ) { 
     this.form = new MyFormGroup({
       "price": new FormControl(this.order.price,[Validators.required, Validators.pattern("[0-9]*[.]?[0-9]+")]),
       "orderedByCustomerId": new FormControl(this.order.orderedByCustomerId,[Validators.required, Validators.minLength(3), Validators.maxLength(40)])
     }); 
 
-      this.route.data.subscribe(response => 
-        this.clientsList = response["customerList"] );
+      this.clientsList = [];
   }
+ 
 
   ngOnInit() {
+    this.customerService.getAllClients().subscribe(clients =>
+      this.clientsList = clients);
   }
+
+  ngAfterViewInit(): void {
+    this.priceChild.nativeElement.focus();
+    this.priceChild.nativeElement.setAttribute('placeholder', "Enter price");
+    this.priceChild.nativeElement.value = null;
+  }
+
 
   
   saveOrders(){
@@ -54,8 +71,7 @@ export class OrdersAddComponent implements OnInit {
       orderedByCustomerId: this.form.value.orderedByCustomerId,
     }
 
-    console.log("saving", ordersToCreate)
-    // wywolac service i zapisac
+
      this.ordersService.create(ordersToCreate).subscribe(response => {
        console.log("Subscribe for creation")
      });
@@ -68,6 +84,14 @@ export class OrdersAddComponent implements OnInit {
 
     clean() {
       this.toastr.success('Data cleared!','Success!');
+    }
+
+    close(){
+      this.modal.hide();
+    }
+
+    show() {
+      this.modal.show();
     }
 
 }

@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { ClientsService } from './clients.service';
-import { Address } from './models/address';
+import { Address, Country } from './models/address';
 import { Customer } from './models/customer';
 
 @Injectable()
@@ -22,7 +22,7 @@ export class ClientEditResolver implements Resolve<Customer>{
                 city: "",
                 zipCode: 0,
                 street: "",
-                country: ""
+                country: new Country,
                };
 
             customer = new Customer("", "", "", 0, 0, address, "", "", "");

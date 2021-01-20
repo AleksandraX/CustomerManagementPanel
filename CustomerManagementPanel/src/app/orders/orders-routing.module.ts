@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { OrdersAddResolver } from './orders-add/order-add.resolver';
 
-import { OrdersAddComponent } from './orders-add/orders-add.component';
+
 import { OrdersComponent } from './orders.component';
 import { OrdersResolver } from './orders.resolver';
 
@@ -18,14 +18,6 @@ const routes: Routes = [
                 ordersList: OrdersResolver
             }
         }, 
-        {
-            path: 'CreateOrder',
-            component: OrdersAddComponent,
-            resolve: {
-                customerList: OrdersAddResolver,
-            }
-        },
-
 ]}]
 
 @NgModule({
