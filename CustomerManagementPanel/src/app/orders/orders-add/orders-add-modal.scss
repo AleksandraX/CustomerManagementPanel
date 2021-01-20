@@ -1,8 +1,6 @@
 h1{
     text-align: center;
-    margin-bottom: 2rem;
-    font-size: 3rem;
-    font-weight: bold;
+    font-size: 2.5rem;
     color: var(--colorMustard);
 }
 
@@ -13,11 +11,10 @@ h1{
 
 .addContainer{
     color: white;
-    position: absolute;
     background-color: #343A40 !important;
     text-align: center;
-    border: .3rem solid black;
-    border-radius: 2%;
+    border: .2rem solid black;
+    
 }
 
 .addDiv{
@@ -28,11 +25,10 @@ button{
     color: white;
     margin-right: 1rem;
     border: none;
-    font-size: 1.7rem;
-    bottom: 1rem;
+    font-size: 1.3rem;
 }
 
-.buttonC, .buttonS{
+.buttonClear, .buttonSave{
     font-size: 1.9rem;
     position: relative;
     background: transparent;
@@ -45,13 +41,14 @@ button{
 .buttonClose{
     position: relative;
     float: right;
-    bottom: 5rem;
+    bottom: 7rem;
+    left: 1rem;
     background: transparent;
     transition: .3s transform;
     border: none;
 }
 
-.buttonC:hover{
+.buttonClear:hover{
     transform: scale(1.2);
     color: rgb(253, 77, 77);
 }
@@ -61,7 +58,7 @@ button{
     color: rgb(253, 77, 77);
 }
 
-.buttonS:hover{
+.buttonSave:hover{
     transform: scale(1.2);
     color: rgb(0, 116, 0);
 }
@@ -90,14 +87,6 @@ label{
     button{
         font-size: 1.1rem;
     }
-
-    .addContainer{
-        width: 55%;
-    }
-
-    .inputNgForm{
-        width: 85%;
-    }
 }
 
 @media only screen and (min-width: 550px) and (max-width: 1270px) {
@@ -113,14 +102,6 @@ label{
         font-size: 1.4rem;
     }
 
-    .addContainer{
-        width: 55%;
-    }
-
-    .inputNgForm{
-        width: 85%;
-    }
-
     .buttonClose{
         left: .5rem;
         margin-top: .2rem;
@@ -130,13 +111,8 @@ label{
 
 @media only screen and (min-width: 100px) and (max-width: 550px) {
     .inputNgForm{
-        width: 90%;
         font-size: 1rem;
         height: 2.5rem;
-    }
-
-    .addContainer{
-        width: 70%;
     }
 
     h1{
@@ -144,8 +120,8 @@ label{
     }
 
     .buttonClose{
-        left: .8rem;
-        margin-top: .5rem;
+        left: 1.5rem;
+        margin-top: 1rem;
     }
 
     button{
@@ -157,5 +133,10 @@ label{
     }
     .buttonC, .buttonS{
         font-size: 1.1rem;
+    }
+
+    .price-input{
+        position: relative;
+        left: .9rem;
     }
 }

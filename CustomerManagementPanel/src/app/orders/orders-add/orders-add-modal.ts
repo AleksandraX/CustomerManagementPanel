@@ -90,10 +90,6 @@ export class OrdersAddModal implements OnInit, AfterViewInit{
       this.modal.hide();
     }
 
-    onShown() {
-
-    }
-
     show() {
       this.modal.show();
     }
