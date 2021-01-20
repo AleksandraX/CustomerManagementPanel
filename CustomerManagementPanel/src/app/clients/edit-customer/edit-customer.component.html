@@ -44,27 +44,30 @@
                 <div class="alert alert-danger" *ngIf="form.checkIsRequired('age')">
                     Age is required <i class="fa fa-exclamation"></i>
                 </div>
-                <div class="alert alert-danger" *ngIf="form.checkIsPattern('Age')">
+                <div class="alert alert-danger" *ngIf="form.checkIsMaxLength('age')">
+                    Age is too long !<i class="fa fa-exclamation"></i>
+                  </div>
+                <div class="alert alert-danger" *ngIf="form.checkIsPattern('age')">
                     Age is invalid <i class="fa fa-exclamation"></i>
                 </div>
             </div>
 
             <div formGroupName="address">
-                <div class="ngFormHere">
+                <div class="ngFormHere" *ngIf="countries.length">
                     <label>Country :</label>
                     <br>
-                    <input class="inputNgForm" type="text" placeholder="Your country.." formControlName="country">
+                    <select class="selectCountry inputNgForm" formControlName="country">
 
+                        <option *ngFor="let country of countries" 
+                        [value]="country.id"
+                            [selected]="country?.id === polandId">
+                            {{country?.name}}
+                        </option>
+
+                    </select>
                     <div class="alert alert-danger" *ngIf="form.checkIsRequired('country')">
-                        Country is required <i class="fa fa-exclamation"></i>
+                        Country is required !<i class="fa fa-exclamation"></i>
                     </div>
-                    <div class="alert alert-danger" *ngIf="form.checkIsMinLength('country')">
-                        Country has to be min 3 char length <i class="fa fa-exclamation"></i>
-                    </div>
-                    <div class="alert alert-danger" *ngIf="form.checkIsMaxLength('country')">
-                        Country has to be max 30 char length <i class="fa fa-exclamation"></i>
-                    </div>
-
                 </div>
 
                 <div class="ngFormHere">
