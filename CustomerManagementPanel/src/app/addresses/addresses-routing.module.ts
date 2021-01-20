@@ -45,6 +45,6 @@ const routes: Routes = [
         AddressesResolver, 
         AddressesDetailsResolver
     ]
-    })
+})
 export class AddressesRoutingModule { 
 }

@@ -3,7 +3,7 @@ export interface Address{
     city: string,
     zipCode: number,
     street: string,
-    country: string
+    country: Country
   }
 
   export interface AddressForCreation {

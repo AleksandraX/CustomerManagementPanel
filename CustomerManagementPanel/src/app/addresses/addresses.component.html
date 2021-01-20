@@ -2,7 +2,7 @@
         <button class="bntAdd" [routerLink]='["/addresses/add"]'><fa-icon [icon]="faPlusSquare"></fa-icon> Add Address</button>
     </div>
 
-<div *ngIf="!!addressesList && addressesList.length > 0; else emptyList"> 
+ 
 
   <table class="table">
         <thead class="thead-dark">
@@ -16,21 +16,22 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let address of orderedAddresses; index as i">
+        <tr *ngFor="let address of addressesList; index as i">
             <th scope="row">{{ i + 1 }}</th>
-            <td class="columnUserAddress lineBorder"><p class="tel">Country: </p>{{address.item?.country?.name}}</td>
-            <td class="columnUserAddress"><p class="tel">City: </p>{{address.item.city}}</td>
-            <td class="columnUserAddress"><p class="tel">Zip Code: </p>{{address.item.zipCode}}</td>
-            <td class="columnUserAddress"><p class="tel">Street: </p>{{address.item.street}}</td>
+            <td class="columnUserAddress lineBorder"><p class="tel">Country: </p>{{address.country?.name}}</td>
+            <td class="columnUserAddress"><p class="tel">City: </p>{{address.city}}</td>
+            <td class="columnUserAddress"><p class="tel">Zip Code: </p>{{address.zipCode}}</td>
+            <td class="columnUserAddress"><p class="tel">Street: </p>{{address.street}}</td>
             <td class="columnBnt"><p class="tel">Actions: </p>
-                <button class="bntDetails" title="Show details" [routerLink]='["/addresses/details/" + address.item.id]'>
+                <button class="bntDetails" title="Show details" [routerLink]='["/addresses/details/" + address.id]'>
                     <fa-icon [icon]="faInfo"></fa-icon></button>
-                    <button class="bntDelete" title="Delete" (click)="addressDelete(address.item.id)">
+                    <button class="bntDelete" title="Delete" (click)="addressDelete(address.id)">
                         <fa-icon [icon]="faTrash"></fa-icon></button>
             </td>
         </tr>
         </tbody>
     </table>  
+    <div *ngIf="!!addressesList && addressesList.length > 0; else emptyList">
     
     <app-pagination
         [items]="addressesList"

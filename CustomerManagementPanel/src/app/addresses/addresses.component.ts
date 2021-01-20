@@ -26,10 +26,11 @@ export class AddressesComponent implements OnInit {
       private route: ActivatedRoute,
       private addressService: AddressesService
     ) { 
-     console.log('constructor');
     }
   
     ngOnInit(): void {
+      this.route.data.subscribe(data => 
+        this.addressesList = data['addressesList']);
     }
 
     addressDelete(addressId:string){

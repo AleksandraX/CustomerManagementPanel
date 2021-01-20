@@ -19,7 +19,7 @@ constructor(private httpClient:HttpClient) {
 
 
     getAllAddresses() : Observable<Address[]> {
-        return this.httpClient.get<Address[]>(this.baseUrl + "/getAll").pipe(
+        return this.httpClient.get<Address[]>(this.baseUrl + "/GetAll").pipe(
             tap(response =>
                 {
                     console.log("From services:", response);

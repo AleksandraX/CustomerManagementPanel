@@ -61,11 +61,15 @@ export class EditCustomerComponent implements OnInit {
         Validators.minLength(3),
         Validators.maxLength(30),
       ]),
+      age: new FormControl(this.copyOfCustomer.age, [
+        Validators.required,
+        Validators.pattern('[0-9]*'),
+      ]),
       address: new FormGroup({
         country: new FormControl(this.copyOfCustomer.address?.country, [
           Validators.required,
           Validators.minLength(3),
-          Validators.maxLength(30),
+          Validators.maxLength(50),
         ]),
         zipCode: new FormControl(this.copyOfCustomer.address?.zipCode, [
           Validators.required,
@@ -109,7 +113,10 @@ export class EditCustomerComponent implements OnInit {
       name: this.form.value.name,
       lastName: this.form.value.lastName,
       age: this.form.value.age,
-      address: this.form.value.address,
+      countryId: this.form.value.countryId,
+      city: this.form.value.city,
+      zipCode: this.form.value.zipCode,
+      street: this.form.value.street,
       phoneNumber: this.form.value.phoneNumber,
       email: this.form.value.email,
       gender: this.form.value.gender,

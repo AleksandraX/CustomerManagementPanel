@@ -11,9 +11,6 @@ export class MyFormGroup extends FormGroup{
         );
     }
 
-
-
-
 checkIsRequired(propName: string) : boolean {
     return this.checkError(propName, 'required');
   }
@@ -23,13 +20,10 @@ checkIsMinLength(propName: string) : boolean {
   }
 
 checkIsMaxLength(propName: string) : boolean {
-    console.log("jestesmy tu");
     return this.checkError(propName, 'maxlength');
   }
 
 checkIsPattern(propName: string) : boolean {
     return this.checkError(propName, 'pattern');
   }
-
 }
-
