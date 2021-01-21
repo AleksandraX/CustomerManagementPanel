@@ -8,8 +8,8 @@
     <select class="selectCountry" formControlName="countryId">
 
       <option *ngFor="let country of countries" 
-      [value]="country.id" 
-      [selected]="country?.id === polandId">
+        [value]="country.id" 
+        [selected]="country?.id === polandId">
         {{country?.name}}
       </option>
 

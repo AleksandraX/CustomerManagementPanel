@@ -1,5 +1,11 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, Input, OnInit, SimpleChanges, ɵConsole } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnInit,
+  SimpleChanges,
+  ɵConsole,
+} from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { faSave, faTimes } from '@fortawesome/free-solid-svg-icons';
@@ -52,35 +58,33 @@ export class AddressesAddComponent implements OnInit {
           ? this.polandId
           : this.address.countryId;
 
-      let zipCodePattern = '[0-9]{2}-[0-9]{3}' // XX-XXX
-      let cityPattern = '[a-zA-Z ]*'  // xxxxx@xx.xx
+      let zipCodePattern = '[0-9]{2}-[0-9]{3}'; // XX-XXX
+      let cityPattern = '[a-zA-Z ]*'; // xxxxx@xx.xx
 
-    this.form = new MyFormGroup({
-      countryId: new FormControl(initialCountry, [
-        Validators.required]),
-      zipCode: new FormControl(this.address.zipCode, [
-        Validators.required,
-        Validators.minLength(5),
-        Validators.maxLength(7),
-        Validators.pattern(zipCodePattern),
-      ]),
-      city: new FormControl(this.address.city, [
-        Validators.required,
-        Validators.minLength(3),
-        Validators.maxLength(30),
-        Validators.pattern(cityPattern),
-      ]),
-      street: new FormControl(this.address.street, [
-        Validators.required,
-        Validators.minLength(3),
-        Validators.maxLength(40),
-      ]),
+      this.form = new MyFormGroup({
+        countryId: new FormControl(initialCountry, [Validators.required]),
+        zipCode: new FormControl(this.address.zipCode, [
+          Validators.required,
+          Validators.minLength(5),
+          Validators.maxLength(7),
+          Validators.pattern(zipCodePattern),
+        ]),
+        city: new FormControl(this.address.city, [
+          Validators.required,
+          Validators.minLength(3),
+          Validators.maxLength(30),
+          Validators.pattern(cityPattern),
+        ]),
+        street: new FormControl(this.address.street, [
+          Validators.required,
+          Validators.minLength(3),
+          Validators.maxLength(40),
+        ]),
+      });
     });
-  });
   }
 
   ngOnInit() {
-
   }
 
   saveAddress() {
@@ -90,8 +94,7 @@ export class AddressesAddComponent implements OnInit {
       zipCode: this.form.value.zipCode,
       street: this.form.value.street,
     };
-    this.addressService.create(addressToCreate).subscribe((response) => {
-    });
+    this.addressService.create(addressToCreate).subscribe((response) => {});
   }
 
   showSuccess() {
@@ -107,4 +110,4 @@ export class AddressesAddComponent implements OnInit {
       return of(result as T);
     };
   }
-};
+}
