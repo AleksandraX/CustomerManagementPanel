@@ -31,6 +31,7 @@ export class AddressesComponent implements OnInit {
     ngOnInit(): void {
       this.route.data.subscribe(data => 
         this.addressesList = data['addressesList']);
+        console.log(this.addressesList);
     }
 
     addressDelete(addressId:string){

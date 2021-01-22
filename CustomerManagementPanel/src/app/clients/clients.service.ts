@@ -41,7 +41,7 @@ constructor(private httpClient:HttpClient) {
     }
 
     create(customerForCreation: CustomerForCreation) : Observable<any>{
-        return this.httpClient.post<any>(this.baseUrl + "/createCustomer", customerForCreation).pipe(
+        return this.httpClient.post<any>('https://localhost:44391/api/customers' + "/CreateCustomer", customerForCreation).pipe(
             tap(response =>
                 {
                     console.log("Create customer", response);
