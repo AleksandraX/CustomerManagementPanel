@@ -1,19 +1,22 @@
 <div class="case-customer">
 
-  <div class="name-case">
-    <h1>Info customer: {{copyOfCustomer.name}} {{copyOfCustomer.lastName}}</h1>
-    <label>Name : {{copyOfCustomer.name}}</label>
-    <label>Last Name : {{copyOfCustomer.lastName}}</label>
-    <label>Gender : {{copyOfCustomer.gender === 0 ? "Male" : "Female"}}</label>
-    <label>Phone Number: <a href="tel:{{copyOfCustomer.phoneNumber}}">{{copyOfCustomer.phoneNumber}}</a></label>
-    <label>Email: <a href="mailto: {{copyOfCustomer.email}}">{{copyOfCustomer.email}}</a></label>
+  <h1 class="name-customer">Customer: <h2>{{copyOfCustomer.name}} {{copyOfCustomer.lastName}}</h2></h1>
+  <div class="row">
+  <div class="col-6 name-case">
+    <h3>Info :</h3>
+    <label><fa-icon class="icon" [icon]="faUserAlt"></fa-icon> Name : <h5>{{copyOfCustomer.name}}</h5></label>
+    <label><fa-icon class="icon" [icon]="faUserAlt"></fa-icon> Last Name : <h5>{{copyOfCustomer.lastName}}</h5></label>
+    <label><fa-icon class="icon" [icon]="faVenusMars"></fa-icon> Gender : <h5>{{copyOfCustomer.gender === 0 ? "Male" : "Female"}}</h5></label>
+    <label><fa-icon class="icon" [icon]="faPhoneAlt"></fa-icon> Phone Number: <h5><a href="tel:{{copyOfCustomer.phoneNumber}}">{{copyOfCustomer.phoneNumber}}</a></h5></label>
+    <label><fa-icon class="icon" [icon]="faEnvelope"></fa-icon> Email: <h5><a href="mailto: {{copyOfCustomer.email}}">{{copyOfCustomer.email}}</a></h5></label>
   </div>
-  <div class="address-case">
-    <h1>Address:</h1>
-    <label>Country: {{copyOfCustomer.address?.country}}</label>
-    <label>City: {{copyOfCustomer.address?.city}}</label>
-    <label>Zip Code: {{copyOfCustomer.address?.zipCode}}</label>
-    <label class="street-case">Street: {{copyOfCustomer.address?.street}}</label>
+  <div class="col-6 address-case">
+    <h3>Address:</h3>
+    <label><fa-icon class="icon" [icon]="faGlobaleAmericas"></fa-icon> Country: <h5>{{copyOfCustomer.address.country?.name}}</h5></label>
+    <label><fa-icon class="icon" [icon]="faCity"></fa-icon> City: <h5>{{copyOfCustomer.address?.city}}</h5></label>
+    <label><fa-icon class="icon" [icon]="faMailBulk"></fa-icon> Zip Code: <h5>{{copyOfCustomer.address?.zipCode}}</h5></label>
+    <label class="street-case"><fa-icon class="icon" [icon]="faRoad"></fa-icon> Street: <h5>{{copyOfCustomer.address?.street}}</h5></label>
   </div>
+</div>
 
 </div>

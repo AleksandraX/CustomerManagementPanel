@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, SimpleChange, SimpleChanges } from '@angular/core';
 import { MyPager, OrderedItem } from '../models/shared.models';
 
 @Component({
@@ -40,6 +40,9 @@ export class PaginationComponent implements OnInit {
     this.setPage(this.startPage);
   }
 
+ngOnChanges(){
+  this.setPage(1);
+}
 
 setPage(page: number) {
   this.page = page;

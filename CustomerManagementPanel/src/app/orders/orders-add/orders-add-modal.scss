@@ -1,7 +1,36 @@
 h1{
-    text-align: center;
-    font-size: 2.5rem;
-    color: var(--colorMustard);
+    position: relative;
+    font-size: 2rem;
+    bottom: 1rem;
+}
+
+.modal-header{
+    height: 3rem;
+    background-color: #343A40 !important;
+}
+
+.modal-body{
+    height: 12rem;
+    background-color: white;
+    color: black;
+}
+
+.modal-footer{
+    background-color: white;
+    height: 3rem;
+}
+
+.addDiv{
+    margin-top: .4rem;
+    position: relative;
+    bottom: 1.2rem;
+}
+
+.modal-content{
+    width: 70%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 50%);
 }
 
 .price-label{
@@ -13,12 +42,11 @@ h1{
     color: white;
     background-color: #343A40 !important;
     text-align: center;
-    border: .2rem solid black;
-    
+    border: .1rem solid black;  
 }
 
 .addDiv{
-    margin-bottom: 1rem;
+    margin-top: 1rem;
 }
 
 button{
@@ -29,11 +57,13 @@ button{
 }
 
 .buttonClear, .buttonSave{
-    font-size: 1.9rem;
+    color: rgb(133, 133, 133);
+    font-size: 1.3rem;
     position: relative;
     background: transparent;
     border: none;
-    left: .5rem;
+    left: 1rem;
+    bottom: .5rem;
     padding: .1rem .5rem ;
     transition: .3s transform;
 }
@@ -41,7 +71,7 @@ button{
 .buttonClose{
     position: relative;
     float: right;
-    bottom: 7rem;
+    bottom: 4rem;
     left: 1rem;
     background: transparent;
     transition: .3s transform;
@@ -64,19 +94,28 @@ button{
 }
 
 
-
 .inputNgForm{
     text-align: center;
-    height: 3.4rem;
-    width: 75%;
-    font-size: 1.5rem;
+    height: 1.7rem;
+    width: 60%;
+    font-size: 1.1rem;
     border: .1em solid #070707;
     border-radius: .5rem;
     background-color: rgb(255, 255, 255);
 }
 
 label{
-    font-size: 1.8rem;
+    font-size: 1.4rem;
+}
+
+.alert-danger{
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    padding: 0;
+    position: relative;
+    width: 65%;
+    height: 1.7rem;
 }
 
 @media only screen and (min-width: 1270px) and (max-width: 1610px) {
@@ -91,7 +130,7 @@ label{
 
 @media only screen and (min-width: 550px) and (max-width: 1270px) {
     h1{
-        font-size: 2.4rem;
+        font-size: 2rem;
     }
 
     button{
@@ -99,12 +138,16 @@ label{
     }
 
     label{
-        font-size: 1.4rem;
+        font-size: 1.1rem;
     }
 
     .buttonClose{
         left: .5rem;
         margin-top: .2rem;
+    }
+
+    .modal-content{
+        width: 75%;
     }
 }
 
@@ -112,7 +155,7 @@ label{
 @media only screen and (min-width: 100px) and (max-width: 550px) {
     .inputNgForm{
         font-size: 1rem;
-        height: 2.5rem;
+        height: 2rem;
     }
 
     h1{
@@ -135,8 +178,7 @@ label{
         font-size: 1.1rem;
     }
 
-    .price-input{
-        position: relative;
-        left: .9rem;
+    .modal-content{
+        width: 90%;
     }
 }
