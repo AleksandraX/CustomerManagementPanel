@@ -11,7 +11,7 @@
     <label><fa-icon class="icon" [icon]="faEnvelope"></fa-icon> Email: <h5><a href="mailto: {{copyOfCustomer.email}}">{{copyOfCustomer.email}}</a></h5></label>
   </div>
   <div class="col-6 address-case">
-    <h3>Address:</h3>
+    <h3 class="h3-address">Address:</h3>
     <label><fa-icon class="icon" [icon]="faGlobaleAmericas"></fa-icon> Country: <h5>{{copyOfCustomer.address.country?.name}}</h5></label>
     <label><fa-icon class="icon" [icon]="faCity"></fa-icon> City: <h5>{{copyOfCustomer.address?.city}}</h5></label>
     <label><fa-icon class="icon" [icon]="faMailBulk"></fa-icon> Zip Code: <h5>{{copyOfCustomer.address?.zipCode}}</h5></label>

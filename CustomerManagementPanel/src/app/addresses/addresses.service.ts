@@ -2,13 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 import { Address, AddressForCreation, AddressWithResidents, Country } from '../clients/models/address';
 
 @Injectable()
 
 export class AddressesService {
 
-    baseUrl: string = "https://api.kacper-berganski-portfolio.pl/api/addresses";
+    baseUrl: string = environment.apiBaseUrl + "addresses";
     headers: Headers = null;
     options;
 

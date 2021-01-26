@@ -4,13 +4,14 @@ import { Observable } from 'rxjs/internal/Observable';
 import { of } from 'rxjs/internal/observable/of';
 import { tap, catchError } from 'rxjs/operators';
 import { Order, OrdersForCreation, OrderStatus, OrderStatusChangeParameters } from '../clients/models/orders';
+import { environment } from './../../environments/environment';
+
 
 @Injectable()
 
 export class OrdersService {
 
-    baseUrl: string = "https://api.kacper-berganski-portfolio.pl/api/orders";
-    statusUrl: string = "https://api.kacper-berganski-portfolio.pl/api/orderStatuses";
+    baseUrl: string =  environment.apiBaseUrl + "orders/";
     headers: Headers = null;
     options: { headers: Headers; };
 
@@ -20,7 +21,7 @@ constructor(private httpClient:HttpClient) {
  }
 
  getAllListItems() : Observable<Order[]> {
-    return this.httpClient.get<Order[]>(this.baseUrl + "/GetAllListItems").pipe(
+    return this.httpClient.get<Order[]>(this.baseUrl + "GetAllListItems").pipe(
         tap(response =>
             {
                 console.log("From services:", response);
@@ -30,7 +31,7 @@ constructor(private httpClient:HttpClient) {
 }
 
 create(ordersForCreation: OrdersForCreation) : Observable<any>{
-    return this.httpClient.post<any>(this.baseUrl + "/CreateOrder", ordersForCreation).pipe(
+    return this.httpClient.post<any>(this.baseUrl + "CreateOrder", ordersForCreation).pipe(
         tap(response =>
             {
                 console.log("Create orders", response);
@@ -40,7 +41,7 @@ create(ordersForCreation: OrdersForCreation) : Observable<any>{
 }
 
     getAllOrderStatus() : Observable<OrderStatus[]>{
-        return this.httpClient.get<OrderStatus[]>(this.statusUrl + "/getAll").pipe(
+        return this.httpClient.get<OrderStatus[]>(environment.apiBaseUrl + "orderStatuses/getAll").pipe(
             tap(response =>
                 {
                     console.log("From services:", response);
@@ -54,7 +55,7 @@ create(ordersForCreation: OrdersForCreation) : Observable<any>{
         params = params.append("OrderId", orderStatusChangeParameters.orderId);
         params = params.append('NewOrderStatusId', orderStatusChangeParameters.newOrderStatusId);
 
-        return this.httpClient.put<any>(this.baseUrl + "/ChangeOrderStatus",  null, { params: params }).pipe(
+        return this.httpClient.put<any>(this.baseUrl + "ChangeOrderStatus",  null, { params: params }).pipe(
             tap(response =>
                 {
                     console.log("Save Status", response);
