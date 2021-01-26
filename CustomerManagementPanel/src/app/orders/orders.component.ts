@@ -1,5 +1,5 @@
 import { formatDate } from '@angular/common';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { faPlusSquare } from '@fortawesome/free-solid-svg-icons';
 import { BsModalRef, BsModalService, ModalDirective } from 'ngx-bootstrap/modal';
@@ -28,6 +28,7 @@ export class OrdersComponent implements OnInit {
   orderedOrders: OrderedItem[];
   selectedOrdersId: string[] = [];
   checkBoxSelect: boolean = false;
+  pageSizeFromOrders = 10;
 
   @ViewChild('addOrderModal') addOrderModalRef: ModalDirective; 
 
@@ -57,7 +58,7 @@ export class OrdersComponent implements OnInit {
     let date = new Date(dateInString);
 
     let now = new Date(Date.now());
-    let data = date.getDay() - now.getDay();
+    let data = now.getDay() - date.getDay();
     return data + ' days';
   }
 
@@ -92,22 +93,15 @@ export class OrdersComponent implements OnInit {
     return false;
   }
 
-  // getChangeNumberOfOrders(value : number){
-  //   if(value === 1){
-  //     console.log("10 orderów")
-  //   }else if(value === 2){
-  //     console.log("20 orderów")
-  //   }else{
-  //     console.log("30 orderów")
-  //   }
-  // }
-
-
   onPageChanged(event: MyPager) {
-    console.log("łapiemy event", event);
     this.orderedOrders = event.pageOfItems;
     this.checkBoxSelect = false;
     this.selectedOrdersId = [];
+  }
+
+  changePageSize(filterVal: any){
+    this.pageSizeFromOrders = filterVal;
+    console.log(this.pageSizeFromOrders);
   }
 
   checkCheckList(orderId: string){

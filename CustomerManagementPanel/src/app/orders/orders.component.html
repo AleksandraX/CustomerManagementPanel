@@ -3,10 +3,10 @@
     <button class="bntAdd" (click)="showAddOrder()"><fa-icon [icon]="faPlusSquare"></fa-icon> Add Order</button>
   </div>
 
-  <select class="col-sm form-select" aria-label="Default select example" class="order-per-page">
-    <option class="option-orders-per-page" value= "1">10 orders per page</option>
-    <option class="option-orders-per-page" value= "2">20 orders per page</option>
-    <option class="option-orders-per-page" value= "3">30 orders per page</option>
+  <select (change)="changePageSize($event.target.value)"class="col-sm form-select" aria-label="Default select example" class="order-per-page">
+    <option [value]="10">10 orders per page</option>
+    <option [value]="20">20 orders per page</option>
+    <option [value]="30">30 orders per page</option>
   </select>
 
 
@@ -78,6 +78,7 @@
 
 <app-pagination
 [items]="ordersList"
+[pageSize]="pageSizeFromOrders"
 (pageChangedEventEmitter)="onPageChanged($event)">
 </app-pagination>
 

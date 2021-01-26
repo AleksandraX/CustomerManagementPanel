@@ -56,7 +56,7 @@
                 <div class="ngFormHere" *ngIf="countries.length">
                     <label>Country :</label>
                     <br>
-                    <select class="selectCountry inputNgForm" formControlName="country">
+                    <select class="selectCountry inputNgForm" formControlName="countryId">
 
                         <option *ngFor="let country of countries" 
                         [value]="country.id"
@@ -147,24 +147,24 @@
             <div class="ngFormHere">
                 <label>Email :</label>
                 <br>
-                <input class="inputNgForm" type="text" placeholder="Your email.." formControlName="mail">
+                <input class="inputNgForm" type="text" placeholder="Your email.." formControlName="email">
 
-                <div class="alert alert-danger" *ngIf="form.checkIsRequired('mail')">
+                <div class="alert alert-danger" *ngIf="form.checkIsRequired('email')">
                     Email is required <i class="fa fa-exclamation"></i>
                 </div>
-                <div class="alert alert-danger" *ngIf="form.checkIsMinLength('mail')">
+                <div class="alert alert-danger" *ngIf="form.checkIsMinLength('email')">
                     Email has to be min 5 char length <i class="fa fa-exclamation"></i>
                 </div>
-                <div class="alert alert-danger" *ngIf="form.checkIsMaxLength('mail')">
+                <div class="alert alert-danger" *ngIf="form.checkIsMaxLength('email')">
                     Email has to be max 35 char length <i class="fa fa-exclamation"></i>
                 </div>
-                <div class="alert alert-danger" *ngIf="form.checkIsPattern('mail')">
+                <div class="alert alert-danger" *ngIf="form.checkIsPattern('email')">
                     Email is invalid <i class="fa fa-exclamation"></i>
                 </div>
             </div>
             <div>
                 <br>
-                <button (click)="showSuccess(); saveCustomer()" type="submit" class="save-new-customer"
+                <button type="submit" class="save-new-customer"
                     [disabled]="form.invalid"> Save customer <fa-icon class="icon" [icon]="faSave"></fa-icon>
                 </button>
             </div>

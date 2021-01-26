@@ -1,15 +1,16 @@
+
+
 <h1>Add Address</h1>
 
-<form class="addContainer" [formGroup]="form" (ngSubmit)="saveAddress()">
-  <div class="ngFormHere" *ngIf="countries.length">
+<form class="addContainer" *ngIf="form" [formGroup]="form" (ngSubmit)="saveAddress()">
+
+  <div #viewCountries class="ngFormHere" *ngIf="countries.length">
     <label>Country :</label>
     <br>
 
     <select class="selectCountry" formControlName="countryId">
 
-      <option *ngFor="let country of countries" 
-      [value]="country.id" 
-      [selected]="country?.id === polandId">
+      <option *ngFor="let country of countries" [value]="country.id" [selected]="country?.id === polandId">
         {{country?.name}}
       </option>
 
@@ -19,10 +20,12 @@
     </div>
   </div>
 
-  <div class="cityDiv">
+
+  <div class="zipCodeDiv">
     <label>City :</label>
     <br>
     <input class="inputNgForm input-text-address" type="text" formControlName="city">
+
     <div class="alert alert-danger" *ngIf="form.checkIsRequired('city')">
       City is required !<i class="fa fa-exclamation"></i>
     </div>
@@ -31,12 +34,8 @@
     </div>
     <div class="alert alert-danger" *ngIf="form.checkIsMaxLength('city')">
       City is too long !<i class="fa fa-exclamation"></i>
-    </div>
-    <div class="alert alert-danger" *ngIf="form.checkIsPattern('city')">
-      Cannot contain numbers !<i class="fa fa-exclamation"></i>
-    </div>
+    </div> 
   </div>
-
 
   <div class="zipCodeDiv">
     <label>Zip Code :</label>

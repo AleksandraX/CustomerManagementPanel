@@ -63,6 +63,7 @@ export class EditCustomerComponent implements OnInit {
 
     this.addressService.getAllCountries().subscribe((response) => {
       this.countries = response;
+      console.log("countires", this.countries);
 
       this.polandId = this.countries.find((x) => x.name === 'Poland')?.id;
 
@@ -88,7 +89,7 @@ export class EditCustomerComponent implements OnInit {
         Validators.pattern('[0-9]*'),
       ]),
       address: new FormGroup({
-        country: new FormControl(this.copyOfCustomer.address?.country, [
+        countryId: new FormControl(this.copyOfCustomer.address?.country.id, [
           Validators.required,
         ]),
         zipCode: new FormControl(this.copyOfCustomer.address?.zipCode, [
@@ -115,7 +116,7 @@ export class EditCustomerComponent implements OnInit {
         Validators.minLength(9),
         Validators.maxLength(15),
       ]),
-      mail: new FormControl(this.copyOfCustomer.email, [
+      email: new FormControl(this.copyOfCustomer.email, [
         Validators.required,
         Validators.minLength(5),
         Validators.maxLength(35),
@@ -134,19 +135,18 @@ export class EditCustomerComponent implements OnInit {
       name: this.form.value.name,
       lastName: this.form.value.lastName,
       age: this.form.value.age,
-      countryId: this.form.value.countryId,
-      city: this.form.value.city,
-      zipCode: this.form.value.zipCode,
-      street: this.form.value.street,
+      countryId: this.form.value.address.countryId,
+      city: this.form.value.address.city,
+      zipCode: this.form.value.address.zipCode,
+      street: this.form.value.address.street,
       phoneNumber: this.form.value.phoneNumber,
       email: this.form.value.email,
       gender: this.form.value.gender,
     };
 
     console.log('saving', customerToCreate);
-    // wywolac service i zapisac
     this.clientsService.create(customerToCreate).subscribe((response) => {
-      console.log('Subscribe for creation');
+      this.toastr.success('Customer added!', 'Success!');
     });
   }
 

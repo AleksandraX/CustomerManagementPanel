@@ -66,11 +66,11 @@ export class OrdersAddModal implements OnInit, AfterViewInit{
   saveOrders(){
     console.log("first step saving", this.form.value);
 
+
     let ordersToCreate: OrdersForCreation = {
       price: this.form.value.price,
       orderedByCustomerId: this.form.value.orderedByCustomerId,
     }
-
 
      this.ordersService.create(ordersToCreate).subscribe(response => {
        console.log("Subscribe for creation")

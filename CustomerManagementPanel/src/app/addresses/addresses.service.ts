@@ -2,13 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 import { Address, AddressForCreation, AddressWithResidents, Country } from '../clients/models/address';
 
 @Injectable()
 
 export class AddressesService {
 
-    baseUrl: string = "https://api.kacper-berganski-portfolio.pl/api/addresses";
+    baseUrl: string = environment.apiBaseUrl + "addresses";
     headers: Headers = null;
     options;
 
@@ -70,7 +71,7 @@ constructor(private httpClient:HttpClient) {
     }
 
     create(addressForCreation: AddressForCreation) : Observable<any>{
-        return this.httpClient.post<any>(this.baseUrl + "/create", addressForCreation).pipe(
+        return this.httpClient.post<any>(this.baseUrl + "/Create", addressForCreation).pipe(
             tap(response =>
                 {
                     console.log("Create address", response);

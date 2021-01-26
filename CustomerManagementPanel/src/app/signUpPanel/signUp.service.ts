@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 import { Address, AddressForCreation, AddressWithResidents } from '../clients/models/address';
 import { UserAccountForCreation } from '../clients/models/signUp';
 
@@ -9,7 +10,7 @@ import { UserAccountForCreation } from '../clients/models/signUp';
 
 export class SignUpService {
 
-    baseUrl: string = "https://api.kacper-berganski-portfolio.pl/api/addresses";
+    baseUrl: string = environment.apiBaseUrl + "addresses";
     headers: Headers = null;
     options;
 
@@ -19,7 +20,7 @@ constructor(private httpClient:HttpClient) {
  }
 
     create(userAccountForCreation: UserAccountForCreation) : Observable<any>{
-        return this.httpClient.post<any>(this.baseUrl + "/create", userAccountForCreation).pipe(
+        return this.httpClient.post<any>(this.baseUrl + "create", userAccountForCreation).pipe(
             tap(response =>
                 {
                     console.log("Create user", response);

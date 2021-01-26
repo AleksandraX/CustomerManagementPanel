@@ -5,12 +5,13 @@ import { catchError, tap } from 'rxjs/operators';
 import { of } from 'rxjs/internal/observable/of';
 import { Observable } from 'rxjs';
 import { CustomerForCreation } from './models/customerForCreation';
+import { environment } from 'src/environments/environment';
 
 @Injectable()
 
 export class ClientsService {
 
-    baseUrl: string = "https://api.kacper-berganski-portfolio.pl/api/customers";
+    baseUrl: string = environment.apiBaseUrl + "customers";
     headers: Headers = null;
     options;
 
@@ -41,7 +42,7 @@ constructor(private httpClient:HttpClient) {
     }
 
     create(customerForCreation: CustomerForCreation) : Observable<any>{
-        return this.httpClient.post<any>(this.baseUrl + "/createCustomer", customerForCreation).pipe(
+        return this.httpClient.post<any>(this.baseUrl + "/CreateCustomer", customerForCreation).pipe(
             tap(response =>
                 {
                     console.log("Create customer", response);
