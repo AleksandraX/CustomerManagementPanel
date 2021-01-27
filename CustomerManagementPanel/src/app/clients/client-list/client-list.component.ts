@@ -46,6 +46,7 @@ export class ClientListComponent implements OnInit {
   deleteCustomer(customerId: string) {
     this.clientService.delete(customerId).subscribe((response) => {
       console.log('delete');
+      this.toastr.info('Customer has been deleted!', 'Info');
     });
   }
 

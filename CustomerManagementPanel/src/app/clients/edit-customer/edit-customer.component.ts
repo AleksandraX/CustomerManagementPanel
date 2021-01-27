@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { faSave } from '@fortawesome/free-solid-svg-icons';
+import { faSave, faUserAlt } from '@fortawesome/free-solid-svg-icons';
 import { ToastrService } from 'ngx-toastr';
 import { AddressesService } from 'src/app/addresses/addresses.service';
 import { MyFormGroup } from 'src/app/shared/extentions/myFormGroup';
@@ -23,6 +23,7 @@ export class EditCustomerComponent implements OnInit {
   isDisabled: boolean = true;
   addingMode: boolean = false;
   faSave = faSave;
+  faUserAlt = faUserAlt;
   address: AddressForCreation = {
     countryId: '',
     city: '',
@@ -52,31 +53,19 @@ export class EditCustomerComponent implements OnInit {
       }
     });
 
-    let country = this.copyOfCustomer.address?.country;
-
-    if (
-      this.copyOfCustomer.address !== null &&
-      this.copyOfCustomer.address !== undefined
-    ) {
-      let country1 = this.copyOfCustomer.address.country;
-    }
-
     this.addressService.getAllCountries().subscribe((response) => {
       this.countries = response;
-      console.log("countires", this.countries);
+      console.log('countires', this.countries);
 
       this.polandId = this.countries.find((x) => x.name === 'Poland')?.id;
+    });
 
-      let initialCountry =
-        this.address.countryId === '' || !this.address.countryId
-          ? this.polandId
-          : this.address.countryId;
-    
     this.form = new MyFormGroup({
       name: new FormControl(this.copyOfCustomer.name, [
         Validators.required,
         Validators.minLength(2),
         Validators.maxLength(30),
+        Validators.pattern('[a-zA-Z ]*'),
       ]),
       lastName: new FormControl(this.copyOfCustomer.lastName, [
         Validators.required,
@@ -123,8 +112,7 @@ export class EditCustomerComponent implements OnInit {
         Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$'),
       ]),
     });
-  });
-}
+  }
 
   ngOnInit() {}
 
@@ -144,10 +132,45 @@ export class EditCustomerComponent implements OnInit {
       gender: this.form.value.gender,
     };
 
-    console.log('saving', customerToCreate);
-    this.clientsService.create(customerToCreate).subscribe((response) => {
+
+    let isVary = this.checkCompliance();
+    console.log("nasz wynik:", isVary);
+    if(isVary){
+      console.log('saving', customerToCreate);
+      this.clientsService.updateCustomer(customerToCreate).subscribe((response) => {
       this.toastr.success('Customer added!', 'Success!');
     });
+    }else{
+      this.toastr.error('Data cannot be saved because it has not changed','Error!');
+      return false;
+    }
+
+  }
+
+  checkCompliance():boolean{
+    if (this.copyOfCustomer.name !== this.form.value.name) {
+      return true;
+    }else if (this.copyOfCustomer.lastName !== this.form.value.lastName) {
+      return true;
+    }else if (this.copyOfCustomer.age !== this.form.value.age) {
+      return true;
+    }else if (this.copyOfCustomer.address.country.id !== this.form.value.address.countryId) {
+      return true;
+    }else if (this.copyOfCustomer.address.city !== this.form.value.address.city) {
+      return true;
+    }else if (this.copyOfCustomer.address.zipCode !== this.form.value.address.zipCode) {
+      return true;
+    }else if (this.copyOfCustomer.address.street !== this.form.value.address.street) {
+      return true;
+    }else if (this.copyOfCustomer.phoneNumber !== this.form.value.phoneNumber) {
+      return true;
+    }else if (this.copyOfCustomer.email !== this.form.value.email) {
+      return true;
+    }else if (this.copyOfCustomer.gender !== this.form.value.gender) {
+      return true;
+    }else{
+      return false;
+    }
   }
 
   showSuccess() {
