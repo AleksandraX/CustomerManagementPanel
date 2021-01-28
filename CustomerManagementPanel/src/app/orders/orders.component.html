@@ -3,6 +3,14 @@
     <button class="bntAdd" (click)="showAddOrder()"><fa-icon [icon]="faPlusSquare"></fa-icon> Add Order</button>
   </div>
 
+  <button type="button"
+  style="display: none;" 
+  id="button" 
+  class="option-check-box"
+  [ngClass]="{'checkBoxModal' : orderedOrders}"
+  (click)="showOptionOrder()"
+  >Options</button>
+
   <select (change)="changePageSize($event.target.value)"class="col-sm form-select" aria-label="Default select example" class="order-per-page">
     <option [value]="10">10 orders per page</option>
     <option [value]="20">20 orders per page</option>
@@ -18,6 +26,7 @@
         <input type="checkbox" 
         title="Check Box" 
         [(ngModel)] = "checkBoxSelect" 
+
         (change)="toggleAllCheckList()"
         class="form-check-input check-box" 
         id="exampleCheck1">
@@ -84,3 +93,5 @@
 
 
 <app-orders-add-modal #addOrderModal></app-orders-add-modal>
+<app-orders-option-modal #optionOrderModal [selectedOrdersIds]="selectedOrdersId" [orderedByCustomers]="orderedOrders"  [orderStatuses]="orderStatuses"></app-orders-option-modal>
+

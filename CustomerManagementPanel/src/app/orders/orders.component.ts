@@ -1,8 +1,8 @@
 import { formatDate } from '@angular/common';
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { faPlusSquare } from '@fortawesome/free-solid-svg-icons';
-import { BsModalRef, BsModalService, ModalDirective } from 'ngx-bootstrap/modal';
+import { BsModalService, ModalDirective } from 'ngx-bootstrap/modal';
 import { ToastrService } from 'ngx-toastr';
 import {
   Order,
@@ -10,7 +10,6 @@ import {
   OrderStatusChangeParameters,
 } from '../clients/models/orders';
 import { MyPager, OrderedItem } from '../shared/models/shared.models';
-import { OrdersAddModal } from './orders-add/orders-add-modal';
 import { OrdersService } from './orders.service';
 
 @Component({
@@ -31,6 +30,7 @@ export class OrdersComponent implements OnInit {
   pageSizeFromOrders = 10;
 
   @ViewChild('addOrderModal') addOrderModalRef: ModalDirective; 
+  @ViewChild('optionOrderModal') optionOrderModalRef: ModalDirective; 
 
   constructor(
     private toastr: ToastrService,
@@ -110,10 +110,12 @@ export class OrdersComponent implements OnInit {
       this.selectedOrdersId.splice(index ,1);
       console.log("usuń")
       console.log(this.selectedOrdersId);
+      document.getElementById('button').style.display='none';
     }else{
       this.selectedOrdersId.push(orderId);
       console.log("dodaj");
       console.log(this.selectedOrdersId);
+      document.getElementById('button').style.display='block';
     }
   }
 
@@ -128,18 +130,22 @@ export class OrdersComponent implements OnInit {
       this.selectedOrdersId = [...allVisibleIds];
       console.log("dodajemy wszystko")
       console.log(this.selectedOrdersId);
+      document.getElementById('button').style.display='block';
     }else{
       this.orderedOrders.map(order => order.item.id);
       this.selectedOrdersId = [];
       console.log("usuwamy wszystko")
       console.log(this.selectedOrdersId);
+      document.getElementById('button').style.display='none';
     }
   }
 
-  showAddOrder() {
-    // show modal
-    // this.modalRef = this.modalService.show(OrdersAddModal, {});
 
+  showAddOrder() {
     this.addOrderModalRef.show();
+  }
+
+  showOptionOrder() {
+    this.optionOrderModalRef.show();
   }
 }

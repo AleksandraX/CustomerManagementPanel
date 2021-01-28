@@ -57,7 +57,7 @@ constructor(private httpClient:HttpClient) {
                 {
                     console.log("Update Customer", response);
                 }),
-            catchError(this.handleError<any>("create"))
+            catchError(this.handleError<any>("update"))
         );
     }
 

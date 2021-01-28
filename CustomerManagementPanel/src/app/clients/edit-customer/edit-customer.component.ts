@@ -117,35 +117,93 @@ export class EditCustomerComponent implements OnInit {
   ngOnInit() {}
 
   saveCustomer() {
+
+    if(this.copyOfCustomer.id !== '0'){
+      console.log('first step saving update', this.form.value);
+      let customerToCreate: CustomerForCreation = {
+        name: this.form.value.name,
+        lastName: this.form.value.lastName,
+        age: this.form.value.age,
+        countryId: this.form.value.address.countryId,
+        city: this.form.value.address.city,
+        zipCode: this.form.value.address.zipCode,
+        street: this.form.value.address.street,
+        phoneNumber: this.form.value.phoneNumber,
+        email: this.form.value.email,
+        gender: this.form.value.gender,
+      };
+  
+      let isVary = this.checkCompliance();
+      console.log("nasz wynik:", isVary);
+      if(isVary){
+        console.log('update', customerToCreate);
+        this.clientsService.updateCustomer(customerToCreate).subscribe((response) => {
+        this.toastr.success('Customer added!', 'Success!');
+      });
+      }else{
+        this.toastr.error('Data cannot be saved because it has not changed','Error!');
+        return false;
+      }
+      
+  }else{
     console.log('first step saving', this.form.value);
 
-    let customerToCreate: CustomerForCreation = {
-      name: this.form.value.name,
-      lastName: this.form.value.lastName,
-      age: this.form.value.age,
-      countryId: this.form.value.address.countryId,
-      city: this.form.value.address.city,
-      zipCode: this.form.value.address.zipCode,
-      street: this.form.value.address.street,
-      phoneNumber: this.form.value.phoneNumber,
-      email: this.form.value.email,
-      gender: this.form.value.gender,
-    };
-
-
-    let isVary = this.checkCompliance();
-    console.log("nasz wynik:", isVary);
-    if(isVary){
-      console.log('saving', customerToCreate);
-      this.clientsService.updateCustomer(customerToCreate).subscribe((response) => {
-      this.toastr.success('Customer added!', 'Success!');
-    });
-    }else{
-      this.toastr.error('Data cannot be saved because it has not changed','Error!');
-      return false;
+      let customerToCreate: CustomerForCreation = {
+        name: this.form.value.name,
+        lastName: this.form.value.lastName,
+        age: this.form.value.age,
+        countryId: this.form.value.address.countryId,
+        city: this.form.value.address.city,
+        zipCode: this.form.value.address.zipCode,
+        street: this.form.value.address.street,
+        phoneNumber: this.form.value.phoneNumber,
+        email: this.form.value.email,
+        gender: this.form.value.gender,
+      };
+  
+      let isVary = this.checkCompliance();
+      console.log("nasz wynik:", isVary);
+      if(isVary){
+        console.log('create', customerToCreate);
+        this.clientsService.create(customerToCreate).subscribe((response) => {
+        this.toastr.info('Customer update!', 'Success!');
+      });
+      }else{
+        this.toastr.error('Data cannot be saved because it has not changed','Error!');
+        return false;
+      }
     }
-
   }
+
+  // updataCustomer() {
+  //   console.log('first step saving update', this.form.value);
+
+  //   let customerToCreate: CustomerForCreation = {
+  //     name: this.form.value.name,
+  //     lastName: this.form.value.lastName,
+  //     age: this.form.value.age,
+  //     countryId: this.form.value.address.countryId,
+  //     city: this.form.value.address.city,
+  //     zipCode: this.form.value.address.zipCode,
+  //     street: this.form.value.address.street,
+  //     phoneNumber: this.form.value.phoneNumber,
+  //     email: this.form.value.email,
+  //     gender: this.form.value.gender,
+  //   };
+
+  //   let isVary = this.checkCompliance();
+  //   console.log("nasz wynik:", isVary);
+  //   if(isVary){
+  //     console.log('saving', customerToCreate);
+  //     this.clientsService.updateCustomer(customerToCreate).subscribe((response) => {
+  //     this.toastr.success('Customer update!', 'Success!');
+  //   });
+  //   }else{
+  //     this.toastr.error('Data cannot be saved because it has not changed','Error!');
+  //     return false;
+  //   }
+
+  // }
 
   checkCompliance():boolean{
     if (this.copyOfCustomer.name !== this.form.value.name) {

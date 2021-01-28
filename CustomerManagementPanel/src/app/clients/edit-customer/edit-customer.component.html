@@ -167,8 +167,11 @@
             </div>
             <div>
                 <br>
-                <button type="submit" class="save-new-customer"
-                    [disabled]="form.invalid"> Save customer <fa-icon class="icon" [icon]="faSave"></fa-icon>
+                <button type="submit"
+                    class="save-new-customer"
+                    [disabled]="form.invalid"
+                    (ngSubmit)="saveCustomer()"
+                    > Save customer <fa-icon class="icon" [icon]="faSave"></fa-icon>
                 </button>
             </div>
 
@@ -182,3 +185,6 @@
         INFO! The user list is empty.
     </div>
 </ng-template>
+
+
+<!-- {{copyOfCustomer.id != 0 ?  saveCustomer() : updataCustomer()}} -->

@@ -121,6 +121,26 @@ select {
     background-color:  #343A40;
 }
 
+.option-check-box{
+    height: 2.3rem;
+    position: relative;
+    background-color: rgb(31, 90, 158);
+    color: rgb(255, 255, 255);
+    border: none;
+    border-radius: 5px;
+    padding: .4%;
+    transition: .3s color, .3s transform ;
+    outline: none;
+    margin-bottom: .2rem;
+    margin-right: 1rem;
+    float: right;
+    left: .7rem;
+}
+
+.option-check-box:hover{
+    transform: scale(.9);
+}
+
 @media screen and (max-width: 625px) {
 
     .tel{

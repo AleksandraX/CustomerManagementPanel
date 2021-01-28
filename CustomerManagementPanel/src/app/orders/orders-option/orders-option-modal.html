@@ -1,0 +1,50 @@
+<div bsModal #optionOrderModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modal"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+
+
+      <div class="modal-header">
+        <label class="title-modal-options">Options</label>
+      </div>
+
+
+      <div class="modal-body">
+
+        <!-- <label class="option-status-label" for="status"> Status: </label>
+        <select>
+          <option name="status" value="1">Delete</option>
+          <option name="status" value="2">Edit</option>
+          <option name="status" value="3">Something</option>
+          <option name="status" value="4">Something</option>
+        </select> -->
+        <!-- <tr  class="column" *ngFor="let selectedOrderId of selectedOrdersIds">{{ selectedOrderId }}</tr> -->
+
+
+        <table class="table">
+          <thead class="thead-dark">
+            <th class="columnInfo" scope="col">ID</th>
+            <th class="columnInfo" scope="col">Ordered by customer</th>
+            <th class="columnInfo" scope="col">Price</th>
+            <th class="columnInfo" scope="col">Status</th>
+            <tr *ngFor="let order of orderedByCustomers">
+              
+              <th scope="row">{{ order.orderNumber }}</th>
+            <td class="column">{{order.item.orderedByCustomerFullName}}</td>
+            <td class="column">{{order.item.price}}</td>
+            <td class="column">{{order.item.orderStatuses.name}}</td>
+          </tr>
+          </thead>
+        </table>
+      </div>
+
+      <div class="modal-footer">
+
+        <button class="buttonSave" type="submit" (click)=showSuccess()> Save <fa-icon class="icon" [icon]="faSave">
+          </fa-icon>
+        </button>
+
+      </div>
+    </div>
+  </div>
+</div>
