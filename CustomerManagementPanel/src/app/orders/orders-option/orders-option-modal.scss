@@ -16,6 +16,10 @@
     margin-right: .8rem;
 
 }
+.scroll{
+    overflow-y:auto;
+    height: 30vh !important;
+}
 
 .modal-header{
     color: white;
@@ -23,6 +27,7 @@
 }
 
 .modal-body{
+
     background-color: white;
     color: black;
 }
@@ -31,7 +36,7 @@
     background-color: white;
 }
 
-.buttonSave{
+.buttonSave, .buttonCancel, .bntDelete{
     color: rgb(133, 133, 133);
     font-size: 1rem;
     position: relative;
@@ -40,7 +45,42 @@
     transition: .3s transform;
 }
 
+  .bntDelete:hover {
+    color: rgb(253, 77, 77);
+    transform: scale(1.2);
+  }
+
 .buttonSave:hover{
     transform: scale(1.2);
     color: rgb(0, 116, 0);
+}
+
+.buttonCancel:hover{
+    transform: scale(1.2);
+    color: rgb(253, 77, 77);
+}
+
+.status-option{
+    font-size: 1.1rem;
+    text-align: center;
+    padding-top: 1.6rem;
+}
+
+.select-status{
+    border-radius: 5px;
+}
+
+.label-status{
+    margin-right: 1rem;
+}
+
+button{
+    margin-right: 1rem;
+    border: none;
+    font-size: 1.3rem;
+}
+
+#thead{
+    position: -webkit-sticky;
+    position: sticky;
 }

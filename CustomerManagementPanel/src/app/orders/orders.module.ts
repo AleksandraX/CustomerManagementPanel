@@ -31,7 +31,8 @@ import { OrdersOptionModal } from './orders-option/orders-option-modal';
       CarouselModule.forRoot(),
       FontAwesomeModule,
       SharedModule,
-      ModalModule.forRoot()  
+      ModalModule.forRoot()  ,
+      
     ],
     providers: [
         OrdersService,

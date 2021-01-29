@@ -1,8 +1,9 @@
 import { formatDate } from '@angular/common';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { faPlusSquare } from '@fortawesome/free-solid-svg-icons';
-import { BsModalService, ModalDirective } from 'ngx-bootstrap/modal';
+import { BsModalRef, BsModalService, ModalDirective } from 'ngx-bootstrap/modal';
 import { ToastrService } from 'ngx-toastr';
 import {
   Order,
@@ -10,6 +11,7 @@ import {
   OrderStatusChangeParameters,
 } from '../clients/models/orders';
 import { MyPager, OrderedItem } from '../shared/models/shared.models';
+import { OrdersOptionModal } from './orders-option/orders-option-modal';
 import { OrdersService } from './orders.service';
 
 @Component({
@@ -24,13 +26,13 @@ export class OrdersComponent implements OnInit {
   selectedOrderStatus: OrderStatus;
   optionDisabled: boolean = false;
   faPlusSquare = faPlusSquare;
-  orderedOrders: OrderedItem[];
+  orderedOrders: OrderedItem[] = [];
   selectedOrdersId: string[] = [];
   checkBoxSelect: boolean = false;
   pageSizeFromOrders = 10;
 
   @ViewChild('addOrderModal') addOrderModalRef: ModalDirective; 
-  @ViewChild('optionOrderModal') optionOrderModalRef: ModalDirective; 
+  optionOrderModalRef: BsModalRef; 
 
   constructor(
     private toastr: ToastrService,
@@ -49,7 +51,10 @@ export class OrdersComponent implements OnInit {
   }
 
   ngOnInit() {}
+  
+  ngAfterViewInit(): void {
 
+  }
   getDays(lastUpdateDate?: Date): string {
     if (lastUpdateDate == null) {
       return '-';
@@ -146,6 +151,11 @@ export class OrdersComponent implements OnInit {
   }
 
   showOptionOrder() {
-    this.optionOrderModalRef.show();
-  }
+    console.log(this.orderedOrders);
+    this.optionOrderModalRef = this.modalService.show(OrdersOptionModal);
+    //this.optionOrderModalRef.show();
+    this.optionOrderModalRef.content.selectedOrders = this.orderedOrders.filter(
+    orderFromParent => this.selectedOrdersId.includes(orderFromParent.item.id));
+    this.optionOrderModalRef.content
+    }
 }
