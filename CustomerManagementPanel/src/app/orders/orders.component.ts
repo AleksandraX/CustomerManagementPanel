@@ -156,6 +156,7 @@ export class OrdersComponent implements OnInit {
     //this.optionOrderModalRef.show();
     this.optionOrderModalRef.content.selectedOrders = this.orderedOrders.filter(
     orderFromParent => this.selectedOrdersId.includes(orderFromParent.item.id));
-    this.optionOrderModalRef.content
+
+    this.optionOrderModalRef.content.selectedOrdersIds = this.selectedOrdersId;
     }
 }

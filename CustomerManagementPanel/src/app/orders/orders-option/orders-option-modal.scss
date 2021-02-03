@@ -1,11 +1,24 @@
 .modal-content{
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, 10%);
-    width: 100%;
+    width: 120%;
     -webkit-box-shadow: 11px 7px 15px 0px rgb(0, 0, 0);
     -moz-box-shadow:    11px 7px 15px 0px rgb(0, 0, 0);
     box-shadow:         11px 7px 15px 0px rgba(0, 0, 0);
+}
+
+.columnInfo, .column{
+    text-align: center;
+}
+
+.optionDelivered{
+    font-weight: bold;
+    border-radius: 5px;
+    color: rgb(4, 192, 4);
+}
+
+.optionCancelled{
+    font-weight: bold;
+    border-radius: 5px;
+    color: rgb(241, 102, 102);
 }
 
 .title-modal-options{
@@ -45,6 +58,10 @@
     transition: .3s transform;
 }
 
+.bntDelete{
+    text-align: center;
+}
+
   .bntDelete:hover {
     color: rgb(253, 77, 77);
     transform: scale(1.2);
@@ -67,6 +84,7 @@
 }
 
 .select-status{
+    cursor: pointer;
     border-radius: 5px;
 }
 

@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
-import { faSave, faTimes, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faSave, faTimes, faTrash, faUniversalAccess } from '@fortawesome/free-solid-svg-icons';
 import { BsModalRef, BsModalService, ModalDirective } from 'ngx-bootstrap/modal';
 import { ToastrService } from 'ngx-toastr';
 import { Customer } from 'src/app/clients/models/customer';
@@ -18,6 +18,7 @@ export class OrdersOptionModal implements OnInit {
   orderStatuses: OrderStatus[] = [];
   ordersList: Order[] = [];
   selectedOrders: OrderedItem[] = [];
+  parametersRequests: OrderStatusChangeParameters[] = [];
 
   faSave = faSave;
   faTimes = faTimes;
@@ -30,27 +31,25 @@ export class OrdersOptionModal implements OnInit {
     private toastr: ToastrService,
     private ordersService: OrdersService,
   ) {
-    console.log(this.selectedOrdersIds);
+   
    }
 
   ngOnInit() {
-    console.log(this.selectedOrdersIds);
-  
+    this.ordersService.getAllOrderStatus()
+      .subscribe((response) => (this.orderStatuses = response));
   }
 
-  // ngOnChanges(){
-  //   ///nasluchujesz na selected ids
-  //   // szukasz w ordered by customers wspolnych idkow z selexted ids
-  //   // nowa pusta lista jako propercja, po ktorej iterujesz na froncie
-  //   // podstawiasz pod liste na froncie przez ktora lecisz petla for wartosc tych orderedow, ktorych id jest w selected ids list.
-  //   // this.ordersIdNumbers = //zaktualizowac tymi orderami, ktore maja te same id co selected list
-    
-  // }
 
-
-
-  showSuccess() {
-    this.toastr.success('Order added!','Success!');
+  saveNewOrderStatus() {
+    this.parametersRequests.forEach(paramReq => {
+    this.ordersService.changeOrderStatus(paramReq)
+    .subscribe((response) => {
+      this.ordersService.getAllListItems().subscribe((response) => {
+        this.ordersList = response;
+      });
+      this.toastr.success('Order status changed!', 'Success');
+    });
+  });
   }
 
   close(){
@@ -60,9 +59,10 @@ export class OrdersOptionModal implements OnInit {
   show() {
   }
 
-  orderFromOptionsDelete(orderNumber:number){
-        let index = this.selectedOrders.findIndex(order => order.orderNumber == orderNumber)
-        this.selectedOrders.splice(index ,1);
+  orderFromOptionsDelete(statusId:string){
+        let index = this.selectedOrdersIds.findIndex(orderId => orderId == statusId)
+        this.selectedOrdersIds.splice(index ,1);
+        console.log(this.selectedOrdersIds)
     };
 
     checkStatus(orderStatusId: string, cokolwiekCoPowiemywHtmlu: string) {
@@ -76,20 +76,22 @@ export class OrdersOptionModal implements OnInit {
       return false;
     }
 
-    onSelectedStatus(newOrderStatusId: string, orderId: string) {
-      let parametersRequest: OrderStatusChangeParameters = {
-        orderId: orderId,
-        newOrderStatusId: newOrderStatusId,
-      };
-  
-      this.ordersService
-        .changeOrderStatus(parametersRequest)
-        .subscribe((response) => {
-          this.ordersService.getAllListItems().subscribe((response) => {
-            this.ordersList = response;
-          });
-          this.toastr.success('Order status changed!', 'Success');
-        });
+
+    getStatusName(statusId: string): string{
+
+      let orderStatus = this.orderStatuses.find(
+        (status) => status.id == statusId);
+      return orderStatus?.name;
+    }
+
+    onSelectedStatus(newOrderStatusId: string) {
+      this.parametersRequests = [];
+      this.selectedOrdersIds.forEach(orderId => {
+        this.parametersRequests.push({
+          orderId: orderId,
+          newOrderStatusId: newOrderStatusId
+        })
+      });
     }
 }
 

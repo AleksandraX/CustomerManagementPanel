@@ -5,7 +5,7 @@ export interface Order{
     lastUpdateDate?: Date,
     orderedByCustomerId: string,
     orderedByCustomerFullName: string,
-    statusId: string
+    status: OrderStatus
   }
 
 export interface OrderStatus{
