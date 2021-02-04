@@ -75,6 +75,7 @@ export class OrdersAddModal implements OnInit, AfterViewInit{
      this.ordersService.create(ordersToCreate).subscribe(response => {
        console.log("Subscribe for creation")
      });
+     this.modal.hide();
   };
 
 

@@ -15,7 +15,7 @@
           <th class="columnInfo" scope="col"></th>
         </thead>
         <tbody>
-          <tr *ngFor="let order of selectedOrders">
+          <tr *ngFor="let order of selectedOrdersFromParent ">
             <th scope="row">{{ order.orderNumber }}</th>
             <td class="column1">{{order.item.orderedByCustomerFullName}}</td>
             <td class="column">{{order.item.price}}</td>
@@ -25,7 +25,7 @@
               {{getStatusName(order.item.statusId)}}
             </td>
             <td class="columnBnt">
-              <button class="bntDelete" title="Delete" (click)="orderFromOptionsDelete(order.item.statusId)">
+              <button class="bntDelete" title="Delete" (click)="deleteOrderFromList(order.item.id)">
                 <fa-icon [icon]="faTrash"></fa-icon>
               </button>
             </td>

@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { faPlusSquare } from '@fortawesome/free-solid-svg-icons';
 import { BsModalRef, BsModalService, ModalDirective } from 'ngx-bootstrap/modal';
 import { ToastrService } from 'ngx-toastr';
+import { Observable, of } from 'rxjs';
 import {
   Order,
   OrderStatus,
@@ -151,12 +152,14 @@ export class OrdersComponent implements OnInit {
   }
 
   showOptionOrder() {
-    console.log(this.orderedOrders);
-    this.optionOrderModalRef = this.modalService.show(OrdersOptionModal);
-    //this.optionOrderModalRef.show();
-    this.optionOrderModalRef.content.selectedOrders = this.orderedOrders.filter(
-    orderFromParent => this.selectedOrdersId.includes(orderFromParent.item.id));
+    let filteredOrders = this.orderedOrders.filter(
+      orderFromParent => this.selectedOrdersId.includes(orderFromParent.item.id));
 
-    this.optionOrderModalRef.content.selectedOrdersIds = this.selectedOrdersId;
+    const initialState = {
+      selectedOrdersFromParent: JSON.parse(JSON.stringify(filteredOrders)),
+      selectedOrdersIdsFromParent: Array.from(this.selectedOrdersId),
+    }
+   
+    this.optionOrderModalRef = this.modalService.show(OrdersOptionModal, {initialState});
     }
 }
