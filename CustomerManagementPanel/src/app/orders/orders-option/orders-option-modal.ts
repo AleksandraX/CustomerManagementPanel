@@ -1,6 +1,7 @@
 import {
   Component,
   OnInit,
+  SimpleChanges,
 } from '@angular/core';
 import {
   faSave,
@@ -12,6 +13,7 @@ import {
 } from 'ngx-bootstrap/modal';
 import { ToastrService } from 'ngx-toastr';
 import {
+  Order,
   OrderStatus,
   OrderStatusChangeParameters,
 } from 'src/app/clients/models/orders';
@@ -54,6 +56,9 @@ export class OrdersOptionModal implements OnInit {
         this.toastr.success('Order status changed!', 'Success');
         this.bsModalRef.hide();
       });
+      console.log("odswiezanie")
+      this.ordersService.getAllOrderStatus().subscribe((response) => (this.orderStatuses = response));
+      
     });
   }
 
