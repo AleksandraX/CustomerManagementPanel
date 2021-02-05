@@ -5,7 +5,6 @@ import { ActivatedRoute } from '@angular/router';
 import { faPlusSquare } from '@fortawesome/free-solid-svg-icons';
 import { BsModalRef, BsModalService, ModalDirective } from 'ngx-bootstrap/modal';
 import { ToastrService } from 'ngx-toastr';
-import { Observable, of } from 'rxjs';
 import {
   Order,
   OrderStatus,
@@ -161,5 +160,8 @@ export class OrdersComponent implements OnInit {
     }
    
     this.optionOrderModalRef = this.modalService.show(OrdersOptionModal, {initialState});
+    this.optionOrderModalRef.content.updateOrderListEvent.subscribe(data => {
+      this.ordersList = data;
+    });
     }
 }

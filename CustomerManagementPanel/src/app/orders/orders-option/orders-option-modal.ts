@@ -1,6 +1,8 @@
 import {
   Component,
+  EventEmitter,
   OnInit,
+  Output,
   SimpleChanges,
 } from '@angular/core';
 import {
@@ -29,6 +31,8 @@ export class OrdersOptionModal implements OnInit {
   selectedOrdersIdsFromParent: string[] = [];
   selectedOrdersFromParent: OrderedItem[] = [];
   orderStatuses: OrderStatus[] = [];
+  @Output() updateOrderListEvent = new EventEmitter<any>();
+  
   
   parametersRequests: OrderStatusChangeParameters[] = [];
 
@@ -54,11 +58,13 @@ export class OrdersOptionModal implements OnInit {
     this.parametersRequests.forEach((paramReq) => {
       this.ordersService.changeOrderStatus(paramReq).subscribe(() => {
         this.toastr.success('Order status changed!', 'Success');
-        this.bsModalRef.hide();
-      });
-      console.log("odswiezanie")
-      this.ordersService.getAllOrderStatus().subscribe((response) => (this.orderStatuses = response));
-      
+        this.ordersService.getAllListItems().subscribe((response) => {
+           this.updateOrderListEvent.emit(response);
+        });
+        
+        this.bsModalRef.hide()
+        
+      });         
     });
   }
 
