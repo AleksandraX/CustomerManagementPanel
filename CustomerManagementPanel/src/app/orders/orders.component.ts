@@ -3,7 +3,11 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { faPlusSquare } from '@fortawesome/free-solid-svg-icons';
-import { BsModalRef, BsModalService, ModalDirective } from 'ngx-bootstrap/modal';
+import {
+  BsModalRef,
+  BsModalService,
+  ModalDirective,
+} from 'ngx-bootstrap/modal';
 import { ToastrService } from 'ngx-toastr';
 import {
   Order,
@@ -20,9 +24,9 @@ import { OrdersService } from './orders.service';
   styleUrls: ['./orders.component.scss'],
 })
 export class OrdersComponent implements OnInit {
-  ordersList: Order[]= [];
+  ordersList: Order[] = [];
   id: number = 1;
-  orderStatuses: OrderStatus[] =[];
+  orderStatuses: OrderStatus[] = [];
   selectedOrderStatus: OrderStatus;
   optionDisabled: boolean = false;
   faPlusSquare = faPlusSquare;
@@ -31,8 +35,8 @@ export class OrdersComponent implements OnInit {
   checkBoxSelect: boolean = false;
   pageSizeFromOrders = 10;
 
-  @ViewChild('addOrderModal') addOrderModalRef: ModalDirective; 
-  optionOrderModalRef: BsModalRef; 
+  @ViewChild('addOrderModal') addOrderModalRef: ModalDirective;
+  optionOrderModalRef: BsModalRef;
 
   constructor(
     private toastr: ToastrService,
@@ -51,10 +55,8 @@ export class OrdersComponent implements OnInit {
   }
 
   ngOnInit() {}
-  
-  ngAfterViewInit(): void {
 
-  }
+  ngAfterViewInit(): void {}
   getDays(lastUpdateDate?: Date): string {
     if (lastUpdateDate == null) {
       return '-';
@@ -104,64 +106,66 @@ export class OrdersComponent implements OnInit {
     this.selectedOrdersId = [];
   }
 
-  changePageSize(filterVal: any){
+  changePageSize(filterVal: any) {
     this.pageSizeFromOrders = filterVal;
     console.log(this.pageSizeFromOrders);
   }
 
-  checkCheckList(orderId: string){
-    if(this.selectedOrdersId.includes(orderId)){
-      let index = this.selectedOrdersId.findIndex(id => id == orderId);
-      this.selectedOrdersId.splice(index ,1);
-      console.log("usuń")
+  checkCheckList(orderId: string) {
+    if (this.selectedOrdersId.includes(orderId)) {
+      let index = this.selectedOrdersId.findIndex((id) => id == orderId);
+      this.selectedOrdersId.splice(index, 1);
+      console.log('usuń');
       console.log(this.selectedOrdersId);
-      document.getElementById('button').style.display='none';
-    }else{
+      document.getElementById('button').style.display = 'none';
+    } else {
       this.selectedOrdersId.push(orderId);
-      console.log("dodaj");
+      console.log('dodaj');
       console.log(this.selectedOrdersId);
-      document.getElementById('button').style.display='block';
+      document.getElementById('button').style.display = 'block';
     }
   }
 
-  isOrderSlected(orderId: string) : boolean {
+  isOrderSlected(orderId: string): boolean {
     return this.selectedOrdersId.includes(orderId);
   }
 
-  toggleAllCheckList(){
-    if(this.selectedOrdersId.length != this.orderedOrders.length){
-      let allVisibleIds = this.orderedOrders.map(order => order.item.id);
+  toggleAllCheckList() {
+    if (this.selectedOrdersId.length != this.orderedOrders.length) {
+      let allVisibleIds = this.orderedOrders.map((order) => order.item.id);
       this.selectedOrdersId = [];
       this.selectedOrdersId = [...allVisibleIds];
-      console.log("dodajemy wszystko")
+      console.log('dodajemy wszystko');
       console.log(this.selectedOrdersId);
-      document.getElementById('button').style.display='block';
-    }else{
-      this.orderedOrders.map(order => order.item.id);
+      document.getElementById('button').style.display = 'block';
+    } else {
+      this.orderedOrders.map((order) => order.item.id);
       this.selectedOrdersId = [];
-      console.log("usuwamy wszystko")
+      console.log('usuwamy wszystko');
       console.log(this.selectedOrdersId);
-      document.getElementById('button').style.display='none';
+      document.getElementById('button').style.display = 'none';
     }
   }
-
 
   showAddOrder() {
     this.addOrderModalRef.show();
   }
 
   showOptionOrder() {
-    let filteredOrders = this.orderedOrders.filter(
-      orderFromParent => this.selectedOrdersId.includes(orderFromParent.item.id));
+    let filteredOrders = this.orderedOrders.filter((orderFromParent) =>
+      this.selectedOrdersId.includes(orderFromParent.item.id)
+    );
 
     const initialState = {
       selectedOrdersFromParent: JSON.parse(JSON.stringify(filteredOrders)),
       selectedOrdersIdsFromParent: Array.from(this.selectedOrdersId),
-    }
-   
-    this.optionOrderModalRef = this.modalService.show(OrdersOptionModal, {initialState});
-    this.optionOrderModalRef.content.updateOrderListEvent.subscribe(data => {
+    };
+
+    this.optionOrderModalRef = this.modalService.show(OrdersOptionModal, {
+      initialState,
+    });
+    this.optionOrderModalRef.content.updateOrderListEvent.subscribe((data) => {
       this.ordersList = data;
     });
-    }
+  }
 }

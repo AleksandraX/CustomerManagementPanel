@@ -32,8 +32,8 @@ export class OrdersOptionModal implements OnInit {
   selectedOrdersFromParent: OrderedItem[] = [];
   orderStatuses: OrderStatus[] = [];
   @Output() updateOrderListEvent = new EventEmitter<any>();
-  
-  
+
+
   parametersRequests: OrderStatusChangeParameters[] = [];
 
   faSave = faSave;

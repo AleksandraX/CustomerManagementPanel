@@ -59,17 +59,13 @@ export class PaginationComponent implements OnInit {
     numberToSlice + this.pageSize
   );}
 
-
   setPage(page: number) {
     this.orderedItems = [];
     this.page = page;
 
     this.SetOrderedItems()
-
     this.CountingMaxPages()
-
     this.FillingPagesArray()
-
     this.SlicingOrderedItemsForOnePage()
 
     let myPager = new MyPager(this.pageOfItems, this.page, this.maxPages);
