@@ -1,3 +1,16 @@
+.my-class {
+    ::ng-deep {
+      .mat-form-field-ripple {
+        background-color: #2ec200;
+        border-bottom: 2.5px solid #2ec200;
+        outline: none;
+    }
+    .mat-form-field-underline {
+        background-color: #2ec200;
+    }
+}
+}
+
 .column1{
     cursor: pointer;
     transition: transform .3s ;
@@ -58,6 +71,9 @@ select {
     left: 1.3rem;
 }
 
+.checkBoxSelected{
+    background-color: AntiqueWhite;
+}
 
 .optionDelivered{
     background-color: rgb(4, 192, 4);

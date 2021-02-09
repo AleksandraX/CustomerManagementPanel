@@ -33,6 +33,7 @@ export class OrdersComponent implements OnInit {
   orderedOrders: OrderedItem[] = [];
   selectedOrdersId: string[] = [];
   checkBoxSelect: boolean = false;
+  checkBoxs;
   pageSizeFromOrders = 10;
 
   @ViewChild('addOrderModal') addOrderModalRef: ModalDirective;
@@ -65,7 +66,7 @@ export class OrdersComponent implements OnInit {
     let date = new Date(dateInString);
 
     let now = new Date(Date.now());
-    let data = now.getDay() - date.getDay();
+    let data = date.getDay() - now.getDay();
     return data + ' days';
   }
 
@@ -118,11 +119,14 @@ export class OrdersComponent implements OnInit {
       console.log('usuń');
       console.log(this.selectedOrdersId);
       document.getElementById('button').style.display = 'none';
+      document.getElementById("row").style.backgroundColor = 'white';
     } else {
       this.selectedOrdersId.push(orderId);
       console.log('dodaj');
       console.log(this.selectedOrdersId);
-      document.getElementById('button').style.display = 'block';
+      document.getElementById('button').style.display = 'block'
+      document.getElementById("row").style.backgroundColor = 'AntiqueWhite';
+
     }
   }
 

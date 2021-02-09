@@ -24,7 +24,7 @@
     <tr>
       <th class="columnInfo1" scope="col">
         <input type="checkbox" 
-        title="Check Box" 
+        title="Check Box"
         [(ngModel)] = "checkBoxSelect" 
 
         (change)="toggleAllCheckList()"
@@ -42,15 +42,19 @@
   </thead>
   <tbody >
 
-    <tr *ngFor="let order of orderedOrders">
+    <tr id="row" *ngFor="let order of orderedOrders" 
+    [(ngClass)] = "checkBoxSelect" 
+    >
       <th scope="row">
         <input type="checkbox" 
         title="Check Box" 
         [checked]="isOrderSlected(order.item.id)"
         (change)="checkCheckList(order.item.id)" 
         class="form-check-input check-box" 
-        id="exampleCheck1">
+        id="exampleCheck1"
+        >
       </th>
+      
       <th scope="row">{{ order.orderNumber }}</th>
       <td class="column1" [routerLink]='["/clients/details/" + order.item.orderedByCustomerId]'><p class="tel">Ordered by customer: </p>{{order.item.orderedByCustomerFullName}}</td>
       <td class="column"><p class="tel">Price: </p>{{order.item.price.toFixed(2)}}</td>
@@ -58,6 +62,7 @@
       <td class="column"><p class="tel">Last update date: </p>{{order.item.lastUpdateDate | date}}</td>
       <td class="column"><p class="tel">Days of last update: </p>{{getDays(order.item.lastUpdateDate)}}</td>
       <td class="column"><p class="tel">Status: </p>
+      
 
         <select class="status-selected"
         #orderStatusSelect
