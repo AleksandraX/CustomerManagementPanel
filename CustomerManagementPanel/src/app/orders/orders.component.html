@@ -1,4 +1,3 @@
-
   <div class="col-sm add">
     <button class="bntAdd" (click)="showAddOrder()"><fa-icon [icon]="faPlusSquare"></fa-icon> Add Order</button>
   </div>
@@ -21,7 +20,7 @@
 <div  *ngIf="orderedOrders?.length > 0">
 <table   class="table">
   <thead class="thead-dark">
-    <tr>
+    <tr id="row">
       <th class="columnInfo1" scope="col">
         <input type="checkbox" 
         title="Check Box"
@@ -31,25 +30,58 @@
         class="form-check-input check-box" 
         id="exampleCheck1">
       </th>
-      <th class="columnInfo1" scope="col">Id</th>
-      <th class="columnInfo1" scope="col">Ordered by customer</th>
-      <th class="columnInfo" scope="col">Price</th>
-      <th class="columnInfo" scope="col">Ordered date</th>
-      <th class="columnInfo" scope="col">Last update date</th>
-      <th class="columnInfo" scope="col">Days of last update</th>
-      <th class="columnInfo" scope="col">Status</th>
+      <th class="columnInfo1" scope="col">
+        <button class="sort-button" (click)="sortList('Id')">
+          Id 
+          <fa-icon style="display: none;" id="IdSortUp" [icon]="faSortUp"></fa-icon>
+          <fa-icon style="display: inline-block;" id="IdSortDown"  [icon]="faSortDown"></fa-icon>
+        </button></th>
+
+      <th class="columnInfo1" scope="col"><button class="sort-button" (click)="sortList('OrderedByCustomer')">
+        Ordered by customer 
+        <fa-icon style="display: none;" id="OrderedByCustomerSortUp" [icon]="faSortUp"></fa-icon>
+          <fa-icon style="display: inline-block;" id="OrderedByCustomerSortDown"  [icon]="faSortDown"></fa-icon>
+      </button></th>
+
+      <th class="columnInfo" scope="col"><button class="sort-button" (click)="sortList('Price')">
+        Price 
+        <fa-icon style="display: none;" id="PriceSortUp" [icon]="faSortUp"></fa-icon>
+          <fa-icon style="display: inline-block;" id="PriceSortDown"  [icon]="faSortDown"></fa-icon>
+      </button></th>
+
+      <th class="columnInfo" scope="col"><button class="sort-button" (click)="sortList('OrderedDate')">
+        Ordered date 
+        <fa-icon style="display: none;" id="OrderedDateSortUp" [icon]="faSortUp"></fa-icon>
+          <fa-icon style="display: inline-block;" id="OrderedDateSortDown"  [icon]="faSortDown"></fa-icon>
+      </button></th>
+
+      <th class="columnInfo" scope="col"><button class="sort-button" (click)="sortList('LastUpdateDate')">
+        Last update date 
+        <fa-icon style="display: none;" id="LastUpdateDateSortUp" [icon]="faSortUp"></fa-icon>
+          <fa-icon style="display: inline-block;" id="LastUpdateDateSortDown"  [icon]="faSortDown"></fa-icon>
+      </button></th>
+
+      <th class="columnInfo" scope="col"><button class="sort-button" (click)="sortList('DaysOfLastUpdate')">
+        Days of last update 
+        <fa-icon style="display: none;" id="DaysOfLastUpdateSortUp" [icon]="faSortUp"></fa-icon>
+          <fa-icon style="display: inline-block;" id="DaysOfLastUpdateSortDown"  [icon]="faSortDown"></fa-icon>
+      </button></th>
+
+      <th class="columnInfo" scope="col"><button class="sort-button" (click)="sortList('Status')">
+        Status 
+        <fa-icon style="display: none;" id="StatusSortUp" [icon]="faSortUp"></fa-icon>
+          <fa-icon style="display: inline-block;" id="StatusSortDown"  [icon]="faSortDown"></fa-icon>
+      </button></th>
     </tr>
   </thead>
   <tbody >
 
-    <tr id="row" *ngFor="let order of orderedOrders" 
-    [(ngClass)] = "checkBoxSelect" 
-    >
+    <tr *ngFor="let order of orderedOrders"  id="{{'row' + order.orderNumber}}">
       <th scope="row">
         <input type="checkbox" 
         title="Check Box" 
         [checked]="isOrderSlected(order.item.id)"
-        (change)="checkCheckList(order.item.id)" 
+        (change)="checkCheckList(order.item.id , order.orderNumber)" 
         class="form-check-input check-box" 
         id="exampleCheck1"
         >

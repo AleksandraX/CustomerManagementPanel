@@ -2,7 +2,7 @@ import { formatDate } from '@angular/common';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { faPlusSquare } from '@fortawesome/free-solid-svg-icons';
+import { faPlusSquare, faSort, faSortDown, faSortUp } from '@fortawesome/free-solid-svg-icons';
 import {
   BsModalRef,
   BsModalService,
@@ -24,21 +24,26 @@ import { OrdersService } from './orders.service';
   styleUrls: ['./orders.component.scss'],
 })
 export class OrdersComponent implements OnInit {
+  [x: string]: any;
   ordersList: Order[] = [];
   id: number = 1;
   orderStatuses: OrderStatus[] = [];
   selectedOrderStatus: OrderStatus;
   optionDisabled: boolean = false;
   faPlusSquare = faPlusSquare;
+  faSort = faSort;
+  faSortUp = faSortUp;
+  faSortDown = faSortDown;
   orderedOrders: OrderedItem[] = [];
   selectedOrdersId: string[] = [];
+  selectedColumnName: string = "Id";
   checkBoxSelect: boolean = false;
-  checkBoxs;
   pageSizeFromOrders = 10;
-
+  show:boolean = false;
+ 
   @ViewChild('addOrderModal') addOrderModalRef: ModalDirective;
   optionOrderModalRef: BsModalRef;
-
+  
   constructor(
     private toastr: ToastrService,
     private route: ActivatedRoute,
@@ -58,6 +63,7 @@ export class OrdersComponent implements OnInit {
   ngOnInit() {}
 
   ngAfterViewInit(): void {}
+
   getDays(lastUpdateDate?: Date): string {
     if (lastUpdateDate == null) {
       return '-';
@@ -112,20 +118,20 @@ export class OrdersComponent implements OnInit {
     console.log(this.pageSizeFromOrders);
   }
 
-  checkCheckList(orderId: string) {
+  checkCheckList(orderId: string ,orderNumber: number) {
     if (this.selectedOrdersId.includes(orderId)) {
       let index = this.selectedOrdersId.findIndex((id) => id == orderId);
       this.selectedOrdersId.splice(index, 1);
       console.log('usuń');
       console.log(this.selectedOrdersId);
       document.getElementById('button').style.display = 'none';
-      document.getElementById("row").style.backgroundColor = 'white';
+      document.getElementById("row" + orderNumber).style.backgroundColor = 'white';
     } else {
       this.selectedOrdersId.push(orderId);
       console.log('dodaj');
       console.log(this.selectedOrdersId);
       document.getElementById('button').style.display = 'block'
-      document.getElementById("row").style.backgroundColor = 'AntiqueWhite';
+      document.getElementById("row" + orderNumber).style.backgroundColor = 'AntiqueWhite';
 
     }
   }
@@ -142,12 +148,15 @@ export class OrdersComponent implements OnInit {
       console.log('dodajemy wszystko');
       console.log(this.selectedOrdersId);
       document.getElementById('button').style.display = 'block';
+      // document.getElementById("row"+ orderNumber).style.backgroundColor = 'AntiqueWhite';
+
     } else {
       this.orderedOrders.map((order) => order.item.id);
       this.selectedOrdersId = [];
       console.log('usuwamy wszystko');
       console.log(this.selectedOrdersId);
       document.getElementById('button').style.display = 'none';
+      // document.getElementById("rowAll" + this.selectedOrdersId.forEach());
     }
   }
 
@@ -171,5 +180,30 @@ export class OrdersComponent implements OnInit {
     this.optionOrderModalRef.content.updateOrderListEvent.subscribe((data) => {
       this.ordersList = data;
     });
+  }
+
+
+  // do poprawy jutro 
+  sortList(argument: string){
+    this.show = !this.show;
+
+    if(argument === this.selectedColumnName && this.show){
+      console.log("góra")
+      console.log(argument)
+      document.getElementById(argument + 'SortDown').style.display = 'none';
+      document.getElementById(argument + 'SortUp').style.display = 'inline-block';
+    }else if (argument === this.selectedColumnName) {
+      console.log("dół")
+      console.log(argument)
+      document.getElementById(argument + 'SortUp').style.display = 'none';
+      document.getElementById(argument + 'SortDown').style.display = 'inline-block';
+    }else{
+      console.log("góra")
+      console.log(argument)
+      document.getElementById(argument + 'SortDown').style.display = 'none';
+      document.getElementById(argument + 'SortUp').style.display = 'inline-block';
+      this.selectedColumnName = "";
+      this.selectedColumnName = argument;
+    }
   }
 }
