@@ -2,7 +2,13 @@ import { formatDate } from '@angular/common';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { faPlusSquare, faSort, faSortDown, faSortUp } from '@fortawesome/free-solid-svg-icons';
+import {
+  faPlusSquare,
+  faSort,
+  faSortDown,
+  faSortUp,
+  IconDefinition,
+} from '@fortawesome/free-solid-svg-icons';
 import {
   BsModalRef,
   BsModalService,
@@ -24,26 +30,29 @@ import { OrdersService } from './orders.service';
   styleUrls: ['./orders.component.scss'],
 })
 export class OrdersComponent implements OnInit {
-  [x: string]: any;
   ordersList: Order[] = [];
   id: number = 1;
   orderStatuses: OrderStatus[] = [];
   selectedOrderStatus: OrderStatus;
   optionDisabled: boolean = false;
   faPlusSquare = faPlusSquare;
-  faSort = faSort;
-  faSortUp = faSortUp;
-  faSortDown = faSortDown;
+  faSort: IconDefinition = faSort;
+  faSortUp: IconDefinition = faSortUp;
+  faSortDown: IconDefinition = faSortDown;
   orderedOrders: OrderedItem[] = [];
   selectedOrdersId: string[] = [];
-  selectedColumnName: string = "Id";
+  selectedColumnName: SortColumnsBy;
+  SortColumns: typeof SortColumnsBy = SortColumnsBy;
+  isAsc: boolean;
   checkBoxSelect: boolean = false;
   pageSizeFromOrders = 10;
-  show:boolean = false;
- 
+  upArrowIcon: boolean;
+  downArrowIcon: boolean;
+  bothArrowIcon: boolean;
+
   @ViewChild('addOrderModal') addOrderModalRef: ModalDirective;
   optionOrderModalRef: BsModalRef;
-  
+
   constructor(
     private toastr: ToastrService,
     private route: ActivatedRoute,
@@ -60,7 +69,9 @@ export class OrdersComponent implements OnInit {
     });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.selectedColumnName = SortColumnsBy.Id;
+  }
 
   ngAfterViewInit(): void {}
 
@@ -118,21 +129,22 @@ export class OrdersComponent implements OnInit {
     console.log(this.pageSizeFromOrders);
   }
 
-  checkCheckList(orderId: string ,orderNumber: number) {
+  checkCheckList(orderId: string, orderNumber: number) {
     if (this.selectedOrdersId.includes(orderId)) {
       let index = this.selectedOrdersId.findIndex((id) => id == orderId);
       this.selectedOrdersId.splice(index, 1);
       console.log('usuń');
       console.log(this.selectedOrdersId);
       document.getElementById('button').style.display = 'none';
-      document.getElementById("row" + orderNumber).style.backgroundColor = 'white';
+      document.getElementById('row' + orderNumber).style.backgroundColor =
+        'white';
     } else {
       this.selectedOrdersId.push(orderId);
       console.log('dodaj');
       console.log(this.selectedOrdersId);
-      document.getElementById('button').style.display = 'block'
-      document.getElementById("row" + orderNumber).style.backgroundColor = 'AntiqueWhite';
-
+      document.getElementById('button').style.display = 'block';
+      document.getElementById('row' + orderNumber).style.backgroundColor =
+        'AntiqueWhite';
     }
   }
 
@@ -149,7 +161,6 @@ export class OrdersComponent implements OnInit {
       console.log(this.selectedOrdersId);
       document.getElementById('button').style.display = 'block';
       // document.getElementById("row"+ orderNumber).style.backgroundColor = 'AntiqueWhite';
-
     } else {
       this.orderedOrders.map((order) => order.item.id);
       this.selectedOrdersId = [];
@@ -182,28 +193,112 @@ export class OrdersComponent implements OnInit {
     });
   }
 
-
-  // do poprawy jutro 
-  sortList(argument: string){
-    this.show = !this.show;
-
-    if(argument === this.selectedColumnName && this.show){
-      console.log("góra")
-      console.log(argument)
-      document.getElementById(argument + 'SortDown').style.display = 'none';
-      document.getElementById(argument + 'SortUp').style.display = 'inline-block';
-    }else if (argument === this.selectedColumnName) {
-      console.log("dół")
-      console.log(argument)
-      document.getElementById(argument + 'SortUp').style.display = 'none';
-      document.getElementById(argument + 'SortDown').style.display = 'inline-block';
-    }else{
-      console.log("góra")
-      console.log(argument)
-      document.getElementById(argument + 'SortDown').style.display = 'none';
-      document.getElementById(argument + 'SortUp').style.display = 'inline-block';
-      this.selectedColumnName = "";
-      this.selectedColumnName = argument;
+  getArrowClass(columnNameClicked: SortColumnsBy): IconDefinition {
+    if (columnNameClicked === this.selectedColumnName) {
+      if (this.isAsc === false) {
+        return this.faSortUp;
+      } else {
+        return this.faSortDown;
+      }
+    } else {
+      return this.faSort;
     }
   }
+
+  sortList(columnNameClicked: SortColumnsBy) {
+    if (columnNameClicked === this.selectedColumnName) {
+      this.isAsc = !this.isAsc;
+
+      console.log(
+        'sortowanie tej samej columny zgodnie z: ',
+        this.isAsc ? 'descending' : 'ascending'
+      );
+    } else {
+      this.selectedColumnName = columnNameClicked;
+      this.isAsc = true;
+
+      console.log(`sortowanie tej columny ${this.selectedColumnName} 
+      zgodnie z: ${this.isAsc ? 'descending' : 'ascending'}`);
+    }
+
+    this.sort();
+  }
+
+  sort() {
+    switch (this.selectedColumnName) {
+      case SortColumnsBy.OrderedByCustomer:
+        if (this.isAsc) {
+          this.ordersList.sort((a, b) => {
+            if (a.orderedByCustomerFullName > b.orderedByCustomerFullName) {
+              return 1;
+            }
+
+            if (a.orderedByCustomerFullName < b.orderedByCustomerFullName) {
+              return -1;
+            }
+
+            return 0;
+          });
+          this.ordersList = JSON.parse(JSON.stringify(this.ordersList));
+        } else {
+          this.ordersList.sort((a, b) => {
+            if (b.orderedByCustomerFullName > a.orderedByCustomerFullName) {
+              return 1;
+            }
+
+            if (b.orderedByCustomerFullName < a.orderedByCustomerFullName) {
+              return -1;
+            }
+
+            return 0;
+          });
+        }
+
+        this.ordersList = JSON.parse(JSON.stringify(this.ordersList));
+
+        break;
+      case SortColumnsBy.Price:
+        if (this.isAsc) {
+          this.ordersList.sort((a, b) => a.price - b.price);
+        } else {
+          this.ordersList.sort((a, b) => b.price - a.price);
+        }
+
+        this.ordersList = JSON.parse(JSON.stringify(this.ordersList));
+
+        break;
+      case SortColumnsBy.OrderedDate:
+
+      console.log(this.ordersList[0].creationDate.valueOf())
+        if (this.isAsc) {
+          this.ordersList.sort(
+            (a, b) => +new Date(a.creationDate) - +new Date(b.creationDate));
+          
+        }
+        this.ordersList = JSON.parse(JSON.stringify(this.ordersList));
+
+        break;
+
+      case SortColumnsBy.LastUpdateDate:
+        console.log('LastUpdateDate asc');
+        break;
+
+      case SortColumnsBy.DaysOfLastUpdate:
+        console.log('DaysOfLastUpdate asc');
+        break;
+
+      default:
+        console.log('Błąd');
+    }
+  }
+}
+
+export enum SortColumnsBy {
+  Id = 0,
+  OrderedByCustomer,
+  Price,
+  OrderedDate,
+  LastUpdateDate,
+  DaysOfLastUpdate,
+  Status,
 }

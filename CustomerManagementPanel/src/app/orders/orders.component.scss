@@ -49,7 +49,18 @@ body {
     }
   }
 
+  .arrowUp{
+    color:rgb(151, 14, 14);
+  }
+  
 
+  .arrowDown{
+      color: rgb(31, 90, 158);
+  }
+
+  .arrowBoth{
+    color: rgb(4, 192, 4);
+  }
 
 
 
@@ -92,6 +103,8 @@ body {
     outline: none;
     background-color: transparent;
 }
+
+
 
 .sort-button:hover{
     color: rgb(230, 230, 230);

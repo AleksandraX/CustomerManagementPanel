@@ -1,131 +1,124 @@
-  <div class="col-sm add">
-    <button class="bntAdd" (click)="showAddOrder()"><fa-icon [icon]="faPlusSquare"></fa-icon> Add Order</button>
-  </div>
+<div class="col-sm add">
+  <button class="bntAdd" (click)="showAddOrder()">
+    <fa-icon [icon]="faPlusSquare"></fa-icon> Add Order
+  </button>
+</div>
 
-  <button type="button"
-  style="display: none;" 
-  id="button" 
-  class="option-check-box"
+<button type="button" style="display: none;" id="button" class="option-check-box"
+  (click)="showOptionOrder()">Options</button>
 
-  (click)="showOptionOrder()"
-  >Options</button>
-
-  <select (change)="changePageSize($event.target.value)"class="col-sm form-select" aria-label="Default select example" class="order-per-page">
-    <option [value]="10">10 orders per page</option>
-    <option [value]="20">20 orders per page</option>
-    <option [value]="30">30 orders per page</option>
-  </select>
+<select (change)="changePageSize($event.target.value)" class="col-sm form-select" aria-label="Default select example"
+  class="order-per-page">
+  <option [value]="10">10 orders per page</option>
+  <option [value]="20">20 orders per page</option>
+  <option [value]="30">30 orders per page</option>
+</select>
 
 
-<div  *ngIf="orderedOrders?.length > 0">
-<table   class="table">
-  <thead class="thead-dark">
-    <tr id="row">
-      <th class="columnInfo1" scope="col">
-        <input type="checkbox" 
-        title="Check Box"
-        [(ngModel)] = "checkBoxSelect" 
+<div *ngIf="orderedOrders?.length > 0">
+  <table class="table">
+    <thead class="thead-dark">
+      <tr id="row">
+        <th class="columnInfo1" scope="col">
+          <input type="checkbox" title="Check Box" [(ngModel)]="checkBoxSelect" (change)="toggleAllCheckList()"
+            class="form-check-input check-box" id="exampleCheck1">
+        </th>
+        <th class="columnInfo1" scope="col">Id</th>
 
-        (change)="toggleAllCheckList()"
-        class="form-check-input check-box" 
-        id="exampleCheck1">
-      </th>
-      <th class="columnInfo1" scope="col">
-        <button class="sort-button" (click)="sortList('Id')">
-          Id 
-          <fa-icon style="display: none;" id="IdSortUp" [icon]="faSortUp"></fa-icon>
-          <fa-icon style="display: inline-block;" id="IdSortDown"  [icon]="faSortDown"></fa-icon>
-        </button></th>
+        <th (click)="sortList(SortColumns.OrderedByCustomer)" class="columnInfo1" scope="col">
+          <button class="sort-button">
+            Ordered by customer
+            <fa-icon [icon]="getArrowClass(SortColumns.OrderedByCustomer)"></fa-icon>
+          </button>
+        </th>
 
-      <th class="columnInfo1" scope="col"><button class="sort-button" (click)="sortList('OrderedByCustomer')">
-        Ordered by customer 
-        <fa-icon style="display: none;" id="OrderedByCustomerSortUp" [icon]="faSortUp"></fa-icon>
-          <fa-icon style="display: inline-block;" id="OrderedByCustomerSortDown"  [icon]="faSortDown"></fa-icon>
-      </button></th>
+        <th (click)="sortList(SortColumns.Price)" class="columnInfo" scope="col">
+          <button class="sort-button">
+            Price
+            <fa-icon [icon]="getArrowClass(SortColumns.Price)"></fa-icon>
+          </button>
+        </th>
 
-      <th class="columnInfo" scope="col"><button class="sort-button" (click)="sortList('Price')">
-        Price 
-        <fa-icon style="display: none;" id="PriceSortUp" [icon]="faSortUp"></fa-icon>
-          <fa-icon style="display: inline-block;" id="PriceSortDown"  [icon]="faSortDown"></fa-icon>
-      </button></th>
+        <th (click)="sortList(SortColumns.OrderedDate)" class="columnInfo" scope="col">
+          <button class="sort-button">
+            Ordered date
+            <fa-icon [icon]="getArrowClass(SortColumns.OrderedDate)"></fa-icon>
+          </button>
+        </th>
 
-      <th class="columnInfo" scope="col"><button class="sort-button" (click)="sortList('OrderedDate')">
-        Ordered date 
-        <fa-icon style="display: none;" id="OrderedDateSortUp" [icon]="faSortUp"></fa-icon>
-          <fa-icon style="display: inline-block;" id="OrderedDateSortDown"  [icon]="faSortDown"></fa-icon>
-      </button></th>
+        <th (click)="sortList(SortColumns.LastUpdateDate)" class="columnInfo" scope="col">
+          <button class="sort-button">
+            Last update date
+            <fa-icon [icon]="getArrowClass(SortColumns.LastUpdateDate)"></fa-icon>
+          </button>
+        </th>
 
-      <th class="columnInfo" scope="col"><button class="sort-button" (click)="sortList('LastUpdateDate')">
-        Last update date 
-        <fa-icon style="display: none;" id="LastUpdateDateSortUp" [icon]="faSortUp"></fa-icon>
-          <fa-icon style="display: inline-block;" id="LastUpdateDateSortDown"  [icon]="faSortDown"></fa-icon>
-      </button></th>
+        <th (click)="sortList(SortColumns.DaysOfLastUpdate)" class="columnInfo" scope="col">
+          <button class="sort-button">
+            Days of last update
+            <fa-icon [icon]="getArrowClass(SortColumns.DaysOfLastUpdate)"></fa-icon>
+          </button>
+        </th>
 
-      <th class="columnInfo" scope="col"><button class="sort-button" (click)="sortList('DaysOfLastUpdate')">
-        Days of last update 
-        <fa-icon style="display: none;" id="DaysOfLastUpdateSortUp" [icon]="faSortUp"></fa-icon>
-          <fa-icon style="display: inline-block;" id="DaysOfLastUpdateSortDown"  [icon]="faSortDown"></fa-icon>
-      </button></th>
+        <th (click)="sortList(SortColumns.Status)" class="columnInfo" scope="col">
+          <button class="sort-button">
+            Status
+            <fa-icon [icon]="getArrowClass(SortColumns.Status)"></fa-icon>
+          </button>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
 
-      <th class="columnInfo" scope="col"><button class="sort-button" (click)="sortList('Status')">
-        Status 
-        <fa-icon style="display: none;" id="StatusSortUp" [icon]="faSortUp"></fa-icon>
-          <fa-icon style="display: inline-block;" id="StatusSortDown"  [icon]="faSortDown"></fa-icon>
-      </button></th>
-    </tr>
-  </thead>
-  <tbody >
+      <tr *ngFor="let order of orderedOrders" id="{{'row' + order.orderNumber}}">
+        <th scope="row">
+          <input type="checkbox" title="Check Box" [checked]="isOrderSlected(order.item.id)"
+            (change)="checkCheckList(order.item.id , order.orderNumber)" class="form-check-input check-box"
+            id="exampleCheck1">
+        </th>
 
-    <tr *ngFor="let order of orderedOrders"  id="{{'row' + order.orderNumber}}">
-      <th scope="row">
-        <input type="checkbox" 
-        title="Check Box" 
-        [checked]="isOrderSlected(order.item.id)"
-        (change)="checkCheckList(order.item.id , order.orderNumber)" 
-        class="form-check-input check-box" 
-        id="exampleCheck1"
-        >
-      </th>
-      
-      <th scope="row">{{ order.orderNumber }}</th>
-      <td class="column1" [routerLink]='["/clients/details/" + order.item.orderedByCustomerId]'><p class="tel">Ordered by customer: </p>{{order.item.orderedByCustomerFullName}}</td>
-      <td class="column"><p class="tel">Price: </p>{{order.item.price.toFixed(2)}}</td>
-      <td class="column"><p class="tel">Ordered date: </p>{{order.item.creationDate | date}}</td>
-      <td class="column"><p class="tel">Last update date: </p>{{order.item.lastUpdateDate | date}}</td>
-      <td class="column"><p class="tel">Days of last update: </p>{{getDays(order.item.lastUpdateDate)}}</td>
-      <td class="column"><p class="tel">Status: </p>
-      
+        <th scope="row">{{ order.orderNumber }}</th>
+        <td class="column1" [routerLink]='["/clients/details/" + order.item.orderedByCustomerId]'>
+          <p class="tel">Ordered by customer: </p>{{order.item.orderedByCustomerFullName}}
+        </td>
+        <td class="column">
+          <p class="tel">Price: </p>{{order.item.price.toFixed(2)}}
+        </td>
+        <td class="column">
+          <p class="tel">Ordered date: </p>{{order.item.creationDate | date}}
+        </td>
+        <td class="column">
+          <p class="tel">Last update date: </p>{{order.item.lastUpdateDate | date}}
+        </td>
+        <td class="column">
+          <p class="tel">Days of last update: </p>{{getDays(order.item.lastUpdateDate)}}
+        </td>
+        <td class="column">
+          <p class="tel">Status: </p>
 
-        <select class="status-selected"
-        #orderStatusSelect
-        [disabled]="checkStatus(order.item.statusId, 'Cancelled') || checkStatus(order.item.statusId, 'Delivered')"
-        [ngClass]="{
+
+          <select class="status-selected" #orderStatusSelect
+            [disabled]="checkStatus(order.item.statusId, 'Cancelled') || checkStatus(order.item.statusId, 'Delivered')"
+            [ngClass]="{
           'optionCancelled':  checkStatus(order.item.statusId, 'Cancelled'),
           'optionDelivered' : checkStatus(order.item.statusId, 'Delivered')
-        }"
-        (change)="onSelectedStatus($event.target.value, order.item.id)">
-          <option 
-           *ngFor="let orderStatus of orderStatuses" 
-           [selected]="orderStatus.id === order.item.statusId" 
-           [value]="orderStatus.id" 
-           [ngClass]="{ 
+        }" (change)="onSelectedStatus($event.target.value, order.item.id)">
+            <option *ngFor="let orderStatus of orderStatuses" [selected]="orderStatus.id === order.item.statusId"
+              [value]="orderStatus.id" [ngClass]="{ 
             'optionDelivered': orderStatus.name === 'Delivered', 
             'optionCancelled': orderStatus.name === 'Cancelled'}">
-           {{orderStatus.name}}
-          </option>
-        </select>
+              {{orderStatus.name}}
+            </option>
+          </select>
 
-      </td>
-  </tr>
-  </tbody>
-</table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 
 </div>
 
-<app-pagination
-[items]="ordersList"
-[pageSize]="pageSizeFromOrders"
-(pageChangedEventEmitter)="onPageChanged($event)">
+<app-pagination [items]="ordersList" [pageSize]="pageSizeFromOrders" (pageChangedEventEmitter)="onPageChanged($event)">
 </app-pagination>
 
 <app-orders-add-modal #addOrderModal></app-orders-add-modal>
