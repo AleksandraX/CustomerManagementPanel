@@ -1,5 +1,3 @@
-import { formatDate } from '@angular/common';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import {
@@ -406,9 +404,11 @@ export class OrdersComponent implements OnInit {
         case SortStatus.New:
 
           let orderStatusNew = this.orderStatuses.find((status) => status.name == "New").id;
-          let newStatus = this.ordersListInitial.filter(order => order.statusId === orderStatusNew)
-          this.ordersList = JSON.parse(JSON.stringify(newStatus));
-          console.log("New")
+          let newStatus = this.ordersListInitial.filter(order => order.statusId === orderStatusNew);
+          if(newStatus.length > 1) {
+            this.ordersList = JSON.parse(JSON.stringify(newStatus));
+          }
+          this.ordersList = [];
         break;
 
         case SortStatus.OnItsWay:
@@ -449,11 +449,9 @@ export class OrdersComponent implements OnInit {
 
         break;
 
-
       default:
     }
   }
-
 }
 
 export enum SortColumnsBy {

@@ -58,6 +58,10 @@ export class PaginationComponent implements OnInit {
   }
 
   setPage(page: number) {
+    if(this.items.length < 1) {
+      let myPager = new MyPager(null, 1, 1);
+      this.pageChangedEventEmitter.emit(myPager);
+    }
     this.orderedItems = [];
     this.page = page;
 
