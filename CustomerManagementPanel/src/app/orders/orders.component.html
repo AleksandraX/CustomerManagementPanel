@@ -60,12 +60,18 @@
           </button>
         </th>
 
-        <th (click)="sortList(SortColumns.Status)" class="columnInfo" scope="col">
-          <button class="sort-button">
-            Status
-            <fa-icon [icon]="getArrowClass(SortColumns.Status)"></fa-icon>
-          </button>
+        <th class="columnInfo" scope="col">
+          <select (change)="sortStatus($event.target.value)" class="status-filter">
+            <option selected hidden>Status</option>
+            <option class="option-status-filter" *ngFor="let status of statusList" [value]="status" [ngClass]="{ 
+          'optionDelivered': status === 'Delivered', 
+          'optionCancelled': status === 'Cancelled',
+          'optionShowAll': status === 'ShowAll'}">
+              {{status}}
+            </option>
+          </select>
         </th>
+
       </tr>
     </thead>
     <tbody>

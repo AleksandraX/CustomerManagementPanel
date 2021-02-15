@@ -5,6 +5,24 @@ body {
   background-color: $black;
 }
 
+.status-filter{
+    text-align: center;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    border: none;
+    outline: none;
+    background-color: transparent;
+}
+
+.status-filter:hover{
+    cursor: pointer;
+    color: #e6e6e6;
+}
+
+.option-status-filter{
+    color: black;
+}
+
 .arrow {
     width: 12px;
     height: 12px;
@@ -49,23 +67,6 @@ body {
     }
   }
 
-  .arrowUp{
-    color:rgb(151, 14, 14);
-  }
-  
-
-  .arrowDown{
-      color: rgb(31, 90, 158);
-  }
-
-  .arrowBoth{
-    color: rgb(4, 192, 4);
-  }
-
-
-
-
-
 .my-class {
     ::ng-deep {
       .mat-form-field-ripple {
@@ -103,8 +104,6 @@ body {
     outline: none;
     background-color: transparent;
 }
-
-
 
 .sort-button:hover{
     color: rgb(230, 230, 230);
@@ -164,6 +163,10 @@ select {
 
 .optionCancelled{
     background-color: rgb(241, 102, 102);
+}
+
+.optionShowAll{
+    background-color: rgb(255, 187, 138);
 }
 
 .optionDelivered:disabled{

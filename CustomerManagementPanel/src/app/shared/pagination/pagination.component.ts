@@ -1,10 +1,4 @@
-import {
-  Component,
-  EventEmitter,
-  Input,
-  OnInit,
-  Output,
-} from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MyPager, OrderedItem } from '../models/shared.models';
 
 @Component({
@@ -37,36 +31,40 @@ export class PaginationComponent implements OnInit {
     this.setPage(1);
   }
 
-  SetOrderedItems(){
-  for (let i = 0; i < this.items.length; i++) {
-    let item = new OrderedItem(i + 1, this.items[i]);
-    this.orderedItems.push(item);
-  }}
+  setOrderedItems() {
+    for (let i = 0; i < this.items.length; i++) {
+      let item = new OrderedItem(i + 1, this.items[i]);
+      this.orderedItems.push(item);
+    }
+  }
 
-  CountingMaxPages(){
-  this.maxPages = Math.floor(this.items.length / this.pageSize);
-  if (this.maxPages < 1) {
-    this.maxPages = 1;
-  }}
+  countingMaxPages() {
+    this.maxPages = Math.ceil(this.items.length / this.pageSize);
+    if (this.maxPages < 1) {
+      this.maxPages = 1;
+    }
+  }
 
-  FillingPagesArray(){
-  this.pages = new Array(this.maxPages).fill(1).map((x, i) => ++i);}
+  fillingPagesArray() {
+    this.pages = new Array(this.maxPages).fill(1).map((x, i) => ++i);
+  }
 
-  SlicingOrderedItemsForOnePage(){
-  let numberToSlice = (this.page - 1) * this.pageSize;
-  this.pageOfItems = this.orderedItems.slice(
-    numberToSlice,
-    numberToSlice + this.pageSize
-  );}
+  slicingOrderedItemsForOnePage() {
+    let numberToSlice = (this.page - 1) * this.pageSize;
+    this.pageOfItems = this.orderedItems.slice(
+      numberToSlice,
+      numberToSlice + this.pageSize
+    );
+  }
 
   setPage(page: number) {
     this.orderedItems = [];
     this.page = page;
 
-    this.SetOrderedItems()
-    this.CountingMaxPages()
-    this.FillingPagesArray()
-    this.SlicingOrderedItemsForOnePage()
+    this.setOrderedItems();
+    this.countingMaxPages();
+    this.fillingPagesArray();
+    this.slicingOrderedItemsForOnePage();
 
     let myPager = new MyPager(this.pageOfItems, this.page, this.maxPages);
     this.pageChangedEventEmitter.emit(myPager);

@@ -31,6 +31,7 @@ import { OrdersService } from './orders.service';
 })
 export class OrdersComponent implements OnInit {
   ordersList: Order[] = [];
+  ordersListInitial: Order[] = [];
   id: number = 1;
   orderStatuses: OrderStatus[] = [];
   selectedOrderStatus: OrderStatus;
@@ -42,7 +43,10 @@ export class OrdersComponent implements OnInit {
   orderedOrders: OrderedItem[] = [];
   selectedOrdersId: string[] = [];
   selectedColumnName: SortColumnsBy;
+  selectedColumnStatus: SortStatus;
+  SortColumnsStatus: typeof SortStatus = SortStatus;
   SortColumns: typeof SortColumnsBy = SortColumnsBy;
+  statusList: string[] = [];
   isAsc: boolean;
   checkBoxSelect: boolean = false;
   pageSizeFromOrders = 10;
@@ -60,7 +64,13 @@ export class OrdersComponent implements OnInit {
     private modalService: BsModalService
   ) {
     this.route.data.subscribe((value) => {
-      this.ordersList = value['ordersList'];
+      this.ordersListInitial = value['ordersList'];
+      this.ordersListInitial.map(order => {
+        let date = new Date(order.creationDate.toString().split('T')[0]);
+        order.creationDate = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+      });
+
+      this.ordersList = JSON.parse(JSON.stringify(this.ordersListInitial));
       console.log(this.ordersList);
 
       this.ordersService
@@ -71,6 +81,12 @@ export class OrdersComponent implements OnInit {
 
   ngOnInit() {
     this.selectedColumnName = SortColumnsBy.Id;
+
+    for(let item in this.SortColumnsStatus){
+      if (isNaN(Number(item))){
+         this.statusList.push(item);
+      }
+    }
   }
 
   ngAfterViewInit(): void {}
@@ -79,12 +95,10 @@ export class OrdersComponent implements OnInit {
     if (lastUpdateDate == null) {
       return '-';
     }
-    let dateInString = formatDate(lastUpdateDate, 'yyyy-MM-dd', 'en');
-    let date = new Date(dateInString);
 
     let now = new Date(Date.now());
-    let data = date.getDay() - now.getDay();
-    return data + ' days';
+    let data = now.getTime() - new Date(lastUpdateDate.toString()).getTime()
+    return Math.floor(data / (1000 * 3600 * 24)) + ' days';
   }
 
   onSelectedStatus(newOrderStatusId: string, orderId: string) {
@@ -269,28 +283,177 @@ export class OrdersComponent implements OnInit {
         break;
       case SortColumnsBy.OrderedDate:
 
-      console.log(this.ordersList[0].creationDate.valueOf())
         if (this.isAsc) {
           this.ordersList.sort(
-            (a, b) => +new Date(a.creationDate) - +new Date(b.creationDate));
-          
+            (a, b) => { 
+              if(a.creationDate > b.creationDate) {
+                return 1;
+              }
+
+              if(a.creationDate < b.creationDate) {
+                return -1;
+              }
+
+              return 0;
+            });
+
+        }else{
+          this.ordersList.sort((a, b)=> { 
+            if(b.creationDate > a.creationDate) {
+              return 1;
+            }
+
+            if(b.creationDate < a.creationDate) {
+              return -1;
+            }
+
+            return 0;
+          });
         }
         this.ordersList = JSON.parse(JSON.stringify(this.ordersList));
 
         break;
 
       case SortColumnsBy.LastUpdateDate:
-        console.log('LastUpdateDate asc');
+        if (this.isAsc) {
+          this.ordersList.sort(
+            (a, b) => { 
+              if(a.lastUpdateDate > b.lastUpdateDate) {
+                return 1;
+              }
+
+              if(a.lastUpdateDate < b.lastUpdateDate) {
+                return -1;
+              }
+
+              return 0;
+            });
+
+        }else{
+          this.ordersList.sort((a, b)=> { 
+            if(b.lastUpdateDate > a.lastUpdateDate) {
+              return 1;
+            }
+
+            if(b.lastUpdateDate < a.lastUpdateDate) {
+              return -1;
+            }
+
+            return 0;
+          });
+        }
+        this.ordersList = JSON.parse(JSON.stringify(this.ordersList));
+
         break;
 
       case SortColumnsBy.DaysOfLastUpdate:
-        console.log('DaysOfLastUpdate asc');
+        if (this.isAsc) {
+          this.ordersList.sort(
+            (a, b) => { 
+              if(a.lastUpdateDate > b.lastUpdateDate) {
+                return 1;
+              }
+
+              if(a.lastUpdateDate < b.lastUpdateDate) {
+                return -1;
+              }
+
+              return 0;
+            });
+
+        }else{
+          this.ordersList.sort((a, b)=> { 
+            if(b.lastUpdateDate > a.lastUpdateDate) {
+              return 1;
+            }
+
+            if(b.lastUpdateDate < a.lastUpdateDate) {
+              return -1;
+            }
+
+            return 0;
+          });
+        }
+        this.ordersList = JSON.parse(JSON.stringify(this.ordersList));
+
         break;
 
       default:
-        console.log('Błąd');
     }
   }
+
+  sortStatus(value: SortStatus){
+    this.selectedColumnStatus = value;
+
+    switch (+SortStatus[this.selectedColumnStatus]) {
+
+        case SortStatus.Delivered:
+
+          let orderStatusDelivered = this.orderStatuses.find((status) => status.name == "Delivered").id;
+          let delivered = this.ordersListInitial.filter(order => order.statusId === orderStatusDelivered)
+          this.ordersList = JSON.parse(JSON.stringify(delivered));
+
+        break;
+
+        case SortStatus.Cancelled:
+
+          let orderStatusCancelled = this.orderStatuses.find((status) => status.name == "Cancelled").id;
+          let cancelled = this.ordersListInitial.filter(order => order.statusId === orderStatusCancelled)
+          this.ordersList = JSON.parse(JSON.stringify(cancelled));
+          
+        break;
+
+        case SortStatus.New:
+
+          let orderStatusNew = this.orderStatuses.find((status) => status.name == "New").id;
+          let newStatus = this.ordersListInitial.filter(order => order.statusId === orderStatusNew)
+          this.ordersList = JSON.parse(JSON.stringify(newStatus));
+          console.log("New")
+        break;
+
+        case SortStatus.OnItsWay:
+
+          let orderStatusOnItsWay = this.orderStatuses.find((status) => status.name == "OnItsWay").id;
+          let onItsWay = this.ordersListInitial.filter(order => order.statusId === orderStatusOnItsWay)
+          this.ordersList = JSON.parse(JSON.stringify(onItsWay));
+
+        break;
+
+        case SortStatus.OutForDelivery:
+
+          let orderStatusOutForDelivery = this.orderStatuses.find((status) => status.name == "OutForDelivery").id;
+          let outForDelivery = this.ordersListInitial.filter(order => order.statusId === orderStatusOutForDelivery)
+          this.ordersList = JSON.parse(JSON.stringify(outForDelivery));
+
+        break;
+
+        case SortStatus.Packing:
+
+          let orderStatusPacking = this.orderStatuses.find((status) => status.name == "Packing").id;
+          let packing = this.ordersListInitial.filter(order => order.statusId === orderStatusPacking)
+          this.ordersList = JSON.parse(JSON.stringify(packing));
+
+        break;
+
+        case SortStatus.Confirmed:
+
+          let orderStatusConfirmed = this.orderStatuses.find((status) => status.name == "Confirmed").id;
+          let confirmed = this.ordersListInitial.filter(order => order.statusId === orderStatusConfirmed)
+          this.ordersList = JSON.parse(JSON.stringify(confirmed));
+
+        break;
+
+        case SortStatus.ShowAll:
+
+          this.ordersList = JSON.parse(JSON.stringify(this.ordersListInitial));
+
+        break;
+
+
+      default:
+    }
+  }
+
 }
 
 export enum SortColumnsBy {
@@ -300,5 +463,15 @@ export enum SortColumnsBy {
   OrderedDate,
   LastUpdateDate,
   DaysOfLastUpdate,
-  Status,
+}
+
+export enum SortStatus{
+  ShowAll,
+  Delivered,
+  Cancelled,
+  New,
+  OnItsWay,
+  OutForDelivery,
+  Packing,
+  Confirmed,
 }
