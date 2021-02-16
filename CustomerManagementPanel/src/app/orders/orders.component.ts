@@ -18,6 +18,7 @@ import {
   OrderStatus,
   OrderStatusChangeParameters,
 } from '../clients/models/orders';
+import { SortHelper } from '../shared/helpers/sort-helper';
 import { MyPager, OrderedItem } from '../shared/models/shared.models';
 import { OrdersOptionModal } from './orders-option/orders-option-modal';
 import { OrdersService } from './orders.service';
@@ -59,7 +60,7 @@ export class OrdersComponent implements OnInit {
     private toastr: ToastrService,
     private route: ActivatedRoute,
     private ordersService: OrdersService,
-    private modalService: BsModalService
+    private modalService: BsModalService,
   ) {
     this.route.data.subscribe((value) => {
       this.ordersListInitial = value['ordersList'];
@@ -179,7 +180,6 @@ export class OrdersComponent implements OnInit {
       console.log('usuwamy wszystko');
       console.log(this.selectedOrdersId);
       document.getElementById('button').style.display = 'none';
-      // document.getElementById("rowAll" + this.selectedOrdersId.forEach());
     }
   }
 
@@ -239,36 +239,14 @@ export class OrdersComponent implements OnInit {
   sort() {
     switch (this.selectedColumnName) {
       case SortColumnsBy.OrderedByCustomer:
+
         if (this.isAsc) {
-          this.ordersList.sort((a, b) => {
-            if (a.orderedByCustomerFullName > b.orderedByCustomerFullName) {
-              return 1;
-            }
-
-            if (a.orderedByCustomerFullName < b.orderedByCustomerFullName) {
-              return -1;
-            }
-
-            return 0;
-          });
-          this.ordersList = JSON.parse(JSON.stringify(this.ordersList));
-        } else {
-          this.ordersList.sort((a, b) => {
-            if (b.orderedByCustomerFullName > a.orderedByCustomerFullName) {
-              return 1;
-            }
-
-            if (b.orderedByCustomerFullName < a.orderedByCustomerFullName) {
-              return -1;
-            }
-
-            return 0;
-          });
-        }
-
-        this.ordersList = JSON.parse(JSON.stringify(this.ordersList));
-
+          this.ordersList = JSON.parse(JSON.stringify(SortHelper.sortingOfElements(this.ordersList, 'orderedByCustomerFullName' )));
+          } else {
+            this.ordersList = JSON.parse(JSON.stringify(SortHelper.sortingOfElements(this.ordersList, 'orderedByCustomerFullName', false )));
+          }
         break;
+
       case SortColumnsBy.Price:
         if (this.isAsc) {
           this.ordersList.sort((a, b) => a.price - b.price);
@@ -280,100 +258,29 @@ export class OrdersComponent implements OnInit {
 
         break;
       case SortColumnsBy.OrderedDate:
-
         if (this.isAsc) {
-          this.ordersList.sort(
-            (a, b) => { 
-              if(a.creationDate > b.creationDate) {
-                return 1;
-              }
-
-              if(a.creationDate < b.creationDate) {
-                return -1;
-              }
-
-              return 0;
-            });
-
-        }else{
-          this.ordersList.sort((a, b)=> { 
-            if(b.creationDate > a.creationDate) {
-              return 1;
-            }
-
-            if(b.creationDate < a.creationDate) {
-              return -1;
-            }
-
-            return 0;
-          });
+        this.ordersList = JSON.parse(JSON.stringify(SortHelper.sortingOfElements(this.ordersList, 'creationDate' )));
+        } else {
+          this.ordersList = JSON.parse(JSON.stringify(SortHelper.sortingOfElements(this.ordersList, 'creationDate', false )));
         }
-        this.ordersList = JSON.parse(JSON.stringify(this.ordersList));
-
         break;
 
       case SortColumnsBy.LastUpdateDate:
+
         if (this.isAsc) {
-          this.ordersList.sort(
-            (a, b) => { 
-              if(a.lastUpdateDate > b.lastUpdateDate) {
-                return 1;
-              }
-
-              if(a.lastUpdateDate < b.lastUpdateDate) {
-                return -1;
-              }
-
-              return 0;
-            });
-
-        }else{
-          this.ordersList.sort((a, b)=> { 
-            if(b.lastUpdateDate > a.lastUpdateDate) {
-              return 1;
-            }
-
-            if(b.lastUpdateDate < a.lastUpdateDate) {
-              return -1;
-            }
-
-            return 0;
-          });
-        }
-        this.ordersList = JSON.parse(JSON.stringify(this.ordersList));
-
+          this.ordersList = JSON.parse(JSON.stringify(SortHelper.sortingOfElements(this.ordersList, 'lastUpdateDate' )));
+          } else {
+            this.ordersList = JSON.parse(JSON.stringify(SortHelper.sortingOfElements(this.ordersList, 'lastUpdateDate', false )));
+          }
         break;
 
       case SortColumnsBy.DaysOfLastUpdate:
+
         if (this.isAsc) {
-          this.ordersList.sort(
-            (a, b) => { 
-              if(a.lastUpdateDate > b.lastUpdateDate) {
-                return 1;
-              }
-
-              if(a.lastUpdateDate < b.lastUpdateDate) {
-                return -1;
-              }
-
-              return 0;
-            });
-
-        }else{
-          this.ordersList.sort((a, b)=> { 
-            if(b.lastUpdateDate > a.lastUpdateDate) {
-              return 1;
-            }
-
-            if(b.lastUpdateDate < a.lastUpdateDate) {
-              return -1;
-            }
-
-            return 0;
-          });
-        }
-        this.ordersList = JSON.parse(JSON.stringify(this.ordersList));
-
+          this.ordersList = JSON.parse(JSON.stringify(SortHelper.sortingOfElements(this.ordersList, 'lastUpdateDate' )));
+          } else {
+            this.ordersList = JSON.parse(JSON.stringify(SortHelper.sortingOfElements(this.ordersList, 'lastUpdateDate', false )));
+          }
         break;
 
       default:
