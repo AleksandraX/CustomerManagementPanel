@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import {
+  faFilter,
   faPlusSquare,
   faSort,
   faSortDown,
@@ -39,19 +40,25 @@ export class OrdersComponent implements OnInit {
   faSort: IconDefinition = faSort;
   faSortUp: IconDefinition = faSortUp;
   faSortDown: IconDefinition = faSortDown;
+  faFilter = faFilter;
+
   orderedOrders: OrderedItem[] = [];
   selectedOrdersId: string[] = [];
   selectedColumnName: SortColumnsBy;
   selectedColumnStatus: SortStatus;
   SortColumnsStatus: typeof SortStatus = SortStatus;
   SortColumns: typeof SortColumnsBy = SortColumnsBy;
+  FilterColumnsBy : typeof FilterColumnsBy = FilterColumnsBy;
+  selectedColumnNameFilter : FilterColumnsBy = FilterColumnsBy.OrderedByCustomer;
   statusList: string[] = [];
   isAsc: boolean;
   checkBoxSelect: boolean = false;
+  filterClick: boolean = false;
   pageSizeFromOrders = 10;
   upArrowIcon: boolean;
   downArrowIcon: boolean;
   bothArrowIcon: boolean;
+  myInputValue: any;
 
   @ViewChild('addOrderModal') addOrderModalRef: ModalDirective;
   optionOrderModalRef: BsModalRef;
@@ -205,6 +212,26 @@ export class OrdersComponent implements OnInit {
     });
   }
 
+
+  isFilterHidden(columnName: FilterColumnsBy) : Boolean {
+    document.getElementById("inputFilter").focus();
+    document.getElementById("inputFilter2").focus();
+    document.getElementById("inputFilter3").focus();
+    document.getElementById("inputFilter4").focus();
+    document.getElementById("inputFilter5").focus();
+    return this.selectedColumnNameFilter !== columnName || !this.filterClick
+    
+  }
+
+  switchFilterShow(columnNameClicked: FilterColumnsBy){
+    if (columnNameClicked === this.selectedColumnNameFilter) {
+      this.filterClick = !this.filterClick;
+      } else {
+        this.selectedColumnNameFilter = columnNameClicked;
+        this.filterClick = true;
+      }
+  }
+
   getArrowClass(columnNameClicked: SortColumnsBy): IconDefinition {
     if (columnNameClicked === this.selectedColumnName) {
       if (this.isAsc === false) {
@@ -234,6 +261,42 @@ export class OrdersComponent implements OnInit {
     }
 
     this.sort();
+  }
+
+  filter(valueForInput){
+    switch (this.selectedColumnNameFilter){
+      case FilterColumnsBy.OrderedByCustomer:
+        let filterInColumnOne = this.ordersListInitial.filter(order => order.orderedByCustomerFullName.toLowerCase().includes(valueForInput.toLowerCase()))
+        console.log(filterInColumnOne);
+        this.ordersList = JSON.parse(JSON.stringify(filterInColumnOne));
+      break;
+      
+      case FilterColumnsBy.Price:
+        let priceToString = this.ordersList.price.toString()
+        let filterInColumnTwo = this.ordersList.filter(priceToString.includes(valueForInput))
+        this.ordersList = JSON.parse(JSON.stringify(filterInColumnTwo));
+      break;
+
+      case FilterColumnsBy.OrderedDate:
+        let creationDateToString = this.ordersList.creationDate?.toString()
+        let filterInColumnThree = this.ordersList.filter(creationDateToString.includes(valueForInput))
+        this.ordersList = JSON.parse(JSON.stringify(filterInColumnThree));
+      break;
+
+      case FilterColumnsBy.LastUpdateDate:
+        let daysOfLastUpdateToString = this.ordersList.lastUpdateDate?.toString()
+        let filterInColumnFour = this.ordersList.filter(daysOfLastUpdateToString.includes(valueForInput))
+        this.ordersList = JSON.parse(JSON.stringify(filterInColumnFour));
+      break;
+
+      case FilterColumnsBy.DaysOfLastUpdate:
+        
+        // let filterInColumnFive = this.ordersList.filter(order => order.lastUpdateDate.includes(valueForInput))
+        // this.ordersList = JSON.parse(JSON.stringify(filterInColumnFive));
+      break;
+
+      default:
+    }
   }
 
   sort() {
@@ -287,6 +350,7 @@ export class OrdersComponent implements OnInit {
     }
   }
 
+  //filterStatus
   sortStatus(value: SortStatus){
     this.selectedColumnStatus = value;
 
@@ -379,4 +443,12 @@ export enum SortStatus{
   OutForDelivery,
   Packing,
   Confirmed,
+}
+
+export enum FilterColumnsBy {
+  OrderedByCustomer,
+  Price,
+  OrderedDate,
+  LastUpdateDate,
+  DaysOfLastUpdate,
 }

@@ -11,6 +11,10 @@
     margin-bottom: .2rem;
 }
 
+.columnBnt, .column-actions{
+    text-align: center;
+}
+
 .sort-button{
     color: rgb(255, 255, 255);
     text-decoration: none;
@@ -33,7 +37,7 @@
     border: none;
     transition: .5s color, .3s transform;
     outline: none;
-    left: 75%;
+    left: 4rem;
 }
 
 .bntDelete:hover{

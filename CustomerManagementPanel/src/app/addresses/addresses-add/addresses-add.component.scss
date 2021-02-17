@@ -55,9 +55,9 @@ label {
 .alert-danger {
   width: 30%;
   position: relative;
-  top: 50%;
+  top: 100%;
   left: 50%;
-  transform: translate(-50%, 20%);
+  transform: translate(50%,0%);
 }
 
 @media only screen and (min-width: 100px) and (max-width: 550px) {
