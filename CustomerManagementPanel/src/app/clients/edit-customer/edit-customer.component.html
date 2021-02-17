@@ -1,4 +1,4 @@
-<h1 class="addCustomer">New customer</h1>
+<h1 class="addCustomer"><fa-icon class="icon" [icon]="faUserAlt"></fa-icon>Customer </h1>
 
 <div class="addContainer" *ngIf="customerExist; else customerNotFound">
 
@@ -16,6 +16,9 @@
             </div>
             <div class="alert alert-danger" *ngIf="form.checkIsMaxLength('name')">
                 Name is too long <i class="fa fa-exclamation"></i>
+            </div>
+            <div class="alert alert-danger" *ngIf="form.checkIsPattern('name')">
+                Name is invalid <i class="fa fa-exclamation"></i>
             </div>
         </div>
 
@@ -164,8 +167,11 @@
             </div>
             <div>
                 <br>
-                <button type="submit" class="save-new-customer"
-                    [disabled]="form.invalid"> Save customer <fa-icon class="icon" [icon]="faSave"></fa-icon>
+                <button type="submit"
+                    class="save-new-customer"
+                    [disabled]="form.invalid"
+                    (ngSubmit)="saveCustomer()"
+                    > Save customer <fa-icon class="icon" [icon]="faSave"></fa-icon>
                 </button>
             </div>
 
@@ -179,3 +185,6 @@
         INFO! The user list is empty.
     </div>
 </ng-template>
+
+
+<!-- {{copyOfCustomer.id != 0 ?  saveCustomer() : updataCustomer()}} -->

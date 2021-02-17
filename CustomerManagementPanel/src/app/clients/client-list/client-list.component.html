@@ -2,15 +2,32 @@
         <button class="bntAdd" [routerLink]='["/clients/add"]'><fa-icon [icon]="faPlusSquare"></fa-icon> Add Customer</button>
     </div>
 
+    <div *ngIf="!!customerObjectList && customerObjectList.length > 0 && orderedCustomers?.length > 0; else emptyList">
     <table class="table">
     <thead class="thead-dark">
     <tr>
         <th scope="col">#</th>
-        <th scope="col">Full name</th>
-        <th scope="col">Sex F/M</th>
-        <th scope="col">Age</th>
-        <th scope="col">City</th>
-        <th scope="col">Actions</th>
+        <th (click)="sortList(SortColumns.FullName)"scope="col">
+            <button class="sort-button">
+                Full name <fa-icon [icon]="getArrowClass(SortColumns.FullName)"></fa-icon>
+            </button>
+        </th>
+        <th (click)="sortList(SortColumns.Sex)" scope="col">
+            <button class="sort-button">
+            Sex F/M <fa-icon [icon]="getArrowClass(SortColumns.Sex)"></fa-icon>
+        </button>
+        </th>
+        <th (click)="sortList(SortColumns.Age)" scope="col">
+            <button class="sort-button">
+            Age <fa-icon [icon]="getArrowClass(SortColumns.Age)"></fa-icon>
+        </button>
+        </th>
+        <th (click)="sortList(SortColumns.City)" scope="col">
+            <button class="sort-button">
+            City <fa-icon [icon]="getArrowClass(SortColumns.City)"></fa-icon>
+        </button>
+        </th>
+        <th class="column-actions" scope="col">Actions</th>
     </tr>
     </thead>
     
@@ -32,14 +49,14 @@
     </tr>
     </tbody>
     </table>
-    
-    <app-pagination
-        [items]="customerObjectList"
-        (pageChangedEventEmitter)="onPageChanged($event)">
-    </app-pagination>
-<div *ngIf="!!customerObjectList && customerObjectList.length > 0; else emptyList">
-
 </div>
+
+    
+<app-pagination
+[items]="customerObjectList"
+(pageChangedEventEmitter)="onPageChanged($event)">
+</app-pagination>
+
 
 <ng-template #emptyList>
     <div class="emptyList">

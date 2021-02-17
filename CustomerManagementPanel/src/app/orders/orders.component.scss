@@ -1,3 +1,121 @@
+$white: #fff;
+$black: #000;
+
+body {
+  background-color: $black;
+}
+
+.filter-icon{
+    color: white;
+    position: relative;
+    left: .5rem;
+    font-size: .9rem;
+    transition: .5s color, .3s transform;
+    padding: .1% .8%;
+    background: transparent;
+    border: none;
+    outline: none;
+}
+
+.button-to-submit-filter{
+    margin-left: 1rem;
+    font-size: 1rem;
+}
+
+.filter-icon:hover{
+    color: rgb(255, 0, 221);
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.input-for-filter{
+    border-radius: .2rem;
+    margin: none;
+    width: 80%;
+    border: .1rem solid black;
+    text-align: center;
+    margin-bottom: .2rem;
+}
+
+.to-left{
+    float: left;
+}
+
+.status-filter{
+    text-align: center;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    border: none;
+    outline: none;
+    background-color: transparent;
+}
+
+.status-filter:hover{
+    cursor: pointer;
+    color: #e6e6e6;
+}
+
+.option-status-filter{
+    color: black;
+}
+
+.arrow {
+    width: 12px;
+    height: 12px;
+    position: absolute;
+    top: 25px;
+    font-size: 12px;
+
+    span {
+      top: 4px;
+      position: absolute;
+      width: 8px;
+      height: 2px;
+      background-color: $white;
+      display: inline-block;
+      transition: all .2s ease;
+
+      &:first-of-type {
+        left: 0;
+        transform: scale(.9) rotate(45deg);
+      }
+
+      &:last-of-type {
+        right: 0;
+        transform: scale(.9) rotate(-45deg);
+      }
+    }
+
+    &.active {
+      span {
+        &:first-of-type {
+          transform: scale(.9) rotate(-45deg);
+        }
+
+        &:last-of-type {
+          transform: scale(.9) rotate(45deg);
+        }
+      }
+    }
+  
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+.my-class {
+    ::ng-deep {
+      .mat-form-field-ripple {
+        background-color: #2ec200;
+        border-bottom: 2.5px solid #2ec200;
+        outline: none;
+    }
+    .mat-form-field-underline {
+        background-color: #2ec200;
+    }
+}
+}
+
 .column1{
     cursor: pointer;
     transition: transform .3s ;
@@ -13,6 +131,20 @@
 .column1:hover{
     color: chocolate;
     transform: scale(1.1);
+}
+
+.sort-button{
+    color: rgb(255, 255, 255);
+    transition: .5s color;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    background-color: transparent;
+}
+
+.sort-button:hover{
+    color: var(--colorMustard);
+    cursor: pointer;
 }
 
 .bntAdd{
@@ -58,6 +190,9 @@ select {
     left: 1.3rem;
 }
 
+.checkBoxSelected{
+    background-color: AntiqueWhite;
+}
 
 .optionDelivered{
     background-color: rgb(4, 192, 4);
@@ -65,6 +200,10 @@ select {
 
 .optionCancelled{
     background-color: rgb(241, 102, 102);
+}
+
+.optionShowAll{
+    background-color: rgb(255, 187, 138);
 }
 
 .optionDelivered:disabled{
@@ -119,6 +258,26 @@ select {
     outline: none;
     color: var(--colorMustard);
     background-color:  #343A40;
+}
+
+.option-check-box{
+    height: 2.3rem;
+    position: relative;
+    background-color: rgb(31, 90, 158);
+    color: rgb(255, 255, 255);
+    border: none;
+    border-radius: 5px;
+    padding: .4%;
+    transition: .3s color, .3s transform ;
+    outline: none;
+    margin-bottom: .2rem;
+    margin-right: 1rem;
+    float: right;
+    left: .7rem;
+}
+
+.option-check-box:hover{
+    transform: scale(.9);
 }
 
 @media screen and (max-width: 625px) {

@@ -1,0 +1,104 @@
+.modal-content{
+    width: 120%;
+    -webkit-box-shadow: 11px 7px 15px 0px rgb(0, 0, 0);
+    -moz-box-shadow:    11px 7px 15px 0px rgb(0, 0, 0);
+    box-shadow:         11px 7px 15px 0px rgba(0, 0, 0);
+}
+
+.columnInfo, .column{
+    text-align: center;
+}
+
+.optionDelivered{
+    font-weight: bold;
+    border-radius: 5px;
+    color: rgb(4, 192, 4);
+}
+
+.optionCancelled{
+    font-weight: bold;
+    border-radius: 5px;
+    color: rgb(241, 102, 102);
+}
+
+.title-modal-options{
+    font-size: 2rem;
+}
+
+.option-status-label{
+    margin-right: .8rem;
+
+}
+.scroll{
+    overflow-y:auto;
+    height: 30vh !important;
+}
+
+.modal-header{
+    color: white;
+    background-color: #343A40 !important;
+}
+
+.modal-body{
+
+    background-color: white;
+    color: black;
+}
+
+.modal-footer{
+    background-color: white;
+}
+
+.buttonSave, .buttonCancel, .bntDelete{
+    color: rgb(133, 133, 133);
+    font-size: 1rem;
+    position: relative;
+    background: transparent;
+    border: none;
+    transition: .3s transform;
+}
+
+.bntDelete{
+    text-align: center;
+}
+
+  .bntDelete:hover {
+    color: rgb(253, 77, 77);
+    transform: scale(1.2);
+  }
+
+.buttonSave:hover{
+    transform: scale(1.2);
+    color: rgb(0, 116, 0);
+}
+
+.buttonCancel:hover{
+    transform: scale(1.2);
+    color: rgb(253, 77, 77);
+}
+
+.status-option{
+    font-size: 1.1rem;
+    text-align: center;
+    padding-top: 1.6rem;
+}
+
+.select-status{
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.label-status{
+    margin-right: 1rem;
+}
+
+button{
+    margin-right: 1rem;
+    border: none;
+    font-size: 1.3rem;
+}
+
+#thead{
+    position: -webkit-sticky;
+    position: sticky;
+}

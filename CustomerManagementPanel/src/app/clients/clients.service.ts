@@ -51,6 +51,16 @@ constructor(private httpClient:HttpClient) {
         );
     }
 
+    updateCustomer(customerForCreation: CustomerForCreation) : Observable<any>{
+        return this.httpClient.post<any>(this.baseUrl + "/UpdateCustomer", customerForCreation).pipe(
+            tap(response =>
+                {
+                    console.log("Update Customer", response);
+                }),
+            catchError(this.handleError<any>("update"))
+        );
+    }
+
     delete(customerId: string) : Observable<any> {
         return this.httpClient.delete<any>(this.baseUrl + "/delete/" + customerId).pipe(
             tap(response =>

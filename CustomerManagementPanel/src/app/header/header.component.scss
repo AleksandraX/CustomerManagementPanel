@@ -10,6 +10,9 @@ a:hover{
 
 .navbar{
     margin-bottom: 5rem;
+    position: sticky;
+    z-index: 10;
+    top: 0;
 }
 
 .header{

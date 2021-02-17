@@ -12,11 +12,13 @@ import { OrdersRoutingModule } from './orders-routing.module';
 import { OrdersService } from './orders.service';
 import { SharedModule } from '../shared/shared.module';
 import { BsModalService, ModalModule } from 'ngx-bootstrap/modal';
+import { OrdersOptionModal } from './orders-option/orders-option-modal';
 
 @NgModule({
     declarations: [							
         OrdersComponent,
-        OrdersAddModal
+        OrdersAddModal,
+        OrdersOptionModal
      ],
     imports: [
       CommonModule,
@@ -29,7 +31,8 @@ import { BsModalService, ModalModule } from 'ngx-bootstrap/modal';
       CarouselModule.forRoot(),
       FontAwesomeModule,
       SharedModule,
-      ModalModule.forRoot()  
+      ModalModule.forRoot()  ,
+      
     ],
     providers: [
         OrdersService,

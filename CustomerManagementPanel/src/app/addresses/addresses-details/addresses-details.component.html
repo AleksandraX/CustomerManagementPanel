@@ -1,5 +1,5 @@
 <div class="address-details-case">
-  <h1>Address :</h1>
+  <h1>Address </h1>
   <div class="adressDeails">
     <label class="adressDeailsP"><fa-icon class="icon" [icon]="faIdCard"></fa-icon> Id: <h5>{{address?.id}}</h5></label>
     <label class="adressDeailsP"><fa-icon class="icon" [icon]="faGlobaleAmericas"></fa-icon> Country: <h5>{{address?.country}}</h5></label>
@@ -9,7 +9,7 @@
   </div>
   <br>
 
-  <h2 class="customersH2">Customers:</h2>
+  <h2 class="customersH2">Customers</h2>
   <div *ngIf="!!address?.residents && address?.residents.length > 0; else emptyList"></div>
 
   <carousel class="bloc" [itemsPerSlide]="address?.residents.length <= 3 ? address?.residents.length : 3"
