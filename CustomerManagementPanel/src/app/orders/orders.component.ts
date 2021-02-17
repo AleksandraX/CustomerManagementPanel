@@ -272,21 +272,21 @@ export class OrdersComponent implements OnInit {
       break;
       
       case FilterColumnsBy.Price:
-        let priceToString = this.ordersList.price.toString()
-        let filterInColumnTwo = this.ordersList.filter(priceToString.includes(valueForInput))
-        this.ordersList = JSON.parse(JSON.stringify(filterInColumnTwo));
+        // let priceToString = this.ordersList.price.toString()
+        // let filterInColumnTwo = this.ordersList.filter(priceToString.includes(valueForInput))
+        // this.ordersList = JSON.parse(JSON.stringify(filterInColumnTwo));
       break;
 
       case FilterColumnsBy.OrderedDate:
-        let creationDateToString = this.ordersList.creationDate?.toString()
-        let filterInColumnThree = this.ordersList.filter(creationDateToString.includes(valueForInput))
-        this.ordersList = JSON.parse(JSON.stringify(filterInColumnThree));
+        // let creationDateToString = this.ordersList.creationDate?.toString()
+        // let filterInColumnThree = this.ordersList.filter(creationDateToString.includes(valueForInput))
+        // this.ordersList = JSON.parse(JSON.stringify(filterInColumnThree));
       break;
 
       case FilterColumnsBy.LastUpdateDate:
-        let daysOfLastUpdateToString = this.ordersList.lastUpdateDate?.toString()
-        let filterInColumnFour = this.ordersList.filter(daysOfLastUpdateToString.includes(valueForInput))
-        this.ordersList = JSON.parse(JSON.stringify(filterInColumnFour));
+        // let daysOfLastUpdateToString = this.ordersList.lastUpdateDate?.toString()
+        // let filterInColumnFour = this.ordersList.filter(daysOfLastUpdateToString.includes(valueForInput))
+        // this.ordersList = JSON.parse(JSON.stringify(filterInColumnFour));
       break;
 
       case FilterColumnsBy.DaysOfLastUpdate:
