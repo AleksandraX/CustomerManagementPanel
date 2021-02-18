@@ -43,8 +43,8 @@
 
         <th class="columnInfo" scope="col">
           <div class="filter-div element-ceneter" [hidden]="isFilterHidden(FilterColumnsBy.Price)" id="filterInput" >
-            <input [(ngModel)]="myInputValue" id="inputFilter2" placeholder="Write three letters to filter" class="input-for-filter" type="text">
-
+            <input [(ngModel)]="PriceValue" id="inputFilter2" placeholder="Write three letters to filter" class="input-for-filter" type="text">
+            <button class="button-to-submit-filter" (click)="filter(PriceValue)">$</button>
           </div>
           <button (click)="sortList(SortColumns.Price)" class="sort-button">
             Price
@@ -54,10 +54,17 @@
         </th>
 
         <th class="columnInfo" scope="col">
-          <div class="filter-div element-ceneter" [hidden]="isFilterHidden(FilterColumnsBy.OrderedDate)" id="filterInput" >
-            <input [(ngModel)]="myInputValue" id="inputFilter3" placeholder="Write three letters to filter" class="input-for-filter" type="text">
 
+          <div [hidden]="isFilterHidden(FilterColumnsBy.OrderedDate)" class="col-xs-12 col-12 col-md-4 form-group  filter-div element-ceneter">
+            <input type="text"
+                   placeholder="Select the dates"
+                   class="form-control"
+                   bsDaterangepicker
+                   [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }"
+                   [(ngModel)]="OrderedDateValue">
+                   <button class="button-to-submit-filter" (click)="filter(OrderedDateValue)">$</button>
           </div>
+
           <button (click)="sortList(SortColumns.OrderedDate)" class="sort-button">
             Ordered date
             <fa-icon [icon]="getArrowClass(SortColumns.OrderedDate)"></fa-icon>
@@ -66,9 +73,14 @@
         </th>
 
         <th class="columnInfo" scope="col">
-          <div class="filter-div element-ceneter" [hidden]="isFilterHidden(FilterColumnsBy.LastUpdateDate)" id="filterInput" >
-            <input [(ngModel)]="myInputValue" id="inputFilter4" placeholder="Write three letters to filter" class="input-for-filter" type="text">
-
+          <div [hidden]="isFilterHidden(FilterColumnsBy.LastUpdateDate)" class="col-xs-12 col-12 col-md-4 form-group  filter-div element-ceneter">
+            <input type="text"
+                   placeholder="Select the dates"
+                   class="form-control"
+                   bsDaterangepicker
+                   [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }"
+                   [(ngModel)]="LastUpdateDateValue">
+                   <button class="button-to-submit-filter" (click)="filter(LastUpdateDateValue)">$</button>
           </div>
           <button (click)="sortList(SortColumns.LastUpdateDate)" class="sort-button">
             Last update date
@@ -78,9 +90,22 @@
         </th>
 
         <th  class="columnInfo" scope="col">
-          <div class="filter-div element-ceneter" [hidden]="isFilterHidden(FilterColumnsBy.DaysOfLastUpdate)" id="filterInput" >
-            <input [(ngModel)]="myInputValue" id="inputFilter5" placeholder="Write three letters to filter" class="input-for-filter" type="text">
+          <div [hidden]="isFilterHidden(FilterColumnsBy.DaysOfLastUpdate)" class="col-xs-12 col-12 col-md-4 form-group  filter-div element-ceneter">
+            <input 
+              type="text"
+              placeholder="From"
+              class="form-control"
+              id="versionTwo"
+              [(ngModel)]="DaysOfLastUpdateValueOne">
 
+            <input 
+              type="text"
+              placeholder="To"
+              class="form-control"
+              id="versionTwo"
+              [(ngModel)]="DaysOfLastUpdateValueTwo">
+
+            <button class="button-to-submit-filter" (click)="filter(DaysOfLastUpdateValueOne,DaysOfLastUpdateValueTwo )">$</button>
           </div>
           <button (click)="sortList(SortColumns.DaysOfLastUpdate)" class="sort-button">
             Days of last update

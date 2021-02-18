@@ -58,7 +58,13 @@ export class OrdersComponent implements OnInit {
   upArrowIcon: boolean;
   downArrowIcon: boolean;
   bothArrowIcon: boolean;
-  myInputValue: any;
+  myInputValue: string;
+  PriceValue: number;
+  OrderedDateValue: Date;
+  LastUpdateDateValue: Date;
+  DaysOfLastUpdateValueOne: number;
+  DaysOfLastUpdateValueTwo: number;
+
 
   @ViewChild('addOrderModal') addOrderModalRef: ModalDirective;
   optionOrderModalRef: BsModalRef;
@@ -214,11 +220,11 @@ export class OrdersComponent implements OnInit {
 
 
   isFilterHidden(columnName: FilterColumnsBy) : Boolean {
-    document.getElementById("inputFilter").focus();
-    document.getElementById("inputFilter2").focus();
-    document.getElementById("inputFilter3").focus();
-    document.getElementById("inputFilter4").focus();
-    document.getElementById("inputFilter5").focus();
+    // document.getElementById("inputFilter").focus();
+    // document.getElementById("inputFilter2").focus();
+    // document.getElementById("inputFilter3").focus();
+    // document.getElementById("inputFilter4").focus();
+    // document.getElementById("inputFilter5").focus();
     return this.selectedColumnNameFilter !== columnName || !this.filterClick
     
   }
@@ -267,32 +273,41 @@ export class OrdersComponent implements OnInit {
     switch (this.selectedColumnNameFilter){
       case FilterColumnsBy.OrderedByCustomer:
         let filterInColumnOne = this.ordersListInitial.filter(order => order.orderedByCustomerFullName.toLowerCase().includes(valueForInput.toLowerCase()))
-        console.log(filterInColumnOne);
-        this.ordersList = JSON.parse(JSON.stringify(filterInColumnOne));
+        if (filterInColumnOne === []){
+          console.log("nie ma nic")
+        }else{
+          console.log("jest")
+          this.ordersList = JSON.parse(JSON.stringify(filterInColumnOne));
+        }
       break;
       
       case FilterColumnsBy.Price:
-        // let priceToString = this.ordersList.price.toString()
-        // let filterInColumnTwo = this.ordersList.filter(priceToString.includes(valueForInput))
-        // this.ordersList = JSON.parse(JSON.stringify(filterInColumnTwo));
+        let filterInColumnTwo = this.ordersListInitial.filter(order => order.price.toString().includes(valueForInput.toString()))
+        this.ordersList = JSON.parse(JSON.stringify(filterInColumnTwo));
       break;
 
       case FilterColumnsBy.OrderedDate:
-        // let creationDateToString = this.ordersList.creationDate?.toString()
-        // let filterInColumnThree = this.ordersList.filter(creationDateToString.includes(valueForInput))
-        // this.ordersList = JSON.parse(JSON.stringify(filterInColumnThree));
+        let from = valueForInput[0].getTime();
+        let to = valueForInput[1].getTime();
+        let filterInColumnThree = this.ordersListInitial
+        .filter(order => order.creationDate.getTime() >= from && order.creationDate.getTime() <= to)
+        this.ordersList = JSON.parse(JSON.stringify(filterInColumnThree));
       break;
 
       case FilterColumnsBy.LastUpdateDate:
-        // let daysOfLastUpdateToString = this.ordersList.lastUpdateDate?.toString()
-        // let filterInColumnFour = this.ordersList.filter(daysOfLastUpdateToString.includes(valueForInput))
-        // this.ordersList = JSON.parse(JSON.stringify(filterInColumnFour));
+        let fromLastUpdate = valueForInput[0].getTime();
+        let toLastUpdate = valueForInput[1].getTime();
+        let filterInColumnFour = this.ordersListInitial
+        .filter(order => new Date(order.lastUpdateDate).getTime() >= fromLastUpdate && new Date(order.lastUpdateDate).getTime() <= toLastUpdate)
+        this.ordersList = JSON.parse(JSON.stringify(filterInColumnFour));
       break;
 
       case FilterColumnsBy.DaysOfLastUpdate:
-        
-        // let filterInColumnFive = this.ordersList.filter(order => order.lastUpdateDate.includes(valueForInput))
-        // this.ordersList = JSON.parse(JSON.stringify(filterInColumnFive));
+        let fromDaysOfLastUpdate = valueForInput[0].getTime();
+        let toDaysOfLastUpdate = valueForInput[1].getTime();
+        let filterInColumnFive = this.ordersListInitial
+        .filter(order => new Date(order.lastUpdateDate).getTime() >= fromDaysOfLastUpdate && new Date(order.lastUpdateDate).getTime() <= toDaysOfLastUpdate)
+        this.ordersList = JSON.parse(JSON.stringify(filterInColumnFive));
       break;
 
       default:

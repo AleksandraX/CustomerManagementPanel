@@ -12,7 +12,9 @@ import { OrdersRoutingModule } from './orders-routing.module';
 import { OrdersService } from './orders.service';
 import { SharedModule } from '../shared/shared.module';
 import { BsModalService, ModalModule } from 'ngx-bootstrap/modal';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { OrdersOptionModal } from './orders-option/orders-option-modal';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
     declarations: [							
@@ -32,6 +34,7 @@ import { OrdersOptionModal } from './orders-option/orders-option-modal';
       FontAwesomeModule,
       SharedModule,
       ModalModule.forRoot()  ,
+      BsDatepickerModule.forRoot(),
       
     ],
     providers: [
