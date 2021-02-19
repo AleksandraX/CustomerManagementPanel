@@ -1,6 +1,8 @@
+import { ClassGetter } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import {
+  faCheck,
   faFilter,
   faPlusSquare,
   faSort,
@@ -41,6 +43,7 @@ export class OrdersComponent implements OnInit {
   faSortUp: IconDefinition = faSortUp;
   faSortDown: IconDefinition = faSortDown;
   faFilter = faFilter;
+  faCheck = faCheck;
 
   orderedOrders: OrderedItem[] = [];
   selectedOrdersId: string[] = [];
@@ -59,11 +62,12 @@ export class OrdersComponent implements OnInit {
   downArrowIcon: boolean;
   bothArrowIcon: boolean;
   myInputValue: string;
-  PriceValue: number;
   OrderedDateValue: Date;
   LastUpdateDateValue: Date;
   DaysOfLastUpdateValueOne: number;
   DaysOfLastUpdateValueTwo: number;
+  PriceValueOne: number;
+  PriceValueTwo: number;
 
 
   @ViewChild('addOrderModal') addOrderModalRef: ModalDirective;
@@ -103,14 +107,14 @@ export class OrdersComponent implements OnInit {
 
   ngAfterViewInit(): void {}
 
-  getDays(lastUpdateDate?: Date): string {
+  getDays(lastUpdateDate?: Date): number {
     if (lastUpdateDate == null) {
-      return '-';
+      return -1;
     }
 
     let now = new Date(Date.now());
     let data = now.getTime() - new Date(lastUpdateDate.toString()).getTime()
-    return Math.floor(data / (1000 * 3600 * 24)) + ' days';
+    return Math.floor(data / (1000 * 3600 * 24)) ;
   }
 
   onSelectedStatus(newOrderStatusId: string, orderId: string) {
@@ -269,7 +273,12 @@ export class OrdersComponent implements OnInit {
     this.sort();
   }
 
-  filter(valueForInput){
+  onKeyUpEvent(valueFornInput , valueForInput2) {
+    setTimeout( () => {
+      this.filter(valueFornInput , valueForInput2) },  500);
+  }
+
+  filter(valueForInput, valueForInput2){
     switch (this.selectedColumnNameFilter){
       case FilterColumnsBy.OrderedByCustomer:
         let filterInColumnOne = this.ordersListInitial.filter(order => order.orderedByCustomerFullName.toLowerCase().includes(valueForInput.toLowerCase()))
@@ -282,7 +291,10 @@ export class OrdersComponent implements OnInit {
       break;
       
       case FilterColumnsBy.Price:
-        let filterInColumnTwo = this.ordersListInitial.filter(order => order.price.toString().includes(valueForInput.toString()))
+        let fromPrice = valueForInput;
+        let toPrice = valueForInput2;
+        let filterInColumnTwo = this.ordersListInitial
+        .filter(order => order.price >= fromPrice && order.price <= toPrice)
         this.ordersList = JSON.parse(JSON.stringify(filterInColumnTwo));
       break;
 
@@ -303,10 +315,10 @@ export class OrdersComponent implements OnInit {
       break;
 
       case FilterColumnsBy.DaysOfLastUpdate:
-        let fromDaysOfLastUpdate = valueForInput[0].getTime();
-        let toDaysOfLastUpdate = valueForInput[1].getTime();
+        let fromDaysOfLastUpdate = valueForInput;
+        let toDaysOfLastUpdate = valueForInput2;
         let filterInColumnFive = this.ordersListInitial
-        .filter(order => new Date(order.lastUpdateDate).getTime() >= fromDaysOfLastUpdate && new Date(order.lastUpdateDate).getTime() <= toDaysOfLastUpdate)
+        .filter(order => this.getDays(order.lastUpdateDate) >= fromDaysOfLastUpdate && this.getDays(order.lastUpdateDate) <= toDaysOfLastUpdate)
         this.ordersList = JSON.parse(JSON.stringify(filterInColumnFive));
       break;
 

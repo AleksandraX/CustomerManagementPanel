@@ -17,10 +17,31 @@ body {
     outline: none;
 }
 
+#icon-check-price{
+    color: white;
+    position: relative;
+    left: .5rem;
+    font-size: .9rem;
+    transition: .5s color, .3s transform;
+    padding: .1% .8%;
+    background: transparent;
+    border: none;
+    outline: none;
+}
+
 .button-to-submit-filter{
-    margin-left: 1rem;
+    margin-left: 1.2rem;
     font-size: 1rem;
     width: 1rem;
+    outline: none;
+    border: none;
+    background: transparent;
+    transition: .3s color, .3s transform ;
+}
+
+.button-to-submit-filter:hover{
+    color: rgb(14, 184, 8);
+    transform: scale(.9);
 }
 
 .filter-icon:hover{
@@ -41,23 +62,73 @@ body {
 }
 
 .form-control{
+    position: relative;
+    display: inline;
     text-align: center;
     font-size: .9rem;
-    position: relative;
-    left: 4rem;
-    width: 240%;
+    top: 2rem;
     height: 1.5rem;
-    margin-bottom: .3rem;
 }
 
-#versionTwo{
-    display: block;
-    width: 80%;
-    left: 7rem;
+.filterrrrr{
+    color: white;
+    position: relative;
+    left: 13.5rem;
+    top: .5rem;
+    display: inline;
+}
+
+.element-ceneter{
+    background-color: yellow;
 }
 
 .to-left{
     float: left;
+}
+
+.days-of-last-update-p{
+    display: inline;
+    margin-left: .3rem;
+    margin-right: .3rem;
+}
+
+
+.days-of-last-update-filter{
+    width: 20%;
+    display: inline;
+    text-align: center;
+    text-decoration: transparent;
+    border: none;
+    border-bottom: .1rem solid black;
+    margin-bottom: .5rem;
+    margin-top: .5rem;
+    font-size: .8rem;
+    transition: .2s font-size, border .2s;
+}
+
+.days-of-last-update-filter:focus{
+    outline: none;
+    font-size: 1.1rem;
+    border: none;
+}
+
+.div-filter-from-days{
+    background-color: white;
+    border-radius: .3rem;
+    margin-bottom: 1rem;
+}
+
+.p-for-filter{
+    font-size: .9rem;
+    display: inline;
+    color: rgb(48, 48, 48);
+    border-bottom: .1rem solid black;
+}
+
+.days-of-last-update-filter-div{
+    width: 16%;
+    margin-bottom: .8rem;
+    margin-top: .8rem;
 }
 
 .status-filter{
@@ -199,6 +270,10 @@ select {
 
 .column, .columnInfo{
     text-align: center;
+}
+
+.columnInfo{
+    transition-duration:4s;
 }
 
 .check-box{
