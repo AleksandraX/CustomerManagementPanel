@@ -68,6 +68,7 @@ export class OrdersComponent implements OnInit {
   DaysOfLastUpdateValueTwo: number;
   PriceValueOne: number;
   PriceValueTwo: number;
+  EmptyValue: any;
 
 
   @ViewChild('addOrderModal') addOrderModalRef: ModalDirective;
@@ -149,12 +150,13 @@ export class OrdersComponent implements OnInit {
   }
 
   onPageChanged(event: MyPager) {
-    this.orderedOrders = event.pageOfItems;
+    this.orderedOrders = [];
     this.checkBoxSelect = false;
     this.selectedOrdersId = [];
+    this.orderedOrders = JSON.parse(JSON.stringify(event.pageOfItems));
   }
 
-  changePageSize(filterVal: any) {
+  changePageSize(filterVal: number) {
     this.pageSizeFromOrders = filterVal;
     console.log(this.pageSizeFromOrders);
   }
@@ -224,11 +226,6 @@ export class OrdersComponent implements OnInit {
 
 
   isFilterHidden(columnName: FilterColumnsBy) : Boolean {
-    // document.getElementById("inputFilter").focus();
-    // document.getElementById("inputFilter2").focus();
-    // document.getElementById("inputFilter3").focus();
-    // document.getElementById("inputFilter4").focus();
-    // document.getElementById("inputFilter5").focus();
     return this.selectedColumnNameFilter !== columnName || !this.filterClick
     
   }

@@ -73,18 +73,22 @@ body {
 .filterrrrr{
     color: white;
     position: relative;
-    left: 13.5rem;
+    left: 10rem;
     top: .5rem;
     display: inline;
 }
 
 .element-ceneter{
-    background-color: yellow;
+    position: relative;
+    left: 3rem;
+    bottom: 1rem;
 }
 
-.to-left{
-    float: left;
+#input-for-date-valu{
+    width: 250%;
 }
+
+
 
 .days-of-last-update-p{
     display: inline;

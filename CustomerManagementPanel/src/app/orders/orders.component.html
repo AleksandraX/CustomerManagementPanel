@@ -15,7 +15,7 @@
 </select>
 
 
-<div *ngIf="orderedOrders?.length > 0">
+
   <table class="table">
     <thead class="thead-dark">
       <tr id="row">
@@ -28,10 +28,10 @@
 
         <th class="columnInfo1" scope="col">
 
-          <div class="filter-div element-ceneter" [hidden]="isFilterHidden(FilterColumnsBy.OrderedByCustomer)"
+          <div class="filter-div element-ceneter-ordered" [hidden]="isFilterHidden(FilterColumnsBy.OrderedByCustomer)"
             id="filterInput">
             <input [(ngModel)]="myInputValue" id="inputFilter" placeholder="Write three letters to filter"
-              class="input-for-filter to-left" type="text" (keyup)="onKeyUpEvent(myInputValue)">
+              class="input-for-filter" type="text" (keyup)="onKeyUpEvent(myInputValue, EmptyValue)">
           </div>
           <button (click)="sortList(SortColumns.OrderedByCustomer)" class="sort-button">
             Ordered by customer
@@ -71,9 +71,10 @@
 
           <div [hidden]="isFilterHidden(FilterColumnsBy.OrderedDate)"
             class="col-xs-12 col-12 col-md-4 form-group  filter-div element-ceneter">
-            <input type="text" placeholder="Select the dates" class="form-control" bsDaterangepicker
+            <input type="text" placeholder="Select the dates" class="form-control"
+            id="input-for-date-valu" bsDaterangepicker
               [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }" [(ngModel)]="OrderedDateValue">
-            <button class="button-to-submit-filter " (click)="filter(OrderedDateValue)">
+            <button class="button-to-submit-filter filterrrrr" (click)="filter(OrderedDateValue, EmptyValue)">
               <fa-icon [icon]="faCheck"></fa-icon>
             </button>
           </div>
@@ -90,9 +91,9 @@
         <th class="columnInfo" scope="col">
           <div [hidden]="isFilterHidden(FilterColumnsBy.LastUpdateDate)"
             class="col-xs-12 col-12 col-md-4 form-group  filter-div element-ceneter">
-            <input type="text" placeholder="Select the dates" class="form-control input-for-ordered-date"
+            <input type="text" id="input-for-date-valu" placeholder="Select the dates" class="form-control input-for-ordered-date"
               bsDaterangepicker [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }" [(ngModel)]="LastUpdateDateValue">
-            <button class="button-to-submit-filter filterrrrr" (click)="filter(LastUpdateDateValue)">
+            <button class="button-to-submit-filter filterrrrr" (click)="filter(LastUpdateDateValue, EmptyValue)">
               <fa-icon [icon]="faCheck"></fa-icon>
             </button>
           </div>
@@ -143,6 +144,7 @@
 
       </tr>
     </thead>
+    
     <tbody>
 
       <tr *ngFor="let order of orderedOrders" id="{{'row' + order.orderNumber}}">
@@ -172,7 +174,6 @@
         <td class="column">
           <p class="tel">Status: </p>
 
-
           <select class="status-selected" #orderStatusSelect
             [disabled]="checkStatus(order.item.statusId, 'Cancelled') || checkStatus(order.item.statusId, 'Delivered')"
             [ngClass]="{
@@ -191,8 +192,6 @@
       </tr>
     </tbody>
   </table>
-
-</div>
 
 <app-pagination [items]="ordersList" [pageSize]="pageSizeFromOrders" (pageChangedEventEmitter)="onPageChanged($event)">
 </app-pagination>
