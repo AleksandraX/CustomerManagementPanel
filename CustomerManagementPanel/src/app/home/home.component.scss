@@ -7,6 +7,24 @@
     text-align: center;
 }
 
+.column-future-we-want-to-add{
+    text-align: left;
+    margin-right: 8rem;
+    display: inline-block;
+}
+
+#for-to-do-list{
+    position: relative;
+    left: 23%;
+}
+
+.p-for-want-to-add{
+    position: relative;
+    font-size: .8rem;
+    color: rgb(126, 126, 126);
+    margin-top: .5rem;
+}
+
 .icons-title{
     margin-top: 4%;
     margin-bottom: 4%;
@@ -53,6 +71,15 @@ a{
 
 a:hover{
     color: rgb(50, 103, 216);
+    
     transition: color .5s;
 }
 
+.links-for-want-to-add{
+    transition: .3s color;
+    transform: scale(0.7);
+}
+
+.links-for-want-to-add:hover{
+    color:  var(--colorMustard);
+}

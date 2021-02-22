@@ -1,6 +1,8 @@
+import { ClassGetter } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import {
+  faCheck,
   faFilter,
   faPlusSquare,
   faSort,
@@ -14,6 +16,7 @@ import {
   ModalDirective,
 } from 'ngx-bootstrap/modal';
 import { ToastrService } from 'ngx-toastr';
+import { BehaviorSubject, Observable } from 'rxjs';
 import {
   Order,
   OrderStatus,
@@ -41,8 +44,9 @@ export class OrdersComponent implements OnInit {
   faSortUp: IconDefinition = faSortUp;
   faSortDown: IconDefinition = faSortDown;
   faFilter = faFilter;
+  faCheck = faCheck;
 
-  orderedOrders: OrderedItem[] = [];
+  orderedOrders: BehaviorSubject<OrderedItem[]> = new BehaviorSubject<OrderedItem[]>(null);
   selectedOrdersId: string[] = [];
   selectedColumnName: SortColumnsBy;
   selectedColumnStatus: SortStatus;
@@ -58,7 +62,17 @@ export class OrdersComponent implements OnInit {
   upArrowIcon: boolean;
   downArrowIcon: boolean;
   bothArrowIcon: boolean;
-  myInputValue: any;
+  myInputValue: string;
+  OrderedDateValue: Date;
+  LastUpdateDateValue: Date;
+  DaysOfLastUpdateValueOne: number;
+  DaysOfLastUpdateValueTwo: number;
+  PriceValueOne: number;
+  PriceValueTwo: number;
+  EmptyValue: any;
+
+  orderedOrdersToShow: Observable<OrderedItem[]>;
+
 
   @ViewChild('addOrderModal') addOrderModalRef: ModalDirective;
   optionOrderModalRef: BsModalRef;
@@ -86,6 +100,7 @@ export class OrdersComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.orderedOrdersToShow = this.orderedOrders.asObservable();
     this.selectedColumnName = SortColumnsBy.Id;
 
     for(let item in this.SortColumnsStatus){
@@ -97,14 +112,14 @@ export class OrdersComponent implements OnInit {
 
   ngAfterViewInit(): void {}
 
-  getDays(lastUpdateDate?: Date): string {
+  getDays(lastUpdateDate?: Date): number {
     if (lastUpdateDate == null) {
-      return '-';
+      return -1;
     }
 
     let now = new Date(Date.now());
     let data = now.getTime() - new Date(lastUpdateDate.toString()).getTime()
-    return Math.floor(data / (1000 * 3600 * 24)) + ' days';
+    return Math.floor(data / (1000 * 3600 * 24)) ;
   }
 
   onSelectedStatus(newOrderStatusId: string, orderId: string) {
@@ -139,12 +154,12 @@ export class OrdersComponent implements OnInit {
   }
 
   onPageChanged(event: MyPager) {
-    this.orderedOrders = event.pageOfItems;
     this.checkBoxSelect = false;
     this.selectedOrdersId = [];
+    this.orderedOrders.next(event.pageOfItems);
   }
 
-  changePageSize(filterVal: any) {
+  changePageSize(filterVal: number) {
     this.pageSizeFromOrders = filterVal;
     console.log(this.pageSizeFromOrders);
   }
@@ -173,8 +188,8 @@ export class OrdersComponent implements OnInit {
   }
 
   toggleAllCheckList() {
-    if (this.selectedOrdersId.length != this.orderedOrders.length) {
-      let allVisibleIds = this.orderedOrders.map((order) => order.item.id);
+    if (this.selectedOrdersId.length != this.orderedOrders.getValue().length) {
+      let allVisibleIds = this.orderedOrders.getValue().map((order) => order.item.id);
       this.selectedOrdersId = [];
       this.selectedOrdersId = [...allVisibleIds];
       console.log('dodajemy wszystko');
@@ -182,7 +197,7 @@ export class OrdersComponent implements OnInit {
       document.getElementById('button').style.display = 'block';
       // document.getElementById("row"+ orderNumber).style.backgroundColor = 'AntiqueWhite';
     } else {
-      this.orderedOrders.map((order) => order.item.id);
+      this.orderedOrders.getValue().map((order) => order.item.id);
       this.selectedOrdersId = [];
       console.log('usuwamy wszystko');
       console.log(this.selectedOrdersId);
@@ -195,7 +210,7 @@ export class OrdersComponent implements OnInit {
   }
 
   showOptionOrder() {
-    let filteredOrders = this.orderedOrders.filter((orderFromParent) =>
+    let filteredOrders = this.orderedOrders.getValue().filter((orderFromParent) =>
       this.selectedOrdersId.includes(orderFromParent.item.id)
     );
 
@@ -214,11 +229,6 @@ export class OrdersComponent implements OnInit {
 
 
   isFilterHidden(columnName: FilterColumnsBy) : Boolean {
-    document.getElementById("inputFilter").focus();
-    document.getElementById("inputFilter2").focus();
-    document.getElementById("inputFilter3").focus();
-    document.getElementById("inputFilter4").focus();
-    document.getElementById("inputFilter5").focus();
     return this.selectedColumnNameFilter !== columnName || !this.filterClick
     
   }
@@ -263,36 +273,53 @@ export class OrdersComponent implements OnInit {
     this.sort();
   }
 
-  filter(valueForInput){
+  onKeyUpEvent(valueFornInput , valueForInput2) {
+    setTimeout( () => {
+      this.filter(valueFornInput , valueForInput2) },  500);
+  }
+
+  filter(valueForInput, valueForInput2){
     switch (this.selectedColumnNameFilter){
       case FilterColumnsBy.OrderedByCustomer:
         let filterInColumnOne = this.ordersListInitial.filter(order => order.orderedByCustomerFullName.toLowerCase().includes(valueForInput.toLowerCase()))
-        console.log(filterInColumnOne);
-        this.ordersList = JSON.parse(JSON.stringify(filterInColumnOne));
+        if (filterInColumnOne === []){
+          console.log("nie ma nic")
+        }else{
+          console.log("jest")
+          this.ordersList = JSON.parse(JSON.stringify(filterInColumnOne));
+        }
       break;
       
       case FilterColumnsBy.Price:
-        // let priceToString = this.ordersList.price.toString()
-        // let filterInColumnTwo = this.ordersList.filter(priceToString.includes(valueForInput))
-        // this.ordersList = JSON.parse(JSON.stringify(filterInColumnTwo));
+        let fromPrice = valueForInput;
+        let toPrice = valueForInput2;
+        let filterInColumnTwo = this.ordersListInitial
+        .filter(order => order.price >= fromPrice && order.price <= toPrice)
+        this.ordersList = JSON.parse(JSON.stringify(filterInColumnTwo));
       break;
 
       case FilterColumnsBy.OrderedDate:
-        // let creationDateToString = this.ordersList.creationDate?.toString()
-        // let filterInColumnThree = this.ordersList.filter(creationDateToString.includes(valueForInput))
-        // this.ordersList = JSON.parse(JSON.stringify(filterInColumnThree));
+        let from = valueForInput[0].getTime();
+        let to = valueForInput[1].getTime();
+        let filterInColumnThree = this.ordersListInitial
+        .filter(order => order.creationDate.getTime() >= from && order.creationDate.getTime() <= to)
+        this.ordersList = JSON.parse(JSON.stringify(filterInColumnThree));
       break;
 
       case FilterColumnsBy.LastUpdateDate:
-        // let daysOfLastUpdateToString = this.ordersList.lastUpdateDate?.toString()
-        // let filterInColumnFour = this.ordersList.filter(daysOfLastUpdateToString.includes(valueForInput))
-        // this.ordersList = JSON.parse(JSON.stringify(filterInColumnFour));
+        let fromLastUpdate = valueForInput[0].getTime();
+        let toLastUpdate = valueForInput[1].getTime();
+        let filterInColumnFour = this.ordersListInitial
+        .filter(order => new Date(order.lastUpdateDate).getTime() >= fromLastUpdate && new Date(order.lastUpdateDate).getTime() <= toLastUpdate)
+        this.ordersList = JSON.parse(JSON.stringify(filterInColumnFour));
       break;
 
       case FilterColumnsBy.DaysOfLastUpdate:
-        
-        // let filterInColumnFive = this.ordersList.filter(order => order.lastUpdateDate.includes(valueForInput))
-        // this.ordersList = JSON.parse(JSON.stringify(filterInColumnFive));
+        let fromDaysOfLastUpdate = valueForInput;
+        let toDaysOfLastUpdate = valueForInput2;
+        let filterInColumnFive = this.ordersListInitial
+        .filter(order => this.getDays(order.lastUpdateDate) >= fromDaysOfLastUpdate && this.getDays(order.lastUpdateDate) <= toDaysOfLastUpdate)
+        this.ordersList = JSON.parse(JSON.stringify(filterInColumnFive));
       break;
 
       default:

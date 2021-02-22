@@ -15,7 +15,7 @@
 </select>
 
 
-<div *ngIf="orderedOrders?.length > 0">
+
   <table class="table">
     <thead class="thead-dark">
       <tr id="row">
@@ -25,68 +25,109 @@
         </th>
         <th class="columnInfo1" scope="col">Id</th>
 
-        
+
         <th class="columnInfo1" scope="col">
 
-          <div class="filter-div element-ceneter" [hidden]="isFilterHidden(FilterColumnsBy.OrderedByCustomer)" id="filterInput" >
-            <input [(ngModel)]="myInputValue" id="inputFilter" placeholder="Write three letters to filter" class="input-for-filter to-left" type="text">
-            <button class="button-to-submit-filter" (click)="filter(myInputValue)">$</button>
+          <div class="filter-div element-ceneter-ordered" [hidden]="isFilterHidden(FilterColumnsBy.OrderedByCustomer)"
+            id="filterInput">
+            <input [(ngModel)]="myInputValue" id="inputFilter" placeholder="Write three letters to filter"
+              class="input-for-filter" type="text" (keyup)="onKeyUpEvent(myInputValue, EmptyValue)">
           </div>
           <button (click)="sortList(SortColumns.OrderedByCustomer)" class="sort-button">
             Ordered by customer
             <fa-icon [icon]="getArrowClass(SortColumns.OrderedByCustomer)"></fa-icon>
           </button>
-          <button class="filter-icon" (click)="switchFilterShow(FilterColumnsBy.OrderedByCustomer)"><fa-icon [icon]="faFilter"></fa-icon></button>
+          <button class="filter-icon" (click)="switchFilterShow(FilterColumnsBy.OrderedByCustomer)">
+            <fa-icon [icon]="faFilter"></fa-icon>
+          </button>
 
 
         </th>
 
-        <th class="columnInfo" scope="col">
-          <div class="filter-div element-ceneter" [hidden]="isFilterHidden(FilterColumnsBy.Price)" id="filterInput" >
-            <input [(ngModel)]="myInputValue" id="inputFilter2" placeholder="Write three letters to filter" class="input-for-filter" type="text">
+        <th class="columnInfo days-of-last-update-filter-div" scope="col">
 
+          <div [hidden]="isFilterHidden(FilterColumnsBy.Price)" class="div-filter-from-days">
+            <input type="text" placeholder="From" class="days-of-last-update-filter" [(ngModel)]="PriceValueOne">
+            <p class="p-for-filter">ZŁ</p>
+            <p class="days-of-last-update-p"> - </p>
+            <input type="text" placeholder="To" class="days-of-last-update-filter" [(ngModel)]="PriceValueTwo">
+            <p class="p-for-filter">ZŁ</p>
+
+            <button class="button-to-submit-filter" (click)="filter(PriceValueOne,PriceValueTwo )">
+              <fa-icon [icon]="faCheck"></fa-icon>
+            </button>
           </div>
+
           <button (click)="sortList(SortColumns.Price)" class="sort-button">
             Price
             <fa-icon [icon]="getArrowClass(SortColumns.Price)"></fa-icon>
           </button>
-          <button class="filter-icon" (click)="switchFilterShow(FilterColumnsBy.Price)"><fa-icon [icon]="faFilter"></fa-icon></button>
+          <button class="filter-icon" (click)="switchFilterShow(FilterColumnsBy.Price)">
+            <fa-icon [icon]="faFilter"></fa-icon>
+          </button>
         </th>
 
         <th class="columnInfo" scope="col">
-          <div class="filter-div element-ceneter" [hidden]="isFilterHidden(FilterColumnsBy.OrderedDate)" id="filterInput" >
-            <input [(ngModel)]="myInputValue" id="inputFilter3" placeholder="Write three letters to filter" class="input-for-filter" type="text">
 
+          <div [hidden]="isFilterHidden(FilterColumnsBy.OrderedDate)"
+            class="col-xs-12 col-12 col-md-4 form-group  filter-div element-ceneter">
+            <input type="text" placeholder="Select the dates" class="form-control"
+            id="input-for-date-valu" bsDaterangepicker
+              [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }" [(ngModel)]="OrderedDateValue">
+            <button class="button-to-submit-filter filterrrrr" (click)="filter(OrderedDateValue, EmptyValue)">
+              <fa-icon [icon]="faCheck"></fa-icon>
+            </button>
           </div>
+
           <button (click)="sortList(SortColumns.OrderedDate)" class="sort-button">
             Ordered date
             <fa-icon [icon]="getArrowClass(SortColumns.OrderedDate)"></fa-icon>
           </button>
-          <button class="filter-icon" (click)="switchFilterShow(FilterColumnsBy.OrderedDate)"><fa-icon [icon]="faFilter"></fa-icon></button>
+          <button class="filter-icon" (click)="switchFilterShow(FilterColumnsBy.OrderedDate)">
+            <fa-icon [icon]="faFilter"></fa-icon>
+          </button>
         </th>
 
         <th class="columnInfo" scope="col">
-          <div class="filter-div element-ceneter" [hidden]="isFilterHidden(FilterColumnsBy.LastUpdateDate)" id="filterInput" >
-            <input [(ngModel)]="myInputValue" id="inputFilter4" placeholder="Write three letters to filter" class="input-for-filter" type="text">
-
+          <div [hidden]="isFilterHidden(FilterColumnsBy.LastUpdateDate)"
+            class="col-xs-12 col-12 col-md-4 form-group  filter-div element-ceneter">
+            <input type="text" id="input-for-date-valu" placeholder="Select the dates" class="form-control input-for-ordered-date"
+              bsDaterangepicker [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }" [(ngModel)]="LastUpdateDateValue">
+            <button class="button-to-submit-filter filterrrrr" (click)="filter(LastUpdateDateValue, EmptyValue)">
+              <fa-icon [icon]="faCheck"></fa-icon>
+            </button>
           </div>
           <button (click)="sortList(SortColumns.LastUpdateDate)" class="sort-button">
             Last update date
             <fa-icon [icon]="getArrowClass(SortColumns.LastUpdateDate)"></fa-icon>
           </button>
-          <button class="filter-icon" (click)="switchFilterShow(FilterColumnsBy.LastUpdateDate)"><fa-icon [icon]="faFilter"></fa-icon></button>
+          <button class="filter-icon" (click)="switchFilterShow(FilterColumnsBy.LastUpdateDate)">
+            <fa-icon [icon]="faFilter"></fa-icon>
+          </button>
         </th>
 
-        <th  class="columnInfo" scope="col">
-          <div class="filter-div element-ceneter" [hidden]="isFilterHidden(FilterColumnsBy.DaysOfLastUpdate)" id="filterInput" >
-            <input [(ngModel)]="myInputValue" id="inputFilter5" placeholder="Write three letters to filter" class="input-for-filter" type="text">
+        <th class="columnInfo days-of-last-update-filter-div" scope="col">
+          <div [hidden]="isFilterHidden(FilterColumnsBy.DaysOfLastUpdate)" class="div-filter-from-days">
+            <input type="text" placeholder="From" class="days-of-last-update-filter"
+              [(ngModel)]="DaysOfLastUpdateValueOne">
+            <p class="p-for-filter">days</p>
+            <p class="days-of-last-update-p"> - </p>
+            <input type="text" placeholder="To" class="days-of-last-update-filter"
+              [(ngModel)]="DaysOfLastUpdateValueTwo">
+            <p class="p-for-filter">days</p>
 
+            <button class="button-to-submit-filter"
+              (click)="filter(DaysOfLastUpdateValueOne,DaysOfLastUpdateValueTwo )">
+              <fa-icon [icon]="faCheck"></fa-icon>
+            </button>
           </div>
           <button (click)="sortList(SortColumns.DaysOfLastUpdate)" class="sort-button">
             Days of last update
             <fa-icon [icon]="getArrowClass(SortColumns.DaysOfLastUpdate)"></fa-icon>
           </button>
-          <button class="filter-icon" (click)="switchFilterShow(FilterColumnsBy.DaysOfLastUpdate)"><fa-icon [icon]="faFilter"></fa-icon></button>
+          <button class="filter-icon" (click)="switchFilterShow(FilterColumnsBy.DaysOfLastUpdate)">
+            <fa-icon [icon]="faFilter"></fa-icon>
+          </button>
         </th>
 
         <th class="columnInfo" scope="col">
@@ -103,9 +144,11 @@
 
       </tr>
     </thead>
-    <tbody>
 
-      <tr *ngFor="let order of orderedOrders" id="{{'row' + order.orderNumber}}">
+    <tbody *ngIf="(orderedOrdersToShow | async) !== null">
+
+
+      <tr *ngFor="let order of orderedOrdersToShow | async" id="{{'row' + order.orderNumber}}">
         <th scope="row">
           <input type="checkbox" title="Check Box" [checked]="isOrderSlected(order.item.id)"
             (change)="checkCheckList(order.item.id , order.orderNumber)" class="form-check-input check-box"
@@ -126,11 +169,11 @@
           <p class="tel">Last update date: </p>{{order.item.lastUpdateDate | date}}
         </td>
         <td class="column">
-          <p class="tel">Days of last update: </p>{{getDays(order.item.lastUpdateDate)}}
+          <p class="tel">Days of last update: </p>
+          {{ getDays(order.item.lastUpdateDate) === -1 ? '-' : getDays(order.item.lastUpdateDate)+ ' days'}}
         </td>
         <td class="column">
           <p class="tel">Status: </p>
-
 
           <select class="status-selected" #orderStatusSelect
             [disabled]="checkStatus(order.item.statusId, 'Cancelled') || checkStatus(order.item.statusId, 'Delivered')"
@@ -148,10 +191,10 @@
 
         </td>
       </tr>
-    </tbody>
-  </table>
 
-</div>
+    </tbody>
+
+  </table>
 
 <app-pagination [items]="ordersList" [pageSize]="pageSizeFromOrders" (pageChangedEventEmitter)="onPageChanged($event)">
 </app-pagination>
