@@ -144,10 +144,11 @@
 
       </tr>
     </thead>
-    
-    <tbody>
 
-      <tr *ngFor="let order of orderedOrders" id="{{'row' + order.orderNumber}}">
+    <tbody *ngIf="(orderedOrdersToShow | async) !== null">
+
+
+      <tr *ngFor="let order of orderedOrdersToShow | async" id="{{'row' + order.orderNumber}}">
         <th scope="row">
           <input type="checkbox" title="Check Box" [checked]="isOrderSlected(order.item.id)"
             (change)="checkCheckList(order.item.id , order.orderNumber)" class="form-check-input check-box"
@@ -190,7 +191,9 @@
 
         </td>
       </tr>
+
     </tbody>
+
   </table>
 
 <app-pagination [items]="ordersList" [pageSize]="pageSizeFromOrders" (pageChangedEventEmitter)="onPageChanged($event)">

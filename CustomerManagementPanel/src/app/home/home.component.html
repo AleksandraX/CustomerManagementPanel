@@ -109,13 +109,21 @@
 
 
 
-  <h2 class="icons-title">In the future we want to add</h2>
-  <ul class="check-list-to-do">
-    <li><fa-icon class="icon" [icon]="faSquare"></fa-icon> Sorting of our lists e.g. by names alphabetically, by age asc/desc <fa-icon class="icon" [icon]="faSort"></fa-icon></li>
-    <li><fa-icon class="icon" [icon]="faSquare"></fa-icon> Grouping result eg. customers by city <fa-icon class="icon" [icon]="faObjectGroup"></fa-icon></li>
-    <li><fa-icon class="icon" [icon]="faSquare"></fa-icon> Filtering lists by specific filters? <fa-icon class="icon" [icon]="faFilter"></fa-icon></li>
-    <li><fa-icon class="icon" [icon]="faCheckSquare"></fa-icon> Paging - done on frontend site <fa-icon class="icon" [icon]="faListOl"></fa-icon></li>
-    <li><fa-icon class="icon" [icon]="faSquare"></fa-icon> Searching by any criteria <fa-icon class="icon" [icon]="faSearch"></fa-icon></li>
-    <li><fa-icon class="icon" [icon]="faSquare"></fa-icon> Show customer addresess on Google Maps <fa-icon class="icon" [icon]="faMapMarkedAlt"></fa-icon></li>
-  </ul>
+  <h2 class="icons-title">In the future we want to add <br> <p class="p-for-want-to-add">
+    *Clicking on the icon at the end of the line will redirect you to the place where the given mechanism was applied.
+  </p></h2>
+
+  <div class="row" id="for-to-do-list">
+    <div class="column-future-we-want-to-add">
+      <li><fa-icon class="icon" [icon]="faCheckSquare"></fa-icon> 1. Sorting of our lists eg. by names alphabetically, by age asc/desc <a class="links-for-want-to-add" [routerLink]='["/orders"]'><fa-icon class="icon" [icon]="faSort"></fa-icon></a></li>
+      <li><fa-icon class="icon" [icon]="faSquare"></fa-icon> 2. Grouping result eg. customers by city <fa-icon class="icon" [icon]="faObjectGroup"></fa-icon></li>
+      <li><fa-icon class="icon" [icon]="faCheckSquare"></fa-icon> 3. Filtering lists by specific filter <a class="links-for-want-to-add" [routerLink]='["/orders"]'><fa-icon class="icon" [icon]="faFilter"></fa-icon></a></li>
+    </div>
+    <div class="column-future-we-want-to-add">
+      <li><fa-icon class="icon" [icon]="faCheckSquare"></fa-icon> 4. Paging - done on frontend site <a class="links-for-want-to-add" [routerLink]='["/orders"]'><fa-icon class="icon" [icon]="faListOl"></fa-icon></a></li>
+      <li><fa-icon class="icon" [icon]="faCheckSquare"></fa-icon> 5. Searching by any criteria <a class="links-for-want-to-add" [routerLink]='["/orders"]'><fa-icon class="icon" [icon]="faSearch"></fa-icon></a></li>
+      <li><fa-icon class="icon" [icon]="faSquare"></fa-icon> 6. Show customer addresess on Google Maps <fa-icon class="icon" [icon]="faMapMarkedAlt"></fa-icon></li>
+    </div>
+
+  </div>
 </div>

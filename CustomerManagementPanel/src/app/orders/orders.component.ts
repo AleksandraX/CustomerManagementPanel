@@ -16,6 +16,7 @@ import {
   ModalDirective,
 } from 'ngx-bootstrap/modal';
 import { ToastrService } from 'ngx-toastr';
+import { BehaviorSubject, Observable } from 'rxjs';
 import {
   Order,
   OrderStatus,
@@ -45,7 +46,7 @@ export class OrdersComponent implements OnInit {
   faFilter = faFilter;
   faCheck = faCheck;
 
-  orderedOrders: OrderedItem[] = [];
+  orderedOrders: BehaviorSubject<OrderedItem[]> = new BehaviorSubject<OrderedItem[]>(null);
   selectedOrdersId: string[] = [];
   selectedColumnName: SortColumnsBy;
   selectedColumnStatus: SortStatus;
@@ -69,6 +70,8 @@ export class OrdersComponent implements OnInit {
   PriceValueOne: number;
   PriceValueTwo: number;
   EmptyValue: any;
+
+  orderedOrdersToShow: Observable<OrderedItem[]>;
 
 
   @ViewChild('addOrderModal') addOrderModalRef: ModalDirective;
@@ -97,6 +100,7 @@ export class OrdersComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.orderedOrdersToShow = this.orderedOrders.asObservable();
     this.selectedColumnName = SortColumnsBy.Id;
 
     for(let item in this.SortColumnsStatus){
@@ -150,10 +154,9 @@ export class OrdersComponent implements OnInit {
   }
 
   onPageChanged(event: MyPager) {
-    this.orderedOrders = [];
     this.checkBoxSelect = false;
     this.selectedOrdersId = [];
-    this.orderedOrders = JSON.parse(JSON.stringify(event.pageOfItems));
+    this.orderedOrders.next(event.pageOfItems);
   }
 
   changePageSize(filterVal: number) {
@@ -185,8 +188,8 @@ export class OrdersComponent implements OnInit {
   }
 
   toggleAllCheckList() {
-    if (this.selectedOrdersId.length != this.orderedOrders.length) {
-      let allVisibleIds = this.orderedOrders.map((order) => order.item.id);
+    if (this.selectedOrdersId.length != this.orderedOrders.getValue().length) {
+      let allVisibleIds = this.orderedOrders.getValue().map((order) => order.item.id);
       this.selectedOrdersId = [];
       this.selectedOrdersId = [...allVisibleIds];
       console.log('dodajemy wszystko');
@@ -194,7 +197,7 @@ export class OrdersComponent implements OnInit {
       document.getElementById('button').style.display = 'block';
       // document.getElementById("row"+ orderNumber).style.backgroundColor = 'AntiqueWhite';
     } else {
-      this.orderedOrders.map((order) => order.item.id);
+      this.orderedOrders.getValue().map((order) => order.item.id);
       this.selectedOrdersId = [];
       console.log('usuwamy wszystko');
       console.log(this.selectedOrdersId);
@@ -207,7 +210,7 @@ export class OrdersComponent implements OnInit {
   }
 
   showOptionOrder() {
-    let filteredOrders = this.orderedOrders.filter((orderFromParent) =>
+    let filteredOrders = this.orderedOrders.getValue().filter((orderFromParent) =>
       this.selectedOrdersId.includes(orderFromParent.item.id)
     );
 
