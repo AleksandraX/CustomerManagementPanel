@@ -5,6 +5,18 @@ h1{
     font-weight: bold;
 }
 
+.icon-arrow-back{
+    float: left;
+    font-size: 2rem;
+    color: rgb(82, 82, 82);
+    transition: color .3s;
+  }
+  
+  .icon-arrow-back:hover{
+    color: black;
+    cursor: pointer;
+  }
+
 .addContainer{
     text-align: center;
     font-weight: bold;

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { faCity, faGlobeAmericas, faIdCard, faMailBulk, faRoad } from '@fortawesome/free-solid-svg-icons';
+import { faArrowLeft, faCity, faGlobeAmericas, faIdCard, faMailBulk, faRoad } from '@fortawesome/free-solid-svg-icons';
 import { ToastrService } from 'ngx-toastr';
 import { ClientsService } from 'src/app/clients/clients.service';
 import { Address, AddressWithResidents } from 'src/app/clients/models/address';
@@ -21,7 +21,8 @@ export class AddressesDetailsComponent implements OnInit {
   faCity = faCity;
   faMailBulk = faMailBulk;
   faRoad = faRoad;
-  faIdCard= faIdCard;
+  faIdCard = faIdCard;
+  faArrowLeft = faArrowLeft;
 
   constructor(
     private toastr: ToastrService, 

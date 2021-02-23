@@ -12,7 +12,7 @@ import {
 } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { faSave, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faArrowLeft, faSave, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { ToastrService } from 'ngx-toastr';
 import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
@@ -45,6 +45,7 @@ export class AddressesAddComponent implements OnInit, AfterViewInit, OnChanges {
   form: MyFormGroup = null;
   faSave = faSave;
   faTimes = faTimes;
+  faArrowLeft = faArrowLeft;
   baseUrl: string = 'https://api.kacper-berganski-portfolio.pl/api/addresses';
   countries: Country[] = [];
   polandId: string;
@@ -118,6 +119,7 @@ export class AddressesAddComponent implements OnInit, AfterViewInit, OnChanges {
 
     console.log("saving", addressToCreate);
     this.addressService.create(addressToCreate).subscribe((response) => {});
+    
   }
 
   showSuccess() {
