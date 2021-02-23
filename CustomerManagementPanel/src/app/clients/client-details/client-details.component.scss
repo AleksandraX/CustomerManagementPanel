@@ -3,6 +3,18 @@ a{
     text-decoration: none;
 }
 
+.icon-arrow-back{
+    float: left;
+    font-size: 2rem;
+    color: rgb(82, 82, 82);
+    transition: color .3s;
+  }
+  
+  .icon-arrow-back:hover{
+    color: black;
+    cursor: pointer;
+  }
+
 a:hover{
     color: var(--colorMustard);
     transition: color .2s;

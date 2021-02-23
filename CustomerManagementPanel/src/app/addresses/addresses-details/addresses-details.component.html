@@ -1,5 +1,6 @@
 <div class="address-details-case">
-  <h1>Address </h1>
+
+  <h1>Address <a [routerLink]='["/addresses"]'><fa-icon class="icon icon-arrow-back" [icon]="faArrowLeft"></fa-icon></a></h1>
   <div class="adressDeails">
     <label class="adressDeailsP"><fa-icon class="icon" [icon]="faIdCard"></fa-icon> Id: <h5>{{address?.id}}</h5></label>
     <label class="adressDeailsP"><fa-icon class="icon" [icon]="faGlobaleAmericas"></fa-icon> Country: <h5>{{address?.country}}</h5></label>

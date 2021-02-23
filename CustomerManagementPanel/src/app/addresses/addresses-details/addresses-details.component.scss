@@ -9,6 +9,22 @@
     width: 80%;
 }
 
+.icon-arrow-back{
+    position: relative;
+    display: block;
+    bottom: 2rem;
+    right: 22rem;
+    float: left;
+    font-size: 2rem;
+    color: rgb(82, 82, 82);
+    transition: color .3s;
+  }
+  
+  .icon-arrow-back:hover{
+    color: black;
+    cursor: pointer;
+  }
+
 .carousel-item {
     margin-right: 0;
     padding: 5px;

@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { faSave, faUserAlt } from '@fortawesome/free-solid-svg-icons';
+import { faArrowLeft, faSave, faUserAlt } from '@fortawesome/free-solid-svg-icons';
 import { ToastrService } from 'ngx-toastr';
 import { AddressesService } from 'src/app/addresses/addresses.service';
 import { MyFormGroup } from 'src/app/shared/extentions/myFormGroup';
@@ -24,6 +24,7 @@ export class EditCustomerComponent implements OnInit {
   addingMode: boolean = false;
   faSave = faSave;
   faUserAlt = faUserAlt;
+  faArrowLeft = faArrowLeft;
   address: AddressForCreation = {
     countryId: '',
     city: '',

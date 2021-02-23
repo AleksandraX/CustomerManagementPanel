@@ -7,7 +7,7 @@ import { BsModalRef, BsModalService, ModalDirective } from 'ngx-bootstrap/modal'
 import { ToastrService } from 'ngx-toastr';
 import { ClientsService } from 'src/app/clients/clients.service';
 import { Customer } from 'src/app/clients/models/customer';
-import {OrdersForCreation } from 'src/app/clients/models/orders';
+import {Order, OrdersForCreation } from 'src/app/clients/models/orders';
 import { MyFormGroup } from 'src/app/shared/extentions/myFormGroup';
 import { OrdersService } from '../orders.service';
 
@@ -22,6 +22,7 @@ export class OrdersAddModal implements OnInit, AfterViewInit{
 
   @ViewChild('price') priceChild: ElementRef;
 
+  ordersList: Order[] = [];
   clientsList: Customer[];
   ordersAddList: OrdersForCreation[];
   form: MyFormGroup = null;
@@ -74,6 +75,7 @@ export class OrdersAddModal implements OnInit, AfterViewInit{
 
      this.ordersService.create(ordersToCreate).subscribe(response => {
        console.log("Subscribe for creation")
+       this.ordersList = JSON.parse(JSON.stringify(ordersToCreate));
      });
      this.modal.hide();
   };

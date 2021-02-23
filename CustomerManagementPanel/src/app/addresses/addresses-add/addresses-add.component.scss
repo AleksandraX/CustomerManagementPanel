@@ -52,12 +52,28 @@ label {
   font-size: 1.2rem;
 }
 
+a{
+  color: black;
+}
+
+.icon-arrow-back{
+  float: left;
+  font-size: 2rem;
+  color: rgb(82, 82, 82);
+  transition: color .3s;
+}
+
+.icon-arrow-back:hover{
+  color: black;
+  cursor: pointer;
+}
+
 .alert-danger {
   width: 30%;
   position: relative;
   top: 100%;
   left: 50%;
-  transform: translate(50%,0%);
+  transform: translate(-50%,20%);
 }
 
 @media only screen and (min-width: 100px) and (max-width: 550px) {

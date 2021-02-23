@@ -14,17 +14,17 @@
         </th>
         <th (click)="sortList(SortColumns.Sex)" scope="col">
             <button class="sort-button">
-            Sex F/M <fa-icon [icon]="getArrowClass(SortColumns.Sex)"></fa-icon>
+                Gender F/M <fa-icon [icon]="getArrowClass(SortColumns.Sex)"></fa-icon>
         </button>
         </th>
         <th (click)="sortList(SortColumns.Age)" scope="col">
             <button class="sort-button">
-            Age <fa-icon [icon]="getArrowClass(SortColumns.Age)"></fa-icon>
+                Age <fa-icon [icon]="getArrowClass(SortColumns.Age)"></fa-icon>
         </button>
         </th>
         <th (click)="sortList(SortColumns.City)" scope="col">
             <button class="sort-button">
-            City <fa-icon [icon]="getArrowClass(SortColumns.City)"></fa-icon>
+                City <fa-icon [icon]="getArrowClass(SortColumns.City)"></fa-icon>
         </button>
         </th>
         <th class="column-actions" scope="col">Actions</th>
@@ -35,7 +35,7 @@
     <tr *ngFor="let customer of orderedCustomers; index as i">
         <th scope="row">{{ i + 1 }}</th>
         <td class="columnUser"><p class="tel">Full name: </p>{{ customer.item.name}} {{customer.item.lastName}}</td>
-        <td class="columnUser"><p class="tel">Sex F/M: </p>{{ customer.item.gender === 0 ? "Male" : "Female"}}</td>
+        <td class="columnUser"><p class="tel">Gender F/M: </p>{{ customer.item.gender === 0 ? "Male" : "Female"}}</td>
         <td class="columnUser"><p class="tel">Age: </p>{{ customer.item.age}}</td>
         <td class="columnUser"><p class="tel">City: </p>{{ customer.item.address?.city}}</td>
         <td class="columnBnt"><p class="tel">Actions: </p>

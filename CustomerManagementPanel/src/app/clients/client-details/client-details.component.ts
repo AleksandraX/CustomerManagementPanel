@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { faCity, faEnvelope, faGlobeAmericas, faMailBulk, faPhoneAlt, faRoad, faUserAlt, faVenusMars } from '@fortawesome/free-solid-svg-icons';
+import { faArrowLeft, faCity, faEnvelope, faGlobeAmericas, faMailBulk, faPhoneAlt, faRoad, faUserAlt, faVenusMars } from '@fortawesome/free-solid-svg-icons';
 import { ToastrService } from 'ngx-toastr';
 import { Customer } from '../models/customer';
 
@@ -19,6 +19,7 @@ export class ClientDetailsComponent implements OnInit {
   faVenusMars = faVenusMars;
   faPhoneAlt = faPhoneAlt;
   faEnvelope = faEnvelope;
+  faArrowLeft = faArrowLeft;
 
 chosenCustomer: Customer;
 

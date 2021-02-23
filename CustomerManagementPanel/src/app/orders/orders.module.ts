@@ -14,7 +14,6 @@ import { SharedModule } from '../shared/shared.module';
 import { BsModalService, ModalModule } from 'ngx-bootstrap/modal';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { OrdersOptionModal } from './orders-option/orders-option-modal';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
     declarations: [							
@@ -42,5 +41,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
         CurrencyPipe,
         BsModalService
     ],
+    entryComponents: [
+      OrdersOptionModal
+    ]
   })
   export class OrdersModule { }
