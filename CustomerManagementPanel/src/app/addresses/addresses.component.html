@@ -1,40 +1,106 @@
-   <div class="add">
-        <button class="bntAdd" [routerLink]='["/addresses/add"]'><fa-icon [icon]="faPlusSquare"></fa-icon> Add Address</button>
-    </div>
+<div class="add">
+    <button class="bntAdd" [routerLink]='["/addresses/add"]'>
+        <fa-icon [icon]="faPlusSquare"></fa-icon> Add Address
+    </button>
+</div>
 
- 
+<select (change)="changePageSize($event.target.value)" class="col-sm form-select" aria-label="Default select example"
+    class="order-per-page">
+    <option [value]="15">15 orders per page</option>
+    <option [value]="30">30 orders per page</option>
+    <option [value]="60">60 orders per page</option>
+</select>
 
-  <table class="table">
-        <thead class="thead-dark">
+<table class="table">
+    <thead class="thead-dark">
         <tr>
-            <th scope="col">#</th>
-            <th scope="col">Country</th>
-            <th scope="col">City</th>
-            <th scope="col">Zip Code</th>
-            <th scope="col">Street</th>
-            <th scope="col">Details</th>
+            <th class="th-for-hasch" scope="col">#</th>
+            <th class="th-for-column" id="text-country" scope="col">
+                <div class="filter-div element-ceneter-ordered" [hidden]="isFilterHidden(FilterColumn.Country)"
+                id="filterInput">
+                <input [(ngModel)]="CountryValue" id="inputFilter" placeholder="Write three letters to filter"
+                  class="input-for-filter" type="text" (keyup)="onKeyUpEvent(CountryValue)">
+              </div>
+                <button (click)="sortList(SortColumns.Country)" class="sort-button">
+                    Country <fa-icon [icon]="getArrowClass(SortColumns.Country)"></fa-icon>
+                </button>
+                <button class="filter-icon" (click)="switchFilterShow(FilterColumn.Country)">
+                    <fa-icon [icon]="faFilter"></fa-icon>
+                </button>
+            </th>
+            <th class="th-for-column" scope="col">
+                <div class="filter-div element-ceneter-ordered" [hidden]="isFilterHidden(FilterColumn.City)"
+                id="filterInput">
+                <input [(ngModel)]="CityValue" id="inputFilter" placeholder="Write three letters to filter"
+                  class="input-for-filter" type="text" (keyup)="onKeyUpEvent(CityValue)">
+              </div>
+                <button (click)="sortList(SortColumns.City)" class="sort-button">
+                    City <fa-icon [icon]="getArrowClass(SortColumns.City)"></fa-icon>
+                </button>
+                <button class="filter-icon" (click)="switchFilterShow(FilterColumn.City)">
+                    <fa-icon [icon]="faFilter"></fa-icon>
+                </button>
+            </th>
+            <th class="th-for-column" scope="col">
+                <div class="filter-div element-ceneter-ordered" [hidden]="isFilterHidden(FilterColumn.ZipCode)"
+                id="filterInput">
+                <input [(ngModel)]="ZipCodeValue" id="inputFilter" placeholder="Write three letters to filter"
+                  class="input-for-filter" type="text" (keyup)="onKeyUpEvent(ZipCodeValue)">
+              </div>
+                <button (click)="sortList(SortColumns.ZipCode)" class="sort-button">
+                    Zip Code <fa-icon [icon]="getArrowClass(SortColumns.ZipCode)"></fa-icon>
+                </button>
+                <button class="filter-icon" (click)="switchFilterShow(FilterColumn.ZipCode)">
+                    <fa-icon [icon]="faFilter"></fa-icon>
+                </button>
+            </th>
+            <th class="th-for-column" scope="col">
+                <div class="filter-div element-ceneter-ordered" [hidden]="isFilterHidden(FilterColumn.Street)"
+                id="filterInput">
+                <input [(ngModel)]="StreetValue" id="inputFilter" placeholder="Write three letters to filter"
+                  class="input-for-filter" type="text" (keyup)="onKeyUpEvent(StreetValue)">
+              </div>
+                <button (click)="sortList(SortColumns.Street)" class="sort-button">
+                    Street <fa-icon [icon]="getArrowClass(SortColumns.Street)"></fa-icon>
+                </button>
+                <button class="filter-icon" (click)="switchFilterShow(FilterColumn.Street)">
+                    <fa-icon [icon]="faFilter"></fa-icon>
+                </button>
+            </th>
+
+            <th class="th-for-delete" scope="col">Details</th>
         </tr>
-        </thead>
-        <tbody>
-        <tr *ngFor="let address of addressesList; index as i">
-            <th scope="row">{{ i + 1 }}</th>
-            <td class="columnUserAddress lineBorder"><p class="tel">Country: </p>{{address.country?.name}}</td>
-            <td class="columnUserAddress"><p class="tel">City: </p>{{address.city}}</td>
-            <td class="columnUserAddress"><p class="tel">Zip Code: </p>{{address.zipCode}}</td>
-            <td class="columnUserAddress"><p class="tel">Street: </p>{{address.street}}</td>
-            <td class="columnBnt"><p class="tel">Actions: </p>
-                <button class="bntDetails" title="Show details" [routerLink]='["/addresses/details/" + address.id]'>
-                    <fa-icon [icon]="faInfo"></fa-icon></button>
-                    <button class="bntDelete" title="Delete" (click)="addressDelete(address.id)">
-                        <fa-icon [icon]="faTrash"></fa-icon></button>
+    </thead>
+    <tbody>
+        <tr *ngFor="let address of addressOrdersToShow | async" id="{{'row' + address.orderNumber}}">
+            <th scope="row">{{ address.orderNumber }}</th>
+            <td class="columnUserAddress lineBorder" id="text-country">
+                <p class="tel">Country: </p>{{address.item.country?.name}}
+            </td>
+            <td class="columnUserAddress">
+                <p class="tel">City: </p>{{address.item.city}}
+            </td>
+            <td class="columnUserAddress">
+                <p class="tel">Zip Code: </p>{{address.item.zipCode}}
+            </td>
+            <td class="columnUserAddress">
+                <p class="tel">Street: </p>{{address.item.street}}
+            </td>
+            <td class="columnBnt">
+                <p class="tel">Actions: </p>
+                <button class="bntDetails" title="Show details" [routerLink]='["/addresses/details/" + address.item.id]'>
+                    <fa-icon [icon]="faInfo"></fa-icon>
+                </button>
+                <button class="bntDelete" title="Delete" (click)="addressDelete(address.item.id)">
+                    <fa-icon [icon]="faTrash"></fa-icon>
+                </button>
             </td>
         </tr>
-        </tbody>
-    </table>  
-    <div *ngIf="!!addressesList && addressesList.length > 0; else emptyList">
-    
-    <app-pagination
-        [items]="addressesList"
+    </tbody>
+</table>
+<div *ngIf="!!addressesList && addressesList.length > 0; else emptyList">
+
+    <app-pagination [items]="addressesList" [pageSize]="pageSizeFromOrders"
         (pageChangedEventEmitter)="onPageChanged($event)">
     </app-pagination>
 

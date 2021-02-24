@@ -1,60 +1,121 @@
-    <div class="add">
-        <button class="bntAdd" [routerLink]='["/clients/add"]'><fa-icon [icon]="faPlusSquare"></fa-icon> Add Customer</button>
-    </div>
+<div class="add">
+    <button class="bntAdd" [routerLink]='["/clients/add"]'>
+        <fa-icon [icon]="faPlusSquare"></fa-icon> Add Customer
+    </button>
+</div>
 
-    <div *ngIf="!!customerObjectList && customerObjectList.length > 0 && orderedCustomers?.length > 0; else emptyList">
+<div>
     <table class="table">
-    <thead class="thead-dark">
-    <tr>
-        <th scope="col">#</th>
-        <th (click)="sortList(SortColumns.FullName)"scope="col">
-            <button class="sort-button">
-                Full name <fa-icon [icon]="getArrowClass(SortColumns.FullName)"></fa-icon>
-            </button>
-        </th>
-        <th (click)="sortList(SortColumns.Sex)" scope="col">
-            <button class="sort-button">
-                Gender F/M <fa-icon [icon]="getArrowClass(SortColumns.Sex)"></fa-icon>
-        </button>
-        </th>
-        <th (click)="sortList(SortColumns.Age)" scope="col">
-            <button class="sort-button">
-                Age <fa-icon [icon]="getArrowClass(SortColumns.Age)"></fa-icon>
-        </button>
-        </th>
-        <th (click)="sortList(SortColumns.City)" scope="col">
-            <button class="sort-button">
-                City <fa-icon [icon]="getArrowClass(SortColumns.City)"></fa-icon>
-        </button>
-        </th>
-        <th class="column-actions" scope="col">Actions</th>
-    </tr>
-    </thead>
-    
-    <tbody>
-    <tr *ngFor="let customer of orderedCustomers; index as i">
-        <th scope="row">{{ i + 1 }}</th>
-        <td class="columnUser"><p class="tel">Full name: </p>{{ customer.item.name}} {{customer.item.lastName}}</td>
-        <td class="columnUser"><p class="tel">Gender F/M: </p>{{ customer.item.gender === 0 ? "Male" : "Female"}}</td>
-        <td class="columnUser"><p class="tel">Age: </p>{{ customer.item.age}}</td>
-        <td class="columnUser"><p class="tel">City: </p>{{ customer.item.address?.city}}</td>
-        <td class="columnBnt"><p class="tel">Actions: </p>
-            <button class="bntDelete" title="Delete" (click)="deleteCustomer(customer.item.id)">
-                <fa-icon [icon]="faTrash"></fa-icon></button>
-            <button class="bntEdit" title="Edit" [routerLink]='["/clients/edit/" + customer.item.id]'>
-                <fa-icon [icon]="faEdit"></fa-icon></button>
-            <button class="bntShow" title="Show details" [routerLink]='["/clients/details/" + customer.item.id]'>
-                <fa-icon [icon]="faInfo"></fa-icon></button>
-        </td>
-    </tr>
-    </tbody>
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">
+
+                    <div class="filter-div element-ceneter-ordered" [hidden]="isFilterHidden(FilterColumnsBy.FullName)"
+                        id="filterInput">
+                        <input [(ngModel)]="myInputValue" id="inputFilter" placeholder="Write three letters to filter"
+                            class="input-for-filter" type="text" (keyup)="onKeyUpEvent(myInputValue, EmptyValue)">
+                    </div>
+
+                    <button (click)="sortList(SortColumns.FullName)" class="sort-button">
+                        Full name <fa-icon [icon]="getArrowClass(SortColumns.FullName)"></fa-icon>
+                    </button>
+                    <button class="filter-icon" (click)="switchFilterShow(FilterColumnsBy.FullName)">
+                        <fa-icon [icon]="faFilter"></fa-icon>
+                    </button>
+                </th>
+                <th scope="col">
+                    <div class="filter-div element-ceneter-ordered" [hidden]="isFilterHidden(FilterColumnsBy.Sex)"
+                        id="filterInput">
+                        <select class="status-filter" (change)="filter($event.target.value, EmptyValue)">
+                            <option selected hidden>Status</option>
+                            <option value=1>Female</option>
+                            <option value=0>Male</option>
+                        </select>
+                    </div>
+                    <button (click)="sortList(SortColumns.Sex)" class="sort-button">
+                        Gender F/M <fa-icon [icon]="getArrowClass(SortColumns.Sex)"></fa-icon>
+                    </button>
+                    <button class="filter-icon" (click)="switchFilterShow(FilterColumnsBy.Sex)">
+                        <fa-icon [icon]="faFilter"></fa-icon>
+                    </button>
+                </th>
+                <th class="colum-age-filter" scope="col">
+
+                    <div [hidden]="isFilterHidden(FilterColumnsBy.Age)" class="div-age-filter">
+                        <input type="text" placeholder="From" class="age-filter" [(ngModel)]="AgeValueOne">
+                        <p class="p-for-filter">Years</p>
+                        <p class="days-of-last-update-p"> - </p>
+                        <input type="text" placeholder="To" class="age-filter" [(ngModel)]="AgeValueTwo">
+                        <p class="p-for-filter">Years</p>
+                        <button class="button-to-submit-filter" (click)="filter(AgeValueOne, AgeValueTwo)">
+                            <fa-icon [icon]="faCheck"></fa-icon>
+                        </button>
+                    </div>
+
+                    <button (click)="sortList(SortColumns.Age)" class="sort-button">
+                        Age <fa-icon [icon]="getArrowClass(SortColumns.Age)"></fa-icon>
+                    </button>
+                    <button class="filter-icon" (click)="switchFilterShow(FilterColumnsBy.Age)">
+                        <fa-icon [icon]="faFilter"></fa-icon>
+                    </button>
+                </th>
+                <th class="colum-city-filter" scope="col">
+
+                    <div class="filter-div element-ceneter-ordered" [hidden]="isFilterHidden(FilterColumnsBy.City)"
+                        id="filterInput">
+                        <input [(ngModel)]="CityValue" id="inputFilter" placeholder="Write three letters to filter"
+                            class="input-for-filter" type="text" (keyup)="onKeyUpEvent(CityValue, EmptyValue)">
+                    </div>
+
+                    <button (click)="sortList(SortColumns.City)" class="sort-button">
+                        City <fa-icon [icon]="getArrowClass(SortColumns.City)"></fa-icon>
+                    </button>
+                    <button class="filter-icon" (click)="switchFilterShow(FilterColumnsBy.City)">
+                        <fa-icon [icon]="faFilter"></fa-icon>
+                    </button>
+                </th>
+                <th class="column-actions" scope="col">Actions</th>
+            </tr>
+        </thead>
+
+        <tbody
+            *ngIf="customerObjectList !== null && orderedCustomers !== null; else emptyList">
+            <tr *ngFor="let customer of orderedCustomers; index as i">
+                <th scope="row">{{ i + 1 }}</th>
+                <td class="columnUser">
+                    <p class="tel">Full name: </p>{{ customer.item.name}} {{customer.item.lastName}}
+                </td>
+                <td class="columnUser">
+                    <p class="tel">Gender F/M: </p>{{ customer.item.gender === 0 ? "Male" : "Female"}}
+                </td>
+                <td class="columnUser">
+                    <p class="tel">Age: </p>{{ customer.item.age}}
+                </td>
+                <td class="columnUser">
+                    <p class="tel">City: </p>{{ customer.item.address?.city}}
+                </td>
+                <td class="columnBnt">
+                    <p class="tel">Actions: </p>
+                    <button class="bntDelete" title="Delete" (click)="deleteCustomer(customer.item.id)">
+                        <fa-icon [icon]="faTrash"></fa-icon>
+                    </button>
+                    <button class="bntEdit" title="Edit" [routerLink]='["/clients/edit/" + customer.item.id]'>
+                        <fa-icon [icon]="faEdit"></fa-icon>
+                    </button>
+                    <button class="bntShow" title="Show details"
+                        [routerLink]='["/clients/details/" + customer.item.id]'>
+                        <fa-icon [icon]="faInfo"></fa-icon>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
     </table>
 </div>
 
-    
-<app-pagination
-[items]="customerObjectList"
-(pageChangedEventEmitter)="onPageChanged($event)">
+
+
+<app-pagination [items]="customerObjectList" (pageChangedEventEmitter)="onPageChanged($event)">
 </app-pagination>
 
 

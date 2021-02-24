@@ -5,6 +5,7 @@ body {
   background-color: $black;
 }
 
+
 .filter-icon{
     color: white;
     position: relative;
@@ -85,17 +86,14 @@ body {
 }
 
 #input-for-date-valu{
-    width: 250%;
+    width: 240%;
 }
-
-
 
 .days-of-last-update-p{
     display: inline;
     margin-left: .3rem;
     margin-right: .3rem;
 }
-
 
 .days-of-last-update-filter{
     width: 20%;

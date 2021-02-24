@@ -230,7 +230,6 @@ export class OrdersComponent implements OnInit {
 
   isFilterHidden(columnName: FilterColumnsBy) : Boolean {
     return this.selectedColumnNameFilter !== columnName || !this.filterClick
-    
   }
 
   switchFilterShow(columnNameClicked: FilterColumnsBy){

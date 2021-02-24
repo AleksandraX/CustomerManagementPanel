@@ -7,7 +7,6 @@
   position: relative;
   background: transparent;
   border: none;
-  left: 0.5rem;
   padding: 0.1rem 0.5rem;
   transition: 0.3s transform;
 }
@@ -22,6 +21,14 @@
 
 .table {
   margin-bottom: 3rem;
+}
+
+#text-country{
+text-align: left;
+}
+
+.columnUserAddress, .columnBnt{
+  text-align: center;
 }
 
 .bntDelete {
@@ -44,16 +51,17 @@
 }
 
 .bntAdd {
-  position: sticky;
+  height: 2.3rem;
+  position: relative;
   background-color: rgb(71, 194, 71);
   color: rgb(255, 255, 255);
   border: none;
   border-radius: 5px;
-  padding: 0.4%;
-  transition: 0.3s color, 0.3s transform;
+  padding: .4%;
+  transition: .3s color, .3s transform ;
   outline: none;
-  left: 100%;
-  margin-bottom: 0.2rem;
+  margin-bottom: .2rem;
+  float: right;
 }
 
 .bntAdd:hover {
@@ -61,6 +69,104 @@
   transform: scale(0.9);
 }
 
+.order-per-page{
+  cursor: pointer;
+  color: white;
+  border: 1px solid #ced4da;
+  border-radius: 0.5rem;
+  display: inline-block;
+  position: sticky;
+  border-radius: 5px;
+  padding: 0.35rem 0.1rem;
+  margin-bottom: .5rem;
+  margin-right: 1%;
+  background-color: #343A40;
+  text-decoration: none;
+}
+
+.option-orders-per-page{
+  color: white;
+  background-color: #343A40;
+  text-decoration: none;
+}
+
+.option-orders-per-page:hover{
+  text-decoration: none;
+  outline: none;
+  color: var(--colorMustard);
+  background-color:  #343A40;
+}
+
+
+.order-per-page:hover{
+  text-decoration: none;
+  outline: none;
+  color: var(--colorMustard);
+  background-color:  #343A40;
+}
+
+.filter-icon{
+  color: white;
+  position: relative;
+  left: .5rem;
+  font-size: .9rem;
+  transition: .5s color, .3s transform;
+  padding: .1% .8%;
+  background: transparent;
+  border: none;
+  outline: none;
+}
+
+.filter-icon:hover{
+  color: rgb(255, 0, 221);
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+.input-for-filter{
+  border-radius: .2rem;
+  margin: none;
+  width: 70%;
+  border: .1rem solid black;
+  text-align: center;
+  margin-bottom: .2rem;
+  height: 1.5rem;
+  font-size: .9rem;
+}
+
+.sort-button{
+  color: rgb(255, 255, 255);
+  transition: .5s color;
+  text-decoration: none;
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
+
+.sort-button:hover{
+  color: var(--colorMustard);
+  cursor: pointer;
+}
+
+.element-ceneter{
+  position: relative;
+  left: 3rem;
+  bottom: 1rem;
+}
+
+.th-for-column{
+  width: 10%;
+  text-align: center;
+}
+
+.th-for-hasch{
+  width: 3%;
+}
+
+.th-for-delete{
+  width:4%;
+  text-align: center;
+}
 @media screen and (max-width: 625px) {
   .tel {
     display: inline;
