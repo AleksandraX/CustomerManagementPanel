@@ -6,9 +6,9 @@
 
 <select (change)="changePageSize($event.target.value)" class="col-sm form-select" aria-label="Default select example"
     class="order-per-page">
-    <option [value]="15">15 orders per page</option>
-    <option [value]="30">30 orders per page</option>
-    <option [value]="60">60 orders per page</option>
+    <option [value]="15">15 addresses per page</option>
+    <option [value]="30">30 addresses per page</option>
+    <option [value]="60">60 addresses per page</option>
 </select>
 
 <table class="table">
@@ -71,7 +71,7 @@
             <th class="th-for-delete" scope="col">Details</th>
         </tr>
     </thead>
-    <tbody>
+    <tbody *ngIf="(addressOrdersToShow | async) !== null">
         <tr *ngFor="let address of addressOrdersToShow | async" id="{{'row' + address.orderNumber}}">
             <th scope="row">{{ address.orderNumber }}</th>
             <td class="columnUserAddress lineBorder" id="text-country">

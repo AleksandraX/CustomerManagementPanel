@@ -32,7 +32,6 @@ export class AddressesComponent implements OnInit {
   CityValue: string;
   CountryValue: string;
 
-
   faTrash = faTrash;
   faInfo = faInfo;
   faPlusSquare = faPlusSquare;
@@ -47,6 +46,10 @@ export class AddressesComponent implements OnInit {
       private route: ActivatedRoute,
       private addressService: AddressesService
     ) { 
+      this.route.data.subscribe((value) => {
+        this.ordersListInitial = value['addressesList'];
+      })
+      this.addressesList = JSON.parse(JSON.stringify(this.ordersListInitial));
     }
   
     ngOnInit(): void {
@@ -124,17 +127,9 @@ export class AddressesComponent implements OnInit {
     sortList(columnNameClicked: SortColumn) {
       if (columnNameClicked === this.selectedColumnName) {
         this.isAsc = !this.isAsc;
-  
-        console.log(
-          'sortowanie tej samej columny zgodnie z: ',
-          this.isAsc ? 'descending' : 'ascending'
-        );
       } else {
         this.selectedColumnName = columnNameClicked;
         this.isAsc = true;
-  
-        console.log(`sortowanie tej columny ${this.selectedColumnName} 
-        zgodnie z: ${this.isAsc ? 'descending' : 'ascending'}`);
       }
   
       this.sort();
@@ -144,11 +139,16 @@ export class AddressesComponent implements OnInit {
       switch (this.selectedColumnName) {
         case SortColumn.Country:
   
-          if (this.isAsc) {
-            this.addressesList = JSON.parse(JSON.stringify(SortHelper.sortingOfElements(this.addressesList, 'country' )));
-            } else {
-              this.addressesList = JSON.parse(JSON.stringify(SortHelper.sortingOfElements(this.addressesList, 'country', false )));
-            }
+          this.addressesList = JSON.parse(
+            JSON.stringify(
+              SortHelper.sortingOfElements(
+                this.addressesList,
+                'country',
+                this.isAsc
+              )
+            )
+          );
+          console.log("tutaj lista sortowana" ,this.addressesList)
           break;
   
         case SortColumn.City:
