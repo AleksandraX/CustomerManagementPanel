@@ -1,7 +1,4 @@
-import { Address } from './address';
-import { Gender } from './customer';
-
-export class CustomerForCreation{
+export class CustomerForCreationAndUpdate{
     name: string;
     lastName: string;
     age: number;

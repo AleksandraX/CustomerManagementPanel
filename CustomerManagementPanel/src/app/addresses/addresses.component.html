@@ -98,7 +98,7 @@
         </tr>
     </tbody>
 </table>
-<div *ngIf="!!addressesList && addressesList.length > 0; else emptyList">
+<div>
 
     <app-pagination [items]="addressesList" [pageSize]="pageSizeFromOrders"
         (pageChangedEventEmitter)="onPageChanged($event)">

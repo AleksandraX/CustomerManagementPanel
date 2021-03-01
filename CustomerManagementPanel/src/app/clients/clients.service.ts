@@ -4,7 +4,7 @@ import { Customer } from './models/customer';
 import { catchError, tap } from 'rxjs/operators';
 import { of } from 'rxjs/internal/observable/of';
 import { Observable } from 'rxjs';
-import { CustomerForCreation } from './models/customerForCreation';
+import { CustomerForCreationAndUpdate } from './models/CustomerForCreationAndUpdate';
 import { environment } from 'src/environments/environment';
 
 @Injectable()
@@ -41,7 +41,7 @@ constructor(private httpClient:HttpClient) {
         );
     }
 
-    create(customerForCreation: CustomerForCreation) : Observable<any>{
+    create(customerForCreation: CustomerForCreationAndUpdate) : Observable<any>{
         return this.httpClient.post<any>(this.baseUrl + "/CreateCustomer", customerForCreation).pipe(
             tap(response =>
                 {
@@ -51,8 +51,8 @@ constructor(private httpClient:HttpClient) {
         );
     }
 
-    updateCustomer(customerForCreation: CustomerForCreation) : Observable<any>{
-        return this.httpClient.post<any>(this.baseUrl + "/UpdateCustomer", customerForCreation).pipe(
+    updateCustomer(customerForUpdate: CustomerForCreationAndUpdate) : Observable<any>{
+        return this.httpClient.post<any>(this.baseUrl + "/UpdateCustomer", customerForUpdate).pipe(
             tap(response =>
                 {
                     console.log("Update Customer", response);

@@ -20,7 +20,7 @@ export class ClientEditResolver implements Resolve<Customer>{
             let address: Address =  {
                 id: "",
                 city: "",
-                zipCode: 0,
+                zipCode: "",
                 street: "",
                 country: new Country,
                };

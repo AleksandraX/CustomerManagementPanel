@@ -1,7 +1,7 @@
 export interface Address{
     id: string,
     city: string,
-    zipCode: number,
+    zipCode: string,
     street: string,
     country: Country
   }
